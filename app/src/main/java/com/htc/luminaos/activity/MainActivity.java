@@ -278,63 +278,65 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
     }
 
     private void initViewCustom() {
+        //我的应用 新的UI放到recyclerView里面去了
 
-        //总共12个
-        //1 我的应用 新的UI放到recyclerView里面去了
-
-        //2 应用商店
+        //应用商店
         customBinding.rlGoogle.setOnClickListener(this);
         customBinding.rlGoogle.setOnHoverListener(this);
         customBinding.rlGoogle.setOnFocusChangeListener(this);
-        //3 设置
+        //设置
         customBinding.rlSettings.setOnClickListener(this);
         customBinding.rlSettings.setOnHoverListener(this);
         customBinding.rlSettings.setOnFocusChangeListener(this);
-        //4 文件管理
+        //文件管理
         customBinding.rlUsb.setOnClickListener(this);
         customBinding.rlUsb.setOnHoverListener(this);
         customBinding.rlUsb.setOnFocusChangeListener(this);
-        //5 HDMI 1
+        //HDMI 1
         customBinding.rlHdmi1.setOnClickListener(this);
         customBinding.rlHdmi1.setOnHoverListener(this);
         customBinding.rlHdmi1.setOnFocusChangeListener(this);
-        //6 rl_av
-        //7 rl_hdmi2
-        //8 rl_vga
-        //9 rl_manual 说明书，新的UI没这个功能
-        //10 wifi
+        //rl_av
+        //rl_hdmi2
+        //rl_vga
+        //rl_manual 说明书，新的UI没这个功能
+        //wifi
         customBinding.rlWifi.setOnClickListener(this);
         customBinding.rlWifi.setOnHoverListener(this);
         customBinding.rlWifi.setOnFocusChangeListener(this);
-        //11 蓝牙
+        //蓝牙
         customBinding.rlBluetooth.setOnClickListener(this);
         customBinding.rlBluetooth.setOnHoverListener(this);
         customBinding.rlBluetooth.setOnFocusChangeListener(this);
-        //12 切换背景
+        //清除缓存
+        customBinding.rlClearMemory.setOnClickListener(this);
+        customBinding.rlClearMemory.setOnHoverListener(this);
+        customBinding.rlClearMemory.setOnFocusChangeListener(this);
+        //切换背景
         customBinding.rlWallpapers.setOnClickListener(this);
         customBinding.rlWallpapers.setOnHoverListener(this);
         customBinding.rlWallpapers.setOnFocusChangeListener(this);
-        //13 Eshare
+        //Eshare
         customBinding.homeEshare.setOnClickListener(this);
         customBinding.homeEshare.setOnHoverListener(this);
         customBinding.homeEshare.setOnFocusChangeListener(this);
-        //14 Netflix
+        //Netflix
         customBinding.homeNetflix.setOnClickListener(this);
         customBinding.homeNetflix.setOnHoverListener(this);
         customBinding.homeNetflix.setOnFocusChangeListener(this);
-        //15 Youtube
+        //Youtube
         customBinding.homeYoutube.setOnClickListener(this);
         customBinding.homeYoutube.setOnHoverListener(this);
         customBinding.homeYoutube.setOnFocusChangeListener(this);
-        //16 迪士尼
+        //迪士尼
         customBinding.homeDisney.setOnClickListener(this);
         customBinding.homeDisney.setOnHoverListener(this);
         customBinding.homeDisney.setOnFocusChangeListener(this);
-        //17 首页Usb插入、拔出图标
+        //首页Usb插入、拔出图标
 //        customBinding.usbConnect
-        //18 电池状态
+        //电池状态
         initBattery();
-        //19 U盘插入
+        //U盘插入
         customBinding.rlUsbConnect.setOnClickListener(this);
         customBinding.rlUsbConnect.setOnHoverListener(this);
         customBinding.rlUsbConnect.setOnFocusChangeListener(this);
@@ -693,32 +695,27 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
 
     @Override
     public void onClick(View v) {
-
-
         String appname = null;
         String action = null;
-
         switch (v.getId()) {
-
+            case R.id.rl_clear_memory:
+                goAction("com.htc.clearmemory/com.htc.clearmemory.MainActivity");
+                break;
             case R.id.rl_wallpapers:
                 startNewActivity(WallPaperActivity.class);
                 break;
             case R.id.rl_Google:
-
                 appname = DBUtils.getInstance(this).getAppNameByTag("icon4");
                 action = DBUtils.getInstance(this).getActionByTag("icon4");
                 Log.d(TAG, " appnameaction" + appname + " " + action);
-
                 if (appname != null && action != null && !appname.equals("") && !action.equals("")) {
                     if (!AppUtils.startNewApp(MainActivity.this, action)) {
                         appName = appname;
                         requestChannelData();
                     }
-
                 } else {
                     AppUtils.startNewApp(MainActivity.this, "com.htc.storeos");
                 }
-
 //                AppUtils.startNewApp(MainActivity.this, "com.htc.storeos");
                 break;
             case R.id.rl_apps:
@@ -780,16 +777,13 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
                 break;
             case R.id.home_disney:
                 Log.d("xuhao", "打开迪士尼");
-
                 appname = DBUtils.getInstance(this).getAppNameByTag("icon3");
                 action = DBUtils.getInstance(this).getActionByTag("icon3");
-
                 if (appname != null && action != null && !appname.equals("") && !action.equals("")) {
                     if (!AppUtils.startNewApp(MainActivity.this, action)) {
                         appName = appname;
                         requestChannelData();
                     }
-
                 } else if (!AppUtils.startNewApp(MainActivity.this, "com.disney.disneyplus")) {
                     appName = "Disney+";
                     requestChannelData();
@@ -798,17 +792,14 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
                 break;
             case R.id.home_netflix:
                 Log.d("xuhao", "打开奈飞");
-
                 appname = DBUtils.getInstance(this).getAppNameByTag("icon1");
                 action = DBUtils.getInstance(this).getActionByTag("icon1");
-
                 if (appname != null && action != null && !appname.equals("") && !action.equals("")) {
                     if (!AppUtils.startNewApp(MainActivity.this, action)) {
                         Log.d("xuhao", "打开奈飞 第一个坑位不为空 " + appname + "2" + action + "3");
                         appName = appname;
                         requestChannelData();
                     }
-
                 } else if (!AppUtils.startNewApp(MainActivity.this, "com.netflix.mediaclient")) {
                     if (!AppUtils.startNewApp(MainActivity.this, "com.netflix.ninja")) {
                         Log.d("xuhao", "打开奈飞 第一个坑位为空");
@@ -816,7 +807,6 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
                         requestChannelData();
                     }
                 }
-
 //                if (!AppUtils.startNewApp(MainActivity.this, "com.netflix.mediaclient")) {
 //                    appName = "Netflix";
 //                    requestChannelData();
@@ -827,22 +817,17 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
                 break;
             case R.id.home_youtube:
                 Log.d("xuhao", "打开YOUtube");
-
                 appname = DBUtils.getInstance(this).getAppNameByTag("icon2");
                 action = DBUtils.getInstance(this).getActionByTag("icon2");
-
                 if (appname != null && action != null && !appname.equals("") && !action.equals("")) {
                     if (!AppUtils.startNewApp(MainActivity.this, action)) {
                         appName = appname;
                         requestChannelData();
                     }
-
                 } else if (!AppUtils.startNewApp(MainActivity.this, "com.google.android.youtube.tv")) {
                     appName = "Youtube";
                     requestChannelData();
                 }
-
-
 //                if (!AppUtils.startNewApp(MainActivity.this, "com.google.android.youtube.tv")) {
 //                    appName = "Youtube";
 //                    requestChannelData();
@@ -854,17 +839,21 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
     }
 
     private void goAction(String listaction) {
-        Log.d(TAG, " goAction list配置跳转 " + listaction);
-        if (listaction.contains("/")) {
-            String[] parts = listaction.split("/", 2);
-            String packageName = parts[0];
-            String activityName = parts[1];
-            Log.d(TAG, " goAction 包名活动名 " + packageName + " " + activityName);
-            startNewActivity(packageName, activityName);
-        } else if (listaction.equals("HDMI1") || listaction.equals("HDMI2") || listaction.equals("VGA") || listaction.equals("CVBS1")) {
-            startSource(listaction);
-        } else {
-            AppUtils.startNewApp(MainActivity.this, listaction);
+        try {
+            Log.d(TAG, " goAction list配置跳转 " + listaction);
+            if (listaction.contains("/")) {
+                String[] parts = listaction.split("/", 2);
+                String packageName = parts[0];
+                String activityName = parts[1];
+                Log.d(TAG, " goAction 包名活动名 " + packageName + " " + activityName);
+                startNewActivity(packageName, activityName);
+            } else if (listaction.equals("HDMI1") || listaction.equals("HDMI2") || listaction.equals("VGA") || listaction.equals("CVBS1")) {
+                startSource(listaction);
+            } else {
+                AppUtils.startNewApp(MainActivity.this, listaction);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 

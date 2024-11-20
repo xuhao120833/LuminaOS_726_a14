@@ -118,7 +118,7 @@
                     android:layout_centerVertical="true"
                     android:textColor="@color/tv_color"
                     android:textSize="@dimen/x_27"
-                    android:text="@string/Audio_Mode"
+                    android:text="@string/Audio_Settings"
                     android:duplicateParentState="true"
                     />
 
