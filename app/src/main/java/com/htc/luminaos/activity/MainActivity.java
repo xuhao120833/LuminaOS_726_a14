@@ -880,6 +880,7 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
     }
 
     private void startSource(String sourceName) {
+        Log.d(TAG, " startSource启动信源 " + sourceName);
         Intent intent_hdmi = new Intent();
         intent_hdmi.setComponent(new ComponentName("com.softwinner.awlivetv", "com.softwinner.awlivetv.MainActivity"));
         intent_hdmi.putExtra("input_source", sourceName);

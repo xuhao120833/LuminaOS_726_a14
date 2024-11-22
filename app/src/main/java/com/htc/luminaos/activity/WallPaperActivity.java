@@ -3,10 +3,6 @@ package com.htc.luminaos.activity;
 import static com.htc.luminaos.utils.BlurImageView.MAX_BITMAP_SIZE;
 import static com.htc.luminaos.utils.BlurImageView.narrowBitmap;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.BroadcastReceiver;
@@ -16,7 +12,6 @@ import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.PixelFormat;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -30,10 +25,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.htc.luminaos.MyApplication;
 import com.htc.luminaos.R;
 import com.htc.luminaos.adapter.WallPaperAdapter;
-import com.htc.luminaos.databinding.ActivityWallPaperBinding;
 import com.htc.luminaos.databinding.ActivityWallpaperCustomBinding;
 import com.htc.luminaos.utils.BlurImageView;
 import com.htc.luminaos.utils.Contants;
@@ -80,7 +78,7 @@ public class WallPaperActivity extends BaseActivity {
                 case Contants.PICTURE_RESULT:
                     if (msg.obj != null) {
                         File[] files = (File[]) msg.obj;
-                        WallPaperAdapter wallPaperAdapter = new WallPaperAdapter(WallPaperActivity.this, files, threadExecutor, handler);
+                        WallPaperAdapter wallPaperAdapter = new WallPaperAdapter(WallPaperActivity.this, files, handler);
                         wallPaperAdapter.setWallPaperOnCallBack(onCallBack);
                         wallPaperBinding.wallpaperRv.setAdapter(wallPaperAdapter);
                     }
@@ -236,7 +234,7 @@ public class WallPaperActivity extends BaseActivity {
     }
 
     private void loadLocal() {
-        WallPaperAdapter wallPaperAdapter = new WallPaperAdapter(getApplicationContext(), Utils.drawables, threadExecutor, handler);
+        WallPaperAdapter wallPaperAdapter = new WallPaperAdapter(getApplicationContext(), Utils.drawables, handler,wallPaperBinding.wallpaperRv);
 //        wallPaperAdapter.setHasStableIds(true);
         wallPaperAdapter.setWallPaperOnCallBack(onCallBack);
         wallPaperBinding.wallpaperRv.setAdapter(wallPaperAdapter);
