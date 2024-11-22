@@ -220,7 +220,6 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
                     }
                     break;
             }
-
             return false;
         }
     });
@@ -899,7 +898,6 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
         int code = sharedPreferences.getInt("code", 0);
         Log.d(TAG, " initDataApp读code值 " + code);
         if (code == 0) {  //保证配置文件只在最初读一次
-
             //1、优先连接服务器读取配置
 
             //2、服务器没有，就读本地
@@ -950,6 +948,9 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
 
                 //读取首页四大APP图标
                 readMain(obj);
+
+                //读取specialApps
+                //readSpecialApps(obj, residentList);
 
                 //读取APP快捷图标
                 readShortcuts(obj, residentList, sharedPreferences);

@@ -85,7 +85,6 @@ public class MyApplication extends Application {
 
     private void parseConfigFile() {
         String configContent;
-
         //优先读取oem分区，其次读取system分区
         if (new File("/oem/config.ini").exists()) {
             configContent = FileUtils.readFileContent("/oem/config.ini"); //这里的作用就是从shortcuts.config中一行一行的读取字符，然后将它们合并成一行字符串
@@ -96,17 +95,14 @@ public class MyApplication extends Application {
         }
         if (configContent == null || configContent.equals(""))
             return;
-
         Log.d(TAG, " 配置文件configContent " + configContent);
         try {
             Gson gson = new Gson();
             config = gson.fromJson(configContent, Config.class); //gson解析
-
 //            Log.d(TAG, " 配置文件apps " + config.apps.get(0).resident);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         //读取背景的默认图片
         SharedPreferences sharedPreferences = ShareUtil.getInstans(getApplicationContext());
         SharedPreferences.Editor editor = sharedPreferences.edit();

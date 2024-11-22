@@ -1,5 +1,6 @@
 package com.htc.luminaos.entry;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
