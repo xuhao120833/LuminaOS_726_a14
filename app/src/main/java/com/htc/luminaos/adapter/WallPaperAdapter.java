@@ -1,5 +1,7 @@
 package com.htc.luminaos.adapter;
 
+import static androidx.core.app.ActivityCompat.startActivityForResult;
+
 import android.annotation.SuppressLint;
 import android.content.ComponentName;
 import android.content.Context;
@@ -13,26 +15,30 @@ import android.graphics.Color;
 import android.graphics.PixelFormat;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.util.LruCache;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.htc.luminaos.R;
+import com.htc.luminaos.utils.AppUtils;
 import com.htc.luminaos.utils.Contants;
 import com.htc.luminaos.utils.ShareUtil;
+import com.htc.luminaos.utils.Utils;
 import com.htc.luminaos.widget.FocusKeepRecyclerView;
 
 import java.io.File;
@@ -42,6 +48,11 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Author:
@@ -94,7 +105,7 @@ public class WallPaperAdapter extends RecyclerView.Adapter<WallPaperAdapter.MyVi
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        Log.d(TAG," 执行onCreateViewHolder "+i);
+        Log.d(TAG, " 执行onCreateViewHolder " + i);
         return new MyViewHolder(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.wallpaper_custom_item, null));
 
     }
@@ -119,7 +130,7 @@ public class WallPaperAdapter extends RecyclerView.Adapter<WallPaperAdapter.MyVi
         }
 //        myViewHolder.rl_item.setOnFocusChangeListener(this);
         if (i < drawables.size()) {
-            loadAndSetBackground(i,myViewHolder);
+            loadAndSetBackground(i, myViewHolder);
         } else {
             myViewHolder.icon_card.setCardBackgroundColor(Color.parseColor("#00000000"));
             myViewHolder.icon.setBackgroundResource(R.drawable.wallpaper_add);
@@ -182,8 +193,8 @@ public class WallPaperAdapter extends RecyclerView.Adapter<WallPaperAdapter.MyVi
                         d = (BitmapDrawable) drawables.get(i);
                     }
                     Bitmap bitmap = drawableToBitamp(d);
-                    Bitmap bp = compressBitmap(bitmap);
-                    BitmapDrawable finalD = new BitmapDrawable(bp);
+//                    Bitmap bp = compressBitmap(bitmap);
+                    BitmapDrawable finalD = new BitmapDrawable(bitmap);
 
                     // 加入缓存
                     drawableCache.put(i, finalD);
@@ -193,7 +204,7 @@ public class WallPaperAdapter extends RecyclerView.Adapter<WallPaperAdapter.MyVi
                             myViewHolder.icon.setBackground(finalD);
                         }
                     });
-                }else {
+                } else {
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
@@ -368,7 +379,7 @@ public class WallPaperAdapter extends RecyclerView.Adapter<WallPaperAdapter.MyVi
         // 初始化缓存，设置最大缓存大小为当前可用内存的1/8
         final int maxMemory = (int) (Runtime.getRuntime().maxMemory() / 1024);
         final int cacheSize = maxMemory / 8;
-        if(drawableCache == null) {
+        if (drawableCache == null) {
             drawableCache = new LruCache<Integer, BitmapDrawable>(cacheSize) {
                 @Override
                 protected int sizeOf(Integer key, BitmapDrawable value) {
@@ -379,14 +390,40 @@ public class WallPaperAdapter extends RecyclerView.Adapter<WallPaperAdapter.MyVi
         }
     }
 
-    public Bitmap drawableToBitamp(Drawable drawable) {
-        Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(),
-                drawable.getOpacity() != PixelFormat.OPAQUE ? Bitmap.Config.ARGB_8888 : Bitmap.Config.RGB_565);
+//    public Bitmap drawableToBitamp(Drawable drawable) {
+//        Bitmap bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(),
+//                drawable.getOpacity() != PixelFormat.OPAQUE ? Bitmap.Config.ARGB_8888 : Bitmap.Config.RGB_565);
+//        Canvas canvas = new Canvas(bitmap);
+//        drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+//        drawable.draw(canvas);
+//        return bitmap;
+//    }
+
+    private Bitmap drawableToBitamp(Drawable drawable) {
+        if (drawable == null) {
+            return null;
+        }
+        Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
+        // 获取原始宽高
+        int width = drawable.getIntrinsicWidth();
+        int height = drawable.getIntrinsicHeight();
+        int maxWidth = 300;  // 设置加载的最大宽度（例如屏幕宽度）
+        int maxHeight = 400; // 设置加载的最大高度
+
+        // 计算缩放比例
+        float scale = Math.max((float) maxWidth / width, (float) maxHeight / height);
+        int scaledWidth = Math.round(width * scale);
+        int scaledHeight = Math.round(height * scale);
+
+        // 创建缩放后的Bitmap
+        bitmap = Bitmap.createBitmap(scaledWidth, scaledHeight, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bitmap);
-        drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+        drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
         drawable.draw(canvas);
+
         return bitmap;
     }
+
 
     private void startExplorer() {
         // 定义目标应用的包名
