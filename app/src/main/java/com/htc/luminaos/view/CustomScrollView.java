@@ -4,12 +4,15 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.provider.Settings;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.ScrollView;
 
 public class CustomScrollView  extends ScrollView {
     AudioManager audioManager ;
     private Context mContext;
+
+    private static String TAG = "CustomScrollView";
 
     public CustomScrollView(Context context) {
         super(context);
@@ -39,7 +42,8 @@ public class CustomScrollView  extends ScrollView {
     public boolean dispatchKeyEvent(KeyEvent keyEvent) {
 
         Boolean result = super.dispatchKeyEvent(keyEvent);
-        if (keyEvent.getAction() == KeyEvent.ACTION_DOWN && result && getButtonSound())
+        Log.d(TAG," dispatchKeyEvent结果 "+result+" "+getButtonSound());
+        if (keyEvent.getAction() == KeyEvent.ACTION_DOWN && result && getButtonSound()&& keyEvent.getKeyCode()!=KeyEvent.KEYCODE_DPAD_CENTER)
         {
             audioManager.playSoundEffect(AudioManager.FX_FOCUS_NAVIGATION_DOWN);
         }
@@ -48,8 +52,7 @@ public class CustomScrollView  extends ScrollView {
 
 
     private boolean getButtonSound(){
-        return Settings.System.getInt(mContext.getContentResolver(),
-                Settings.System.SOUND_EFFECTS_ENABLED, 0)==1;
+        return Settings.System.getInt(mContext.getContentResolver(), Settings.System.SOUND_EFFECTS_ENABLED, 0)==1;
     }
 
 }

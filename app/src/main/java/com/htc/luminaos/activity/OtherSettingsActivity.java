@@ -231,7 +231,11 @@ public class OtherSettingsActivity extends BaseActivity implements View.OnKeyLis
             return true;
         }
 
-        if (keyCode==KeyEvent.KEYCODE_DPAD_LEFT && event.getAction() ==KeyEvent.ACTION_UP){
+        if ((event.getAction() == KeyEvent.ACTION_UP) && (keyCode == KeyEvent.KEYCODE_DPAD_LEFT || keyCode == KeyEvent.KEYCODE_DPAD_RIGHT )) {
+            return true;
+        }
+
+        if (keyCode==KeyEvent.KEYCODE_DPAD_LEFT && event.getAction() ==KeyEvent.ACTION_DOWN){
             switch (v.getId()){
                 case R.id.rl_screen_saver:
                     if (cur_screen_saver_index==0)
@@ -239,7 +243,8 @@ public class OtherSettingsActivity extends BaseActivity implements View.OnKeyLis
                     else
                         cur_screen_saver_index--;
                     updateScreenSaver(cur_screen_saver_index);
-                    break;
+//                    break;
+                    return true;
                 case R.id.rl_timer_off:
                     if (cur_time_off_index==0)
                         cur_time_off_index =time_off_title.length-1;
@@ -247,8 +252,8 @@ public class OtherSettingsActivity extends BaseActivity implements View.OnKeyLis
                         cur_time_off_index--;
 
                     setTimeOff(cur_time_off_index);
-                    break;
-
+//                    break;
+                    return true;
                 case R.id.rl_boot_input:
                     if (boot_source_index==0)
                         boot_source_index =boot_source_name.length-1;
@@ -257,7 +262,8 @@ public class OtherSettingsActivity extends BaseActivity implements View.OnKeyLis
 
                     otherSettingsBinding.bootInputTv.setText(boot_source_name[boot_source_index]);
                     set_power_signal(boot_source_value[boot_source_index]);
-                    break;
+//                    break;
+                    return true;
                 case R.id.rl_power_mode:
                     if (power_mode_index==0)
                         power_mode_index =power_mode_name.length-1;
@@ -267,7 +273,7 @@ public class OtherSettingsActivity extends BaseActivity implements View.OnKeyLis
                     otherSettingsBinding.powerModeTv.setText(power_mode_name[power_mode_index]);
                     break;
             }
-        }else if (keyCode==KeyEvent.KEYCODE_DPAD_RIGHT && event.getAction() ==KeyEvent.ACTION_UP){
+        }else if (keyCode==KeyEvent.KEYCODE_DPAD_RIGHT && event.getAction() ==KeyEvent.ACTION_DOWN){
             switch (v.getId()){
                 case R.id.rl_screen_saver:
                     if (cur_screen_saver_index==screen_saver_title.length-1)
@@ -275,7 +281,8 @@ public class OtherSettingsActivity extends BaseActivity implements View.OnKeyLis
                     else
                         cur_screen_saver_index++;
                     updateScreenSaver(cur_screen_saver_index);
-                    break;
+                    return true;
+//                    break;
                 case R.id.rl_timer_off:
                     if (cur_time_off_index==time_off_title.length-1)
                         cur_time_off_index =0;
@@ -283,7 +290,8 @@ public class OtherSettingsActivity extends BaseActivity implements View.OnKeyLis
                         cur_time_off_index++;
 
                     setTimeOff(cur_time_off_index);
-                    break;
+                    return true;
+//                    break;
                 case R.id.rl_boot_input:
                     if (boot_source_index==boot_source_name.length-1)
                         boot_source_index =0;
@@ -292,7 +300,8 @@ public class OtherSettingsActivity extends BaseActivity implements View.OnKeyLis
 
                     otherSettingsBinding.bootInputTv.setText(boot_source_name[boot_source_index]);
                     set_power_signal(boot_source_value[boot_source_index]);
-                    break;
+//                    break;
+                    return true;
                 case R.id.rl_power_mode:
                     if (power_mode_index==power_mode_name.length-1)
                         power_mode_index =0;

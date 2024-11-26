@@ -522,11 +522,15 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
             return true;
         }
 
+        if ((event.getAction() == KeyEvent.ACTION_UP) && (keyCode == KeyEvent.KEYCODE_DPAD_LEFT || keyCode == KeyEvent.KEYCODE_DPAD_RIGHT )) {
+            return true;
+        }
+
         if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT) {
             switch (v.getId()) {
                 case R.id.rl_project_mode:
                     Log.d(TAG, "向左切换安装模式");
-                    if (event.getAction() != KeyEvent.ACTION_UP)
+                    if (event.getAction() != KeyEvent.ACTION_DOWN)
                         break;
                     old_project_mode = cur_project_mode;
                     if (cur_project_mode == 0)
@@ -535,7 +539,8 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
                         cur_project_mode--;
 
                     updateProjectMode();
-                    break;
+//                    break;
+                    return true;
                 case R.id.rl_digital_zoom:
                     if (event.getAction() != KeyEvent.ACTION_DOWN)
                         break;
@@ -546,9 +551,10 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
                     All--;
                     set_screen_zoom(All, All, All, All);
                     updateZoomView();
-                    break;
+//                    break;
+                    return true;
                 case R.id.rl_screen_zoom:
-                    if (event.getAction() == KeyEvent.ACTION_UP)
+                    if (event.getAction() != KeyEvent.ACTION_DOWN)
                         break;
                     zoom_scale--;
                     if(zoom_scale<0)
@@ -559,13 +565,14 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
                         updateScaleZoom(zoom_scale);
                     KeystoneUtils.writeGlobalSettings(this,KeystoneUtils.ZOOM_SCALE,zoom_scale);
                     updateSzoomTv();
-                    break;
+//                    break;
+                    return true;
                 case R.id.rl_horizontal_correct:
                     break;
                 case R.id.rl_vertical_correct:
                     break;
                 case R.id.rl_device_mode2:
-                    if (event.getAction() != KeyEvent.ACTION_UP)
+                    if (event.getAction() != KeyEvent.ACTION_DOWN)
                         break;
                     Log.d(TAG, "向左切换设备模式");
                     cur_device_Mode--;
@@ -574,14 +581,15 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
                     }
                     updateText(cur_device_Mode);
                     ReflectUtil.invokeSet_brightness_level(cur_device_Mode);
-                    break;
+//                    break;
+                    return true;
             }
 
         } else if (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT) {
             switch (v.getId()) {
                 case R.id.rl_project_mode:
                     Log.d(TAG, "向右切换安装模式");
-                    if (event.getAction() != KeyEvent.ACTION_UP)
+                    if (event.getAction() != KeyEvent.ACTION_DOWN)
                         break;
                     old_project_mode = cur_project_mode;
                     if (cur_project_mode == project_name.size() - 1)
@@ -590,7 +598,8 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
                         cur_project_mode++;
 
                     updateProjectMode();
-                    break;
+//                    break;
+                    return true;
                 case R.id.rl_digital_zoom:
                     if (event.getAction() != KeyEvent.ACTION_DOWN)
                         break;
@@ -601,9 +610,10 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
                     All++;
                     set_screen_zoom(All, All, All, All);
                     updateZoomView();
-                    break;
+//                    break;
+                    return true;
                 case R.id.rl_screen_zoom:
-                    if (event.getAction() == KeyEvent.ACTION_UP)
+                    if (event.getAction() != KeyEvent.ACTION_DOWN)
                         break;
                     zoom_scale++;
                     if(zoom_scale>2)
@@ -614,13 +624,14 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
                         updateScaleZoom(zoom_scale);
                     KeystoneUtils.writeGlobalSettings(this,KeystoneUtils.ZOOM_SCALE,zoom_scale);
                     updateSzoomTv();
-                    break;
+//                    break;
+                    return true;
                 case R.id.rl_horizontal_correct:
                     break;
                 case R.id.rl_vertical_correct:
                     break;
                 case R.id.rl_device_mode2:
-                    if (event.getAction() != KeyEvent.ACTION_UP)
+                    if (event.getAction() != KeyEvent.ACTION_DOWN)
                         break;
                     Log.d(TAG, "向右切换设备模式");
                     cur_device_Mode++;
@@ -629,7 +640,8 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
                     }
                     updateText(cur_device_Mode);
                     ReflectUtil.invokeSet_brightness_level(cur_device_Mode);
-                    break;
+//                    break;
+                    return true;
             }
         }
 

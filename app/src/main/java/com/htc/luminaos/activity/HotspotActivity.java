@@ -380,6 +380,10 @@ public class HotspotActivity extends BaseActivity implements View.OnKeyListener 
     @Override
     public boolean onKey(View v, int keyCode, KeyEvent event) {
 
+        if ((event.getAction() == KeyEvent.ACTION_UP) && (keyCode == KeyEvent.KEYCODE_DPAD_LEFT || keyCode == KeyEvent.KEYCODE_DPAD_RIGHT )) {
+            return true;
+        }
+
         if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT && event.getAction() == KeyEvent.ACTION_DOWN) {
             switch (v.getId()) {
                 case R.id.rl_hotspot_security:
@@ -389,14 +393,15 @@ public class HotspotActivity extends BaseActivity implements View.OnKeyListener 
                         mSecurityType--;
                     }
                     updateSecurity();
-
-                    break;
+                    return true;
+//                    break;
                 case R.id.rl_frequency:
                     apBand = apBand == 1 ? 0 : 1;
                     hotspotBinding.frequencyTv.setText(apBandArray[apBand]);
                     Log.d(TAG, " 向左调整");
                     writeConfig();
-                    break;
+                    return true;
+//                    break;
             }
         } else if (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT && event.getAction() == KeyEvent.ACTION_DOWN) {
             switch (v.getId()) {
@@ -407,14 +412,15 @@ public class HotspotActivity extends BaseActivity implements View.OnKeyListener 
                         mSecurityType++;
                     }
                     updateSecurity();
-
-                    break;
+                    return true;
+//                    break;
                 case R.id.rl_frequency:
                     apBand = apBand == 1 ? 0 : 1;
                     hotspotBinding.frequencyTv.setText(apBandArray[apBand]);
                     writeConfig();
                     Log.d(TAG, " 向右调整");
-                    break;
+                    return true;
+//                    break;
             }
         }
         return false;

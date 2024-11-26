@@ -86,7 +86,7 @@ public class Config {
     public boolean onlineUpdate = true;
     public boolean serialNumber = true;
 
-    public boolean AudioMode = false; //声音模式
+    public boolean AudioMode = true; //声音模式
     public boolean Menu120HZ = true;
     public boolean Menu200HZ = true;
     public boolean Menu500HZ = true;

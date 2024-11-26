@@ -64,7 +64,7 @@
         android:background="@drawable/corner_line"
         />
 
-    <ScrollView
+    <com.htc.luminaos.view.CustomScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/rl_hotspot_switch"
@@ -354,7 +354,7 @@
             </RelativeLayout>
 
         </RelativeLayout>
-    </ScrollView>
+    </com.htc.luminaos.view.CustomScrollView>
 
 
 

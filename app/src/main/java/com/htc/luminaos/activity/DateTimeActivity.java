@@ -2,10 +2,12 @@ package com.htc.luminaos.activity;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.provider.Settings;
@@ -436,14 +438,23 @@ public class DateTimeActivity extends BaseActivity implements View.OnKeyListener
                 case R.id.rl_time_format:
                     UpdateTimeDispaly(is24HourFormat);
                     initData();
+                    AudioManager audioManager = (AudioManager) v.getContext().getSystemService(Context.AUDIO_SERVICE);
+                    if (audioManager != null) {
+                        audioManager.playSoundEffect(AudioManager.FX_FOCUS_NAVIGATION_DOWN);
+                    }
+                    audioManager =null;
                     break;
-
             }
         }else if (keyCode==KeyEvent.KEYCODE_DPAD_RIGHT && event.getAction() ==KeyEvent.ACTION_UP){
             switch (v.getId()){
                 case R.id.rl_time_format:
                     UpdateTimeDispaly(is24HourFormat);
                     initData();
+                    AudioManager audioManager = (AudioManager) v.getContext().getSystemService(Context.AUDIO_SERVICE);
+                    if (audioManager != null) {
+                        audioManager.playSoundEffect(AudioManager.FX_FOCUS_NAVIGATION_DOWN);
+                    }
+                    audioManager =null;
                     break;
             }
         }
