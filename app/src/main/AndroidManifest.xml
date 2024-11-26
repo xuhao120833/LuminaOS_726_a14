@@ -45,9 +45,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <receiver
-            android:name=".receiver.VaFocusReceiver"
+            android:name=".receiver.refreshApps"
             android:enabled="true"
             android:exported="true"></receiver>
+        <receiver
+            android:name=".receiver.VaFocusReceiver"
+            android:enabled="true"
+            android:exported="true" />
         <receiver
             android:name=".receiver.BatteryReceiver"
             android:enabled="true"
@@ -141,7 +145,7 @@
         <activity
             android:name=".activity.MainSettingActivity"
             android:exported="true"
-            android:launchMode="singleTop"></activity>
+            android:launchMode="singleTop" />
         <activity
             android:name=".activity.AppsActivity"
             android:launchMode="singleInstance" />

@@ -3,6 +3,7 @@ package com.htc.luminaos.utils;
 import android.graphics.drawable.Drawable;
 
 import com.htc.luminaos.R;
+import com.htc.luminaos.entry.SpecialApps;
 import com.htc.luminaos.settings.utils.T;
 
 import java.util.ArrayList;
@@ -21,5 +22,8 @@ public class Utils {
     public static ArrayList<Drawable> drawables = new ArrayList<>();
 
     public static final int REQUEST_CODE_PICK_IMAGE = 1;
+
+    //一个全局的特定IP APP信息
+    public static SpecialApps specialApps = null;
 
 }

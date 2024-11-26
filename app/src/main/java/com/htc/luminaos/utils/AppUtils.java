@@ -55,15 +55,11 @@ public class AppUtils {
                         break;
                     }
                 }
-
                 if (has_flag)
                     continue;
-
                 resolveInfos.add(resolveInfo_lb);
-
             }
         }
-
         //排除"filterApps" 屏蔽掉的APP
 //		String[] filterApps = MyApplication.config.filterApps.split(";");
         String[] filterApps = DBUtils.getInstance(context).getFilterApps();
@@ -72,7 +68,6 @@ public class AppUtils {
             Log.d(TAG, " 禁用名单 " + filterApps[0]);
             stringList = Arrays.asList(filterApps);
         }
-
         // 调用系统排序 ， 根据name排序
         // 该排序很重要，否则只能显示系统应用，而不能列出第三方应用程序
         Collections.sort(resolveInfos,

@@ -46,7 +46,6 @@ public class AppFavoritesAdapter extends BaseAdapter {
 
     @Override
     public AppInfoBean getItem(int position) {
-
         return mList.get(position);
     }
 
@@ -58,7 +57,6 @@ public class AppFavoritesAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-
         ViewHolder viewholder = null;
         if (convertView == null) {
             viewholder = new ViewHolder();
@@ -67,29 +65,21 @@ public class AppFavoritesAdapter extends BaseAdapter {
             viewholder.addapp_name = convertView.findViewById(R.id.addapp_name);
             viewholder.appapp_iv = (ImageView) convertView.findViewById(R.id.appapp_iv);
 			viewholder.rlRelativelayout = (RLRelativelayout)convertView.findViewById(R.id.appsfavor);
-
-
 //			if (fontFace != null) {
 //				viewholder.addapp_name.setTypeface(fontFace);
 //			}
-
             convertView.setTag(viewholder);
         } else {
             viewholder = (ViewHolder) convertView.getTag();
         }
-
         AppInfoBean bean = getItem(position);
-
         viewholder.addapp_icon_iv.setBackground(bean.getAppicon());
         viewholder.addapp_name.setText(bean.getAppname());
-
-
         if (bean.isCheck()) {
             viewholder.appapp_iv.setVisibility(View.VISIBLE);
         } else {
             viewholder.appapp_iv.setVisibility(View.GONE);
         }
-
         return convertView;
     }
 

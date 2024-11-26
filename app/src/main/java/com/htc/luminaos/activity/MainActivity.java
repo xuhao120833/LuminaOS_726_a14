@@ -6,12 +6,15 @@ import static com.htc.luminaos.utils.BlurImageView.narrowBitmap;
 import android.annotation.SuppressLint;
 import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -22,6 +25,7 @@ import android.media.AudioManager;
 import android.net.ConnectivityManager;
 import android.net.Network;
 import android.net.NetworkCapabilities;
+import android.net.NetworkInfo;
 import android.net.NetworkRequest;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiInfo;
@@ -29,6 +33,7 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 
 import com.htc.luminaos.MyApplication;
+import com.htc.luminaos.entry.SpecialApps;
 import com.htc.luminaos.receiver.AppCallBack;
 import com.htc.luminaos.receiver.AppReceiver;
 import com.htc.luminaos.receiver.BatteryReceiver;
@@ -43,6 +48,7 @@ import android.os.Message;
 import android.os.SystemProperties;
 import android.os.storage.StorageManager;
 import android.os.storage.StorageVolume;
+import android.provider.Settings;
 import android.util.Base64;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -106,6 +112,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
@@ -223,6 +230,17 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
             return false;
         }
     });
+
+    BroadcastReceiver refreshAppsReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if ("com.htc.refreshApps".equals(intent.getAction())) {
+                Log.d(TAG," 收到refreshApps的广播");
+                short_list =loadHomeAppData();
+                handler.sendEmptyMessage(204);
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -605,7 +623,12 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
         batteryFilter.addAction("action.projector.batterylevel");
         registerReceiver(batteryReceiver, batteryFilter);
 
-
+        //监听APPStore发出 特定IP广播，意味着它已经写了Settings ip_country_code 的值
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("com.htc.refreshApps");
+        registerReceiver(refreshAppsReceiver,intentFilter);
+        short_list =loadHomeAppData();
+        handler.sendEmptyMessage(204);
     }
 
     ShortcutsAdapter.ItemCallBack itemCallBack = new ShortcutsAdapter.ItemCallBack() {
@@ -683,7 +706,6 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
 
         @Override
         public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
-
             try {
                 String content = response.body().string();
                 LogUtils.d("content " + content);
@@ -950,7 +972,7 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
                 readMain(obj);
 
                 //读取specialApps
-                //readSpecialApps(obj, residentList);
+                readSpecialApps(obj, residentList);
 
                 //读取APP快捷图标
                 readShortcuts(obj, residentList, sharedPreferences);
@@ -1043,6 +1065,31 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
 
     }
 
+    private void readSpecialApps(JSONObject obj, List<String> residentList) {
+        try {
+            if (obj.has("specialApps")) {
+                JSONArray jsonarrray = obj.getJSONArray("specialApps");
+
+                for (int i = 0; i < jsonarrray.length(); i++) {
+                    JSONObject jsonobject = jsonarrray.getJSONObject(i);
+                    String appName = jsonobject.getString("appName");
+                    String packageName = jsonobject.getString("packageName");
+                    String iconPath = jsonobject.getString("iconPath");
+                    String continent = jsonobject.getString("continent");
+                    String countryCode = jsonobject.getString("countryCode");
+                    Drawable drawable = FileUtils.loadImageAsDrawable(this, iconPath);
+//                    if (!DBUtils.getInstance(this).isExistSpecial(packageName)) {
+                    long addCode = DBUtils.getInstance(this).addSpeciales(appName, packageName, drawable, continent, countryCode);
+                    Log.d(TAG, " specialApps 添加快捷数据库成功 " + appName + " " + packageName);
+//                    }
+                    Log.d(TAG, " specialApps读到的数据 " + appName + " " + packageName + " " + iconPath + " " + continent + " " + " " + countryCode);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private void readShortcuts(JSONObject obj, List<String> residentList, SharedPreferences sharedPreferences) {
         try {
             if (obj.has("apps")) {
@@ -1081,10 +1128,8 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
                         residentList.add(packageName);
                     }
                     Drawable drawable = FileUtils.loadImageAsDrawable(this, iconPath);
-                    if (!DBUtils.getInstance(this).isExistData(
-                            packageName)) {
-                        long addCode = DBUtils.getInstance(this)
-                                .addFavorites(appName, packageName, drawable);
+                    if (!DBUtils.getInstance(this).isExistData(packageName)) {
+                        long addCode = DBUtils.getInstance(this).addFavorites(appName, packageName, drawable);
                         Log.d(TAG, " Shortcuts 添加快捷数据库成功 " + appName + " " + packageName);
                     }
                 }
@@ -1174,19 +1219,16 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
     }
 
     private ArrayList<ShortInfoBean> loadHomeAppData() {
-
         ArrayList<AppSimpleBean> appSimpleBeans = DBUtils.getInstance(this).getFavorites(); //获取配置文件中设置的首页显示App
-
         ArrayList<ShortInfoBean> shortInfoBeans = new ArrayList<>();
-
         ArrayList<AppInfoBean> appList = AppUtils.getApplicationMsg(this);//获取所有的应用(排除了配置文件中拉黑的App)
-
         //xuhao add 默认添加我的应用按钮
         ShortInfoBean mshortInfoBean = new ShortInfoBean();
         mshortInfoBean.setAppicon(ContextCompat.getDrawable(this, R.drawable.home_app_manager));
         shortInfoBeans.add(mshortInfoBean);
         //xuhao
-
+        //特定IP配置
+        setIpShortInfo(shortInfoBeans);
         Log.d(TAG, " loadHomeAppData快捷图标 appList " + appList.size());
         Log.d(TAG, " loadHomeAppData快捷图标 appSimpleBeans " + appSimpleBeans.size());
         for (int i = 0; i < appSimpleBeans.size(); i++) {
@@ -1206,6 +1248,45 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
 
         return shortInfoBeans;
     }
+
+    private void setIpShortInfo(ArrayList<ShortInfoBean> shortInfoBeans) {
+        try {
+            String country_code = Settings.System.getString(getContentResolver(), "ip_country_code");
+            Log.d(TAG, " ip_country_code " + country_code);
+            if (country_code != null) {
+                String[] continent_countryCode = country_code.split(",");
+                String continent = null;
+                String code = null;
+                //分情况提取 continent 和 code
+                if (continent_countryCode.length > 1) {
+                    continent = continent_countryCode[0];
+                    code = continent_countryCode[1];
+                } else if (continent_countryCode.length == 1) {
+                    if (continent_countryCode[0].contains("洲")) {
+                        continent = continent_countryCode[0];
+                        code = null;
+                    } else {
+                        continent = null;
+                        code = continent_countryCode[0];
+                    }
+                } else {
+                    Log.d(TAG, "setIpShortInfo 获取到的ip_country_code 格式不对");
+                    return;
+                }
+                Utils.specialApps = DBUtils.getInstance(this).querySpecialApps(continent, code);
+                if (Utils.specialApps != null) {
+                    ShortInfoBean shortInfoBean = new ShortInfoBean();
+                    shortInfoBean.setAppname(Utils.specialApps.getAppName());
+                    shortInfoBean.setPackageName(Utils.specialApps.getPackageName());
+                    shortInfoBean.setAppicon(DBUtils.getInstance(this).byteArrayToDrawable(Utils.specialApps.getIconData()));
+                    shortInfoBeans.add(shortInfoBean);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @Override
     public boolean dispatchKeyEvent(KeyEvent event) {

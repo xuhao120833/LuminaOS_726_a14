@@ -75,7 +75,7 @@ public class ShortcutsAdapterCustom extends RecyclerView.Adapter<ShortcutsAdapte
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, final int i) {
         Log.d(TAG, "Shortcuts short_list.size() " + short_list.size());
-        if (i < short_list.size() && short_list.get(i).getAppname() != null && i > 0) {
+        if (i < short_list.size() && short_list.get(i).getAppname() != null && short_list.get(i).getAppicon() != null&& i > 0) {
             Log.d(TAG, "Shortcuts appName存在 ");
             myViewHolder.icon.setImageDrawable(short_list.get(i).getAppicon());
             myViewHolder.name.setText(short_list.get(i).getAppname());

@@ -18,10 +18,12 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.htc.luminaos.entry.AppSimpleBean;
+import com.htc.luminaos.entry.SpecialApps;
 
 import java.io.ByteArrayOutputStream;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -36,6 +38,7 @@ public class DBUtils extends SQLiteOpenHelper {
     private static DBUtils mInstance = null;
     private final static String DATABASE_NAME = "htc_launcher.db";
     private final static int VERSION = 1;
+    private final String TABLENAME_SPECIALAPPS = "table_specialApps";
     private final String TABLENAME_FAVORITES = "table_favorites";
 
     private final String TABLENAME_FILTERAPPS = "filterApps";
@@ -64,6 +67,18 @@ public class DBUtils extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         try {
             // TODO Auto-generated method stub
+            //创建SpecialApps
+            Log.d(TAG, " 创建 specialApps 表 ");
+            String specialApps_sql = "CREATE TABLE " + TABLENAME_SPECIALAPPS + " (" +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "appName TEXT , " +
+                    "packageName TEXT , " +
+                    "iconData BLOB , " +
+                    "continent TEXT , " + // 用于存储序列化的 Hashtable
+                    "countryCode TEXT );";
+            db.execSQL(specialApps_sql);
+
+
             // 创建我的收藏表
             Log.d(TAG, " 创建apps数据表 ");
             String favorites_sql = "CREATE TABLE " + TABLENAME_FAVORITES
@@ -88,6 +103,7 @@ public class DBUtils extends SQLiteOpenHelper {
                     "action TEXT );";
             db.execSQL(mainApp_sql);
 
+
             // 创建listModules表
             Log.d(TAG, " 创建 listModules 表 ");
             String listModules_sql = "CREATE TABLE " + TABLENAME_LISTMODULES + " (" +
@@ -98,14 +114,13 @@ public class DBUtils extends SQLiteOpenHelper {
                     "action TEXT );";
             db.execSQL(listModules_sql);
 
+
             // 创建brand品牌表
             Log.d(TAG, " 创建brand品牌表");
             String brandLogo_sql = "CREATE TABLE " + TABLENAME_BRANDLOGO + " (" +
                     "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     "iconData BLOB );";
             db.execSQL(brandLogo_sql);
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -116,9 +131,11 @@ public class DBUtils extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
         Log.d(TAG, " 执行onUpgrade ");
-
         // TODO Auto-generated method stub
-        String favorites_sql = "DROP TABLE IF EXISTS " + TABLENAME_FAVORITES;
+        String favorites_sql = "DROP TABLE IF EXISTS " + TABLENAME_SPECIALAPPS;
+        db.execSQL(favorites_sql);
+
+        favorites_sql = "DROP TABLE IF EXISTS " + TABLENAME_FAVORITES;
         db.execSQL(favorites_sql);
 
         favorites_sql = "DROP TABLE IF EXISTS " + TABLENAME_FILTERAPPS;
@@ -209,7 +226,7 @@ public class DBUtils extends SQLiteOpenHelper {
                 db.close();
                 sharedPreferences.edit().putBoolean(Contants.MODIFY, true).apply();
                 return code;
-            }catch (Exception e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 return -1;
             }
@@ -319,11 +336,170 @@ public class DBUtils extends SQLiteOpenHelper {
 
 
     public boolean isExistData(String packagename) {
-        synchronized (this){
+        synchronized (this) {
             boolean isExist = false;
             SQLiteDatabase db = getWritableDatabase();
             Cursor cs = db.rawQuery("select id , packagename  from "
                             + TABLENAME_FAVORITES + " where packagename = ?",
+                    new String[]{packagename});
+            while (cs.moveToNext()) {
+                isExist = true;
+            }
+            db.close();
+            return isExist;
+        }
+    }
+
+    /**
+     * 添加收藏
+     *
+     * @param packagename
+     * @return
+     */
+    public long addSpeciales(String appName, String packagename, Drawable drawable, String continent, String countryCode) {
+        synchronized (this) {
+            SQLiteDatabase db = null;
+            try {
+                long code = -1;
+                db = getWritableDatabase();
+                ContentValues cv = new ContentValues();
+                cv.put("appName", appName);
+                cv.put("packagename", packagename);
+                cv.put("iconData", drawableToByteArray(drawable));
+                cv.put("continent", continent);
+                cv.put("countryCode", countryCode);
+                code = db.insert(TABLENAME_SPECIALAPPS, null, cv);
+                sharedPreferences.edit().putBoolean(Contants.MODIFY, true).apply();
+                db.close();
+                return code;
+            } catch (Exception e) {
+                e.printStackTrace();
+                return 0;
+            }
+        }
+    }
+
+    public SpecialApps querySpecialApps(String continent, String countryCode) {
+        SQLiteDatabase db = getWritableDatabase();
+        SpecialApps specialApp = null; // 用于存储查询到的结果
+        Cursor cursor = null;
+        Log.d(TAG, " querySpecialApps continent " + continent + " args " + countryCode);
+        try {
+            // 动态拼接 WHERE 条件  假定APPStre传来的数据是 亚洲|ZH
+            StringBuilder query = new StringBuilder("SELECT * FROM table_specialApps WHERE ");
+            List<String> args = new ArrayList<>();
+            if (continent != null && countryCode != null) { //第一轮精确查找，洲和国家同时满足
+                Log.d(TAG, "querySpecialApps 首先第一种情况 精确匹配洲和国家码 亚洲,ZH");
+                query.append("continent = ? ");
+                args.add(continent); // 不再使用模糊匹配
+                query.append("AND ");
+                query.append("countryCode = ? ");
+                args.add(countryCode); // 精确匹配
+                cursor = db.rawQuery(query.toString(), args.toArray(new String[0]));
+                if (cursor == null || !cursor.moveToFirst()) { //第二轮只查找国家码，洲为空
+                    Log.d(TAG, "querySpecialApps 第二种情况 只匹配国家码ZH");
+                    query.setLength(0); // 清空之前的查询
+                    args.clear(); // 清空参数列表
+                    query.append("SELECT * FROM table_specialApps WHERE ");
+                    query.append("(continent IS NULL OR continent = '') ");
+                    query.append("AND ");
+                    query.append("countryCode = ? ");
+                    args.add(countryCode);
+                    cursor = db.rawQuery(query.toString(), args.toArray(new String[0]));
+                }
+                if (cursor == null || !cursor.moveToFirst()) { //第三轮查找是否有同一个洲多个国家指定包含，如 亚洲，ZH|JA|TR 这种，指定了亚洲三个国家，对ZH也生效
+                    Log.d(TAG, "querySpecialApps 第三种情况 指定洲 ，如 亚洲,ZH|JA|KR，洲相同包含了ZH就行");
+                    query.setLength(0); // 清空之前的查询
+                    args.clear(); // 清空参数列表
+                    // 使用 INSTR 实现包含逻辑
+                    query.append("SELECT * FROM table_specialApps WHERE ");
+                    query.append("continent = ? ");
+                    args.add(continent);
+                    query.append("AND ");
+                    query.append("INSTR(countryCode, ?) > 0 ");
+                    args.add(countryCode);
+                    cursor = db.rawQuery(query.toString(), args.toArray(new String[0]));
+                }
+                if (cursor == null || !cursor.moveToFirst()) { //第四轮查找，查找洲相同，但是有指定非ZH图标的配置，例如亚洲,!JA 就对ZH生效
+                    Log.d(TAG, "querySpecialApps 第四种情况 亚洲,ZH 查找有没有让它生效的类似 亚洲,!JA 这种配置");
+                    // 第一次查询无结果，准备第二次查询
+                    query.setLength(0); // 清空之前的查询
+                    args.clear(); // 清空参数列表
+                    query.append("SELECT * FROM table_specialApps WHERE ");
+                    query.append("continent = ? ");
+                    args.add(continent);
+                    query.append("AND ");
+                    query.append("INSTR(countryCode, '!') > 0 ");
+                    query.append("AND ");
+                    query.append("countryCode != ? ");
+                    args.add("!"+countryCode);
+                    cursor = db.rawQuery(query.toString(), args.toArray(new String[0]));
+                }
+                if (cursor == null || !cursor.moveToFirst()) { //第五轮查找，不指定洲，不同洲的国家放在一起，如ZH|RU|EN|
+                    Log.d(TAG, "querySpecialApps 第五种情况 不指定洲，不同洲放在一起 ZH|EN|RU");
+                    query.setLength(0); // 清空之前的查询
+                    args.clear(); // 清空参数列表
+                    // 使用 INSTR 实现包含逻辑
+                    query.append("SELECT * FROM table_specialApps WHERE ");
+                    query.append("(continent IS NULL OR continent = '') ");
+                    query.append("AND countryCode IS NOT NULL ");
+                    query.append("AND INSTR(countryCode, ?) > 0 ");
+                    args.add(countryCode);
+                    cursor = db.rawQuery(query.toString(), args.toArray(new String[0]));
+                }
+                if (cursor == null || !cursor.moveToFirst()) { //第六轮查找，指定一个洲所有国家都生效的情况，即countryCode=""
+                    Log.d(TAG, "querySpecialApps 第六种情况 只指定一个洲，对洲内所有国家生效 ");
+                    query.setLength(0); // 清空之前的查询
+                    args.clear(); // 清空参数列表
+                    query.append("SELECT * FROM table_specialApps WHERE ");
+                    query.append("continent = ? ");
+                    args.add(continent);
+                    query.append(" AND (countryCode IS NULL OR countryCode = '') ");
+                    cursor = db.rawQuery(query.toString(), args.toArray(new String[0]));
+                }
+            } else if (continent != null && countryCode == null) { //应对 APPStore写值，其中有一个为空时的情况
+                Log.d(TAG, "querySpecialApps AppStroe传来的countryCode 国家码为空");
+                query.append("continent = ? ");
+                args.add(continent);
+                query.append(" AND (countryCode IS NULL OR countryCode = '') ");
+                cursor = db.rawQuery(query.toString(), args.toArray(new String[0]));
+            } else {
+                Log.d(TAG, "querySpecialApps AppStroe传来的continent 洲为空");
+//                query.append("(continent IS NULL OR continent = '') ");
+//                query.append("AND ");
+                query.append("countryCode = ? ");
+                args.add( countryCode);
+                cursor = db.rawQuery(query.toString(), args.toArray(new String[0]));
+            }
+            // 解析结果
+            if (cursor != null && cursor.moveToFirst()) {
+                // 如果查询有结果，构造 SpecialApps 对象
+                specialApp = new SpecialApps();
+                specialApp.setAppName(cursor.getString(cursor.getColumnIndexOrThrow("appName")));
+                specialApp.setPackageName(cursor.getString(cursor.getColumnIndexOrThrow("packageName")));
+                specialApp.setIconData(cursor.getBlob(cursor.getColumnIndexOrThrow("iconData")));
+                specialApp.setContinent(cursor.getString(cursor.getColumnIndexOrThrow("continent")));
+                specialApp.setCountryCode(cursor.getString(cursor.getColumnIndexOrThrow("countryCode")));
+                Log.d(TAG, " querySpecialApps 查询到了结果 ");
+            } else {
+                Log.d(TAG, " querySpecialApps 未查询到结果 ");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (cursor != null)
+                cursor.close();
+        }
+        return specialApp; // 返回查询到的 SpecialApps 对象，或 null（如果没有匹配结果）
+    }
+
+
+    public boolean isExistSpecial(String packagename) {
+        synchronized (this) {
+            boolean isExist = false;
+            SQLiteDatabase db = getWritableDatabase();
+            Cursor cs = db.rawQuery("select id , packagename  from "
+                            + TABLENAME_SPECIALAPPS + " where packagename = ?",
                     new String[]{packagename});
             while (cs.moveToNext()) {
                 isExist = true;
@@ -688,7 +864,7 @@ public class DBUtils extends SQLiteOpenHelper {
      * @param byteArray
      * @return
      */
-    private Drawable byteArrayToDrawable(byte[] byteArray) {
+    public Drawable byteArrayToDrawable(byte[] byteArray) {
         if (byteArray == null) {
             return null;
         }
