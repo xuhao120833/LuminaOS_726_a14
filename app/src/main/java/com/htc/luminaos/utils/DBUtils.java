@@ -389,7 +389,7 @@ public class DBUtils extends SQLiteOpenHelper {
             StringBuilder query = new StringBuilder("SELECT * FROM table_specialApps WHERE ");
             List<String> args = new ArrayList<>();
             if (continent != null && countryCode != null) { //第一轮精确查找，洲和国家同时满足
-                Log.d(TAG, "querySpecialApps 首先第一种情况 精确匹配洲和国家码 亚洲,ZH");
+                Log.d(TAG, "querySpecialApps 首先第一种情况 精确匹配洲和国家码 ");
                 query.append("continent = ? ");
                 args.add(continent); // 不再使用模糊匹配
                 query.append("AND ");
@@ -397,7 +397,7 @@ public class DBUtils extends SQLiteOpenHelper {
                 args.add(countryCode); // 精确匹配
                 cursor = db.rawQuery(query.toString(), args.toArray(new String[0]));
                 if (cursor == null || !cursor.moveToFirst()) { //第二轮只查找国家码，洲为空
-                    Log.d(TAG, "querySpecialApps 第二种情况 只匹配国家码ZH");
+                    Log.d(TAG, "querySpecialApps 第二种情况 只匹配国家码");
                     query.setLength(0); // 清空之前的查询
                     args.clear(); // 清空参数列表
                     query.append("SELECT * FROM table_specialApps WHERE ");

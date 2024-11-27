@@ -172,20 +172,19 @@ public class AppFavoritesActivity extends BaseActivity implements AppCallBack {
                     file = new File("/system/shortcuts.config");
                 }
                 if (!file.exists()) {
+                    file = new File("/system/others.config");
+                }
+                if (!file.exists()) {
                     favorites = count;
                     max = 7;
                     Log.d(tag, " 快捷栏数量 !file.exists() ");
                     if (favorites > max) {// count>favorites是新增
-                        list.get(position)
-                                .setCheck(!list.get(position).isCheck());
-                        ToastUtil.showShortToast(AppFavoritesActivity.this,
-                                getString(R.string.short_max_tips));
+                        list.get(position).setCheck(!list.get(position).isCheck());
+                        ToastUtil.showShortToast(AppFavoritesActivity.this, getString(R.string.short_max_tips));
                     } else {
                         boolean isCheck = list.get(position).isCheck();
                         if (isCheck) {
-                            if (!DBUtils.getInstance(
-                                            AppFavoritesActivity.this)
-                                    .isExistData(list.get(position).getApppackagename())
+                            if (!DBUtils.getInstance(AppFavoritesActivity.this).isExistData(list.get(position).getApppackagename())
                             ) {
                                 DBUtils.getInstance(AppFavoritesActivity.this)
                                         .addFavorites("", list.get(position).getApppackagename(), null);

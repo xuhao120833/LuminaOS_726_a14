@@ -235,12 +235,39 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
         @Override
         public void onReceive(Context context, Intent intent) {
             if ("com.htc.refreshApps".equals(intent.getAction())) {
-                Log.d(TAG," 收到refreshApps的广播");
-                short_list =loadHomeAppData();
-                handler.sendEmptyMessage(204);
+                File file = new File("/system/others.config");
+                if (file.exists()) {
+                    threadExecutor.execute(new Runnable() {
+                        @Override
+                        public void run() {
+                            refreshApps(file);
+                        }
+                    });
+                } else {
+                    Log.d(TAG, " 收到refreshApps的广播，且没有/system/others.config");
+                    short_list = loadHomeAppData();
+                    handler.sendEmptyMessage(204);
+                }
             }
         }
     };
+
+    private void refreshApps(File file) {
+        try {
+            Log.d(TAG, " 收到refreshApps的广播，有/system/others.config，重新去读specialApps配置");
+            FileInputStream is = new FileInputStream(file);
+            byte[] b = new byte[is.available()];
+            is.read(b);
+            String result = new String(b);
+            List<String> residentList = new ArrayList<>();
+            JSONObject obj = new JSONObject(result);
+            readSpecialApps(obj, residentList);
+            short_list = loadHomeAppData();
+            handler.sendEmptyMessage(204);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -626,8 +653,8 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
         //监听APPStore发出 特定IP广播，意味着它已经写了Settings ip_country_code 的值
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction("com.htc.refreshApps");
-        registerReceiver(refreshAppsReceiver,intentFilter);
-        short_list =loadHomeAppData();
+        registerReceiver(refreshAppsReceiver, intentFilter);
+        short_list = loadHomeAppData();
         handler.sendEmptyMessage(204);
     }
 
