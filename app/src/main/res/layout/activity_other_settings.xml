@@ -148,7 +148,6 @@
                 android:id="@+id/rl_power_mode"
                 android:layout_marginStart="@dimen/x_100"
                 android:layout_marginTop="@dimen/y_19"
-                android:visibility="gone"
                 android:background="@drawable/main_settings_bg"
                 style="@style/focusStyle"
                 >
@@ -196,6 +195,9 @@
                     android:gravity="center"
                     android:text="0"
                     android:duplicateParentState="true"
+                    android:singleLine="true"
+                    android:ellipsize="marquee"
+                    android:focusable="true"
                     />
             </RelativeLayout>
 
@@ -267,7 +269,6 @@
                     android:background="@drawable/arrow_right_bg"
                     android:duplicateParentState="true"
                     />
-
             </RelativeLayout>
 
             <RelativeLayout

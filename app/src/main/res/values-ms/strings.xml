@@ -156,8 +156,8 @@
     <string name="auto_keystone">Pembetulan Keystone Automatik</string>
     <string name="auto_keystone_on">Sila tutup pembetulan keystone automatik dahulu</string>
     <string name="auto_four_corner_on">Sila tutup pembetulan empat sudut automatik dahulu</string>
-    <string name="power_mode_1">Mod Siaga</string>
-    <string name="power_mode_2">Mod Tutup</string>
+    <string name="power_mode_1">Peranti dalam mod sedia semasa dihidupkan</string>
+    <string name="power_mode_2">Peranti dihidupkan apabila dihidupkan</string>
     <string name="boot_source_1">Tiada</string>
     <string name="boot_source_2">HDMI</string>
     <string name="boot_source_3">AV</string>

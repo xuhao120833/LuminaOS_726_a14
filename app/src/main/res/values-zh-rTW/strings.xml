@@ -156,8 +156,8 @@
 	<string name="auto_keystone">自動梯形矯正</string>
 	<string name="auto_keystone_on">請先關閉自動梯形矯正</string>
 	<string name="auto_four_corner_on">請先關閉自動四角矯正</string>
-	<string name="power_mode_1">待機模式</string>
-	<string name="power_mode_2">關機模式</string>
+	<string name="power_mode_1">設備上電待機</string>
+	<string name="power_mode_2">設備上電開機</string>
 	<string name="boot_source_1">無</string>
 	<string name="boot_source_2">HDMI</string>
 	<string name="boot_source_3">AV</string>

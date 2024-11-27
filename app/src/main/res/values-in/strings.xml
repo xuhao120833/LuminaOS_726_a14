@@ -156,8 +156,8 @@
     <string name="auto_keystone">Koreksi keystone otomatis</string>
     <string name="auto_keystone_on">Harap matikan koreksi keystone otomatis terlebih dahulu</string>
     <string name="auto_four_corner_on">Harap matikan koreksi empat sudut otomatis terlebih dahulu</string>
-    <string name="power_mode_1">Mode siaga</string>
-    <string name="power_mode_2">Mode mati</string>
+    <string name="power_mode_1">Perangkat dalam siaga saat dinyalakan</string>
+    <string name="power_mode_2">Perangkat menyala saat dinyalakan</string>
     <string name="boot_source_1">Tidak ada</string>
     <string name="boot_source_2">HDMI</string>
     <string name="boot_source_3">AV</string>

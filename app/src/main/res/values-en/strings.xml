@@ -156,8 +156,8 @@
     <string name="auto_keystone">Auto Keystone Correction</string>
     <string name="auto_keystone_on">Please turn off auto keystone correction first</string>
     <string name="auto_four_corner_on">Please turn off auto four-corner correction first</string>
-    <string name="power_mode_1">Standby Mode</string>
-    <string name="power_mode_2">Shutdown Mode</string>
+    <string name="power_mode_1">Device on standby when powered on</string>
+    <string name="power_mode_2">Device powers on when powered on</string>
     <string name="boot_source_1">None</string>
     <string name="boot_source_2">HDMI</string>
     <string name="boot_source_3">AV</string>

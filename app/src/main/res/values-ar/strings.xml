@@ -156,8 +156,8 @@
     <string name="auto_keystone">تصحيح الانحراف التلقائي</string>
     <string name="auto_keystone_on">يرجى إيقاف التصحيح التلقائي أولاً</string>
     <string name="auto_four_corner_on">يرجى إيقاف التصحيح التلقائي لأربع زوايا أولاً</string>
-    <string name="power_mode_1">وضع الاستعداد</string>
-    <string name="power_mode_2">وضع الإيقاف</string>
+    <string name="power_mode_1">الجهاز في وضع الاستعداد عند التشغيل</string>
+    <string name="power_mode_2">الجهاز يعمل عند التشغيل</string>
     <string name="boot_source_1">بدون</string>
     <string name="boot_source_2">HDMI</string>
     <string name="boot_source_3">AV</string>

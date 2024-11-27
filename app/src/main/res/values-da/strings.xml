@@ -156,8 +156,8 @@
     <string name="auto_keystone">Automatisk trapezkorrektion</string>
     <string name="auto_keystone_on">Luk venligst automatisk trapezkorrektion</string>
     <string name="auto_four_corner_on">Luk venligst automatisk firkantkorrektion</string>
-    <string name="power_mode_1">Standby-tilstand</string>
-    <string name="power_mode_2">Slukket tilstand</string>
+    <string name="power_mode_1">Enheden er i standby ved opstart</string>
+    <string name="power_mode_2">Enheden tændes ved opstart</string>
     <string name="boot_source_1">Ingen</string>
     <string name="boot_source_2">HDMI</string>
     <string name="boot_source_3">AV</string>

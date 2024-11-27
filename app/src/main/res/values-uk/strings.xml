@@ -156,8 +156,8 @@
     <string name="auto_keystone">Автоматична корекція трапеції</string>
     <string name="auto_keystone_on">Будь ласка, спочатку вимкніть автоматичну корекцію трапеції</string>
     <string name="auto_four_corner_on">Будь ласка, спочатку вимкніть автоматичну корекцію чотирьох кутів</string>
-    <string name="power_mode_1">Режим очікування</string>
-    <string name="power_mode_2">Режим вимкнення</string>
+    <string name="power_mode_1">Пристрій у режимі очікування при ввімкненні</string>
+    <string name="power_mode_2">Пристрій увімкнеться при ввімкненні</string>
     <string name="boot_source_1">Немає</string>
     <string name="boot_source_2">HDMI</string>
     <string name="boot_source_3">AV</string>

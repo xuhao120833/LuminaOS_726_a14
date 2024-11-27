@@ -156,8 +156,8 @@
     <string name="auto_keystone">Автоматическая трапециевидная коррекция</string>
     <string name="auto_keystone_on">Сначала отключите автоматическую трапециевидную коррекцию</string>
     <string name="auto_four_corner_on">Сначала отключите автоматическую четырехугольную коррекцию</string>
-    <string name="power_mode_1">Режим ожидания</string>
-    <string name="power_mode_2">Режим выключения</string>
+    <string name="power_mode_1">Устройство в режиме ожидания при включении</string>
+    <string name="power_mode_2">Устройство включается при включении</string>
     <string name="boot_source_1">Нет</string>
     <string name="boot_source_2">HDMI</string>
     <string name="boot_source_3">AV</string>

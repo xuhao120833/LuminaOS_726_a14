@@ -156,8 +156,8 @@
     <string name="auto_keystone">Automatische Trapezkorrektur</string>
     <string name="auto_keystone_on">Bitte zuerst die automatische Trapezkorrektur deaktivieren</string>
     <string name="auto_four_corner_on">Bitte zuerst die automatische Vier-Ecken-Korrektur deaktivieren</string>
-    <string name="power_mode_1">Standby-Modus</string>
-    <string name="power_mode_2">Ausschaltmodus</string>
+	<string name="power_mode_1">Gerät im Standby beim Einschalten</string>
+	<string name="power_mode_2">Gerät schaltet sich beim Einschalten ein</string>
     <string name="boot_source_1">Keine</string>
     <string name="boot_source_2">HDMI</string>
     <string name="boot_source_3">AV</string>

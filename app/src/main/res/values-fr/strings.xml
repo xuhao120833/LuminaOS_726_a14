@@ -156,8 +156,8 @@
 	<string name="auto_keystone">Correction trapézoïdale automatique</string>
 	<string name="auto_keystone_on">Veuillez d\'abord désactiver la correction trapézoïdale automatique</string>
 	<string name="auto_four_corner_on">Veuillez d\'abord désactiver la correction automatique des quatre coins</string>
-	<string name="power_mode_1">Mode veille</string>
-	<string name="power_mode_2">Mode éteint</string>
+	<string name="power_mode_1">Appareil en veille lors de la mise sous tension</string>
+	<string name="power_mode_2">Appareil s\'allume lors de la mise sous tension</string>
 	<string name="boot_source_1">Aucun</string>
 	<string name="boot_source_2">HDMI</string>
 	<string name="boot_source_3">AV</string>

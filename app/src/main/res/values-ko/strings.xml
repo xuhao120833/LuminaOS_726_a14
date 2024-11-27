@@ -156,8 +156,8 @@
     <string name="auto_keystone">자동 키스톤 보정</string>
     <string name="auto_keystone_on">자동 키스톤 보정을 먼저 끄세요</string>
     <string name="auto_four_corner_on">자동 4코너 보정을 먼저 끄세요</string>
-    <string name="power_mode_1">대기 모드</string>
-    <string name="power_mode_2">전원 끄기 모드</string>
+    <string name="power_mode_1">기기 전원 켜짐 대기</string>
+    <string name="power_mode_2">기기 전원 켜짐</string>
     <string name="boot_source_1">없음</string>
     <string name="boot_source_2">HDMI</string>
     <string name="boot_source_3">AV</string>

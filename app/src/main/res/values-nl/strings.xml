@@ -156,8 +156,8 @@
     <string name="auto_keystone">Automatische trapeziumcorrectie</string>
     <string name="auto_keystone_on">Schakel eerst automatische trapeziumcorrectie uit</string>
     <string name="auto_four_corner_on">Schakel eerst automatische vierpuntscorrectie uit</string>
-    <string name="power_mode_1">Stand-bymodus</string>
-    <string name="power_mode_2">Uitschakelmodus</string>
+    <string name="power_mode_1">Apparaat in stand-by bij inschakelen</string>
+    <string name="power_mode_2">Apparaat wordt ingeschakeld bij inschakelen</string>
     <string name="boot_source_1">Geen</string>
     <string name="boot_source_2">HDMI</string>
     <string name="boot_source_3">AV</string>

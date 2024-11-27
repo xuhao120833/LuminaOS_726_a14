@@ -156,8 +156,8 @@
 	<string name="auto_keystone">Correzione automatica del keystone</string>
 	<string name="auto_keystone_on">Disattiva prima la correzione automatica del keystone</string>
 	<string name="auto_four_corner_on">Disattiva prima la correzione automatica dei quattro angoli</string>
-	<string name="power_mode_1">Modalità standby</string>
-	<string name="power_mode_2">Modalità spegnimento</string>
+	<string name="power_mode_1">Dispositivo in standby all\'accensione</string>
+	<string name="power_mode_2">Dispositivo si accende all\'accensione</string>
 	<string name="boot_source_1">Nessuno</string>
 	<string name="boot_source_2">HDMI</string>
 	<string name="boot_source_3">AV</string>

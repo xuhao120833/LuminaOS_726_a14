@@ -156,8 +156,8 @@
     <string name="auto_keystone">自動台形補正</string>
     <string name="auto_keystone_on">自動キーストーン補正を先にオフにしてください</string>
     <string name="auto_four_corner_on">自動四隅補正を先にオフにしてください</string>
-    <string name="power_mode_1">スタンバイモード</string>
-    <string name="power_mode_2">シャットダウンモード</string>
+    <string name="power_mode_1">電源オン時にデバイスが待機中</string>
+    <string name="power_mode_2">電源オン時にデバイスが起動</string>
     <string name="boot_source_1">なし</string>
     <string name="boot_source_2">HDMI</string>
     <string name="boot_source_3">AV</string>

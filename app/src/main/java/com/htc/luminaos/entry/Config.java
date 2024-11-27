@@ -34,6 +34,9 @@ public class Config {
     public boolean saturation = true;
     public boolean sharpness = true;
 
+    //电源模式 上电开机 上电待机
+    public boolean powerMode=false;
+
     public int brightnessDefault = 50;
     public int contrastDefault = 50;
     public int hueDefault = 50;

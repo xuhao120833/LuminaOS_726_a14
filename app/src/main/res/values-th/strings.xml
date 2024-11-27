@@ -156,8 +156,8 @@
     <string name="auto_keystone">การปรับเปลี่ยนทรงกลมอัตโนมัติ</string>
     <string name="auto_keystone_on">กรุณาปิดการปรับเปลี่ยนทรงกลมอัตโนมัติ</string>
     <string name="auto_four_corner_on">กรุณาปิดการปรับเปลี่ยนมุมสี่มุมอัตโนมัติ</string>
-    <string name="power_mode_1">โหมดสแตนบาย</string>
-    <string name="power_mode_2">โหมดปิดเครื่อง</string>
+    <string name="power_mode_1">อุปกรณ์อยู่ในโหมดสแตนด์บายเมื่อเปิดเครื่อง</string>
+    <string name="power_mode_2">อุปกรณ์เปิดทำงานเมื่อเปิดเครื่อง</string>
     <string name="boot_source_1">ไม่มี</string>
     <string name="boot_source_2">HDMI</string>
     <string name="boot_source_3">AV</string>

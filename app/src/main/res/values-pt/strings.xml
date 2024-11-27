@@ -156,8 +156,8 @@
     <string name="auto_keystone">Correção automática de keystone</string>
     <string name="auto_keystone_on">Por favor, desative a correção automática de keystone primeiro</string>
     <string name="auto_four_corner_on">Por favor, desative a correção automática de quatro cantos primeiro</string>
-    <string name="power_mode_1">Modo de espera</string>
-    <string name="power_mode_2">Modo de desligamento</string>
+    <string name="power_mode_1">Dispositivo em espera ao ligar</string>
+    <string name="power_mode_2">Dispositivo ligado ao ligar</string>
     <string name="boot_source_1">Nenhum</string>
     <string name="boot_source_2">HDMI</string>
     <string name="boot_source_3">AV</string>

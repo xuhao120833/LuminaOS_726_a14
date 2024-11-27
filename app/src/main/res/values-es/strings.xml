@@ -156,8 +156,8 @@
 	<string name="auto_keystone">Corrección automática de keystone</string>
 	<string name="auto_keystone_on">Por favor, apague primero la corrección automática de keystone</string>
 	<string name="auto_four_corner_on">Por favor, apague primero la corrección automática de cuatro esquinas</string>
-	<string name="power_mode_1">Modo de espera</string>
-	<string name="power_mode_2">Modo de apagado</string>
+	<string name="power_mode_1">El dispositivo en espera al encenderse</string>
+	<string name="power_mode_2">El dispositivo se enciende al encenderse</string>
 	<string name="boot_source_1">Ninguno</string>
 	<string name="boot_source_2">HDMI</string>
 	<string name="boot_source_3">AV</string>

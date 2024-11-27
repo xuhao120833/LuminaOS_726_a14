@@ -156,8 +156,8 @@
     <string name="auto_keystone">Automatyczna korekcja trapezowa</string>
     <string name="auto_keystone_on">Najpierw wyłącz automatyczną korekcję trapezową</string>
     <string name="auto_four_corner_on">Najpierw wyłącz automatyczną korekcję czterech kątów</string>
-    <string name="power_mode_1">Tryb czuwania</string>
-    <string name="power_mode_2">Tryb wyłączenia</string>
+    <string name="power_mode_1">Urządzenie w trybie gotowości po włączeniu</string>
+    <string name="power_mode_2">Urządzenie włącza się po włączeniu</string>
     <string name="boot_source_1">Brak</string>
     <string name="boot_source_2">HDMI</string>
     <string name="boot_source_3">AV</string>
