@@ -41,6 +41,8 @@
         android:textSize="@dimen/x_25"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/y_30"
+        android:ellipsize="marquee"
+        android:singleLine="true"
         />
 
     <TextView

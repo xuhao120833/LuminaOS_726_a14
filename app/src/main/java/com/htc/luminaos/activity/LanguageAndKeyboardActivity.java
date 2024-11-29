@@ -261,35 +261,39 @@ public class LanguageAndKeyboardActivity extends BaseActivity {
 
 
     public String getKeyBoardDefault() {
-        ContentResolver resolver = getContentResolver();
-        PackageManager pm = getPackageManager();
-        InputMethodManager imm = (InputMethodManager)
-                getSystemService(Context.INPUT_METHOD_SERVICE);
-        List<InputMethodInfo> imis = imm.getInputMethodList();
-
-        if (resolver == null || imis == null)
-            return null;
-
-        final String currentInputMethodId = Settings.Secure.getString(resolver,
-                Settings.Secure.DEFAULT_INPUT_METHOD);
-        if (TextUtils.isEmpty(currentInputMethodId))
-            return null;
-
-        for (InputMethodInfo imi : imis) {
-            if (currentInputMethodId.equals(imi.getId())) {
-                final CharSequence imiLabel = imi.loadLabel(pm);
-                final InputMethodSubtype subtype = imm
-                        .getCurrentInputMethodSubtype();
-                final CharSequence summary = subtype != null ? TextUtils
-                        .concat(subtype.getDisplayName(this,
-                                imi.getPackageName(),
-                                imi.getServiceInfo().applicationInfo),
-                                (TextUtils.isEmpty(imiLabel) ? "" : " - "
-                                        + imiLabel)) : imiLabel;
-                return summary.toString();
+        try {
+            ContentResolver resolver = getContentResolver();
+            PackageManager pm = getPackageManager();
+            InputMethodManager imm = (InputMethodManager)
+                    getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (imm == null)
+                return null;
+            List<InputMethodInfo> imis = imm.getInputMethodList();
+            if (resolver == null || imis == null)
+                return null;
+            final String currentInputMethodId = Settings.Secure.getString(resolver,
+                    Settings.Secure.DEFAULT_INPUT_METHOD);
+            if (TextUtils.isEmpty(currentInputMethodId))
+                return null;
+            for (InputMethodInfo imi : imis) {
+                if (currentInputMethodId.equals(imi.getId())) {
+                    final CharSequence imiLabel = imi.loadLabel(pm);
+                    final InputMethodSubtype subtype = imm
+                            .getCurrentInputMethodSubtype();
+                    final CharSequence summary = subtype != null ? TextUtils
+                            .concat(subtype.getDisplayName(this,
+                                            imi.getPackageName(),
+                                            imi.getServiceInfo().applicationInfo),
+                                    (TextUtils.isEmpty(imiLabel) ? "" : " - "
+                                            + imiLabel)) : imiLabel;
+                    return summary.toString();
+                }
             }
+            return null;
+        }catch (Exception e) {
+            e.printStackTrace();
+            return null;
         }
-        return null;
     }
 
     private void getInputMethod() {

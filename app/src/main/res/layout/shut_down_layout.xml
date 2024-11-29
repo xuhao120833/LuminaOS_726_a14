@@ -20,7 +20,7 @@
         />
 
     <TextView
-        android:layout_width="@dimen/x_120"
+        android:layout_width="@dimen/x_140"
         android:layout_height="@dimen/y_50"
         android:id="@+id/cancel"
         android:layout_alignParentBottom="true"
@@ -33,11 +33,12 @@
         android:textColor="@color/white"
         android:text="@string/cancel"
         android:textSize="@dimen/x_25"
-
+        android:ellipsize="marquee"
+        android:singleLine="true"
         />
 
     <TextView
-        android:layout_width="@dimen/x_120"
+        android:layout_width="@dimen/x_140"
         android:layout_height="@dimen/y_50"
         android:id="@+id/enter"
         android:layout_alignParentBottom="true"
@@ -51,7 +52,8 @@
         android:textColor="@color/white"
         android:text="@string/power_off"
         android:textSize="@dimen/x_25"
-
+        android:ellipsize="marquee"
+        android:singleLine="true"
         />
 
 </RelativeLayout>
