@@ -69,6 +69,7 @@ public class OtherSettingsActivity extends BaseActivity implements View.OnKeyLis
                 }
             }
         });
+        otherSettingsBinding.rlAccount.setOnClickListener(this);
         otherSettingsBinding.rlDeveloper.setOnClickListener(this);
 
         otherSettingsBinding.rlButtonSound.setOnHoverListener(this);
@@ -79,6 +80,7 @@ public class OtherSettingsActivity extends BaseActivity implements View.OnKeyLis
         otherSettingsBinding.rlTimerOff.setOnHoverListener(this);
         otherSettingsBinding.rlBootInput.setOnHoverListener(this);
         otherSettingsBinding.rlPowerMode.setOnHoverListener(this);
+        otherSettingsBinding.rlAccount.setOnHoverListener(this);
         otherSettingsBinding.rlDeveloper.setOnHoverListener(this);
 
         otherSettingsBinding.rlScreenSaver.setOnKeyListener(this);
@@ -91,6 +93,7 @@ public class OtherSettingsActivity extends BaseActivity implements View.OnKeyLis
 
 //        otherSettingsBinding.rlAudioMode.setVisibility(MyApplication.config.AudioMode?View.VISIBLE:View.GONE);
         otherSettingsBinding.rlPowerMode.setVisibility(MyApplication.config.powerMode?View.VISIBLE:View.GONE);
+        otherSettingsBinding.rlAccount.setVisibility(MyApplication.config.account?View.VISIBLE:View.GONE);
 
         if ((boolean)ShareUtil.get(this,Contants.KEY_DEVELOPER_MODE,false)){
             otherSettingsBinding.rlDeveloper.setVisibility(View.VISIBLE);
@@ -217,6 +220,15 @@ public class OtherSettingsActivity extends BaseActivity implements View.OnKeyLis
                 otherSettingsBinding.powerModeTv.setText(powerModes[curPowerMode]);
                 mAwTvSystemManager.setPowerOnMode(curPowerMode==1?
                         AwTvSystemTypes.EnumPowerMode.E_AW_POWER_MODE_DIRECT: AwTvSystemTypes.EnumPowerMode.E_AW_POWER_MODE_STANDBY);
+                break;
+            case R.id.rl_account:
+//                Intent intent = new Intent(Settings.ACTION_SYNC_SETTINGS);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                Log.d(TAG,"打开Google账号切换界面");
+//                startActivity(intent);
+                Intent intent = new Intent(Settings.ACTION_SYNC_SETTINGS);
+                intent.putExtra(Settings.EXTRA_ACCOUNT_TYPES, new String[]{"com.google"});
+                startActivity(intent);
                 break;
             case R.id.rl_developer:
                 startNewActivity(DeveloperModeActivity.class);

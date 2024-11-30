@@ -332,33 +332,24 @@ public class AboutActivity extends BaseActivity {
 
 
     private String findUpdateFile() {
-
         String dataPath = FLASH_ROOT + "/" + OTA_PACKAGE_FILE;
         Log.d("findUpdateFile", " dataPath " + dataPath);
-
         if (new File(dataPath).exists())  //优先检查本地存储有没有 storage/emulated/0/update.zip
             return dataPath;
-
         File usbRoot = new File(USB_ROOT);//本地没有，再去检查mnt/media_rw下面是否挂载了U盘
         File[] pfiles = usbRoot.listFiles();//支持检测多个U盘
         if (pfiles == null) {
             return null;
         }
-
         for (File tmp : pfiles) {//findUpdateFile:  tmp F3DE-C571 1 /mnt/media_rw/F3DE-C571
             Log.d("findUpdateFile", " tmp " + tmp.getName()+" "+pfiles.length+" "+tmp.getAbsolutePath() );
             if (tmp.isDirectory()) {
-
                 File[] subfiles = tmp.listFiles();
-
                 if (subfiles == null) {
                     Log.d("findUpdateFile", " subfiles  null ");
 //                        continue;//跳过当前目录，进入下一个循环
                 }
-
-
                 if (subfiles != null) {
-
                     for (File subtmp : subfiles) {
 
                         Log.d("findUpdateFile", " subtmp " + subtmp.getName());
@@ -378,7 +369,6 @@ public class AboutActivity extends BaseActivity {
                                     return false;
                                 }
                             });
-
                             if (files != null && files.length > 0) {
 
                                 return files[0].getAbsolutePath();
