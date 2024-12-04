@@ -192,6 +192,7 @@
     <string name="dhcp">DHCP</string>
     <string name="static_ip">静的</string>
     <string name="ip_settings">IP設定</string>
+    <string name="ip_mode">IPモード</string>
     <string name="ip_address">IPアドレス</string>
     <string name="subnet_mask">サブネットマスク</string>
     <string name="gateway">ゲートウェイ</string>

@@ -192,6 +192,7 @@
     <string name="dhcp">DHCP</string>
     <string name="static_ip">ثابت</string>
     <string name="ip_settings">إعدادات IP</string>
+    <string name="ip_mode">وضعية IP</string>
     <string name="ip_address">عنوان IP</string>
     <string name="subnet_mask">قناع الشبكة الفرعية</string>
     <string name="gateway">البوابة</string>

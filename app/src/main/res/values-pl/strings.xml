@@ -192,6 +192,7 @@
     <string name="dhcp">DHCP</string>
     <string name="static_ip">Statyczny</string>
     <string name="ip_settings">Ustawienia IP</string>
+    <string name="ip_mode">Tryb IP</string>
     <string name="ip_address">Adres IP</string>
     <string name="subnet_mask">Maska podsieci</string>
     <string name="gateway">Brama</string>

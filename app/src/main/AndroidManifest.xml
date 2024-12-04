@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.htc.luminaos"
     android:sharedUserId="android.uid.system">
-
     <!-- android:sharedUserId="android.uid.system" -->
     <uses-permission android:name="android.permission.REBOOT" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
@@ -44,10 +43,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity
+            android:name=".activity.WifiIpSetActivity"
+            android:exported="false" />
+
         <receiver
             android:name=".receiver.refreshApps"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true" />
         <receiver
             android:name=".receiver.VaFocusReceiver"
             android:enabled="true"

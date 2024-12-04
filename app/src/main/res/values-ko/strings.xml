@@ -192,6 +192,7 @@
     <string name="dhcp">DHCP</string>
     <string name="static_ip">정적</string>
     <string name="ip_settings">IP 설정</string>
+    <string name="ip_mode">IP 모드</string>
     <string name="ip_address">IP 주소</string>
     <string name="subnet_mask">서브넷 마스크</string>
     <string name="gateway">게이트웨이</string>

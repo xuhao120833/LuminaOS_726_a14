@@ -192,6 +192,7 @@
     <string name="dhcp">DHCP</string>
     <string name="static_ip">IP สถิต</string>
     <string name="ip_settings">การตั้งค่า IP</string>
+    <string name="ip_mode">โหมด IP</string>
     <string name="ip_address">ที่อยู่ IP</string>
     <string name="subnet_mask">หน้ากากย่อย</string>
     <string name="gateway">เกตเวย์</string>

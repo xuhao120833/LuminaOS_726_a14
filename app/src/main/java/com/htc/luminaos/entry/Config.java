@@ -50,6 +50,8 @@ public class Config {
     public boolean blue = false;
     public boolean displayVoiceMode = false;
 
+    //wifi DHCP、静态IP切换
+    public boolean wifiIpSettings = true;
 
     //自动梯形矫正
     public boolean autoKeystone = true;

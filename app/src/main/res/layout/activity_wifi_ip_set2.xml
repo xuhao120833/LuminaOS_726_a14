@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:skin="http://schemas.android.com/android/skin"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_main"
+    tools:context=".activity.BluetoothActivity">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/x_100"
+        android:layout_marginTop="@dimen/y_40"
+        android:text="@string/ip_settings"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x_40" />
+
+    <RelativeLayout
+        android:id="@+id/rl_ip_mode"
+        style="@style/focusStyle"
+        android:layout_width="@dimen/x_1080"
+        android:layout_height="@dimen/y_80"
+        android:layout_below="@id/title"
+        android:layout_marginStart="@dimen/x_100"
+        android:layout_marginTop="@dimen/y_19"
+        android:background="@drawable/main_settings_bg">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/x_50"
+            android:duplicateParentState="true"
+            android:text="@string/ip_mode"
+            android:textColor="@color/tv_color"
+            android:textSize="@dimen/x_27" />
+
+        <View
+            android:id="@+id/ip_mode_right"
+            android:layout_width="@dimen/x_53"
+            android:layout_height="@dimen/y_53"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/x_50"
+            android:background="@drawable/arrow_right_bg"
+            android:duplicateParentState="true" />
+
+        <View
+            android:id="@+id/ip_mode_left"
+            android:layout_width="@dimen/x_53"
+            android:layout_height="@dimen/y_53"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/x_468"
+            android:background="@drawable/arrow_left_bg"
+            android:duplicateParentState="true" />
+
+        <TextView
+            android:id="@+id/ip_mode_tv"
+            android:layout_width="@dimen/x_368"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/x_103"
+            android:duplicateParentState="true"
+            android:gravity="center"
+            android:text="DHCP"
+            android:textColor="@color/tv_color"
+            android:textSize="@dimen/x_23" />
+
+    </RelativeLayout>
+
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="@dimen/x_1080"
+        android:layout_height="@dimen/y_6"
+        android:layout_below="@id/rl_ip_mode"
+        android:layout_marginStart="@dimen/x_100"
+        android:layout_marginTop="@dimen/y_15"
+        android:layout_marginBottom="@dimen/y_19"
+        style="@style/unfocusStyle"
+        android:background="@drawable/corner_line" />
+
+
+    <com.htc.luminaos.view.CustomScrollView
+        android:id="@+id/scroll_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/rl_ip"
+                style="@style/focusStyle"
+                android:layout_width="@dimen/x_1080"
+                android:layout_height="@dimen/y_80"
+                android:layout_marginStart="@dimen/x_100"
+                android:background="@drawable/main_settings_bg">
+
+                <TextView
+                    android:id="@+id/txt_ip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/x_50"
+                    android:layout_marginTop="@dimen/y_4"
+                    android:duplicateParentState="true"
+                    android:text="@string/ip_address"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/tv_color"
+                    android:textSize="@dimen/x_27" />
+
+                <EditText
+                    android:id="@+id/ip"
+                    android:layout_width="@dimen/x_368"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/x_103"
+                    android:duplicateParentState="true"
+                    android:gravity="center"
+                    android:text="100"
+                    android:textColor="@color/tv_color"
+                    android:background="@android:color/transparent"
+                    android:textSize="@dimen/x_23" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_gateway"
+                style="@style/focusStyle"
+                android:layout_width="@dimen/x_1080"
+                android:layout_height="@dimen/y_80"
+                android:layout_below="@id/rl_ip"
+                android:layout_marginStart="@dimen/x_100"
+                android:layout_marginTop="@dimen/y_19"
+                android:background="@drawable/main_settings_bg">
+
+                <TextView
+                    android:id="@+id/txt_gateway"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/x_50"
+                    android:layout_marginTop="@dimen/y_4"
+                    android:duplicateParentState="true"
+                    android:text="@string/gateway"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/tv_color"
+                    android:textSize="@dimen/x_27" />
+
+                <EditText
+                    android:id="@+id/gateway"
+                    android:layout_width="@dimen/x_368"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/x_103"
+                    android:duplicateParentState="true"
+                    android:gravity="center"
+                    android:text="100"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/tv_color"
+                    android:textSize="@dimen/x_23" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_netmask"
+                style="@style/focusStyle"
+                android:layout_width="@dimen/x_1080"
+                android:layout_height="@dimen/y_80"
+                android:layout_below="@id/rl_gateway"
+                android:layout_marginStart="@dimen/x_100"
+                android:layout_marginTop="@dimen/y_19"
+                android:background="@drawable/main_settings_bg">
+
+                <TextView
+                    android:id="@+id/txt_netmask"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/x_50"
+                    android:layout_marginTop="@dimen/y_4"
+                    android:duplicateParentState="true"
+                    android:text="@string/subnet_mask"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/tv_color"
+                    android:textSize="@dimen/x_27" />
+
+                <EditText
+                    android:id="@+id/netmask"
+                    android:layout_width="@dimen/x_368"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/x_103"
+                    android:duplicateParentState="true"
+                    android:gravity="center"
+                    android:text="100"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/tv_color"
+                    android:textSize="@dimen/x_23" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_dns1"
+                style="@style/focusStyle"
+                android:layout_width="@dimen/x_1080"
+                android:layout_height="@dimen/y_80"
+                android:layout_below="@id/rl_netmask"
+                android:layout_marginStart="@dimen/x_100"
+                android:layout_marginTop="@dimen/y_19"
+                android:background="@drawable/main_settings_bg">
+
+                <TextView
+                    android:id="@+id/txt_dns1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/x_50"
+                    android:layout_marginTop="@dimen/y_4"
+                    android:duplicateParentState="true"
+                    android:text="@string/dns"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/tv_color"
+                    android:textSize="@dimen/x_27" />
+
+                <EditText
+                    android:id="@+id/dns1"
+                    android:layout_width="@dimen/x_368"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/x_103"
+                    android:duplicateParentState="true"
+                    android:gravity="center"
+                    android:text="100"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/tv_color"
+                    android:textSize="@dimen/x_23" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_dns2"
+                style="@style/focusStyle"
+                android:layout_width="@dimen/x_1080"
+                android:layout_height="@dimen/y_80"
+                android:layout_below="@id/rl_dns1"
+                android:layout_marginStart="@dimen/x_100"
+                android:layout_marginTop="@dimen/y_19"
+                android:background="@drawable/main_settings_bg">
+
+                <TextView
+                    android:id="@+id/txt_dns2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/x_50"
+                    android:layout_marginTop="@dimen/y_4"
+                    android:duplicateParentState="true"
+                    android:text="@string/dns2"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/tv_color"
+                    android:textSize="@dimen/x_27" />
+
+                <EditText
+                    android:id="@+id/dns2"
+                    android:layout_width="@dimen/x_368"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/x_103"
+                    android:duplicateParentState="true"
+                    android:gravity="center"
+                    android:text="100"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/tv_color"
+                    android:textSize="@dimen/x_23" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </com.htc.luminaos.view.CustomScrollView>
+
+</RelativeLayout>

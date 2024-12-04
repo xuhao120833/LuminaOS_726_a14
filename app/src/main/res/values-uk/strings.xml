@@ -192,6 +192,7 @@
     <string name="dhcp">DHCP</string>
     <string name="static_ip">Статичний</string>
     <string name="ip_settings">Налаштування IP</string>
+    <string name="ip_mode">Режим IP</string>
     <string name="ip_address">IP-адреса</string>
     <string name="subnet_mask">Маска підмережі</string>
     <string name="gateway">Шлюз</string>

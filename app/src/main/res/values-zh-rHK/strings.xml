@@ -191,7 +191,8 @@
 	<string name="refresh_network">刷新網絡</string>
 	<string name="dhcp">DHCP</string>
 	<string name="static_ip">靜態</string>
-	<string name="ip_settings">IP設定</string>
+	<string name="ip_settings">IP 設定</string>
+	<string name="ip_mode">IP 模式</string>
 	<string name="ip_address">IP 地址</string>
 	<string name="subnet_mask">子網掩碼</string>
 	<string name="gateway">網關</string>

@@ -192,6 +192,7 @@
     <string name="dhcp">DHCP</string>
     <string name="static_ip">Statisk</string>
     <string name="ip_settings">IP-indstillinger</string>
+    <string name="ip_mode">IP-tilstand</string>
     <string name="ip_address">IP-adresse</string>
     <string name="subnet_mask">Subnetmaske</string>
     <string name="gateway">Gateway</string>

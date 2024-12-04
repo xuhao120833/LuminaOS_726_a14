@@ -192,6 +192,7 @@
     <string name="dhcp">DHCP</string>
     <string name="static_ip">Statik</string>
     <string name="ip_settings">Tetapan IP</string>
+    <string name="ip_mode">Modus IP</string>
     <string name="ip_address">Alamat IP</string>
     <string name="subnet_mask">Subnet Mask</string>
     <string name="gateway">Gerbang</string>

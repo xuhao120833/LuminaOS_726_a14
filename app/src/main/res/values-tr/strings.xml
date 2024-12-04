@@ -192,6 +192,7 @@
     <string name="dhcp">DHCP</string>
     <string name="static_ip">Statik</string>
     <string name="ip_settings">IP Ayarları</string>
+    <string name="ip_mode">IP Modu</string>
     <string name="ip_address">IP Adresi</string>
     <string name="subnet_mask">Alt Ağ Maskesi</string>
     <string name="gateway">Ağ Geçidi</string>

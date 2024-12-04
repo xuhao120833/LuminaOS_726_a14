@@ -21,9 +21,11 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.htc.luminaos.MyApplication;
 import com.htc.luminaos.R;
 import com.htc.luminaos.adapter.WifiFoundAdapter;
 import com.htc.luminaos.databinding.ActivityWifiBinding;
@@ -86,7 +88,6 @@ public class WifiActivity extends BaseActivity  implements WifiEnabledReceiver.W
         super.onCreate(savedInstanceState);
         wifiBinding = ActivityWifiBinding.inflate(LayoutInflater.from(this));
         setContentView(wifiBinding.getRoot());
-
         initReceiver();
         initView();
         initData();
@@ -95,8 +96,10 @@ public class WifiActivity extends BaseActivity  implements WifiEnabledReceiver.W
     private void initView(){
         wifiBinding.rlWifiSwitch.setOnClickListener(this);
         wifiBinding.rlAddNetwork.setOnClickListener(this);
+        wifiBinding.rlIpSettings.setOnClickListener(this);
         wifiBinding.rlWifiSwitch.setOnHoverListener(this);
         wifiBinding.rlAddNetwork.setOnHoverListener(this);
+        wifiBinding.rlIpSettings.setOnHoverListener(this);
         wifiBinding.wifiSwitch.setOnClickListener(this);
         wifiBinding.rlRefreshNetwork.setOnClickListener(this);
         wifiBinding.rlRefreshNetwork.setOnHoverListener(this);
@@ -119,18 +122,23 @@ public class WifiActivity extends BaseActivity  implements WifiEnabledReceiver.W
                 });
             }
         });
+
+        wifiBinding.rlIpSettings.setVisibility(MyApplication.config.wifiIpSettings ? View.VISIBLE : View.GONE);
     }
 
     private void initData(){
-        if (mWifiManager == null)
-            mWifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
-
-        wifiBinding.wifiSwitch.setChecked(mWifiManager.isWifiEnabled());
-        if (mWifiManager.isWifiEnabled()) {
-            mWifiManager.startScan();
-            singer.execute(RefreshRunnable);
+        try {
+            if (mWifiManager == null)
+                mWifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+            wifiBinding.wifiSwitch.setChecked(mWifiManager.isWifiEnabled());
+            if (mWifiManager.isWifiEnabled()) {
+                mWifiManager.startScan();
+                singer.execute(RefreshRunnable);
+            }
+            mWifiManager.reconnect();
+        }catch (Exception e) {
+            e.printStackTrace();
         }
-
     }
 
 
@@ -149,8 +157,27 @@ public class WifiActivity extends BaseActivity  implements WifiEnabledReceiver.W
                 mWifiManager.startScan();
                 startanim(true);
                 break;
+            case R.id.rl_ip_settings:
+                if (isWifiConnected()) {
+                    startNewActivity(WifiIpSetActivity.class);
+                } else {
+                    Toast.makeText(this, getResources().getString(R.string.network_disconnect_tip), Toast.LENGTH_SHORT).show();
+                }
+                break;
         }
     }
+
+    private boolean isWifiConnected() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager != null) {
+            NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+            return networkInfo != null
+                    && networkInfo.isConnected()
+                    && networkInfo.getType() == ConnectivityManager.TYPE_WIFI;
+        }
+        return false;
+    }
+
 
     Runnable RefreshRunnable = new Runnable() {
         @Override
@@ -260,8 +287,6 @@ public class WifiActivity extends BaseActivity  implements WifiEnabledReceiver.W
                             break;
                         }
                     }
-
-
                     if (!exitflag) {
                         try {
                             ScanResult str = null;
@@ -295,7 +320,6 @@ public class WifiActivity extends BaseActivity  implements WifiEnabledReceiver.W
         }
         WifiInfo info = mWifiManager.getConnectionInfo();
         if (info != null) {
-
             String infoSSID = info.getSSID().replace("\"", "");
             if (!TextUtils.isEmpty(infoSSID)) {
                 for (int i = 0; i < newWifiList.size(); i++) {
@@ -313,7 +337,6 @@ public class WifiActivity extends BaseActivity  implements WifiEnabledReceiver.W
         message.what =1;
         message.obj = newWifiList;
         handler.sendMessage(message);
-
     }
 
 
@@ -328,7 +351,6 @@ public class WifiActivity extends BaseActivity  implements WifiEnabledReceiver.W
     public void wifiStatueChange(int state) {
         Log.d("state", String.valueOf(state));
         if (state==2 && connectingFlag){
-
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
@@ -337,7 +359,6 @@ public class WifiActivity extends BaseActivity  implements WifiEnabledReceiver.W
             },1000);
 
         }
-
         connectingFlag = state != 0 && state != 2;
     }
 
@@ -365,31 +386,24 @@ public class WifiActivity extends BaseActivity  implements WifiEnabledReceiver.W
     }
 
     private void startanim(boolean startornot) {
-
         if(!startornot) {
             wifiBinding.refreshNet.setVisibility(View.GONE);
             wifiBinding.refreshNet.clearAnimation();
             return;
         }
-
         Animation anim = AnimationUtils.loadAnimation(
                 WifiActivity.this, R.anim.search_anim);
         LinearInterpolator interpolator = new LinearInterpolator();
         anim.setInterpolator(interpolator);
-
         anim.setAnimationListener(new Animation.AnimationListener() {
-
             @Override
             public void onAnimationStart(Animation arg0) {
                 // TODO Auto-generated method stub
             }
-
             @Override
             public void onAnimationRepeat(Animation arg0) {
                 // TODO Auto-generated method stub
-
             }
-
             @Override
             public void onAnimationEnd(Animation arg0) {
                 // TODO Auto-generated method stub
@@ -409,16 +423,13 @@ public class WifiActivity extends BaseActivity  implements WifiEnabledReceiver.W
                 return true;
             }
         }
-
         return false;
     }
 
     public static void openCaptivePortalPage(Context context) {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(
                 Context.CONNECTIVITY_SERVICE);
-
         Network[] networks = connectivityManager.getAllNetworks();
-
         for (Network network : networks) {
             NetworkInfo networkInfo = connectivityManager.getNetworkInfo(network);
             if (networkInfo.isConnected()
@@ -433,7 +444,6 @@ public class WifiActivity extends BaseActivity  implements WifiEnabledReceiver.W
     public static NetworkCapabilities getActiveWifiNetworkCapabilities(Context context) {
         ConnectivityManager mConnectivityManager =(ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         Network[] networks = mConnectivityManager.getAllNetworks();
-
         for (Network network : networks) {
             NetworkInfo networkInfo = mConnectivityManager.getNetworkInfo(network);
             if (networkInfo.isConnected()
@@ -443,6 +453,4 @@ public class WifiActivity extends BaseActivity  implements WifiEnabledReceiver.W
         }
         return null;
     }
-
-
 }
