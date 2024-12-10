@@ -114,4 +114,5 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
     // https://mvnrepository.com/artifact/org.apache.directory.studio/org.apache.commons.codec
     compile group: 'org.apache.directory.studio', name: 'org.apache.commons.codec', version: '1.8'
+    implementation 'com.airbnb.android:lottie:5.2.0'
 }

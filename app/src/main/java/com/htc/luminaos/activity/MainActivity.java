@@ -276,6 +276,7 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
         try {
             customBinding = ActivityMainCustomBinding.inflate(LayoutInflater.from(this));
             setContentView(customBinding.getRoot());
+            setDefaultBackgroundById();
             initViewCustom();
             initDataCustom();
             initReceiver();
@@ -576,7 +577,6 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
         new Thread(new Runnable() {
             @Override
             public void run() {
-
                 //读取首页的配置文件，优先读取网络服务器配置，其次读本地配置。只读取一次，清除应用缓存可触发再次读取。
                 initDataApp();
                 short_list = loadHomeAppData();
@@ -966,17 +966,17 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
                 editor.putInt("code", 1);
                 editor.apply();
 
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        // 设置首页的配置图标
-                        try {
-                            setDefaultBackground();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
+//                runOnUiThread(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        // 设置首页的配置图标
+//                        try {
+//                            setDefaultBackground();
+//                        } catch (Exception e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                });
 
                 return false;
             }
@@ -1565,8 +1565,8 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
         //3、brandLogo
         setbrandLogo();
 
-        //4、DefaultBackground
-        setDefaultBackground();
+        //4、DefaultBackground   改成提前用setDefaultBackgroundById去设置背景
+//        setDefaultBackground();
 
     }
 
@@ -1769,6 +1769,30 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
         }
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private void setDefaultBackgroundById() {
+        //如果用户自主修改了背景，那么重启之后不再设置默认背景start
+        SharedPreferences sharedPreferences = ShareUtil.getInstans(getApplicationContext());
+        int selectBg = sharedPreferences.getInt(Contants.SelectWallpaperLocal, -1);
+        if (selectBg != -1) {
+            Log.d(TAG, " setDefaultBackground 用户已经自主修改了背景");
+            return;
+        }
+        //背景控制end
+        String defaultbg = sharedPreferences.getString(Contants.DefaultBg, "1");
+        Log.d(TAG, " setDefaultBackground defaultbg " + defaultbg);
+        int number = Integer.parseInt(defaultbg);
+        Log.d(TAG, " setDefaultBackground number " + number);
+        if (number > Utils.drawablesId.length) {
+            Log.d(TAG, " setDefaultBackground 用户设置的默认背景，超出了范围");
+            return;
+        }
+        setWallPaper(Utils.drawablesId[number - 1]);
+        Drawable drawable = getResources().getDrawable(Utils.drawablesId[number - 1]);
+        MyApplication.mainDrawable = (BitmapDrawable) drawable;
+        setDefaultBg(drawable);
+    }
+
     private void setDefaultBackground() {
         //如果用户自主修改了背景，那么重启之后不再设置默认背景start
         SharedPreferences sharedPreferences = ShareUtil.getInstans(getApplicationContext());
@@ -1823,10 +1847,9 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
             @Override
             public void run() {
                 CopyDrawableToSd(drawable);
-                if (new File(Contants.WALLPAPER_MAIN).exists()) {
-                    MyApplication.mainDrawable = new BitmapDrawable(BitmapFactory.decodeFile(Contants.WALLPAPER_MAIN));
-                }
-
+//                if (new File(Contants.WALLPAPER_MAIN).exists()) {
+//                    MyApplication.mainDrawable = new BitmapDrawable(BitmapFactory.decodeFile(Contants.WALLPAPER_MAIN));
+//                }
             }
         });
     }
@@ -1965,7 +1988,6 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
         }
     }
 
-
     private void CopyDrawableToSd(Drawable drawable) {
         Bitmap bitmap = null;
         if (drawable instanceof BitmapDrawable) {
@@ -1976,7 +1998,6 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
             drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
             drawable.draw(canvas);
         }
-
         //判断图片大小，如果超过限制就做缩小处理
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
@@ -1984,13 +2005,11 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
             bitmap = narrowBitmap(bitmap);
         }
         //缩小完毕
-
+        MyApplication.mainDrawable = new BitmapDrawable(bitmap);
         File dir = new File(Contants.WALLPAPER_DIR);
         if (!dir.exists()) dir.mkdirs();
-
         File file1 = new File(Contants.WALLPAPER_MAIN);
 //        if (file1.exists()) file1.delete();
-
         try (FileOutputStream fileOutputStream = new FileOutputStream(file1)) {
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream); // 可根据需要更改格式
             fileOutputStream.flush();

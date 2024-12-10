@@ -13,6 +13,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Environment;
@@ -23,6 +24,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -67,6 +69,9 @@ public class WallPaperActivity extends BaseActivity {
 
     long curTime = 0;
     private static String TAG = "WallPaperActivity";
+
+    private MyApplication myApplication;
+    private Dialog loadingDialog;
 
     Handler handler = new Handler(new Handler.Callback() {
         @Override
@@ -142,6 +147,7 @@ public class WallPaperActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         wallPaperBinding = ActivityWallpaperCustomBinding.inflate(LayoutInflater.from(this));
         setContentView(wallPaperBinding.getRoot());
+        observeLiveData();
         initView();
         getPath();
         initData();
@@ -150,12 +156,37 @@ public class WallPaperActivity extends BaseActivity {
 
     @SuppressLint("NotifyDataSetChanged")
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
 //        getPath();
 //        wallPaperBinding.wallpaperRv.getAdapter().notifyDataSetChanged();
 //        initFocus();
-        Log.d(TAG," 执行onResume");
+        Log.d(TAG, " 执行onResume");
+    }
+
+    private void observeLiveData() {
+        myApplication = (MyApplication) getApplication();
+        if (myApplication != null) {
+//            MutableLiveData<Boolean> mutableLiveData = myApplication.getIsDataInitialized();
+            Boolean isInitialized = myApplication.getIsDataInitialized().getValue();
+            if (!isInitialized) {
+                Log.d(TAG, " 背景资源还在加载中");
+                //显示动画
+                showLottieLoading();
+                //监听LiveData
+                myApplication.getIsDataInitialized().observe(this, isInitializedValue -> {
+                    if (isInitializedValue != null && isInitializedValue) {
+                        WallPaperAdapter adapter = (WallPaperAdapter) wallPaperBinding.wallpaperRv.getAdapter();
+                        adapter.notifyDataSetChanged();
+                        loadingDialog.dismiss();
+                    }
+                });
+
+            } else if (isInitialized) {
+                Log.d(TAG, " 背景资源已经加载完成");
+            }
+
+        }
     }
 
     private void initView() {
@@ -187,54 +218,56 @@ public class WallPaperActivity extends BaseActivity {
         if (bundle != null) {
             String path = bundle.getString("filePath");
             Log.d(TAG, " 接收到路径 " + path);
-            if (!path.isEmpty()) {
+            if (path != null && !path.isEmpty()) {
                 FocusKeepRecyclerView wallpaperRv = wallPaperBinding.wallpaperRv;
                 RecyclerView.Adapter adapter = wallpaperRv.getAdapter();
                 if (adapter != null) {
                     int position = adapter.getItemCount() - 2; // 倒数第二个项的位置
-
-//                    // 滚动到倒数第二个项的位置
-//                    wallpaperRv.smoothScrollToPosition(position);
-//                    // 给 RecyclerView 的 Item 设置焦点
-//                    wallpaperRv.post(() -> {
-//                        // 确保 RecyclerView 已经滚动到目标位置，并且 ViewHolder 不为 null
-//                        RecyclerView.ViewHolder viewHolder = wallpaperRv.findViewHolderForAdapterPosition(position);
-//                        if (viewHolder != null) {
-//                            viewHolder.itemView.requestFocus();
-//                        } else {
-//                            Log.e(TAG, "无法找到指定位置的 ViewHolder");
-//                        }
-//                    });
-
-                    // 添加滚动监听器
-                    wallpaperRv.addOnScrollListener(new RecyclerView.OnScrollListener() {
+                    wallpaperRv.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
                         @Override
-                        public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                            super.onScrollStateChanged(recyclerView, newState);
-                            // 检查滚动是否结束
-                            if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                                // 获取 ViewHolder
-                                RecyclerView.ViewHolder viewHolder = wallpaperRv.findViewHolderForAdapterPosition(position);
-                                if (viewHolder != null) {
-                                    viewHolder.itemView.requestFocus();
-                                } else {
-                                    Log.e(TAG, "无法找到指定位置的 ViewHolder");
-                                }
-                                // 滚动完成后移除监听器，避免重复调用
-                                wallpaperRv.removeOnScrollListener(this);
+                        public void onGlobalLayout() {
+                            // 确保 RecyclerView 已完成布局
+                            Log.d(TAG, "RecyclerView 已完成布局");
+                            // 获取目标项的 ViewHolder
+                            RecyclerView.ViewHolder viewHolder = wallpaperRv.findViewHolderForAdapterPosition(position);
+                            if (viewHolder != null) {//不需要滚动的
+                                Log.d(TAG, "找到目标项，设置焦点");
+                                viewHolder.itemView.requestFocus();
+                                viewHolder.itemView.performClick();
+                            } else {//需要滚动的
+                                wallpaperRv.addOnScrollListener(new RecyclerView.OnScrollListener() {
+                                    @Override
+                                    public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                                        super.onScrollStateChanged(recyclerView, newState);
+                                        // 检查滚动是否结束
+                                        if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                                            RecyclerView.ViewHolder scrolledViewHolder = wallpaperRv.findViewHolderForAdapterPosition(position);
+                                            if (scrolledViewHolder != null) {
+                                                Log.e(TAG, "滚动后切背景");
+                                                scrolledViewHolder.itemView.requestFocus();
+                                                scrolledViewHolder.itemView.performClick();
+                                            } else {
+                                                Log.e(TAG, "无法找到指定位置的 ViewHolder");
+                                            }
+                                            // 滚动完成后移除监听器，避免重复调用
+                                            wallpaperRv.removeOnScrollListener(this);
+                                        }
+                                    }
+                                });
+                                wallpaperRv.smoothScrollToPosition(position);
+                                Log.e(TAG, "目标项不可见，无法设置焦点");
                             }
+                            // 移除监听器，避免多次调用
+                            wallpaperRv.getViewTreeObserver().removeOnGlobalLayoutListener(this);
                         }
                     });
-                    // 滚动到倒数第二个项的位置
-                    wallpaperRv.smoothScrollToPosition(position);
                 }
             }
         }
-
     }
 
     private void loadLocal() {
-        WallPaperAdapter wallPaperAdapter = new WallPaperAdapter(getApplicationContext(), Utils.drawables, handler,wallPaperBinding.wallpaperRv);
+        WallPaperAdapter wallPaperAdapter = new WallPaperAdapter(getApplicationContext(), Utils.drawables, handler, wallPaperBinding.wallpaperRv);
 //        wallPaperAdapter.setHasStableIds(true);
         wallPaperAdapter.setWallPaperOnCallBack(onCallBack);
         wallPaperBinding.wallpaperRv.setAdapter(wallPaperAdapter);
@@ -259,11 +292,11 @@ public class WallPaperActivity extends BaseActivity {
                 public void run() {
                     CopyDrawableToSd(drawable);
 //                    CopyResIdToSd(BlurImageView.BoxBlurFilter(WallPaperActivity.this, resId));
-                    if (new File(Contants.WALLPAPER_MAIN).exists())
-                        MyApplication.mainDrawable = new BitmapDrawable(BitmapFactory.decodeFile(Contants.WALLPAPER_MAIN));
+//                    if (new File(Contants.WALLPAPER_MAIN).exists())
+//                        MyApplication.mainDrawable = new BitmapDrawable(BitmapFactory.decodeFile(Contants.WALLPAPER_MAIN));
 //                    if (new File(Contants.WALLPAPER_OTHER).exists())
 //                        MyApplication.otherDrawable = new BitmapDrawable(BitmapFactory.decodeFile(Contants.WALLPAPER_OTHER));
-                    handler.sendEmptyMessage(Contants.DISSMISS_DIALOG);
+//                    handler.sendEmptyMessage(Contants.DISSMISS_DIALOG);
                 }
             });
         }
@@ -333,6 +366,8 @@ public class WallPaperActivity extends BaseActivity {
             bitmap = narrowBitmap(bitmap);
         }
         //缩小完毕
+        MyApplication.mainDrawable = new BitmapDrawable(bitmap);
+        handler.sendEmptyMessage(Contants.DISSMISS_DIALOG);
         File dir = new File(Contants.WALLPAPER_DIR);
         if (!dir.exists()) dir.mkdirs();
         File file1 = new File(Contants.WALLPAPER_MAIN);
@@ -598,6 +633,20 @@ public class WallPaperActivity extends BaseActivity {
         } else {
             return super.onKeyDown(keyCode, event);
         }
+    }
+
+    private void showLottieLoading() {
+        // 创建 Dialog
+        loadingDialog = new Dialog(this);
+        loadingDialog.setContentView(R.layout.wapper_load);
+        loadingDialog.setCancelable(false); // 禁用点击外部关闭
+        loadingDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT)); // 透明背景
+//        LottieAnimationView lottieLoadingView = loadingDialog.findViewById(R.id.loadingAnimation);
+//        if (lottieLoadingView != null) {
+//            lottieLoadingView.setSpeed(2.0f); // 设置为 2 倍速播放
+//        }
+        // 显示 Dialog
+        loadingDialog.show();
     }
 
 }

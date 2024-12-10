@@ -38,9 +38,9 @@
     <string name="unpaired">ペアリング解除</string>
     <string name="connecting">接続中…</string>
     <string name="connected">接続済み</string>
-    <string name="disconnected">保存</string>
+    <string name="disconnected">接続解除</string>
     <string name="not_connected">未接続</string>
-    <string name="disconnecting">保存中…</string>
+    <string name="disconnecting">切断中…</string>
     <string name="developer_open_hint">開発者モードが有効になりました</string>
     <string name="memory_info">%1$s(利用可能)/%2$s(合計)</string>
     <string name="project_mode_1">正面投影</string>
@@ -53,12 +53,12 @@
     <string name="hour12">1:00|午後</string>
     <string name="hour24">13:00</string>
     <string name="auto_time_hint">自動時間を使用中、手動で変更できません</string>
-    <string name="fine_minutes">5分钟</string>
-    <string name="ten_minutes">10分钟</string>
-    <string name="twenty_minutes">20分钟</string>
-    <string name="an_hour">1時間钟</string>
-    <string name="two_hours">2時間钟</string>
-    <string name="three_hours">3時間钟</string>
+    <string name="fine_minutes">5分</string>
+    <string name="ten_minutes">10分</string>
+    <string name="twenty_minutes">20分</string>
+    <string name="an_hour">1時間</string>
+    <string name="two_hours">2時間</string>
+    <string name="three_hours">3時間</string>
     <string name="off">オフ</string>
     <string name="reset_factory_msg">ユーザー操作、アプリ設定、システム設定などを初期化します。</string>
     <string name="short_max_tips">ショートカットアプリが満杯です</string>
@@ -276,4 +276,5 @@
     <string name="_4_3">4:3</string>
     <string name="screen_zoom">画面ズーム</string>
     <string name="account">アカウント</string>
+    <string name="wallpper_load">背景リソースを読み込んでいます...</string>
 </resources>

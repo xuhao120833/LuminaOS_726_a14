@@ -275,6 +275,8 @@
     <string name="_16_10">16:10</string>
     <string name="_4_3">4:3</string>
     <string name="screen_zoom">Phóng to màn hình</string>
+    <string name="account">Tài khoản</string>
+    <string name="wallpper_load">Đang tải tài nguyên nền...</string>
 </resources>
 
 

@@ -276,6 +276,7 @@
     <string name="_4_3">4:3</string>
     <string name="screen_zoom">تكبير الشاشة</string>
     <string name="account">حساب</string>
+    <string name="wallpper_load">يتم تحميل موارد الخلفية...</string>
 </resources>
 
 

@@ -276,5 +276,6 @@
     <string name="_4_3">4:3</string>
     <string name="screen_zoom">Масштабування екрана</string>
     <string name="account">Обліковий запис</string>
+    <string name="wallpper_load">Завантаження фонових ресурсів...</string>
 </resources>
 

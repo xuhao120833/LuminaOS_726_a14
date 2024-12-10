@@ -276,4 +276,5 @@
 	<string name="_4_3">4:3</string>
 	<string name="screen_zoom">Zoom de pantalla</string>
 	<string name="account">Cuenta</string>
+	<string name="wallpper_load">Cargando recursos de fondo...</string>
 </resources>

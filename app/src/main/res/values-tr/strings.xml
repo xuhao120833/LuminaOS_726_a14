@@ -276,5 +276,6 @@
     <string name="_4_3">4:3</string>
     <string name="screen_zoom">Ekran yakınlaştırma</string>
     <string name="account">Hesap</string>
+    <string name="wallpper_load">Arka plan kaynakları yükleniyor...</string>
 </resources>
 
