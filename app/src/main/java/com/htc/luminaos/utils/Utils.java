@@ -1,6 +1,9 @@
 package com.htc.luminaos.utils;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.util.Log;
 
 import com.htc.luminaos.R;
 import com.htc.luminaos.entry.SpecialApps;
@@ -36,5 +39,29 @@ public class Utils {
             R.drawable.background12,
             R.drawable.background13,
     };
+
+    /**
+     * 打印 Intent 的 Extras 信息
+     *
+     * @param intent 需要打印的 Intent
+     * @param tag    用于日志的 TAG
+     */
+    public static void logIntentExtras(Intent intent, String tag) {
+        if (intent == null) {
+            Log.d(tag, "logIntentExtras Intent is null");
+            return;
+        }
+
+        Bundle extras = intent.getExtras();
+        if (extras != null) {
+            Log.d(tag, "logIntentExtras Intent extras:");
+            for (String key : extras.keySet()) {
+                Object value = extras.get(key);
+                Log.d(tag, "[" + key + "] = " + value);
+            }
+        } else {
+            Log.d(tag, "logIntentExtras No extras in the Intent");
+        }
+    }
 
 }

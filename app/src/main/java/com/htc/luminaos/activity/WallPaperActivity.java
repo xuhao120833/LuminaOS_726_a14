@@ -144,6 +144,7 @@ public class WallPaperActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(TAG, " 执行onCreate");
         super.onCreate(savedInstanceState);
         wallPaperBinding = ActivityWallpaperCustomBinding.inflate(LayoutInflater.from(this));
         setContentView(wallPaperBinding.getRoot());
@@ -165,6 +166,7 @@ public class WallPaperActivity extends BaseActivity {
     }
 
     private void observeLiveData() {
+        Log.d(TAG, " 执行observeLiveData");
         myApplication = (MyApplication) getApplication();
         if (myApplication != null) {
 //            MutableLiveData<Boolean> mutableLiveData = myApplication.getIsDataInitialized();
@@ -190,6 +192,7 @@ public class WallPaperActivity extends BaseActivity {
     }
 
     private void initView() {
+        Log.d(TAG, " initView");
 //        wallPaperBinding.localItem.setOnClickListener(this);
 //        wallPaperBinding.usbItem.setOnClickListener(this);
 //        GridLayoutManager layoutManager = new GridLayoutManager(this,6);//原生是6列
@@ -267,6 +270,7 @@ public class WallPaperActivity extends BaseActivity {
     }
 
     private void loadLocal() {
+        Log.d(TAG," 执行loadLocal");
         WallPaperAdapter wallPaperAdapter = new WallPaperAdapter(getApplicationContext(), Utils.drawables, handler, wallPaperBinding.wallpaperRv);
 //        wallPaperAdapter.setHasStableIds(true);
         wallPaperAdapter.setWallPaperOnCallBack(onCallBack);
@@ -583,6 +587,8 @@ public class WallPaperActivity extends BaseActivity {
             Utils.drawables.add(drawable);
 //            Utils.FILE_PATH = path;
 //            Utils.drawables.add(-1);
+        }else {
+            Log.d(TAG, " getPath bundle == null ");
         }
     }
 

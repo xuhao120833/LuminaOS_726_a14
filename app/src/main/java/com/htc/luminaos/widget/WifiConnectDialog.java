@@ -13,6 +13,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiConfiguration;
+import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -40,6 +41,7 @@ import androidx.annotation.NonNull;
 
 import com.htc.luminaos.R;
 import com.htc.luminaos.databinding.WifiConnectDialogBinding;
+import com.htc.luminaos.utils.Utils;
 
 import java.util.List;
 import java.util.concurrent.Executor;
@@ -52,6 +54,7 @@ import java.util.concurrent.Executors;
  */
 public class WifiConnectDialog extends BaseDialog implements View.OnClickListener {
     private Context mContext;
+    private static String TAG = "WifiConnectDialog";
     private View parent;
     private WifiConnectDialogBinding wifiConnectDialogBinding;
     private String wifi_name = "unknow";
@@ -86,7 +89,7 @@ public class WifiConnectDialog extends BaseDialog implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
-        Log.d("hzj", "onclick");
+        Log.d("xuhao", "onclick");
         switch (v.getId()) {
             case R.id.enter:
                 if (wifiConnectDialogBinding.etPassword.getText().toString().isEmpty() ||
@@ -217,11 +220,17 @@ public class WifiConnectDialog extends BaseDialog implements View.OnClickListene
     BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
+            if(isInitialStickyBroadcast()){//把注册完就发送的粘性(初始状态)广播过滤掉。
+                return;
+            }
             String action = intent.getAction();
             if (WifiManager.SUPPLICANT_STATE_CHANGED_ACTION.equals(action)) {
+                Log.d(TAG, " 收到SUPPLICANT_STATE_CHANGED_ACTION");
                 //请求连接的状态发生改变，（已经加入到一个接入点）
                 int supl_error = intent.getIntExtra(WifiManager.EXTRA_SUPPLICANT_ERROR, -1);
                 if (supl_error == WifiManager.ERROR_AUTHENTICATING) {
+                    Utils.logIntentExtras(intent,TAG);
+                    Log.d(TAG, " 收到SUPPLICANT_STATE_CHANGED_ACTION,执行passwordErrorDialog " + supl_error);
                     if (passwordErrorDialog == null) {
                         passwordErrorDialog = new PasswordErrorDialog(mContext, R.style.DialogTheme);
                     }
@@ -374,12 +383,14 @@ public class WifiConnectDialog extends BaseDialog implements View.OnClickListene
     }
 
     private void showErrorDialog() {
+        Log.d(TAG, " showErrorDialog");
         AlertDialog dialog = new AlertDialog.Builder(mContext)
                 .setTitle(mContext.getString(R.string.hint)) // 对话框标题
                 .setMessage(mContext.getString(R.string.Authentication_error)) // 对话框内容
                 .setPositiveButton(mContext.getString(R.string.enter), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        Log.d(TAG, " showErrorDialog onClick dialog.dismiss()");
                         dialog.dismiss(); // 点击“确定”按钮时，关闭对话框
                     }
                 })
@@ -390,6 +401,7 @@ public class WifiConnectDialog extends BaseDialog implements View.OnClickListene
             @Override
             public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
                 if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+                    Log.d(TAG, " showErrorDialog KEYCODE_BACK dialog.dismiss()");
                     dialog.dismiss(); // 按下返回键时关闭对话框
                     return true; // 表示已经处理了返回键事件
                 }
@@ -398,6 +410,5 @@ public class WifiConnectDialog extends BaseDialog implements View.OnClickListene
         });
 
         dialog.show();
-
     }
 }
