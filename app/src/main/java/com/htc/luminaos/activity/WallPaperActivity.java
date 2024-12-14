@@ -122,7 +122,7 @@ public class WallPaperActivity extends BaseActivity {
     BroadcastReceiver mediaReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            LogUtils.d("hzj", "aciton " + intent.getAction());
+            LogUtils.d("xuhao", "aciton " + intent.getAction());
             if (Intent.ACTION_MEDIA_MOUNTED.equals(intent.getAction())
                     || Intent.ACTION_MEDIA_UNMOUNTED.equals(intent.getAction())
                     || Intent.ACTION_MEDIA_BAD_REMOVAL.equals(intent.getAction())

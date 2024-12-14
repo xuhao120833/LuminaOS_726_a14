@@ -50,6 +50,9 @@ public class Config {
     public boolean blue = false;
     public boolean displayVoiceMode = false;
 
+    //上电信源
+    public boolean bootSource = true;
+
     //wifi DHCP、静态IP切换
     public boolean wifiIpSettings = true;
 

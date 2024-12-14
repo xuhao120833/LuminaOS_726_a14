@@ -238,7 +238,6 @@ public class WifiConnectDialog extends BaseDialog implements View.OnClickListene
                         showErrorDialog();
 //                        passwordErrorDialog.show();
                 }
-
             } else if (WifiManager.NETWORK_STATE_CHANGED_ACTION.equals(action)) {
                 NetworkInfo networkInfo = intent.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
 
