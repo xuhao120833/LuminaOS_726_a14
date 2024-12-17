@@ -1,0 +1,49 @@
+<!-- res/layout/dialog_source.xml -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/x_450"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/transpant"
+    android:gravity="center"
+    android:id="@+id/dialog_layout">
+
+<!--    <com.airbnb.lottie.LottieAnimationView-->
+<!--        android:id="@+id/lottie_background"-->
+<!--        android:layout_width="@dimen/x_450"-->
+<!--        android:layout_height="@dimen/x_300"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:scaleType="fitXY"-->
+<!--        app:lottie_autoPlay="true"-->
+<!--        app:lottie_loop="true"-->
+<!--        app:lottie_rawRes="@raw/source_bg" />-->
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="@dimen/x_450"
+        android:layout_height="@dimen/x_300"
+        android:layout_gravity="center"
+        app:cardCornerRadius="@dimen/x_12"
+        app:cardElevation="0dp"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardUseCompatPadding="true">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/lottie_background"
+            android:layout_width="@dimen/x_450"
+            android:layout_height="@dimen/x_300"
+            android:scaleType="fitXY"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/source_bg" />
+    </androidx.cardview.widget.CardView>
+
+
+    <LinearLayout
+        android:id="@+id/source_layout"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_width="@dimen/x_400"
+        android:layout_height="wrap_content">
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -40,6 +40,12 @@ public class Utils {
             R.drawable.background13,
     };
 
+    //实际启动信源用到的名称 HDMI1,HDMI2,CVBS1
+    public static String[] sourceList = null;
+
+    //用来显示的名称 HDMI,HDMI2,AV
+    public static String[] sourceListTitle = null;
+
     /**
      * 打印 Intent 的 Extras 信息
      *

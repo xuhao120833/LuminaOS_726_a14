@@ -53,6 +53,9 @@ public class Config {
     //上电信源
     public boolean bootSource = true;
 
+    public  String sourceList ="HDMI1";
+    public  String sourceListTitle ="HDMI";
+
     //wifi DHCP、静态IP切换
     public boolean wifiIpSettings = true;
 

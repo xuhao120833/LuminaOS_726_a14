@@ -111,6 +111,9 @@ public class MyApplication extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        Utils.sourceList = config.sourceList.split(",");
+        Utils.sourceListTitle = config.sourceListTitle.split(",");
+        Log.d(TAG,"Utils.sourceList  sourceListTitle "+Utils.sourceList.length+" "+Utils.sourceListTitle.length);
         //读取背景的默认图片
         SharedPreferences sharedPreferences = ShareUtil.getInstans(getApplicationContext());
         SharedPreferences.Editor editor = sharedPreferences.edit();
