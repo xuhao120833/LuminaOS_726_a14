@@ -277,5 +277,6 @@
     <string name="screen_zoom">Ekran yakınlaştırma</string>
     <string name="account">Hesap</string>
     <string name="wallpper_load">Arka plan kaynakları yükleniyor...</string>
+    <string name="choose_source">Sinyal kaynağını seç</string>
 </resources>
 

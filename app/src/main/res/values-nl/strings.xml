@@ -277,4 +277,5 @@
     <string name="screen_zoom">Schermzoom</string>
     <string name="account">Account</string>
     <string name="wallpper_load">Achtergrondbronnen worden geladen...</string>
+    <string name="choose_source">Signaalbron selecteren</string>
 </resources>

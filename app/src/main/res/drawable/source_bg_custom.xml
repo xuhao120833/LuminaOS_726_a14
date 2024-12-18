@@ -4,9 +4,8 @@
     <item android:state_focused="true">
 
         <shape>
-            <stroke android:width="@dimen/x_3" android:color="#FFFFFF" />
-            <solid android:color="#80000000" /> <!-- 黑色透明度50% -->
-            <corners android:radius="@dimen/y_10" /> <!-- 圆角半径 -->
+            <solid android:color="#048cff" /> <!-- 黑色透明度50% -->
+            <corners android:radius="@dimen/y_15" /> <!-- 圆角半径 -->
         </shape>
 
     </item>
@@ -14,8 +13,8 @@
     <!-- 正常状态 -->
     <item>
         <shape>
-            <solid android:color="#80000000" /> <!-- 黑色透明度50% -->
-            <corners android:radius="@dimen/y_10" /> <!-- 圆角半径 -->
+            <solid android:color="#33000000" /> <!-- 黑色透明度50% -->
+            <corners android:radius="@dimen/y_15" /> <!-- 圆角半径 -->
         </shape>
     </item>
 </selector>

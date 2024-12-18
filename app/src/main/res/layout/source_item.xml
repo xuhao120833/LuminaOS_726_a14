@@ -1,6 +1,6 @@
 <!-- res/layout/dialog_source.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="@dimen/x_400"
+    android:layout_width="@dimen/x_300"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:id="@+id/source_item"
@@ -8,12 +8,15 @@
 
     <TextView
         android:id="@+id/source_title"
-        android:layout_width="@dimen/x_400"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/x_300"
+        android:layout_height="@dimen/x_46"
         android:textColor="@color/white"
-        android:textSize="@dimen/x_40"
+        android:textSize="@dimen/x_24"
         android:text="HDMI"
         android:gravity="center"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:layout_gravity="center"
         />
 
 </LinearLayout>

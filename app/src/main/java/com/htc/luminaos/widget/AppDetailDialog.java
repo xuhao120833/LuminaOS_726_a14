@@ -125,7 +125,20 @@ public class AppDetailDialog extends Dialog implements View.OnClickListener {
             //params.x = parent.getWidth();
             dialogWindow.setGravity(Gravity.CENTER);// 设置对话框位置
             dialogWindow.setAttributes(params);
+            setSelect();
         }
+    }
+
+    private void setSelect() {
+        appDetailLayoutBinding.appName.setSelected(true);
+        appDetailLayoutBinding.appsVersion.setSelected(true);
+        appDetailLayoutBinding.appVersionTv.setSelected(true);
+        appDetailLayoutBinding.appSize.setSelected(true);
+        appDetailLayoutBinding.appSizeTv.setSelected(true);
+        appDetailLayoutBinding.appCache.setSelected(true);
+        appDetailLayoutBinding.appCacheTv.setSelected(true);
+        appDetailLayoutBinding.clearCache.setSelected(true);
+        appDetailLayoutBinding.uninstall.setSelected(true);
     }
 
     public void  setData(ApplicationInfo info){

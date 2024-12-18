@@ -277,4 +277,5 @@
 	<string name="screen_zoom">Zoom de pantalla</string>
 	<string name="account">Cuenta</string>
 	<string name="wallpper_load">Cargando recursos de fondo...</string>
+	<string name="choose_source">Seleccionar fuente de señal</string>
 </resources>

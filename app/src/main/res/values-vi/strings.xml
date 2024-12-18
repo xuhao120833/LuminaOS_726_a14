@@ -277,6 +277,7 @@
     <string name="screen_zoom">Phóng to màn hình</string>
     <string name="account">Tài khoản</string>
     <string name="wallpper_load">Đang tải tài nguyên nền...</string>
+    <string name="choose_source">Chọn nguồn tín hiệu</string>
 </resources>
 
 

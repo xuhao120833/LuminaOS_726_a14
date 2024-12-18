@@ -31,8 +31,11 @@ import com.htc.luminaos.widget.CustomLanguageDialog;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 public class LanguageAndKeyboardActivity extends BaseActivity {
     private ActivityLanguageKeyboardBinding languageKeyboardBinding;
@@ -72,24 +75,27 @@ public class LanguageAndKeyboardActivity extends BaseActivity {
     }
 
 
-    private void initView(){
+    private void initView() {
         languageKeyboardBinding.rlLanguage.setOnClickListener(this);
         languageKeyboardBinding.rlLanguage.setOnHoverListener(this);
         languageKeyboardBinding.rlKeyboard.setOnClickListener(this);
         languageKeyboardBinding.rlKeyboard.setOnHoverListener(this);
         languageKeyboardBinding.rlKeyboardSetting.setOnClickListener(this);
         languageKeyboardBinding.rlKeyboardSetting.setOnHoverListener(this);
+
+        languageKeyboardBinding.languageTv.setSelected(true);
+        languageKeyboardBinding.keyboardTv.setSelected(true);
     }
-    
+
     @SuppressLint("SetTextI18n")
-    private void initData(){
+    private void initData() {
         languageKeyboardBinding.keyboardTv.setText(getKeyBoardDefault());
-        Log.d(TAG," initData默认输入法 "+getKeyBoardDefault());
+        Log.d(TAG, " initData默认输入法 " + getKeyBoardDefault());
         Locale currentLocale = Locale.getDefault();
         // 获取当前语言的显示名称（本地化）
         String displayLanguage = currentLocale.getDisplayLanguage(currentLocale);
         String displayCountry = currentLocale.getDisplayCountry(currentLocale);
-        languageKeyboardBinding.languageTv.setText(displayCountry+" "+displayLanguage);
+        languageKeyboardBinding.languageTv.setText(displayCountry + " " + displayLanguage);
 
         inputMethodObserver = new ContentObserver(new Handler()) {
             @Override
@@ -97,7 +103,7 @@ public class LanguageAndKeyboardActivity extends BaseActivity {
                 super.onChange(selfChange);
                 // 当输入法设置变化时，更新当前输入法
                 String currentInputMethod = getKeyBoardDefault();
-                Log.d(TAG," inputMethodObserver默认输入法 "+getKeyBoardDefault());
+                Log.d(TAG, " inputMethodObserver默认输入法 " + getKeyBoardDefault());
                 languageKeyboardBinding.keyboardTv.setText(currentInputMethod);
             }
         };
@@ -111,19 +117,19 @@ public class LanguageAndKeyboardActivity extends BaseActivity {
     private void loadDefault() {
         String language = getCurrentLauguage();
         if (!TextUtils.isEmpty(language)) {
-            if (language.contains("[XB]")){
+            if (language.contains("[XB]")) {
                 //current_language_tv.setText("العربية  (XB)");
 
-            }else if (language.contains("[XA]")){
+            } else if (language.contains("[XA]")) {
 
                 //current_language_tv.setText("English (XA)");
-            }else {
+            } else {
 
                 //current_language_tv.setText(language);
             }
         }
         String inputMethod = getKeyBoardDefault();
-        if (inputMethod != null ) {
+        if (inputMethod != null) {
             languageKeyboardBinding.keyboardTv.setText(inputMethod);
         }
 
@@ -138,7 +144,7 @@ public class LanguageAndKeyboardActivity extends BaseActivity {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.rl_language:
                 if (mLocales == null) {
                     buildLangListItem();
@@ -169,72 +175,126 @@ public class LanguageAndKeyboardActivity extends BaseActivity {
         Arrays.sort(locales);
         final int origSize = locales.length;
         Language[] preprocess = new Language[origSize];
-        boolean filter = SystemProperties.get("persist.sys.Channel","pro").equals("D042Q_11_EQ_en");
         int finalSize = 0;
         for (int i = 0; i < origSize; i++) {
             String s = locales[i];
-            int len = s.length();
-            if (len == 5) {
-                String language = s.substring(0, 2);
-                String country = s.substring(3, 5);
-                if (filter && language.equals("iw"))
-                    continue;
+            Log.d(TAG, " buildLangListItem locales[i] " + locales[i] + " " + locales.length);
+            String language = "";
+            String country = "";
+            Locale l = null;
+            // 检查是否包含国家码
+            if(s.equals("zh-CN"))//中国只处理zh、zh-HK、zh-TW三种情况
+                continue;
+            String[] parts = s.split("-");
+            if (parts.length == 2) {
+                // 包括国家码的情况
+                language = parts[0];
+                country = parts[1];
+                l = new Locale(language, country);
+            } else {
+                // 没有国家码的情况
+                language = s;
+                l = new Locale(language);
+            }
 
-                Locale l = new Locale(language, country);
+            if (finalSize == 0) {
+                preprocess[finalSize++] = new Language(toTitleCase(l.getDisplayLanguage(l)), l);
+            } else {
+                if (preprocess[finalSize - 1].getLocale().getLanguage().equals(language)
+                        && (language.equals("zh") || language.equals("en"))) {  //只有中文、英文区分具体的国家
+                    Log.d(TAG, " 语言列表 language " + language + " s " + s + " l.getDisplayLanguage(l)" + l.getDisplayLanguage(l));
+                    preprocess[finalSize - 1].setLabel(toTitleCase(getDisplayName(preprocess[finalSize - 1].getLocale())));
+                    preprocess[finalSize++] = new Language(toTitleCase(getDisplayName(l)), l);
+                } else if (preprocess[finalSize - 1].getLocale().getLanguage().equals(language)) {
 
-                if (finalSize == 0) {
-                    preprocess[finalSize++] = new Language(
-                            toTitleCase(l.getDisplayLanguage(l)), l);
                 } else {
-                    if (preprocess[finalSize - 1].getLocale().getLanguage()
-                            .equals(language)) {
-                        preprocess[finalSize - 1]
-                                .setLabel(toTitleCase(getDisplayName(preprocess[finalSize - 1]
-                                        .getLocale())));
-                        preprocess[finalSize++] = new Language(
-                                toTitleCase(getDisplayName(l)), l);
+                    String displayName;
+                    if (s.equals("zz_ZZ")) {
+                        displayName = "Pseudo...";
                     } else {
-                        String displayName;
-                        if (s.equals("zz_ZZ")) {
-                            displayName = "Pseudo...";
-                        } else {
-                            displayName = toTitleCase(l.getDisplayLanguage(l));
-                        }
-                        preprocess[finalSize++] = new Language(displayName, l);
+                        displayName = toTitleCase(l.getDisplayLanguage(l));
                     }
+                    preprocess[finalSize++] = new Language(displayName, l);
                 }
-                // setIconRes(preprocess[finalSize-1]);//Set Icon
             }
         }
         Language mLocales2[] = new Language[finalSize];
         for (int i = 0; i < finalSize; i++) {
-
             mLocales2[i] = preprocess[i];
+            Log.d(TAG, " 语言列表 getLabel " + mLocales2[i].getLabel());
             //阿拉伯语
-            if (mLocales2[i].getLabel().contains("[XB]")){
+            if (mLocales2[i].getLabel().contains("[XB]")) {
                 mLocales2[i].setLabel("العربية  (XB)");
-
             }
-
             //英语（阿拉伯） en_XA
-            if (mLocales2[i].getLabel().contains("[XA]")){
+            if (mLocales2[i].getLabel().contains("[XA]")) {
                 mLocales2[i].setLabel("English (XA)");
             }
-
-            Log.d(TAG," 语言列表 getLabel "+mLocales2[i].getLabel());
         }
         Arrays.sort(mLocales2);
-
-        for(int b =0;b<mLocales2.length;b++) {
-            Log.d(TAG, " 语言列表 排序后 getLabel " + mLocales2[b].getLabel());
+        for (int b = 0; b < mLocales2.length; b++) {
+            Log.d(TAG, " 语言列表 排序后 getLabel " + mLocales2[b].getLabel() + " " + mLocales2.length);
         }
-
         // Arrays.sort(preprocess);
         mLocales = new ArrayList<>(Arrays.asList(mLocales2));
+        Log.d(TAG, " buildLangListItem 最后的列表长度 " + mLocales.size());
     }
 
+//    最全的语言列表 覆盖204个国家
+//    private void buildLangListItem() {
+//        // 获取资源数组（如果有特殊语言列表）
+//        mSpecialLocaleCodes = getResources().getStringArray(R.array.lang_speciale_codes);
+//        mSpecialLocaleNames = getResources().getStringArray(R.array.lang_special_names);
+//        // 获取所有系统支持的完整语言列表
+//        Locale[] systemLocales = Locale.getAvailableLocales();
+//        Arrays.sort(systemLocales, Comparator.comparing(Locale::getLanguage));
+//        List<Language> preprocess = new ArrayList<>();
+//        Set<String> processedLanguages = new HashSet<>();
+//        Log.d(TAG, "语言列表 systemLocales: " + systemLocales.length);
+//        for (Locale locale : systemLocales) {
+//            String languageCode = locale.getLanguage();
+//            String countryCode = locale.getCountry();
+//            Log.d(TAG, "语言列表 languageCode: " + languageCode);
+//            // 检查是否有国家代码并过滤
+//            if (languageCode.isEmpty())
+//                continue;
+//
+//            //去掉重复的
+//            if (processedLanguages.contains(languageCode))
+//                continue;
+//
+//            processedLanguages.add(languageCode);
+//            // 创建 Locale 并处理显示名
+//            String displayName = toTitleCase(locale.getDisplayLanguage(locale));
+//            if (countryCode.isEmpty()) {
+//                // 如果没有国家代码，处理像格鲁吉亚这种纯语言情况
+//                preprocess.add(new Language(displayName, locale));
+//            } else {
+//                preprocess.add(new Language(displayName, locale));
+//            }
+//
+//            // 特殊国家修正，例如 Arabic、English(XA) 相关的自定义标签
+//            if (displayName.contains("[XB]")) {
+//                preprocess.get(preprocess.size() - 1).setLabel("العربية  (XB)");
+//            }
+//            if (displayName.contains("[XA]")) {
+//                preprocess.get(preprocess.size() - 1).setLabel("English (XA)");
+//            }
+//        }
+//        // 排序列表
+//        preprocess.sort((a, b) -> a.getLabel().compareTo(b.getLabel()));
+//        // 转换为最终需要的 List 数据结构
+//        mLocales = new ArrayList<>(preprocess);
+//        Log.d(TAG, "最完整的语言列表长度: " + mLocales.size());
+//        for (Language lang : mLocales) {
+//            Log.d(TAG, "语言列表 getLabel: " + lang.getLabel());
+//        }
+//    }
+
+
     /**
-     *  首字符大写
+     * 首字符大写
+     *
      * @param s
      * @return
      */
@@ -257,7 +317,6 @@ public class LanguageAndKeyboardActivity extends BaseActivity {
 
         return l.getDisplayName(l);
     }
-
 
 
     public String getKeyBoardDefault() {
@@ -290,7 +349,7 @@ public class LanguageAndKeyboardActivity extends BaseActivity {
                 }
             }
             return null;
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -432,5 +491,5 @@ public class LanguageAndKeyboardActivity extends BaseActivity {
             }
             return false;
         }
-    }) ;
+    });
 }

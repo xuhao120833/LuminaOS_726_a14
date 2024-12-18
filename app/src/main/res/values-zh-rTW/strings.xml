@@ -277,4 +277,5 @@
 	<string name="screen_zoom">畫面縮放</string>
 	<string name="account">帳戶</string>
 	<string name="wallpper_load">背景資源加載中...</string>
+	<string name="choose_source">選擇信號源</string>
 </resources>

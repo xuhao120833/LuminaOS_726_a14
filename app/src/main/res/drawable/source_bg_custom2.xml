@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 正常状态 -->
+    <item>
+        <shape>
+            <solid android:color="#ffffff" /> <!-- 黑色透明度50% -->
+            <corners android:radius="@dimen/x_20" /> <!-- 圆角半径 -->
+        </shape>
+    </item>
+</selector>

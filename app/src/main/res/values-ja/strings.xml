@@ -277,4 +277,5 @@
     <string name="screen_zoom">画面ズーム</string>
     <string name="account">アカウント</string>
     <string name="wallpper_load">背景リソースを読み込んでいます...</string>
+    <string name="choose_source">信号源を選択</string>
 </resources>

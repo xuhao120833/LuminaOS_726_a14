@@ -277,6 +277,7 @@
     <string name="screen_zoom">تكبير الشاشة</string>
     <string name="account">حساب</string>
     <string name="wallpper_load">يتم تحميل موارد الخلفية...</string>
+    <string name="choose_source">اختيار مصدر الإشارة</string>
 </resources>
 
 

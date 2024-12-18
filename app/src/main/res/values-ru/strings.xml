@@ -277,5 +277,6 @@
     <string name="screen_zoom">Масштаб экрана</string>
     <string name="account">Аккаунт</string>
     <string name="wallpper_load">Загрузка фоновых ресурсов...</string>
+    <string name="choose_source">Выбрать источник сигнала</string>
 </resources>
 

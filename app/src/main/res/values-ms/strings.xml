@@ -277,4 +277,5 @@
     <string name="screen_zoom">Zum skrin</string>
     <string name="account">Akaun</string>
     <string name="wallpper_load">Memuat sumber latar belakang...</string>
+    <string name="choose_source">Pilih sumber isyarat</string>
 </resources>

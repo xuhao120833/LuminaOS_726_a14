@@ -277,4 +277,5 @@
     <string name="screen_zoom">Perbesaran layar</string>
     <string name="account">Akun</string>
     <string name="wallpper_load">Memuat sumber daya latar belakang...</string>
+    <string name="choose_source">Pilih sumber sinyal</string>
 </resources>

@@ -21,12 +21,14 @@
             android:layout_marginStart="@dimen/x_15"
             android:textColor="@color/black"
             android:textSize="@dimen/x_20"
+            android:singleLine="true"
+            android:ellipsize="marquee"
             android:layout_toEndOf="@id/app_icon"
             />
 
         <LinearLayout
             android:id="@+id/app_version_ll"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/x_500"
             android:layout_height="wrap_content"
             android:layout_below="@id/app_name"
             android:layout_marginTop="@dimen/y_20"
@@ -34,11 +36,14 @@
             android:orientation="horizontal" >
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/apps_version"
+                android:layout_width="@dimen/x_96"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/x_15"
                 android:text="@string/apps_version"
                 android:textColor="@color/black"
+                android:singleLine="true"
+                android:ellipsize="marquee"
                 android:textSize="@dimen/x_23" />
 
             <TextView
@@ -47,23 +52,28 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/x_20"
                 android:textColor="@color/black"
+                android:singleLine="true"
+                android:ellipsize="marquee"
                 android:textSize="@dimen/x_23" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/app_size_ll"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/x_500"
             android:layout_height="wrap_content"
             android:layout_below="@+id/app_version_ll"
             android:padding="@dimen/x_5"
             android:orientation="horizontal" >
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/app_size"
+                android:layout_width="@dimen/x_96"
                 android:layout_height="wrap_content"
                 android:text="@string/app_size"
                 android:textColor="@color/black"
                 android:layout_marginStart="@dimen/x_15"
+                android:singleLine="true"
+                android:ellipsize="marquee"
                 android:textSize="@dimen/x_23" />
 
             <TextView
@@ -72,23 +82,28 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/x_20"
                 android:textColor="@color/black"
+                android:singleLine="true"
+                android:ellipsize="marquee"
                 android:textSize="@dimen/x_23" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/app_cache_ll"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/x_500"
             android:layout_height="wrap_content"
             android:layout_below="@+id/app_size_ll"
             android:padding="@dimen/x_5"
             android:orientation="horizontal" >
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/app_cache"
+                android:layout_width="@dimen/x_96"
                 android:layout_height="wrap_content"
                 android:text="@string/app_cache"
                 android:textColor="@color/black"
                 android:layout_marginStart="@dimen/x_15"
+                android:singleLine="true"
+                android:ellipsize="marquee"
                 android:textSize="@dimen/x_23" />
 
             <TextView
@@ -97,6 +112,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/x_20"
                 android:textColor="@color/black"
+                android:singleLine="true"
+                android:ellipsize="marquee"
                 android:textSize="@dimen/x_23" />
         </LinearLayout>
 
@@ -113,6 +130,8 @@
             android:gravity="center"
             android:layout_marginStart="@dimen/x_30"
             android:layout_marginBottom="@dimen/y_15"
+            android:singleLine="true"
+            android:ellipsize="marquee"
             />
 
 
@@ -129,5 +148,7 @@
             android:gravity="center"
             android:layout_marginBottom="@dimen/y_15"
             android:layout_marginEnd="@dimen/x_30"
+            android:singleLine="true"
+            android:ellipsize="marquee"
             />
 </RelativeLayout>
