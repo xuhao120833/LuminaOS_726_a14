@@ -151,7 +151,7 @@
             android:launchMode="singleTop" />
         <activity
             android:name=".activity.AppsActivity"
-            android:launchMode="singleInstance" />
+             />
         <activity
             android:name=".activity.MainActivity"
             android:exported="true"

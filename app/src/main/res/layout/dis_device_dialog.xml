@@ -26,6 +26,8 @@
         android:textSize="@dimen/x_25"
         android:layout_marginStart="@dimen/x_30"
         android:layout_marginBottom="@dimen/y_30"
+        android:singleLine="true"
+        android:ellipsize="marquee"
         />
 
     <TextView
@@ -59,6 +61,8 @@
         android:textSize="@dimen/x_25"
         android:layout_marginBottom="@dimen/y_30"
         android:layout_marginEnd="@dimen/x_30"
+        android:singleLine="true"
+        android:ellipsize="marquee"
         />
 
 </RelativeLayout>

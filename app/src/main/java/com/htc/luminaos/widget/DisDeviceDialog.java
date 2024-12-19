@@ -123,6 +123,10 @@ public class DisDeviceDialog extends Dialog implements View.OnClickListener {
         disDeviceDialogBinding.cancel.setOnClickListener(this);
         disDeviceDialogBinding.clear.setOnClickListener(this);
 
+        disDeviceDialogBinding.enter.setSelected(true);
+        disDeviceDialogBinding.cancel.setSelected(true);
+        disDeviceDialogBinding.clear.setSelected(true);
+
     }
 
     public void setOnClickCallBack(OnDisDeviceCallBack callback) {

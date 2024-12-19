@@ -110,7 +110,7 @@
         android:background="@drawable/corner_line"
         />
 
-    <ScrollView
+    <com.htc.luminaos.view.CustomScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/line"
@@ -130,7 +130,7 @@
                 android:textColor="@color/white"
                 />
 
-            <com.htc.luminaos.widget.FocusKeepRecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="@dimen/x_1080"
                 android:layout_height="wrap_content"
                 android:id="@+id/pair_rv"
@@ -154,7 +154,7 @@
                 android:layout_below="@id/pair_rv"
                 />
 
-            <com.htc.luminaos.widget.FocusKeepRecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="@dimen/x_1080"
                 android:layout_height="wrap_content"
                 android:id="@+id/available_rv"
@@ -166,7 +166,7 @@
                 />
 
         </RelativeLayout>
-    </ScrollView>
+    </com.htc.luminaos.view.CustomScrollView>
 
 
 </RelativeLayout>
