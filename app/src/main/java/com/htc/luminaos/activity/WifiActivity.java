@@ -41,7 +41,7 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class WifiActivity extends BaseActivity  implements WifiEnabledReceiver.WifiEnabledCallBack, WifiChanagerReceiver.WifiChanagerCallBack{
+public class WifiActivity extends BaseActivity implements WifiEnabledReceiver.WifiEnabledCallBack, WifiChanagerReceiver.WifiChanagerCallBack {
 
     private ActivityWifiBinding wifiBinding;
 
@@ -60,14 +60,14 @@ public class WifiActivity extends BaseActivity  implements WifiEnabledReceiver.W
     private Handler handler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
-            if (msg.what ==1){
-                List<ScanResult> newWifiList =(List<ScanResult>) msg.obj;
+            if (msg.what == 1) {
+                List<ScanResult> newWifiList = (List<ScanResult>) msg.obj;
 
                 if (wifiFoundAdapter == null) {
                     wifiFoundAdapter = new WifiFoundAdapter(newWifiList, WifiActivity.this);
                     wifiFoundAdapter.setHasStableIds(true);
                     wifiBinding.wifiRv.addItemDecoration(new SpacesItemDecoration(0,
-                            0,SpacesItemDecoration.px2dp(5),0));
+                            0, SpacesItemDecoration.px2dp(5), 0));
                     wifiBinding.wifiRv.setAdapter(wifiFoundAdapter);
                 } else {
                     wifiFoundAdapter.updateList(newWifiList);
@@ -93,7 +93,7 @@ public class WifiActivity extends BaseActivity  implements WifiEnabledReceiver.W
         initData();
     }
 
-    private void initView(){
+    private void initView() {
         wifiBinding.rlWifiSwitch.setOnClickListener(this);
         wifiBinding.rlAddNetwork.setOnClickListener(this);
         wifiBinding.rlIpSettings.setOnClickListener(this);
@@ -105,7 +105,7 @@ public class WifiActivity extends BaseActivity  implements WifiEnabledReceiver.W
         wifiBinding.rlRefreshNetwork.setOnHoverListener(this);
         wifiBinding.wifiSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView,final boolean isChecked) {
+            public void onCheckedChanged(CompoundButton buttonView, final boolean isChecked) {
                 singer.execute(new Runnable() {
                     @Override
                     public void run() {
@@ -126,17 +126,17 @@ public class WifiActivity extends BaseActivity  implements WifiEnabledReceiver.W
         wifiBinding.rlIpSettings.setVisibility(MyApplication.config.wifiIpSettings ? View.VISIBLE : View.GONE);
     }
 
-    private void initData(){
+    private void initData() {
         try {
             if (mWifiManager == null)
                 mWifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
-            wifiBinding.wifiSwitch.setChecked(mWifiManager.isWifiEnabled());
+                wifiBinding.wifiSwitch.setChecked(mWifiManager.isWifiEnabled());
             if (mWifiManager.isWifiEnabled()) {
                 mWifiManager.startScan();
                 singer.execute(RefreshRunnable);
             }
-            mWifiManager.reconnect();
-        }catch (Exception e) {
+//            mWifiManager.reconnect();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -144,13 +144,13 @@ public class WifiActivity extends BaseActivity  implements WifiEnabledReceiver.W
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.rl_wifi_switch:
             case R.id.wifi_switch:
                 wifiBinding.wifiSwitch.setChecked(!wifiBinding.wifiSwitch.isChecked());
                 break;
             case R.id.rl_add_network:
-                AddNetWorkDialog addNetWorkDialog = new AddNetWorkDialog(this,R.style.DialogTheme);
+                AddNetWorkDialog addNetWorkDialog = new AddNetWorkDialog(this, R.style.DialogTheme);
                 addNetWorkDialog.show();
                 break;
             case R.id.rl_refresh_network:
@@ -202,11 +202,11 @@ public class WifiActivity extends BaseActivity  implements WifiEnabledReceiver.W
         registerReceiver(chanagerReceiver, wifichanager);
     }
 
-    private void destroyReceiver(){
-        if (enabledReceiver!=null){
+    private void destroyReceiver() {
+        if (enabledReceiver != null) {
             unregisterReceiver(enabledReceiver);
         }
-        if (chanagerReceiver!=null){
+        if (chanagerReceiver != null) {
             unregisterReceiver(chanagerReceiver);
         }
     }
@@ -216,7 +216,7 @@ public class WifiActivity extends BaseActivity  implements WifiEnabledReceiver.W
             wifiBinding.wifiRv.setVisibility(View.VISIBLE);
         } else {
             wifiBinding.wifiRv.setVisibility(View.GONE);
-            if (wifiFoundAdapter!=null){
+            if (wifiFoundAdapter != null) {
                 List<ScanResult> newWifiList = new ArrayList<>();
                 wifiFoundAdapter.updateList(newWifiList);
                 wifiFoundAdapter.notifyDataSetChanged();
@@ -227,15 +227,13 @@ public class WifiActivity extends BaseActivity  implements WifiEnabledReceiver.W
     private synchronized void refreshWifiList() {
         if (mWifiManager == null)
             mWifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
-
         List<ScanResult> newWifiList = new ArrayList<>();
         List<ScanResult> wifiList = mWifiManager.getScanResults();
         if (wifiList == null)
             return;
-
         boolean isAdd;
-        Log.d("hzj", "wifiList.size() " + wifiList.size());
-        if (wifiList.size()>0) {
+        Log.d("xuhao", "wifiList.size() " + wifiList.size());
+        if (wifiList.size() > 0) {
             for (int i = 0; i < wifiList.size(); i++) {
                 isAdd = true;
                 for (int j = 0; j < newWifiList.size(); j++) {
@@ -270,10 +268,8 @@ public class WifiActivity extends BaseActivity  implements WifiEnabledReceiver.W
         }
         List<WifiConfiguration> configs = mWifiManager.getConfiguredNetworks();
         if (configs != null && configs.size() > 0) {
-
             for (int i = 0; i < configs.size(); i++) {
                 WifiConfiguration wifiConfiguration = configs.get(i);
-
                 String configSSID = wifiConfiguration.SSID.replace("\"", "");
                 if (!TextUtils.isEmpty(configSSID)) {
                     boolean exitflag = false;
@@ -294,18 +290,18 @@ public class WifiActivity extends BaseActivity  implements WifiEnabledReceiver.W
                             ctor.setAccessible(true);
                             ScanResult sr = ctor.newInstance(str);
                             sr.SSID = configSSID;
-                            String secure = (String) ShareUtil.get(WifiActivity.this,configSSID,"");
-                            if (!"".equals(secure)){
-                                sr.capabilities =secure;
-                            } else if (wifiConfiguration.allowedKeyManagement.get(WifiConfiguration.KeyMgmt.NONE)){
+                            String secure = (String) ShareUtil.get(WifiActivity.this, configSSID, "");
+                            if (!"".equals(secure)) {
+                                sr.capabilities = secure;
+                            } else if (wifiConfiguration.allowedKeyManagement.get(WifiConfiguration.KeyMgmt.NONE)) {
                                 sr.capabilities = "NONE";
-                            }else if(wifiConfiguration.allowedKeyManagement.get(WifiConfiguration.KeyMgmt.WPA_PSK)){
-                                sr.capabilities ="WPA-PSK";
-                            }else if(wifiConfiguration.allowedKeyManagement.get(WifiConfiguration.KeyMgmt.WPA2_PSK)){
-                                sr.capabilities ="WPA2-PSK";
-                            }else if(wifiConfiguration.allowedKeyManagement.get(WifiConfiguration.KeyMgmt.WPA_EAP)){
-                                sr.capabilities ="WPA-EAP";
-                            }else {
+                            } else if (wifiConfiguration.allowedKeyManagement.get(WifiConfiguration.KeyMgmt.WPA_PSK)) {
+                                sr.capabilities = "WPA-PSK";
+                            } else if (wifiConfiguration.allowedKeyManagement.get(WifiConfiguration.KeyMgmt.WPA2_PSK)) {
+                                sr.capabilities = "WPA2-PSK";
+                            } else if (wifiConfiguration.allowedKeyManagement.get(WifiConfiguration.KeyMgmt.WPA_EAP)) {
+                                sr.capabilities = "WPA-EAP";
+                            } else {
                                 sr.capabilities = "NONE";
                             }
                             sr.level = -65;
@@ -334,11 +330,10 @@ public class WifiActivity extends BaseActivity  implements WifiEnabledReceiver.W
             }
         }
         Message message = handler.obtainMessage();
-        message.what =1;
+        message.what = 1;
         message.obj = newWifiList;
         handler.sendMessage(message);
     }
-
 
     @Override
     public void refreshWifi() {
@@ -347,16 +342,17 @@ public class WifiActivity extends BaseActivity  implements WifiEnabledReceiver.W
 
 
     boolean connectingFlag = false;
+
     @Override
     public void wifiStatueChange(int state) {
         Log.d("state", String.valueOf(state));
-        if (state==2 && connectingFlag){
+        if (state == 2 && connectingFlag) {
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     inferConnectInfoLogin(WifiActivity.this);
                 }
-            },1000);
+            }, 1000);
 
         }
         connectingFlag = state != 0 && state != 2;
@@ -386,7 +382,7 @@ public class WifiActivity extends BaseActivity  implements WifiEnabledReceiver.W
     }
 
     private void startanim(boolean startornot) {
-        if(!startornot) {
+        if (!startornot) {
             wifiBinding.refreshNet.setVisibility(View.GONE);
             wifiBinding.refreshNet.clearAnimation();
             return;
@@ -400,10 +396,12 @@ public class WifiActivity extends BaseActivity  implements WifiEnabledReceiver.W
             public void onAnimationStart(Animation arg0) {
                 // TODO Auto-generated method stub
             }
+
             @Override
             public void onAnimationRepeat(Animation arg0) {
                 // TODO Auto-generated method stub
             }
+
             @Override
             public void onAnimationEnd(Animation arg0) {
                 // TODO Auto-generated method stub
@@ -414,7 +412,7 @@ public class WifiActivity extends BaseActivity  implements WifiEnabledReceiver.W
         wifiBinding.refreshNet.startAnimation(anim);
     }
 
-    public static boolean inferConnectInfoLogin(Context context){
+    public static boolean inferConnectInfoLogin(Context context) {
         NetworkCapabilities wifiNetworkCapabilities = getActiveWifiNetworkCapabilities(context);
         if (wifiNetworkCapabilities != null) {
             if (wifiNetworkCapabilities.hasCapability(
@@ -442,7 +440,7 @@ public class WifiActivity extends BaseActivity  implements WifiEnabledReceiver.W
 
     @Nullable
     public static NetworkCapabilities getActiveWifiNetworkCapabilities(Context context) {
-        ConnectivityManager mConnectivityManager =(ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager mConnectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         Network[] networks = mConnectivityManager.getAllNetworks();
         for (Network network : networks) {
             NetworkInfo networkInfo = mConnectivityManager.getNetworkInfo(network);

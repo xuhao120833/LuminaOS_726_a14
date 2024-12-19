@@ -157,62 +157,62 @@ public class NetWorkUtils {
 		return (paramInt & 0xFF) + "." + (0xFF & paramInt >> 8) + "." + (0xFF & paramInt >> 16) + "." + (0xFF & paramInt >> 24);
 	}
 
-	/**
-	 * @param staticIpConfig
-	 * @return
-	 */
-	public boolean setWiFiWithStaticIP(StaticIpConfig staticIpConfig) {
-		synchronized (this) {
-			final long ident = Binder.clearCallingIdentity();
-			boolean success = false;
-
-			IpConfiguration ipConfig;
-			WifiConfiguration wifiConfig = getWifiConfiguration(mContext, mWifiManager.getConnectionInfo().getSSID());
-
-			if (wifiConfig != null) {
-				ipConfig = wifiConfig.getIpConfiguration();
-
-			} else {
-				ipConfig = new IpConfiguration();
-			}
-			try {
-				StaticIpConfiguration staticConfig = wifiConfig.getIpConfiguration().getStaticIpConfiguration();
-				if (staticConfig == null) {
-					staticConfig = new StaticIpConfiguration();
-				} else {
-					staticConfig.clear();
-				}
-				if (staticIpConfig.isDhcp()) {
-					wifiConfig.getIpConfiguration().setIpAssignment(IpConfiguration.IpAssignment.DHCP);
-					wifiConfig.setIpConfiguration(new IpConfiguration(IpConfiguration.IpAssignment.DHCP, IpConfiguration.ProxySettings.NONE, staticConfig, null));
-				} else {
-					wifiConfig.getIpConfiguration().setIpAssignment(IpConfiguration.IpAssignment.STATIC);
-					InetAddress inetAddress = NetworkUtils.numericToInetAddress(staticIpConfig.getIp());
-					staticConfig.ipAddress = new LinkAddress(inetAddress, 24);
-					staticConfig.gateway = (Inet4Address) NetworkUtils.numericToInetAddress(staticIpConfig.getGateWay());
-					if (!TextUtils.isEmpty(staticIpConfig.getDns1())) {
-						staticConfig.dnsServers.add(NetworkUtils.numericToInetAddress(staticIpConfig.getDns1()));
-					}
-					if (!TextUtils.isEmpty(staticIpConfig.getDns2())) {
-						staticConfig.dnsServers.add(NetworkUtils.numericToInetAddress(staticIpConfig.getDns2()));
-					}
-					wifiConfig.setIpConfiguration(new IpConfiguration(IpConfiguration.IpAssignment.STATIC, IpConfiguration.ProxySettings.NONE, staticConfig, null));
-					ipConfig.setStaticIpConfiguration(staticConfig);
-				}
-				saveConfiguration(wifiConfig);
-				updateConfiguration(wifiConfig);
-				disconnectWiFi();
-				reconnectWiFi();
-				success = true;
-
-			} catch (Exception e) {
-				Log.e(TAG, e.getMessage());
-			} finally {
-				Binder.restoreCallingIdentity(ident);
-			}
-			return success;
-		}
-	}
+//	/**
+//	 * @param staticIpConfig
+//	 * @return
+//	 */
+//	public boolean setWiFiWithStaticIP(StaticIpConfig staticIpConfig) {
+//		synchronized (this) {
+//			final long ident = Binder.clearCallingIdentity();
+//			boolean success = false;
+//
+//			IpConfiguration ipConfig;
+//			WifiConfiguration wifiConfig = getWifiConfiguration(mContext, mWifiManager.getConnectionInfo().getSSID());
+//
+//			if (wifiConfig != null) {
+//				ipConfig = wifiConfig.getIpConfiguration();
+//
+//			} else {
+//				ipConfig = new IpConfiguration();
+//			}
+//			try {
+//				StaticIpConfiguration staticConfig = wifiConfig.getIpConfiguration().getStaticIpConfiguration();
+//				if (staticConfig == null) {
+//					staticConfig = new StaticIpConfiguration();
+//				} else {
+//					staticConfig.clear();
+//				}
+//				if (staticIpConfig.isDhcp()) {
+//					wifiConfig.getIpConfiguration().setIpAssignment(IpConfiguration.IpAssignment.DHCP);
+//					wifiConfig.setIpConfiguration(new IpConfiguration(IpConfiguration.IpAssignment.DHCP, IpConfiguration.ProxySettings.NONE, staticConfig, null));
+//				} else {
+//					wifiConfig.getIpConfiguration().setIpAssignment(IpConfiguration.IpAssignment.STATIC);
+//					InetAddress inetAddress = NetworkUtils.numericToInetAddress(staticIpConfig.getIp());
+//					staticConfig.ipAddress = new LinkAddress(inetAddress, 24);
+//					staticConfig.gateway = (Inet4Address) NetworkUtils.numericToInetAddress(staticIpConfig.getGateWay());
+//					if (!TextUtils.isEmpty(staticIpConfig.getDns1())) {
+//						staticConfig.dnsServers.add(NetworkUtils.numericToInetAddress(staticIpConfig.getDns1()));
+//					}
+//					if (!TextUtils.isEmpty(staticIpConfig.getDns2())) {
+//						staticConfig.dnsServers.add(NetworkUtils.numericToInetAddress(staticIpConfig.getDns2()));
+//					}
+//					wifiConfig.setIpConfiguration(new IpConfiguration(IpConfiguration.IpAssignment.STATIC, IpConfiguration.ProxySettings.NONE, staticConfig, null));
+//					ipConfig.setStaticIpConfiguration(staticConfig);
+//				}
+//				saveConfiguration(wifiConfig);
+//				updateConfiguration(wifiConfig);
+//				disconnectWiFi();
+//				reconnectWiFi();
+//				success = true;
+//
+//			} catch (Exception e) {
+//				Log.e(TAG, e.getMessage());
+//			} finally {
+//				Binder.restoreCallingIdentity(ident);
+//			}
+//			return success;
+//		}
+//	}
 
 	public void saveConfiguration(WifiConfiguration config) {
 		mWifiManager.save(config, null);
@@ -233,10 +233,7 @@ public class NetWorkUtils {
 	public WifiConfiguration getWifiConfiguration(Context context, String ssid) {
 		final long ident = Binder.clearCallingIdentity();
 		try {
-			if (ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-			}
 			List<WifiConfiguration> list = mWifiManager.getConfiguredNetworks();
-
 			for (WifiConfiguration wifiConfig : list) {
 				if (wifiConfig.SSID.equals(ssid)) {
 					return wifiConfig;
@@ -263,5 +260,108 @@ public class NetWorkUtils {
 			}
 		}
 		return false;
+	}
+
+	/**
+	 * @param staticIpConfig
+	 * @return
+	 */
+	public boolean setWiFiWithStaticIP(StaticIpConfig staticIpConfig) {
+		synchronized (this) {
+//			final long ident = Binder.clearCallingIdentity();
+			WifiConfiguration wifiConfig = getWifiConfiguration(mContext, mWifiManager.getConnectionInfo().getSSID());
+			try {
+				if (staticIpConfig.isDhcp()) {
+					switchToDHCP(mContext,wifiConfig);
+				}else {
+					setStaticIpConfig(mContext,wifiConfig,staticIpConfig.getIp(),staticIpConfig.getGateWay()
+							,staticIpConfig.getDns1(),staticIpConfig.getDns2(),24);
+				}
+				disconnectWiFi();
+			} catch (Exception e) {
+				Log.e(TAG, e.getMessage());
+				return false;
+			}
+			return true;
+		}
+	}
+
+
+	/**
+	 * 设置当前 WiFi 的静态 IP 配置
+	 *
+	 * @param context         上下文对象
+	 * @param wifiConfig      当前 WiFi 的 WifiConfiguration 对象
+	 * @param ipAddress       静态 IP 地址（如 "192.168.1.100"）
+	 * @param gateway         网关地址（如 "192.168.1.1"）
+	 * @param dns1            首选 DNS 地址（如 "8.8.8.8"）
+	 * @param dns2            备用 DNS 地址（如 "8.8.4.4"），可以为 null
+	 * @param prefixLength    子网前缀长度（通常为 24）
+	 * @return 是否设置成功
+	 */
+	public  boolean setStaticIpConfig(
+			Context context,
+			WifiConfiguration wifiConfig,
+			String ipAddress,
+			String gateway,
+			String dns1,
+			String dns2,
+			int prefixLength
+	) {
+		try {
+			// 创建 StaticIpConfiguration
+			StaticIpConfiguration staticIpConfig = new StaticIpConfiguration();
+			staticIpConfig.ipAddress = new LinkAddress(InetAddress.getByName(ipAddress), prefixLength);
+			staticIpConfig.gateway = InetAddress.getByName(gateway);
+			staticIpConfig.dnsServers.add(InetAddress.getByName(dns1));
+			if (dns2 != null && !dns2.isEmpty()) {
+				staticIpConfig.dnsServers.add(InetAddress.getByName(dns2));
+			}
+
+			// 直接设置静态 IP 配置
+			wifiConfig.setStaticIpConfiguration(staticIpConfig);
+			wifiConfig.setIpAssignment(IpConfiguration.IpAssignment.STATIC);
+
+			// 更新网络配置
+			int networkId = mWifiManager.updateNetwork(wifiConfig);
+			if (networkId == -1) {
+				return false;
+			}
+
+			// 连接到配置的网络
+			return mWifiManager.enableNetwork(networkId, true);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	/**
+	 * 将 WiFi 配置切换为 DHCP 模式
+	 *
+	 * @param context    上下文对象
+	 * @param wifiConfig 当前 WiFi 的 WifiConfiguration 对象
+	 * @return 是否设置成功
+	 */
+	public static boolean switchToDHCP(Context context, WifiConfiguration wifiConfig) {
+		try {
+			WifiManager wifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+
+			// 设置为 DHCP 模式
+			wifiConfig.setIpAssignment(IpConfiguration.IpAssignment.DHCP);
+			wifiConfig.setStaticIpConfiguration(null); // 删除静态 IP 配置
+
+			// 更新 WiFi 配置
+			int networkId = wifiManager.updateNetwork(wifiConfig);
+			if (networkId == -1) {
+				return false;
+			}
+
+			// 连接到配置的网络
+			return wifiManager.enableNetwork(networkId, true);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 }

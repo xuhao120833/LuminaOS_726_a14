@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * wifi信号监听
  * 
- * @author zgr
+ * @author xuhao
  * 
  */
 public class MyWifiReceiver extends BroadcastReceiver {

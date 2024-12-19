@@ -85,11 +85,11 @@ public class WifiIpSetActivity extends BaseActivity implements View.OnKeyListene
     protected void onPause() {
         super.onPause(); // 确保调用父类的 onPause 方法
         Log.d(TAG,"执行onPause 方法");
-        if(wifiIpSet2Binding.ip.hasFocus() || wifiIpSet2Binding.gateway.hasFocus() || wifiIpSet2Binding.netmask.hasFocus()
-            || wifiIpSet2Binding.dns1.hasFocus() || wifiIpSet2Binding.dns2.hasFocus()) {
-            Log.d(TAG,"onPause中执行editTextFocusChange方法");
-            editTextFocusChange();
-        }
+//        if(wifiIpSet2Binding.ip.hasFocus() || wifiIpSet2Binding.gateway.hasFocus() || wifiIpSet2Binding.netmask.hasFocus()
+//            || wifiIpSet2Binding.dns1.hasFocus() || wifiIpSet2Binding.dns2.hasFocus()) {
+//            Log.d(TAG,"onPause中执行editTextFocusChange方法");
+//            editTextFocusChange();
+//        }
     }
 
     private void initView() {
@@ -258,7 +258,7 @@ public class WifiIpSetActivity extends BaseActivity implements View.OnKeyListene
                     if (mode.equals(ipList.get(0))) {
                         wifiIpSet2Binding.ipModeTv.setText(ipList.get(1));
                         staticIpConfig.setDhcp(wifiIpSet2Binding.ipModeTv.getText().toString().equals(ipList.get(0)));
-                        setIpMode(staticIpConfig);
+//                        setIpMode(staticIpConfig);
                         setEnable(true);
 
                     } else if (mode.equals(ipList.get(1))) {
@@ -281,7 +281,7 @@ public class WifiIpSetActivity extends BaseActivity implements View.OnKeyListene
                     if (mode.equals(ipList.get(0))) {
                         wifiIpSet2Binding.ipModeTv.setText(ipList.get(1));
                         staticIpConfig.setDhcp(wifiIpSet2Binding.ipModeTv.getText().toString().equals(ipList.get(0)));
-                        setIpMode(staticIpConfig);
+//                        setIpMode(staticIpConfig);
                         setEnable(true);
 
                     } else if (mode.equals(ipList.get(1))) {
@@ -371,6 +371,7 @@ public class WifiIpSetActivity extends BaseActivity implements View.OnKeyListene
 
     private void setIpMode(StaticIpConfig staticIpConfig) {
         //设置ip
+        Log.d(TAG, "调用到setIpMode ");
         boolean success = netWorkUtils.setWiFiWithStaticIP(staticIpConfig);
         Log.d(TAG, "IP模式切换成功 " + success + " " + staticIpConfig.isDhcp());
     }
