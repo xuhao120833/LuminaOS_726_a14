@@ -2,7 +2,11 @@ package com.htc.luminaos.widget;
 
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
+import android.media.AudioManager;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.SoundEffectConstants;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -13,6 +17,8 @@ import com.htc.luminaos.R;
 import java.lang.reflect.Field;
 
 public class TextConfigNumberPicker extends NumberPicker {
+
+    private static String TAG = "TextConfigNumberPicker";
 
     public TextConfigNumberPicker(Context context) {
         super(context);
@@ -42,6 +48,25 @@ public class TextConfigNumberPicker extends NumberPicker {
     public void addView(View child, int index, ViewGroup.LayoutParams params) {
         super.addView(child, index, params);
         updateView(child);
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        // 检查是否是按键按下事件
+        if (event.getAction() == KeyEvent.ACTION_DOWN) {
+            int keyCode = event.getKeyCode();
+            // 检查是否是方向键
+            if (keyCode == KeyEvent.KEYCODE_DPAD_UP || keyCode == KeyEvent.KEYCODE_DPAD_DOWN) {
+                // 显式播放按键音
+                AudioManager audioManager = (AudioManager) getContext().getSystemService(Context.AUDIO_SERVICE);
+                if (audioManager != null) {
+                    audioManager.playSoundEffect(AudioManager.FX_FOCUS_NAVIGATION_DOWN);
+                }
+                audioManager =null;
+            }
+        }
+        // 调用父类处理按键事件
+        return super.dispatchKeyEvent(event);
     }
 
     private void updateView(View view) {

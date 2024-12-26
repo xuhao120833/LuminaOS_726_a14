@@ -152,7 +152,7 @@ public class TimezoneDialog extends BaseDialog implements View.OnClickListener {
                     String id = xrp.getAttributeValue(0);
                     String displayName = xrp.nextText();
                     addItem(myData, id, displayName, date);
-                    Log.d(TAG," getZones "+id+" "+displayName);
+//                    Log.d(TAG," getZones "+id+" "+displayName);
                 }
                 while (xrp.getEventType() != XmlResourceParser.END_TAG) {
                     xrp.next();
