@@ -96,6 +96,7 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(TAG,"执行onCreate ProjectActivity");
         super.onCreate(savedInstanceState);
         projectBinding = ActivityProjectBinding.inflate(LayoutInflater.from(this));
         setContentView(projectBinding.getRoot());
@@ -104,6 +105,14 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
         filter = new IntentFilter("intent.htc.vafocus");
         vaFocusReceiver = new VaFocusReceiver(this);
         registerReceiver(vaFocusReceiver, filter);
+    }
+
+    @Override
+    protected void onResume() {
+        Log.d(TAG,"执行onResume ProjectActivity");
+        super.onResume();
+        All = KeystoneUtils.readGlobalSettings(this, KeystoneUtils.ZOOM_VALUE, 0);
+        updateZoomView();
     }
 
     @Override
@@ -699,11 +708,14 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
 
     private void updateZoomView() {
         projectBinding.digitalZoomTv.setText(String.valueOf(All));
-        if (All <= 0)
+        if (All <= 0) {
             projectBinding.digitalZoomLeft.setVisibility(View.GONE);
-        else if (All >= ZOOM_MAX)
+            projectBinding.digitalZoomRight.setVisibility(View.VISIBLE);
+        }
+        else if (All >= ZOOM_MAX) {
+            projectBinding.digitalZoomLeft.setVisibility(View.VISIBLE);
             projectBinding.digitalZoomRight.setVisibility(View.GONE);
-        else {
+        } else {
             projectBinding.digitalZoomRight.setVisibility(View.VISIBLE);
             projectBinding.digitalZoomLeft.setVisibility(View.VISIBLE);
         }
@@ -909,6 +921,7 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
             @Override
             public void onClick(View v) {
                 KeystoneUtils.resetKeystone();
+                KeystoneUtils.writeGlobalSettings(getApplicationContext(), KeystoneUtils.ZOOM_VALUE, 0);
                 All = 0;
                 updateZoomView();
                 dialoge.dismiss();

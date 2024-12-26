@@ -998,6 +998,7 @@ public class CorrectionActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 KeystoneUtils.resetKeystone();
+                KeystoneUtils.writeGlobalSettings(getApplicationContext(), KeystoneUtils.ZOOM_VALUE, 0);
                 dialoge.dismiss();
                 direction_value_x.setText("0");
                 direction_value_y.setText("0");
@@ -1019,6 +1020,6 @@ public class CorrectionActivity extends BaseActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
+
 }
