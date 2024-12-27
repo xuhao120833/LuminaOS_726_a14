@@ -33,6 +33,7 @@ import com.htc.luminaos.widget.TimezoneDialog;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.TimeZone;
 
 public class DateTimeActivity extends BaseActivity implements View.OnKeyListener {
@@ -45,6 +46,7 @@ public class DateTimeActivity extends BaseActivity implements View.OnKeyListener
     private IntentFilter timeFilter = null;
     private MyTimeReceiver timeReceiver = null;
     boolean is24HourFormat = true;
+    private static String TAG = "DateTimeActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,14 +110,19 @@ public class DateTimeActivity extends BaseActivity implements View.OnKeyListener
      */
     private String getTimeZoneText() {
         TimeZone tz = Calendar.getInstance().getTimeZone();
+        String timeZoneId = tz.getID();
+        Log.d(TAG," getTimeZoneText timeZoneId"+timeZoneId);
         boolean daylight = tz.inDaylightTime(new Date());
-        StringBuilder sb = new StringBuilder();
+        Locale locale = Locale.getDefault();
+        // 根据语言环境获取显示名称
+        String displayName = tz.getDisplayName(false, TimeZone.LONG, locale);
+        StringBuilder builder = new StringBuilder();
 
-        sb.append(
+        builder.append(
                 formatOffset(tz.getRawOffset()
                         + (daylight ? tz.getDSTSavings() : 0))).append(", ")
-                .append(tz.getDisplayName(daylight, TimeZone.LONG));
-        return sb.toString();
+                .append(displayName);
+        return builder.toString();
     }
 
     private char[] formatOffset(int off) {

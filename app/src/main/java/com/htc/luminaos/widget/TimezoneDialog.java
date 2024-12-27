@@ -107,30 +107,50 @@ public class TimezoneDialog extends BaseDialog implements View.OnClickListener {
     }
 
     private void initData(){
-        MyComparator comparator = new MyComparator(Contants.KEY_OFFSET);
-        list = getZones();
-//        getSupportedTimeZones();
-        if (list != null && list.size() > 0) {
-            Collections.sort(list, comparator);
-            searchindex(list);
-            TimezoneAdapter timezoneAdapter = new TimezoneAdapter(mContext,list,timeZoneLayoutBinding.timeZoneRv);
-            timezoneAdapter.setCurrentPosition(mDefault);
-            timezoneAdapter.setHasStableIds(true);
-            timeZoneLayoutBinding.timeZoneRv.setAdapter(timezoneAdapter);
+        try {
+            MyComparator comparator = new MyComparator(Contants.KEY_OFFSET);
+            list = getZones();
+            getSupportedTimeZones();
+            if (list != null && list.size() > 0) {
+                Collections.sort(list, comparator);
+                searchindex(list);
+                TimezoneAdapter timezoneAdapter = new TimezoneAdapter(mContext, list, timeZoneLayoutBinding.timeZoneRv);
+                timezoneAdapter.setCurrentPosition(mDefault);
+                timezoneAdapter.setHasStableIds(true);
+                timeZoneLayoutBinding.timeZoneRv.setAdapter(timezoneAdapter);
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
-    private void searchindex(ArrayList<HashMap> list){
+//    private void searchindex(ArrayList<HashMap> list){
+//        for (int i = 0; i < list.size(); i++) {
+//            HashMap map = list.get(i);
+////            Log.d(TAG," map.get(Contants.KEY_ID)"+map.get(Contants.KEY_ID)+" "+i+" "+TimeZone.getDefault().getID());
+//            if (map.get(Contants.KEY_ID).equals(TimeZone.getDefault().getID())) {
+////                Log.d(TAG," map.get(Contants.KEY_ID)"+map.get(Contants.KEY_ID)+" "+i);
+//                mDefault = i;
+//                return;
+//            }
+//        }
+
+
+    private void searchindex(ArrayList<HashMap> list) {
         for (int i = 0; i < list.size(); i++) {
             HashMap map = list.get(i);
-//            Log.d(TAG," map.get(Contants.KEY_ID)"+map.get(Contants.KEY_ID)+" "+i+" "+TimeZone.getDefault().getID());
             if (map.get(Contants.KEY_ID).equals(TimeZone.getDefault().getID())) {
-//                Log.d(TAG," map.get(Contants.KEY_ID)"+map.get(Contants.KEY_ID)+" "+i);
                 mDefault = i;
+                Log.d(TAG," map.get(Contants.KEY_ID)"+map.get(Contants.KEY_ID)+" "+i);
+                // 将选中的元素移动到列表的第一个位置
+                list.remove(i);         // 从原位置移除
+                list.add(0, map);       // 添加到列表第一个位置
+                mDefault = 0;
                 return;
             }
         }
     }
+
 
     // parse timezones.xml to get timezone info
     private ArrayList<HashMap> getZones() {

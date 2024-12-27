@@ -2,6 +2,7 @@ package com.htc.luminaos.adapter;
 
 import android.app.AlarmManager;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -34,6 +35,8 @@ public class TimezoneAdapter extends RecyclerView.Adapter<TimezoneAdapter.MyView
     private int currentPosition=-1;
     AlarmManager alarm;
     private RecyclerView recyclerView;
+
+    private static String TAG = "TimezoneAdapter";
 
     public void setCurrentPosition(int position){
         if(position>=0&&position<list.size()){
@@ -68,8 +71,9 @@ public class TimezoneAdapter extends RecyclerView.Adapter<TimezoneAdapter.MyView
         myViewHolder.rl_item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                alarm.setTimeZone((String) map
-                        .get(Contants.KEY_ID));
+                String timezone = (String) map.get(Contants.KEY_ID);
+                Log.d(TAG," 切換时区 "+timezone);
+                alarm.setTimeZone(timezone);
                 setCurrentPosition(i);
                 notifyDataSetChanged();
             }
