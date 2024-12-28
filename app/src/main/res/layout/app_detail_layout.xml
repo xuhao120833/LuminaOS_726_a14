@@ -5,150 +5,156 @@
     android:background="@drawable/white_frame"
     >
 
-        <ImageView
-            android:layout_width="@dimen/x_33"
-            android:layout_height="@dimen/y_33"
-            android:id="@+id/app_icon"
-            android:layout_marginTop="@dimen/y_20"
-            android:layout_marginStart="@dimen/x_30"
-            />
+    <ImageView
+        android:layout_width="@dimen/x_35"
+        android:layout_height="@dimen/y_35"
+        android:id="@+id/app_icon"
+        android:layout_marginTop="@dimen/y_20"
+        android:layout_marginStart="@dimen/x_40"
+        />
+
+    <TextView
+        android:id="@+id/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/x_20"
+        android:layout_marginStart="@dimen/x_20"
+        android:textColor="@color/black"
+        android:textSize="@dimen/x_20"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:layout_toEndOf="@id/app_icon"
+        />
+
+    <LinearLayout
+        android:id="@+id/app_version_ll"
+        android:layout_width="@dimen/x_500"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/app_name"
+        android:layout_marginTop="@dimen/y_20"
+        android:padding="@dimen/x_5"
+        android:orientation="horizontal" >
 
         <TextView
-            android:id="@+id/app_name"
-            android:layout_width="wrap_content"
+            android:id="@+id/apps_version"
+            android:layout_width="@dimen/x_205"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/x_20"
-            android:layout_marginStart="@dimen/x_15"
+            android:layout_marginStart="@dimen/x_30"
+            android:text="@string/apps_version"
             android:textColor="@color/black"
-            android:textSize="@dimen/x_20"
             android:singleLine="true"
             android:ellipsize="marquee"
-            android:layout_toEndOf="@id/app_icon"
-            />
-
-        <LinearLayout
-            android:id="@+id/app_version_ll"
-            android:layout_width="@dimen/x_500"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/app_name"
-            android:layout_marginTop="@dimen/y_20"
-            android:padding="@dimen/x_5"
-            android:orientation="horizontal" >
-
-            <TextView
-                android:id="@+id/apps_version"
-                android:layout_width="@dimen/x_96"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/x_15"
-                android:text="@string/apps_version"
-                android:textColor="@color/black"
-                android:singleLine="true"
-                android:ellipsize="marquee"
-                android:textSize="@dimen/x_23" />
-
-            <TextView
-                android:id="@+id/app_version_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/x_20"
-                android:textColor="@color/black"
-                android:singleLine="true"
-                android:ellipsize="marquee"
-                android:textSize="@dimen/x_23" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/app_size_ll"
-            android:layout_width="@dimen/x_500"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/app_version_ll"
-            android:padding="@dimen/x_5"
-            android:orientation="horizontal" >
-
-            <TextView
-                android:id="@+id/app_size"
-                android:layout_width="@dimen/x_96"
-                android:layout_height="wrap_content"
-                android:text="@string/app_size"
-                android:textColor="@color/black"
-                android:layout_marginStart="@dimen/x_15"
-                android:singleLine="true"
-                android:ellipsize="marquee"
-                android:textSize="@dimen/x_23" />
-
-            <TextView
-                android:id="@+id/app_size_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/x_20"
-                android:textColor="@color/black"
-                android:singleLine="true"
-                android:ellipsize="marquee"
-                android:textSize="@dimen/x_23" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/app_cache_ll"
-            android:layout_width="@dimen/x_500"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/app_size_ll"
-            android:padding="@dimen/x_5"
-            android:orientation="horizontal" >
-
-            <TextView
-                android:id="@+id/app_cache"
-                android:layout_width="@dimen/x_96"
-                android:layout_height="wrap_content"
-                android:text="@string/app_cache"
-                android:textColor="@color/black"
-                android:layout_marginStart="@dimen/x_15"
-                android:singleLine="true"
-                android:ellipsize="marquee"
-                android:textSize="@dimen/x_23" />
-
-            <TextView
-                android:id="@+id/app_cache_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/x_20"
-                android:textColor="@color/black"
-                android:singleLine="true"
-                android:ellipsize="marquee"
-                android:textSize="@dimen/x_23" />
-        </LinearLayout>
-
+            android:textSize="@dimen/x_23" />
 
         <TextView
-            android:textSize="@dimen/x_20"
-            android:textColor="@color/white"
-            android:text="@string/clear_cache"
-            android:id="@+id/clear_cache"
-            android:layout_width="@dimen/x_200"
-            android:layout_height="@dimen/y_70"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/button_bg"
+            android:id="@+id/app_version_tv"
+            android:layout_width="@dimen/x_210"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/x_25"
+            android:layout_marginEnd="@dimen/x_25"
+            android:textColor="@color/black"
+            android:singleLine="true"
+            android:ellipsize="marquee"
             android:gravity="center"
+            android:textSize="@dimen/x_23" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/app_size_ll"
+        android:layout_width="@dimen/x_500"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/app_version_ll"
+        android:padding="@dimen/x_5"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/app_size"
+            android:layout_width="@dimen/x_205"
+            android:layout_height="wrap_content"
+            android:text="@string/app_size"
+            android:textColor="@color/black"
             android:layout_marginStart="@dimen/x_30"
-            android:layout_marginBottom="@dimen/y_15"
             android:singleLine="true"
             android:ellipsize="marquee"
-            />
-
+            android:textSize="@dimen/x_23" />
 
         <TextView
-            android:textSize="@dimen/x_20"
-            android:text="@string/uninstall"
-            android:textColor="@color/white"
-            android:id="@+id/uninstall"
-            android:layout_width="@dimen/x_200"
-            android:layout_height="@dimen/y_70"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:background="@drawable/button_bg"
-            android:gravity="center"
-            android:layout_marginBottom="@dimen/y_15"
-            android:layout_marginEnd="@dimen/x_30"
+            android:id="@+id/app_size_tv"
+            android:layout_width="@dimen/x_210"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/x_25"
+            android:layout_marginEnd="@dimen/x_25"
+            android:textColor="@color/black"
             android:singleLine="true"
             android:ellipsize="marquee"
-            />
+            android:gravity="center"
+            android:textSize="@dimen/x_23" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/app_cache_ll"
+        android:layout_width="@dimen/x_500"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/app_size_ll"
+        android:padding="@dimen/x_5"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/app_cache"
+            android:layout_width="@dimen/x_205"
+            android:layout_height="wrap_content"
+            android:text="@string/app_cache"
+            android:textColor="@color/black"
+            android:layout_marginStart="@dimen/x_30"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:textSize="@dimen/x_23" />
+
+        <TextView
+            android:id="@+id/app_cache_tv"
+            android:layout_width="@dimen/x_210"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/x_25"
+            android:layout_marginEnd="@dimen/x_25"
+            android:textColor="@color/black"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:gravity="center"
+            android:textSize="@dimen/x_23" />
+    </LinearLayout>
+
+
+    <TextView
+        android:textSize="@dimen/x_20"
+        android:textColor="@color/white"
+        android:text="@string/clear_cache"
+        android:id="@+id/clear_cache"
+        android:layout_width="@dimen/x_200"
+        android:layout_height="@dimen/y_70"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/button_bg"
+        android:gravity="center"
+        android:layout_marginStart="@dimen/x_30"
+        android:layout_marginBottom="@dimen/y_15"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        />
+
+
+    <TextView
+        android:textSize="@dimen/x_20"
+        android:text="@string/uninstall"
+        android:textColor="@color/white"
+        android:id="@+id/uninstall"
+        android:layout_width="@dimen/x_200"
+        android:layout_height="@dimen/y_70"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/button_bg"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/y_15"
+        android:layout_marginEnd="@dimen/x_30"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        />
 </RelativeLayout>

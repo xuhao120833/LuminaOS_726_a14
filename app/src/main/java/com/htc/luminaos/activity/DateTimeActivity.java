@@ -75,6 +75,7 @@ public class DateTimeActivity extends BaseActivity implements View.OnKeyListener
         dateTimeBinding.rlTimeFormat.setOnHoverListener(this);
 
         dateTimeBinding.rlTimeFormat.setOnKeyListener(this);
+        dateTimeBinding.timeZoneTv.setSelected(true);
     }
 
     private void initData(){

@@ -175,7 +175,7 @@
 
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/x_600"
             android:layout_height="wrap_content"
             android:id="@+id/time_zone_tv"
             android:layout_alignParentEnd="true"
@@ -185,6 +185,9 @@
             android:textSize="@dimen/x_27"
             android:text="GTM-05:00，美国东部时间"
             android:duplicateParentState="true"
+            android:gravity="end"
+            android:ellipsize="marquee"
+            android:singleLine="true"
             />
 
         <View
