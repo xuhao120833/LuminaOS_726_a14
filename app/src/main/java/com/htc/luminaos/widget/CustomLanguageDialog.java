@@ -76,8 +76,12 @@ public class CustomLanguageDialog extends BaseDialog {
         mLocales = locales;
     }
 
+//    private String getCurrentLauguage() {
+//        return Locale.getDefault().getLanguage()+ Locale.getDefault().getCountry();
+//    }
+
     private String getCurrentLauguage() {
-        return Locale.getDefault().getLanguage()+ Locale.getDefault().getCountry();
+        return Locale.getDefault().getLanguage();
     }
 
     public void setOnClickCallBack(OnItemClickLanguageCallBack callback) {

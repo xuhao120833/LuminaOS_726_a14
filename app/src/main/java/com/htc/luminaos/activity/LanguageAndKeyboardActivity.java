@@ -233,7 +233,8 @@ public class LanguageAndKeyboardActivity extends BaseActivity {
         }
         Arrays.sort(mLocales2);
         for (int b = 0; b < mLocales2.length; b++) {
-            Log.d(TAG, " 语言列表 排序后 getLabel " + mLocales2[b].getLabel() + " " + mLocales2.length);
+            Log.d(TAG, " 语言列表 排序后 getLabel " + mLocales2[b].getLabel() + " " + mLocales2.length
+                    +" "+mLocales2[b].getLocale().getLanguage()+" "+mLocales2[b].getLocale().getCountry());
         }
         // Arrays.sort(preprocess);
         mLocales = new ArrayList<>(Arrays.asList(mLocales2));
