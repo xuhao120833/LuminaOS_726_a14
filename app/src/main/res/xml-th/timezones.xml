@@ -315,4 +315,5 @@
     <timezone id="Universal">เวลามาตรฐานสากล</timezone>
     <timezone id="WET">เวลายุโรปตะวันตก</timezone>
     <timezone id="Zulu">เวลาซูลู</timezone>
+    <timezone id="America/Costa_Rica">คอสตาริกา</timezone>
 </timezones>

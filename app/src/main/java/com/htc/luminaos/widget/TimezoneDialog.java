@@ -61,7 +61,6 @@ public class TimezoneDialog extends BaseDialog implements View.OnClickListener {
 
     public TimezoneDialog(Context context, int theme) {
         super(context, theme);
-
         this.mContext = context;
     }
 
@@ -110,7 +109,7 @@ public class TimezoneDialog extends BaseDialog implements View.OnClickListener {
         try {
             MyComparator comparator = new MyComparator(Contants.KEY_OFFSET);
             list = getZones();
-            getSupportedTimeZones();
+//            getSupportedTimeZones();
             if (list != null && list.size() > 0) {
                 Collections.sort(list, comparator);
                 searchindex(list);
@@ -137,8 +136,10 @@ public class TimezoneDialog extends BaseDialog implements View.OnClickListener {
 
 
     private void searchindex(ArrayList<HashMap> list) {
+        Log.d(TAG," TimeZone.getDefault().getID() "+TimeZone.getDefault().getID());
         for (int i = 0; i < list.size(); i++) {
             HashMap map = list.get(i);
+            Log.d(TAG," map.get(Contants.KEY_ID) "+map.get(Contants.KEY_ID));
             if (map.get(Contants.KEY_ID).equals(TimeZone.getDefault().getID())) {
                 mDefault = i;
                 Log.d(TAG," map.get(Contants.KEY_ID)"+map.get(Contants.KEY_ID)+" "+i);

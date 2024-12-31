@@ -315,4 +315,5 @@
     <timezone id="Universal">זמן אוניברסלי</timezone>
     <timezone id="WET">זמן מערב אירופה</timezone>
     <timezone id="Zulu">זמן זולו</timezone>
+    <timezone id="America/Costa_Rica">קוסטה ריקה</timezone>
 </timezones>

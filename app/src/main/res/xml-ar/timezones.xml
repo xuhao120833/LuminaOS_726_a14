@@ -315,4 +315,5 @@
     <timezone id="Universal">التوقيت العالمي الموحد</timezone>
     <timezone id="WET">توقيت غرب أوروبا</timezone>
     <timezone id="Zulu">توقيت زولو</timezone>
+    <timezone id="America/Costa_Rica">كوستاريكا</timezone>
 </timezones>

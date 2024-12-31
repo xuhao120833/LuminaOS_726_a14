@@ -315,4 +315,5 @@
     <timezone id="Universal">Evrensel Zaman</timezone>
     <timezone id="WET">Batı Avrupa Zamanı</timezone>
     <timezone id="Zulu">Zulu Zamanı</timezone>
+    <timezone id="America/Costa_Rica">Kosta Rika</timezone>
 </timezones>

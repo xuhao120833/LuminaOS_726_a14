@@ -315,4 +315,5 @@
     <timezone id="Universal">Universal Time</timezone>
     <timezone id="WET">Western European Time</timezone>
     <timezone id="Zulu">Zulu Time</timezone>
+    <timezone id="America/Costa_Rica">Costa Rica</timezone>
 </timezones>

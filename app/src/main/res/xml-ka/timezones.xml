@@ -315,4 +315,5 @@
     <timezone id="Universal">მსოფლიო ერთიანი დრო</timezone>
     <timezone id="WET">დასავლეთ ევროპული დრო</timezone>
     <timezone id="Zulu">ზულუ დრო</timezone>
+    <timezone id="America/Costa_Rica">კოსტა-რიკა</timezone>
 </timezones>

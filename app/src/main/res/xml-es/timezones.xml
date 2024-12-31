@@ -315,4 +315,5 @@
     <timezone id="Universal">Hora Universal</timezone>
     <timezone id="WET">Hora de Europa Occidental</timezone>
     <timezone id="Zulu">Hora Zulu</timezone>
+    <timezone id="America/Costa_Rica">Costa Rica</timezone>
 </timezones>

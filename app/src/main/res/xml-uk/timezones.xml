@@ -315,4 +315,5 @@
     <timezone id="Universal">Всесвітній стандартний час</timezone>
     <timezone id="WET">Західноєвропейський час</timezone>
     <timezone id="Zulu">Час за стандартом зулу</timezone>
+    <timezone id="America/Costa_Rica">Коста-Ріка</timezone>
 </timezones>

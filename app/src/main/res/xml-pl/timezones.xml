@@ -315,4 +315,5 @@
     <timezone id="Universal">Czas światowy</timezone>
     <timezone id="WET">Czas zachodnioeuropejski</timezone>
     <timezone id="Zulu">Czas Zulu</timezone>
+    <timezone id="America/Costa_Rica">Kostaryka</timezone>
 </timezones>

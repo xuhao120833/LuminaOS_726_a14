@@ -179,10 +179,6 @@ public class DateTimeActivity extends BaseActivity implements View.OnKeyListener
                 showTimeDialog();
                 break;
             case R.id.rl_timezone:
-//                if (dateTimeBinding.autoSwitch.isChecked()){ //因为汉影的要求，去掉这里的限制。
-//                    ToastUtil.showShortToast(this,getString(R.string.auto_time_hint));
-//                    break;
-//                }
 
                 TimezoneDialog timezoneDialog = new TimezoneDialog(DateTimeActivity.this,R.style.DialogTheme);
                 timezoneDialog.show();

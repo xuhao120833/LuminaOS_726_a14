@@ -315,4 +315,5 @@
     <timezone id="Universal">Thời gian toàn cầu</timezone>
     <timezone id="WET">Thời gian Tây Âu</timezone>
     <timezone id="Zulu">Thời gian Zulu</timezone>
+    <timezone id="America/Costa_Rica">Costa Rica</timezone>
 </timezones>

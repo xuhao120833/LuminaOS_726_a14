@@ -315,4 +315,5 @@
     <timezone id="Universal">世界统一时间</timezone>
     <timezone id="WET">西欧时间</timezone>
     <timezone id="Zulu">祖鲁时间</timezone>
+    <timezone id="America/Costa_Rica">哥斯达黎加</timezone>
 </timezones>
