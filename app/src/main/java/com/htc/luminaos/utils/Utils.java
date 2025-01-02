@@ -10,6 +10,7 @@ import com.htc.luminaos.entry.SpecialApps;
 import com.htc.luminaos.settings.utils.T;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Utils {
     public static boolean hasfocus = false;
@@ -45,6 +46,9 @@ public class Utils {
 
     //用来显示的名称 HDMI,HDMI2,AV
     public static String[] sourceListTitle = null;
+
+    //全局时区列表
+    public static ArrayList<HashMap> list = null;
 
     /**
      * 打印 Intent 的 Extras 信息

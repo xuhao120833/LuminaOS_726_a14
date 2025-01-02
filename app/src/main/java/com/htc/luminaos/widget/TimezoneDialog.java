@@ -1,5 +1,7 @@
 package com.htc.luminaos.widget;
 
+import static com.htc.luminaos.utils.Utils.list;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -39,7 +41,7 @@ public class TimezoneDialog extends BaseDialog implements View.OnClickListener {
     private Context mContext;
     TimeZoneLayoutBinding timeZoneLayoutBinding;
     private int mDefault;
-    private ArrayList<HashMap> list = null;
+//    private ArrayList<HashMap> list = null;
     private static String TAG = "TimezoneDialog";
 
     @Override
@@ -108,7 +110,7 @@ public class TimezoneDialog extends BaseDialog implements View.OnClickListener {
     private void initData(){
         try {
             MyComparator comparator = new MyComparator(Contants.KEY_OFFSET);
-            list = getZones();
+//            list = getZones();
 //            getSupportedTimeZones();
             if (list != null && list.size() > 0) {
                 Collections.sort(list, comparator);
@@ -154,80 +156,80 @@ public class TimezoneDialog extends BaseDialog implements View.OnClickListener {
 
 
     // parse timezones.xml to get timezone info
-    private ArrayList<HashMap> getZones() {
-        ArrayList<HashMap> myData = new ArrayList<HashMap>();
-        long date = Calendar.getInstance().getTimeInMillis();
-        try {
-            XmlResourceParser xrp = mContext.getResources().getXml(R.xml.timezones);
-            while (xrp.next() != XmlResourceParser.START_TAG)
-                continue;
-            xrp.next();
-            while (xrp.getEventType() != XmlResourceParser.END_TAG) {
-                while (xrp.getEventType() != XmlResourceParser.START_TAG) {
-                    if (xrp.getEventType() == XmlResourceParser.END_DOCUMENT) {
-                        return myData;
-                    }
-                    xrp.next();
-                }
-                if (xrp.getName().equals("timezone")) {
-                    String id = xrp.getAttributeValue(0);
-                    String displayName = xrp.nextText();
-                    addItem(myData, id, displayName, date);
-//                    Log.d(TAG," getZones "+id+" "+displayName);
-                }
-                while (xrp.getEventType() != XmlResourceParser.END_TAG) {
-                    xrp.next();
-                }
-                xrp.next();
-            }
-            xrp.close();
-        } catch (XmlPullParserException xppe) {
-            // LOGD("Ill-formatted timezones.xml file");
-        } catch (java.io.IOException ioe) {
-            // LOGD("Unable to read timezones.xml file");
-        }
-
-        return myData;
-    }
-
-    protected void addItem(List<HashMap> myData, String id, String displayName,
-                           long date) {
-        HashMap map = new HashMap();
-        map.put(Contants.KEY_ID, id);
-        map.put(Contants.KEY_DISPLAYNAME, displayName);
-        TimeZone tz = TimeZone.getTimeZone(id);
-        int offset = tz.getOffset(date);
-        int p = Math.abs(offset);
-        StringBuilder name = new StringBuilder();
-        name.append("GMT");
-
-        if (offset < 0) {
-            name.append('-');
-        } else {
-            name.append('+');
-        }
-
-        name.append(p / (Contants.HOURS_1));
-        name.append(':');
-
-        int min = p / 60000;
-        min %= 60;
-
-        if (min < 10) {
-            name.append('0');
-        }
-        name.append(min);
-
-        map.put(Contants.KEY_GMT, name.toString());
-        map.put(Contants.KEY_OFFSET, offset);
-
-//        if (id.equals(TimeZone.getDefault().getID())) {
-//            Log.d(TAG," addItem id "+id);
-//            mDefault = myData.size()-1;
+//    private ArrayList<HashMap> getZones() {
+//        ArrayList<HashMap> myData = new ArrayList<HashMap>();
+//        long date = Calendar.getInstance().getTimeInMillis();
+//        try {
+//            XmlResourceParser xrp = mContext.getResources().getXml(R.xml.timezones);
+//            while (xrp.next() != XmlResourceParser.START_TAG)
+//                continue;
+//            xrp.next();
+//            while (xrp.getEventType() != XmlResourceParser.END_TAG) {
+//                while (xrp.getEventType() != XmlResourceParser.START_TAG) {
+//                    if (xrp.getEventType() == XmlResourceParser.END_DOCUMENT) {
+//                        return myData;
+//                    }
+//                    xrp.next();
+//                }
+//                if (xrp.getName().equals("timezone")) {
+//                    String id = xrp.getAttributeValue(0);
+//                    String displayName = xrp.nextText();
+//                    addItem(myData, id, displayName, date);
+////                    Log.d(TAG," getZones "+id+" "+displayName);
+//                }
+//                while (xrp.getEventType() != XmlResourceParser.END_TAG) {
+//                    xrp.next();
+//                }
+//                xrp.next();
+//            }
+//            xrp.close();
+//        } catch (XmlPullParserException xppe) {
+//            // LOGD("Ill-formatted timezones.xml file");
+//        } catch (java.io.IOException ioe) {
+//            // LOGD("Unable to read timezones.xml file");
 //        }
+//
+//        return myData;
+//    }
 
-        myData.add(map);
-    }
+//    protected void addItem(List<HashMap> myData, String id, String displayName,
+//                           long date) {
+//        HashMap map = new HashMap();
+//        map.put(Contants.KEY_ID, id);
+//        map.put(Contants.KEY_DISPLAYNAME, displayName);
+//        TimeZone tz = TimeZone.getTimeZone(id);
+//        int offset = tz.getOffset(date);
+//        int p = Math.abs(offset);
+//        StringBuilder name = new StringBuilder();
+//        name.append("GMT");
+//
+//        if (offset < 0) {
+//            name.append('-');
+//        } else {
+//            name.append('+');
+//        }
+//
+//        name.append(p / (Contants.HOURS_1));
+//        name.append(':');
+//
+//        int min = p / 60000;
+//        min %= 60;
+//
+//        if (min < 10) {
+//            name.append('0');
+//        }
+//        name.append(min);
+//
+//        map.put(Contants.KEY_GMT, name.toString());
+//        map.put(Contants.KEY_OFFSET, offset);
+//
+////        if (id.equals(TimeZone.getDefault().getID())) {
+////            Log.d(TAG," addItem id "+id);
+////            mDefault = myData.size()-1;
+////        }
+//
+//        myData.add(map);
+//    }
 
     private static class MyComparator implements Comparator<HashMap> {
         private String mSortingKey;
