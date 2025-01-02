@@ -278,4 +278,10 @@
     <string name="account">Akaun</string>
     <string name="wallpper_load">Memuat sumber latar belakang...</string>
     <string name="choose_source">Pilih sumber isyarat</string>
+    <string name="follow_me">Sila ikuti langkah-langkah berikut:</string>
+    <string name="init_angle_tip1">1. Sila letakkan peralatan secara mendatar di atas meja, pastikan gambar tegak terhadap dinding atau skrin.</string>
+    <string name="init_angle_tip2">2. Laraskan sudut peralatan atas dan bawah, pastikan gambar yang dipaparkan adalah segi empat tepat standard.</string>
+    <string name="init_angle_tip3">3. Klik mula.</string>
+    <string name="init_angle_tip4">Pembetulan selesai, keluar secara automatik</string>
+    <string name="start">Mula</string>
 </resources>

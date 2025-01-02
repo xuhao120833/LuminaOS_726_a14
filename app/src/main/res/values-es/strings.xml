@@ -278,4 +278,10 @@
 	<string name="account">Cuenta</string>
 	<string name="wallpper_load">Cargando recursos de fondo...</string>
 	<string name="choose_source">Seleccionar fuente de señal</string>
+	<string name="follow_me">Siga los siguientes pasos:</string>
+	<string name="init_angle_tip1">1. Coloque la máquina de manera horizontal sobre la mesa, con la imagen perpendicular a la pared o pantalla.</string>
+	<string name="init_angle_tip2">2. Ajuste el ángulo de la máquina hacia arriba o hacia abajo para asegurar que la imagen proyectada sea un rectángulo estándar.</string>
+	<string name="init_angle_tip3">3. Haga clic en Comenzar.</string>
+	<string name="init_angle_tip4">Corrección completada, saliendo automáticamente.</string>
+	<string name="start">Comenzar</string>
 </resources>

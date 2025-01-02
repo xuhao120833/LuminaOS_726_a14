@@ -278,5 +278,11 @@
 	<string name="account">Konto</string>
 	<string name="wallpper_load">Hintergrundressourcen werden geladen...</string>
 	<string name="choose_source">Signalquelle auswählen</string>
+	<string name="follow_me">Befolgen Sie die folgenden Schritte:</string>
+	<string name="init_angle_tip1">1. Bitte stellen Sie das Gerät waagerecht auf den Tisch, das Bild sollte senkrecht zur Wand oder Leinwand stehen.</string>
+	<string name="init_angle_tip2">2. Passen Sie den oberen und unteren Winkel des Geräts an, um sicherzustellen, dass das projizierte Bild ein standardmäßiges Rechteck ist.</string>
+	<string name="init_angle_tip3">3. Klicken Sie auf "Start".</string>
+	<string name="init_angle_tip4">Korrektur abgeschlossen, wird automatisch geschlossen.</string>
+	<string name="start">Starten</string>
 </resources>
 

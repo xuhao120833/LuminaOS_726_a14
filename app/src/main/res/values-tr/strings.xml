@@ -278,5 +278,11 @@
     <string name="account">Hesap</string>
     <string name="wallpper_load">Arka plan kaynakları yükleniyor...</string>
     <string name="choose_source">Sinyal kaynağını seç</string>
+    <string name="follow_me">Aşağıdaki adımları izleyin:</string>
+    <string name="init_angle_tip1">1. Lütfen makineyi yatay olarak masanın üzerine yerleştirin, görüntü duvara veya perdeye dik olmalıdır.</string>
+    <string name="init_angle_tip2">2. Makinenin yukarı ve aşağı açılarını ayarlayın, böylece görüntü standart bir dikdörtgen olarak yansıtılır.</string>
+    <string name="init_angle_tip3">3. Başlat\'a tıklayın.</string>
+    <string name="init_angle_tip4">Düzeltme tamamlandı, otomatik olarak çıkılacaktır.</string>
+    <string name="start">Başla</string>
 </resources>
 

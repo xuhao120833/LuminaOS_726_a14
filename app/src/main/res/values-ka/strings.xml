@@ -278,4 +278,10 @@
     <string name="account">ანგარიში</string>
     <string name="wallpper_load">ფონის რესურსები იტვირთება...</string>
     <string name="choose_source">სიგნალის წყაროს არჩევა</string>
+    <string name="follow_me">გთხოვთ, მიჰყევით შემდეგ ნაბიჯებს:</string>
+    <string name="init_angle_tip1">1. გთხოვთ, მანქანა ჰორიზონტალურად მოათავსოთ მაგიდაზე, სურათი კედლის ან ეკრანის მიმართ ვერტიკალურად.</string>
+    <string name="init_angle_tip2">2. დაარეგულირეთ მანქანის ზედა და ქვედა კუთხეები, რომ გამოსახულება იყოს სტანდარტული მართკუთხედი.</string>
+    <string name="init_angle_tip3">3. დააჭირეთ დაწყების ღილაკს.</string>
+    <string name="init_angle_tip4">კალიბრაცია დასრულდა, ავტომატურად დაიხურება.</string>
+    <string name="start">დავიწყო</string>
 </resources>

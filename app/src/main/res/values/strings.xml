@@ -278,4 +278,10 @@
     <string name="account">Account</string>
     <string name="wallpper_load">Background resources loading...</string>
     <string name="choose_source">Select Signal Source</string>
+    <string name="follow_me">Follow these steps:</string>
+    <string name="init_angle_tip1">1. Place the device horizontally on the table, with the projection perpendicular to the wall or screen.</string>
+    <string name="init_angle_tip2">2. Adjust the device\'s angle vertically to ensure the projection forms a standard rectangle.</string>
+    <string name="init_angle_tip3">3. Click Start.</string>
+    <string name="init_angle_tip4">Correction completed, exiting automatically.</string>
+    <string name="start">Start</string>
 </resources>

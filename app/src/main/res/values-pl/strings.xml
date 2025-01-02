@@ -278,6 +278,12 @@
     <string name="account">Konto</string>
     <string name="wallpper_load">Ładowanie zasobów tła...</string>
     <string name="choose_source">Wybierz źródło sygnału</string>
+    <string name="follow_me">Postępuj zgodnie z poniższymi krokami:</string>
+    <string name="init_angle_tip1">1. Proszę umieścić urządzenie poziomo na stole, a obraz powinien być ustawiony prostopadle do ściany lub ekranu.</string>
+    <string name="init_angle_tip2">2. Dostosuj kąt urządzenia, aby obraz był wyświetlany jako prostokąt o standardowych proporcjach.</string>
+    <string name="init_angle_tip3">3. Kliknij przycisk "Rozpocznij".</string>
+    <string name="init_angle_tip4">Korekcja zakończona, automatyczne wyjście.</string>
+    <string name="start">Rozpocznij</string>
 </resources>
 
 

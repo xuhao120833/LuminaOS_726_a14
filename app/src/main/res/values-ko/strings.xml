@@ -278,4 +278,10 @@
     <string name="account">계정</string>
     <string name="wallpper_load">배경 리소스를 로드하는 중...</string>
     <string name="choose_source">신호원을 선택</string>
+    <string name="follow_me">다음 단계를 따라 진행하세요:</string>
+    <string name="init_angle_tip1">1. 기계를 수평으로 책상에 놓고 화면이 벽이나 스크린에 수직이 되도록 하세요.</string>
+    <string name="init_angle_tip2">2. 기계의 상하 각도를 조정하여 화면이 표준 직사각형으로 투사되도록 하세요.</string>
+    <string name="init_angle_tip3">3. 시작을 클릭하세요.</string>
+    <string name="init_angle_tip4">보정 완료, 자동으로 종료됩니다.</string>
+    <string name="start">시작</string>
 </resources>

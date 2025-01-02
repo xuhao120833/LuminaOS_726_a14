@@ -278,4 +278,10 @@
     <string name="account">Akun</string>
     <string name="wallpper_load">Memuat sumber daya latar belakang...</string>
     <string name="choose_source">Pilih sumber sinyal</string>
+    <string name="follow_me">Ikuti langkah-langkah berikut:</string>
+    <string name="init_angle_tip1">1. Letakkan mesin secara horizontal di atas meja, dan pastikan gambar tegak lurus dengan dinding atau layar.</string>
+    <string name="init_angle_tip2">2. Sesuaikan sudut atas dan bawah mesin untuk memastikan gambar yang diproyeksikan adalah persegi panjang standar.</string>
+    <string name="init_angle_tip3">3. Klik mulai.</string>
+    <string name="init_angle_tip4">Kalibrasi selesai, keluar otomatis.</string>
+    <string name="start">Mulai</string>
 </resources>

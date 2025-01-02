@@ -278,4 +278,10 @@
     <string name="account">アカウント</string>
     <string name="wallpper_load">背景リソースを読み込んでいます...</string>
     <string name="choose_source">信号源を選択</string>
+    <string name="follow_me">次の手順に従って操作してください：</string>
+    <string name="init_angle_tip1">1、機械を水平にデスクに置き、画面を壁またはスクリーンに垂直にしてください。</string>
+    <string name="init_angle_tip2">2、機械の上下角度を調整し、画面が標準的な矩形になるようにしてください。</string>
+    <string name="init_angle_tip3">3、開始をクリックしてください。</string>
+    <string name="init_angle_tip4">補正が完了し、自動的に終了します。</string>
+    <string name="start">開始</string>
 </resources>

@@ -278,4 +278,10 @@
 	<string name="account">Account</string>
 	<string name="wallpper_load">Caricamento delle risorse di sfondo...</string>
 	<string name="choose_source">Selezionare la sorgente del segnale</string>
+	<string name="follow_me">Segui i passaggi seguenti:</string>
+	<string name="init_angle_tip1">1. Posiziona la macchina orizzontalmente sul tavolo, con l\'immagine perpendicolare alla parete o allo schermo.</string>
+	<string name="init_angle_tip2">2. Regola l\'angolo verticale della macchina per garantire che l\'immagine proiettata sia un rettangolo standard.</string>
+	<string name="init_angle_tip3">3. Clicca su Inizia.</string>
+	<string name="init_angle_tip4">Correzione completata, uscita automatica.</string>
+	<string name="start">Iniziare</string>
 </resources>

@@ -278,4 +278,10 @@
 	<string name="account">Compte</string>
 	<string name="wallpper_load">Chargement des ressources de fond...</string>
 	<string name="choose_source">Sélectionner la source du signal</string>
+	<string name="follow_me">Suivez les étapes ci-dessous :</string>
+	<string name="init_angle_tip1">1. Placez la machine à l\'horizontale sur la table, l\'image doit être perpendiculaire au mur ou à l\'écran.</string>
+	<string name="init_angle_tip2">2. Ajustez l\'angle vertical de la machine pour garantir que l\'image projetée soit un rectangle standard.</string>
+	<string name="init_angle_tip3">3. Cliquez sur Démarrer.</string>
+	<string name="init_angle_tip4">Correction terminée, sortie automatique.</string>
+	<string name="start">Commencer</string>
 </resources>

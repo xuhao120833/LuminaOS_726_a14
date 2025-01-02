@@ -278,6 +278,12 @@
     <string name="account">حساب</string>
     <string name="wallpper_load">يتم تحميل موارد الخلفية...</string>
     <string name="choose_source">اختيار مصدر الإشارة</string>
+    <string name="follow_me">اتبع الخطوات التالية:</string>
+    <string name="init_angle_tip1">1. يرجى وضع الجهاز أفقيًا على الطاولة، بحيث تكون الصورة عمودية على الحائط أو الشاشة.</string>
+    <string name="init_angle_tip2">2. قم بضبط زاوية الجهاز العلوية والسفلية لضمان أن تكون الصورة مستطيلًا قياسيًا.</string>
+    <string name="init_angle_tip3">3. اضغط على "ابدأ".</string>
+    <string name="init_angle_tip4">تم التصحيح، الخروج التلقائي.</string>
+    <string name="start">ابدأ</string>
 </resources>
 
 

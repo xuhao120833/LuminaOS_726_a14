@@ -278,4 +278,10 @@
     <string name="account">חשבון</string>
     <string name="wallpper_load">טוען משאבי רקע...</string>
     <string name="choose_source">בחר מקור אות</string>
+    <string name="follow_me">בצע את הצעדים הבאים:</string>
+    <string name="init_angle_tip1">1. הנח את המכשיר באופן אופקי על השולחן, ודא שהתמונה אנכית לקיר או למסך.</string>
+    <string name="init_angle_tip2">2. כוונן את הזווית האנכית של המכשיר כדי להבטיח שהתמונה שתוקרן תהיה מלבן תקני.</string>
+    <string name="init_angle_tip3">3. לחץ על כפתור "התחל".</string>
+    <string name="init_angle_tip4">התיקון הושלם, סגירה אוטומטית.</string>
+    <string name="start">התחל</string>
 </resources>

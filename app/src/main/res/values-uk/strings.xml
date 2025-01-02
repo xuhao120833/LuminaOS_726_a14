@@ -278,5 +278,11 @@
     <string name="account">Обліковий запис</string>
     <string name="wallpper_load">Завантаження фонових ресурсів...</string>
     <string name="choose_source">Вибрати джерело сигналу</string>
+    <string name="follow_me">Дотримуйтесь наступних кроків:</string>
+    <string name="init_angle_tip1">1. Будь ласка, розмістіть механізм горизонтально на столі, екран має бути перпендикулярним до стіни або екрану.</string>
+    <string name="init_angle_tip2">2. Налаштуйте верхній та нижній кути механізму, щоб зображення було стандартним прямокутником.</string>
+    <string name="init_angle_tip3">3. Натисніть "Почати".</string>
+    <string name="init_angle_tip4">Корекція завершена, автоматичний вихід.</string>
+    <string name="start">Почати</string>
 </resources>
 

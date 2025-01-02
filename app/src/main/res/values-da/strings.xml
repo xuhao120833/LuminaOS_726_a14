@@ -278,5 +278,11 @@
     <string name="account">konto</string>
     <string name="wallpper_load">Baggrundsressourcer indlæses...</string>
     <string name="choose_source">Vælg signalkilde</string>
+    <string name="follow_me">Følg disse trin:</string>
+    <string name="init_angle_tip1">1. Placer enheden vandret på bordet, med billedet vinkelret på væggen eller lærredet.</string>
+    <string name="init_angle_tip2">2. Juster enhedens op- og nedvinkel for at sikre, at billedet projiceres som en standardrektangel.</string>
+    <string name="init_angle_tip3">3. Tryk på Start.</string>
+    <string name="init_angle_tip4">Kalibreringen er fuldført, afslutter automatisk.</string>
+    <string name="start">Start</string>
 </resources>
 

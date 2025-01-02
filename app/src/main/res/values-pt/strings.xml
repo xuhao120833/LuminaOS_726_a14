@@ -278,6 +278,12 @@
     <string name="account">Conta</string>
     <string name="wallpper_load">Carregando recursos de fundo...</string>
     <string name="choose_source">Selecionar fonte de sinal</string>
+    <string name="follow_me">Siga os passos abaixo:</string>
+    <string name="init_angle_tip1">1. Coloque o dispositivo horizontalmente sobre a mesa, com a imagem perpendicular à parede ou à tela.</string>
+    <string name="init_angle_tip2">2. Ajuste o ângulo vertical do dispositivo para garantir que a imagem projetada seja um retângulo padrão.</string>
+    <string name="init_angle_tip3">3. Clique em Iniciar.</string>
+    <string name="init_angle_tip4">Correção concluída, saindo automaticamente.</string>
+    <string name="start">Começar</string>
 </resources>
 
 

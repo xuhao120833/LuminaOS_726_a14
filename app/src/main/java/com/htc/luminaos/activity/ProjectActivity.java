@@ -37,6 +37,8 @@ import com.htc.luminaos.utils.ReflectUtil;
 import com.htc.luminaos.utils.ShareUtil;
 import com.htc.luminaos.utils.ToastUtil;
 import com.htc.luminaos.utils.scUtils;
+import com.htc.luminaos.widget.InitAngleDialog;
+import com.htc.luminaos.widget.TimezoneDialog;
 import com.softwinner.tv.AwTvDisplayManager;
 import com.softwinner.tv.AwTvSystemManager;
 import com.softwinner.tv.common.AwTvDisplayTypes;
@@ -66,7 +68,7 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
     private int right = 100;
     private int bottom = 100;
     private int max_value = 100;
-    private int All;
+    public int All;
     private int zoom_scale =0;
     private int ZOOM_MAX = 20;
 
@@ -326,7 +328,7 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
         }
     }
 
-    private void setAuto() {
+    public void setAuto() {
         //int auto = PrjScreen.get_prj_auto_keystone_enable();
         //PrjScreen.set_prj_auto_keystone_enable(auto == 0 ? 1 : 0);
         boolean auto = getAuto();
@@ -419,17 +421,19 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
                 AppUtils.startNewApp(this, "com.hysd.vafocus", "com.hysd.vafocus.VajzActivity");
                 break;
             case R.id.rl_init_angle:
-                AlertDialog.Builder builder = new AlertDialog.Builder(this, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
-                builder.setTitle(getString(R.string.hint));
-                builder.setMessage(getString(R.string.defaultcorrectionhint));
-                builder.setPositiveButton(getString(R.string.enter), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        initCorrectAngle();
-                    }
-                });
-                builder.setNegativeButton(getString(R.string.cancel), null);
-                builder.show();
+//                AlertDialog.Builder builder = new AlertDialog.Builder(this, AlertDialog.THEME_DEVICE_DEFAULT_LIGHT);
+//                builder.setTitle(getString(R.string.hint));
+//                builder.setMessage(getString(R.string.defaultcorrectionhint));
+//                builder.setPositiveButton(getString(R.string.enter), new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface arg0, int arg1) {
+//                        initCorrectAngle();
+//                    }
+//                });
+//                builder.setNegativeButton(getString(R.string.cancel), null);
+//                builder.show();
+                InitAngleDialog initAngleDialog = new InitAngleDialog(this, R.style.DialogTheme);
+                initAngleDialog.show();
                 break;
             case R.id.rl_project_mode:
                 old_project_mode = cur_project_mode;
@@ -706,7 +710,7 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
         }
     }
 
-    private void updateZoomView() {
+    public void updateZoomView() {
         projectBinding.digitalZoomTv.setText(String.valueOf(All));
         if (All <= 0) {
             projectBinding.digitalZoomLeft.setVisibility(View.GONE);

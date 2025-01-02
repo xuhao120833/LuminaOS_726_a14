@@ -278,6 +278,12 @@
     <string name="account">Tài khoản</string>
     <string name="wallpper_load">Đang tải tài nguyên nền...</string>
     <string name="choose_source">Chọn nguồn tín hiệu</string>
+    <string name="follow_me">Hãy làm theo các bước sau:</string>
+    <string name="init_angle_tip1">1. Vui lòng đặt máy ở vị trí ngang với mặt bàn, và đảm bảo màn hình vuông góc với tường hoặc màn chiếu.</string>
+    <string name="init_angle_tip2">2. Điều chỉnh góc trên dưới của máy để đảm bảo hình ảnh chiếu ra là một hình chữ nhật chuẩn.</string>
+    <string name="init_angle_tip3">3. Nhấn nút bắt đầu.</string>
+    <string name="init_angle_tip4">Hiệu chỉnh hoàn tất, tự động thoát.</string>
+    <string name="start">Bắt đầu</string>
 </resources>
 
 

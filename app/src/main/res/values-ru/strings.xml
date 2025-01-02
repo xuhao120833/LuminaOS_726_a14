@@ -278,5 +278,11 @@
     <string name="account">Аккаунт</string>
     <string name="wallpper_load">Загрузка фоновых ресурсов...</string>
     <string name="choose_source">Выбрать источник сигнала</string>
+    <string name="follow_me">Пожалуйста, выполните следующие шаги:</string>
+    <string name="init_angle_tip1">1. Положите машину на стол горизонтально, изображение должно быть перпендикулярно стене или экрану.</string>
+    <string name="init_angle_tip2">2. Отрегулируйте угол наклона машины, чтобы изображение было стандартным прямоугольником.</string>
+    <string name="init_angle_tip3">3. Нажмите кнопку "Начать".</string>
+    <string name="init_angle_tip4">Коррекция завершена, автоматический выход.</string>
+    <string name="start">Начать</string>
 </resources>
 
