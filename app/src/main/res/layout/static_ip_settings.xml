@@ -4,18 +4,18 @@
     android:layout_height="@dimen/y_500"
     android:paddingStart="@dimen/x_10"
     android:paddingEnd="@dimen/x_10"
-    android:background="@drawable/white_frame_bg"
+    android:background="#ffffff"
     xmlns:skin="http://schemas.android.com/apk/res-auto">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="静态网络配置"
+        android:text="@string/ip_settings"
         android:textColor="@color/black"
         android:textSize="@dimen/x_28"
         android:layout_marginTop="@dimen/y_10"
         />
 
-    <ScrollView
+    <com.htc.luminaos.view.CustomScrollView
         android:layout_width="match_parent"
         android:layout_height="@dimen/y_360"
         android:layout_marginTop="@dimen/y_60">
@@ -166,7 +166,7 @@
                
                 />
         </RelativeLayout>
-    </ScrollView>
+    </com.htc.luminaos.view.CustomScrollView>
 
     <TextView
         android:layout_width="wrap_content"

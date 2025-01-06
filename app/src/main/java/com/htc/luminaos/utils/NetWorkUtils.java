@@ -274,6 +274,10 @@ public class NetWorkUtils {
 				if (staticIpConfig.isDhcp()) {
 					switchToDHCP(mContext,wifiConfig);
 				}else {
+					Log.d(TAG,"staticIpConfig.getIp() "+staticIpConfig.getIp());
+					if(staticIpConfig.getIp() == null || staticIpConfig.getIp().isEmpty()) {
+						return false;
+					}
 					setStaticIpConfig(mContext,wifiConfig,staticIpConfig.getIp(),staticIpConfig.getGateWay()
 							,staticIpConfig.getDns1(),staticIpConfig.getDns2(),24);
 				}
@@ -319,8 +323,10 @@ public class NetWorkUtils {
 			}
 
 			// 直接设置静态 IP 配置
-			wifiConfig.setStaticIpConfiguration(staticIpConfig);
+
+//			wifiConfig.setStaticIpConfiguration(staticIpConfig);
 			wifiConfig.setIpAssignment(IpConfiguration.IpAssignment.STATIC);
+			wifiConfig.setStaticIpConfiguration(staticIpConfig);
 
 			// 更新网络配置
 			int networkId = mWifiManager.updateNetwork(wifiConfig);
