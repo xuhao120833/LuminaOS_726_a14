@@ -127,24 +127,38 @@
                     android:text="@string/ip_address"
                     android:duplicateParentState="true"
                     />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:id="@+id/ip_address_tv"-->
+<!--                    android:layout_alignParentEnd="true"-->
+<!--                    android:layout_centerVertical="true"-->
+<!--                    android:layout_marginEnd="@dimen/x_103"-->
+<!--                    android:textColor="@color/tv_color"-->
+<!--                    android:textSize="@dimen/x_23"-->
+<!--                    android:gravity="center"-->
+<!--                    android:duplicateParentState="true"-->
+<!--                    />-->
+                <EditText
                     android:id="@+id/ip_address_tv"
+                    android:layout_width="@dimen/x_368"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="@dimen/x_103"
-                    android:textColor="@color/tv_color"
-                    android:textSize="@dimen/x_23"
-                    android:gravity="center"
                     android:duplicateParentState="true"
-                    />
+                    android:gravity="center"
+                    android:text="100"
+                    android:inputType="number"
+                    android:textColor="@color/tv_color"
+                    android:background="@android:color/transparent"
+                    android:textSize="@dimen/x_23" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="@dimen/x_1080"
                 android:layout_height="@dimen/y_80"
-                android:id="@+id/rl_subnet_mask"
+                android:id="@+id/rl_gateway"
                 android:layout_marginStart="@dimen/x_100"
                 android:layout_marginTop="@dimen/y_19"
                 android:layout_below="@id/rl_ip_address"
@@ -158,61 +172,29 @@
                     android:layout_centerVertical="true"
                     android:textColor="@color/tv_color"
                     android:textSize="@dimen/x_27"
-                    android:text="@string/subnet_mask"
-                    android:duplicateParentState="true"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/subnet_mask_tv"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/x_103"
-                    android:textColor="@color/tv_color"
-                    android:textSize="@dimen/x_23"
-                    android:gravity="center"
-                    android:duplicateParentState="true"
-                    />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="@dimen/x_1080"
-                android:layout_height="@dimen/y_80"
-                android:id="@+id/rl_gateway"
-                android:layout_marginStart="@dimen/x_100"
-                android:layout_marginTop="@dimen/y_19"
-                android:layout_below="@id/rl_subnet_mask"
-                android:background="@drawable/main_settings_bg"
-                style="@style/focusStyle"
-                >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/x_50"
-                    android:layout_centerVertical="true"
-                    android:textColor="@color/tv_color"
-                    android:textSize="@dimen/x_27"
                     android:text="@string/gateway"
                     android:duplicateParentState="true"
                     />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <EditText
                     android:id="@+id/gateway_tv"
+                    android:layout_width="@dimen/x_368"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="@dimen/x_103"
-                    android:textColor="@color/tv_color"
-                    android:textSize="@dimen/x_23"
-                    android:gravity="center"
                     android:duplicateParentState="true"
-                    />
+                    android:gravity="center"
+                    android:text="100"
+                    android:inputType="number"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/tv_color"
+                    android:textSize="@dimen/x_23" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="@dimen/x_1080"
                 android:layout_height="@dimen/y_80"
-                android:id="@+id/rl_dns"
+                android:id="@+id/rl_subnet_mask"
                 android:layout_marginStart="@dimen/x_100"
                 android:layout_marginTop="@dimen/y_19"
                 android:layout_below="@id/rl_gateway"
@@ -226,21 +208,61 @@
                     android:layout_centerVertical="true"
                     android:textColor="@color/tv_color"
                     android:textSize="@dimen/x_27"
-                    android:text="@string/dns"
+                    android:text="@string/subnet_mask"
                     android:duplicateParentState="true"
                     />
-                <TextView
-                    android:layout_width="wrap_content"
+
+                <EditText
+                    android:id="@+id/subnet_mask_tv"
+                    android:layout_width="@dimen/x_368"
                     android:layout_height="wrap_content"
-                    android:id="@+id/dns_tv"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="@dimen/x_103"
-                    android:textColor="@color/tv_color"
-                    android:textSize="@dimen/x_23"
+                    android:duplicateParentState="true"
                     android:gravity="center"
+                    android:text="100"
+                    android:inputType="number"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/tv_color"
+                    android:textSize="@dimen/x_23" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="@dimen/x_1080"
+                android:layout_height="@dimen/y_80"
+                android:id="@+id/rl_dns"
+                android:layout_marginStart="@dimen/x_100"
+                android:layout_marginTop="@dimen/y_19"
+                android:layout_below="@id/rl_subnet_mask"
+                android:background="@drawable/main_settings_bg"
+                style="@style/focusStyle"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/x_50"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/tv_color"
+                    android:textSize="@dimen/x_27"
+                    android:text="@string/dns"
                     android:duplicateParentState="true"
                     />
+
+                <EditText
+                    android:id="@+id/dns_tv"
+                    android:layout_width="@dimen/x_368"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/x_103"
+                    android:duplicateParentState="true"
+                    android:gravity="center"
+                    android:text="100"
+                    android:inputType="number"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/tv_color"
+                    android:textSize="@dimen/x_23" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -263,18 +285,21 @@
                     android:text="@string/dns2"
                     android:duplicateParentState="true"
                     />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+
+                <EditText
                     android:id="@+id/dns2_tv"
+                    android:layout_width="@dimen/x_368"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="@dimen/x_103"
-                    android:textColor="@color/tv_color"
-                    android:textSize="@dimen/x_23"
-                    android:gravity="center"
                     android:duplicateParentState="true"
-                    />
+                    android:gravity="center"
+                    android:text="100"
+                    android:inputType="number"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/tv_color"
+                    android:textSize="@dimen/x_23" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -297,20 +322,24 @@
                     android:text="@string/mac_address"
                     android:duplicateParentState="true"
                     />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+
+                <EditText
                     android:id="@+id/mac_tv"
+                    style="@style/unfocusStyle"
+                    android:clickable="false"
+                    android:layout_width="@dimen/x_368"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="@dimen/x_103"
-                    android:textColor="@color/tv_color"
-                    android:textSize="@dimen/x_23"
-                    android:gravity="center"
                     android:duplicateParentState="true"
-                    />
-            </RelativeLayout>
+                    android:gravity="center"
+                    android:text="100"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/tv_color"
+                    android:textSize="@dimen/x_23" />
 
+            </RelativeLayout>
 
         </RelativeLayout>
     </ScrollView>

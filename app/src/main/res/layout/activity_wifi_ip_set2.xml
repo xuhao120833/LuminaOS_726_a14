@@ -128,6 +128,7 @@
                     android:duplicateParentState="true"
                     android:gravity="center"
                     android:text="100"
+                    android:inputType="number"
                     android:textColor="@color/tv_color"
                     android:background="@android:color/transparent"
                     android:textSize="@dimen/x_23" />
@@ -166,6 +167,7 @@
                     android:duplicateParentState="true"
                     android:gravity="center"
                     android:text="100"
+                    android:inputType="number"
                     android:background="@android:color/transparent"
                     android:textColor="@color/tv_color"
                     android:textSize="@dimen/x_23" />
@@ -205,6 +207,7 @@
                     android:duplicateParentState="true"
                     android:gravity="center"
                     android:text="100"
+                    android:inputType="number"
                     android:background="@android:color/transparent"
                     android:textColor="@color/tv_color"
                     android:textSize="@dimen/x_23" />
@@ -243,6 +246,7 @@
                     android:duplicateParentState="true"
                     android:gravity="center"
                     android:text="100"
+                    android:inputType="number"
                     android:background="@android:color/transparent"
                     android:textColor="@color/tv_color"
                     android:textSize="@dimen/x_23" />
@@ -281,6 +285,7 @@
                     android:duplicateParentState="true"
                     android:gravity="center"
                     android:text="100"
+                    android:inputType="number"
                     android:background="@android:color/transparent"
                     android:textColor="@color/tv_color"
                     android:textSize="@dimen/x_23" />
