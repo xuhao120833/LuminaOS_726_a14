@@ -11,10 +11,10 @@
       "type": "SINGLE",
       "filters": [],
       "properties": [],
-      "versionCode": 25010815,
-      "versionName": "1.0.36",
+      "versionCode": 25011118,
+      "versionName": "1.0.37",
       "enabled": true,
-      "outputFile": "LuminaOS_QZ-V1.0.36-25010815-release.apk"
+      "outputFile": "LuminaOS_QZ-V1.0.37-25011118-release.apk"
     }
   ]
 }

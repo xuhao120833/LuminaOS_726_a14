@@ -20,6 +20,7 @@
         <ImageView
             android:layout_width="@dimen/x_387"
             android:layout_height="@dimen/y_173"
+            android:scaleType="fitXY"
             android:id="@+id/icon"
             />
     </androidx.cardview.widget.CardView>

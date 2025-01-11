@@ -3,6 +3,7 @@ package com.htc.luminaos.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -53,7 +54,7 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             ViewGroup relativeLayout = findViewById(R.id.rl_main);
             if (relativeLayout != null) {
-                relativeLayout.setBackground(Utils.drawables.get(0));
+                relativeLayout.setBackground((Drawable) Utils.drawables.get(0));
             }
         }
     }

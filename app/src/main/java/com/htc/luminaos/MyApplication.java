@@ -178,27 +178,17 @@ public class MyApplication extends Application {
     @SuppressLint("UseCompatLoadingForDrawables")
     private void initWallpaperData() {
 
-//        Utils.drawables.add(getResources().getDrawable(R.drawable.background_main));
-//        Utils.drawables.add(getResources().getDrawable(R.drawable.background_custom));
-//        Utils.drawables.add(getResources().getDrawable(R.drawable.background1));
-//        Utils.drawables.add(getResources().getDrawable(R.drawable.background5));
-//        Utils.drawables.add(getResources().getDrawable(R.drawable.background10));
-//        Utils.drawables.add(getResources().getDrawable(R.drawable.background11));
-//        Utils.drawables.add(getResources().getDrawable(R.drawable.background12));
-//        Utils.drawables.add(getResources().getDrawable(R.drawable.background13));
-//
-//        new Thread(() -> copyMyWallpaper()).start();
-
         new Thread(() -> {
             Utils.drawables.add(getResources().getDrawable(R.drawable.background_main));
-            Utils.drawables.add(getResources().getDrawable(R.drawable.background_custom));
-            Utils.drawables.add(getResources().getDrawable(R.drawable.background1));
-            Utils.drawables.add(getResources().getDrawable(R.drawable.background5));
-            Utils.drawables.add(getResources().getDrawable(R.drawable.background10));
-            Utils.drawables.add(getResources().getDrawable(R.drawable.background11));
-            Utils.drawables.add(getResources().getDrawable(R.drawable.background12));
-            Utils.drawables.add(getResources().getDrawable(R.drawable.background13));
+            Utils.drawables.add(R.drawable.background_custom);
+            Utils.drawables.add(R.drawable.background1);
+            Utils.drawables.add(R.drawable.background5);
+            Utils.drawables.add(R.drawable.background10);
+            Utils.drawables.add(R.drawable.background11);
+            Utils.drawables.add(R.drawable.background12);
+            Utils.drawables.add(R.drawable.background13);
             copyMyWallpaper();
+            Utils.drawables.add(getResources().getDrawable(R.drawable.wallpaper_add));
             // 数据加载完成后更新 LiveData
             Log.d(TAG,"执行完initWallpaperData");
             isDataInitialized.postValue(true);//UI线程用setValue
@@ -217,9 +207,7 @@ public class MyApplication extends Application {
                     if (file.isFile()) {
                         for (String extension : imageExtensions) {
                             if (file.getName().toLowerCase().endsWith(extension)) {
-                                Bitmap bitmap = BitmapFactory.decodeFile(file.getAbsolutePath());
-                                Drawable drawable = new BitmapDrawable(getResources(), bitmap);
-                                Utils.drawables.add(drawable);
+                                Utils.drawables.add(file.getAbsolutePath());
                                 break; // 找到一个匹配后就跳出循环
                             }
                         }

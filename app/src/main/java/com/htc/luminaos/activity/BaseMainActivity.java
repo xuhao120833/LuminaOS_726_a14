@@ -62,7 +62,7 @@ public class BaseMainActivity extends Activity implements View.OnClickListener, 
         } else {
             ViewGroup relativeLayout = findViewById(R.id.rl_main);
             if (relativeLayout != null) {
-                relativeLayout.setBackground(Utils.drawables.get(0));
+                relativeLayout.setBackground((Drawable) Utils.drawables.get(0));
             }
         }
     }

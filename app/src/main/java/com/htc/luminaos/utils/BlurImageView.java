@@ -1,12 +1,9 @@
 package com.htc.luminaos.utils;
 
-import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 import android.widget.ImageView;
 
 /**
@@ -31,45 +28,45 @@ public class BlurImageView {
      * @param bmp:bitmap参数
      * @return
      */
-    public static Bitmap BoxBlurFilter(Bitmap bmp) {
-        Log.d(TAG,"执行BoxBlurFilter前");
-        int width = bmp.getWidth();
-        int height = bmp.getHeight();
-
-        //判断图片大小，如果超过限制就做缩小处理
-        if(width*height*4>=MAX_BITMAP_SIZE) {
-            bmp=narrowBitmap(bmp);
-            width = bmp.getWidth();
-            height = bmp.getHeight();
-        }
-        //缩小完毕
-
-        Log.d(TAG,"执行BoxBlurFilter inPixels前");
-        int[] inPixels = new int[width * height];
-        Log.d(TAG,"执行BoxBlurFilter inPixels后");
-        Log.d(TAG,"执行BoxBlurFilter outPixels前");
-        int[] outPixels = new int[width * height];
-        Log.d(TAG,"执行BoxBlurFilter outPixels后");
-        Log.d(TAG,"执行BoxBlurFilter Bitmap.createBitmap前");
-        Bitmap bitmap = Bitmap.createBitmap(width, height,Bitmap.Config.ARGB_8888);
-        Log.d(TAG,"执行BoxBlurFilter Bitmap.createBitmap后");
-        bmp.getPixels(inPixels, 0, width, 0, 0, width, height);
-        for (int i = 0; i < ITERATIONS; i++) {
-            blur(inPixels, outPixels, width, height, HRADIUS);
-            blur(outPixels, inPixels, height, width, VRADIUS);
-        }
-        blurFractional(inPixels, outPixels, width, height, HRADIUS);
-        blurFractional(outPixels, inPixels, height, width, VRADIUS);
-        bitmap.setPixels(inPixels, 0, width, 0, 0, width, height);
-        return bitmap;
-    }
+//    public static Bitmap BoxBlurFilter(Bitmap bmp) {
+//        Log.d(TAG,"执行BoxBlurFilter前");
+//        int width = bmp.getWidth();
+//        int height = bmp.getHeight();
+//
+//        //判断图片大小，如果超过限制就做缩小处理
+//        if(width*height*4>=MAX_BITMAP_SIZE) {
+//            bmp=narrowBitmap(bmp);
+//            width = bmp.getWidth();
+//            height = bmp.getHeight();
+//        }
+//        //缩小完毕
+//
+//        Log.d(TAG,"执行BoxBlurFilter inPixels前");
+//        int[] inPixels = new int[width * height];
+//        Log.d(TAG,"执行BoxBlurFilter inPixels后");
+//        Log.d(TAG,"执行BoxBlurFilter outPixels前");
+//        int[] outPixels = new int[width * height];
+//        Log.d(TAG,"执行BoxBlurFilter outPixels后");
+//        Log.d(TAG,"执行BoxBlurFilter Bitmap.createBitmap前");
+//        Bitmap bitmap = Bitmap.createBitmap(width, height,Bitmap.Config.ARGB_8888);
+//        Log.d(TAG,"执行BoxBlurFilter Bitmap.createBitmap后");
+//        bmp.getPixels(inPixels, 0, width, 0, 0, width, height);
+//        for (int i = 0; i < ITERATIONS; i++) {
+//            blur(inPixels, outPixels, width, height, HRADIUS);
+//            blur(outPixels, inPixels, height, width, VRADIUS);
+//        }
+//        blurFractional(inPixels, outPixels, width, height, HRADIUS);
+//        blurFractional(outPixels, inPixels, height, width, VRADIUS);
+//        bitmap.setPixels(inPixels, 0, width, 0, 0, width, height);
+//        return bitmap;
+//    }
 
     public static Bitmap narrowBitmap(Bitmap bitmap) {
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
         int inSampleSize = 1;
         int max = 50 * 1024 * 1024;
-        while (width * height * 4 / inSampleSize > max){
+        while (width * height * 6 / inSampleSize > max){
             inSampleSize *= 2;
         }
         if (inSampleSize > 1){
@@ -109,20 +106,20 @@ public class BlurImageView {
      * @param context:上下文
      * @param res:资源id
      */
-    public static Bitmap BoxBlurFilter(Context context, int res) {
-        Bitmap bmp= BitmapFactory.decodeResource(context.getResources(), res);
-        return BoxBlurFilter(bmp);
-    }
+//    public static Bitmap BoxBlurFilter(Context context, int res) {
+//        Bitmap bmp= BitmapFactory.decodeResource(context.getResources(), res);
+//        return BoxBlurFilter(bmp);
+//    }
 
     /**
      * 根据drawable返回高斯模糊
      * @param drawable
      * @return
      */
-    public static Bitmap BoxBlurFilter(Drawable drawable) {
-        Bitmap bitmap = ((BitmapDrawable)drawable).getBitmap();
-        return BoxBlurFilter(bitmap);
-    }
+//    public static Bitmap BoxBlurFilter(Drawable drawable) {
+//        Bitmap bitmap = ((BitmapDrawable)drawable).getBitmap();
+//        return BoxBlurFilter(bitmap);
+//    }
 
     /**
      * 核心代码
