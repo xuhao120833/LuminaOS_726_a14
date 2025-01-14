@@ -1776,45 +1776,45 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
 
     }
 
-    private void CopyResIdToSd(Bitmap bitmap) {
-        File file1 = new File(Contants.WALLPAPER_DIR);
-        if (!file1.exists())
-            file1.mkdir();
+//    private void CopyResIdToSd(Bitmap bitmap) {
+//        File file1 = new File(Contants.WALLPAPER_DIR);
+//        if (!file1.exists())
+//            file1.mkdir();
+//
+//        File file = new File(Contants.WALLPAPER_OTHER);//将要保存图片的路径
+//        if (file.exists())
+//            file.delete();
+//        try {
+//            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
+//            bitmap.compress(Bitmap.CompressFormat.PNG, 100, bos);
+//            bos.flush();
+//            bos.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
-        File file = new File(Contants.WALLPAPER_OTHER);//将要保存图片的路径
-        if (file.exists())
-            file.delete();
-        try {
-            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file));
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, bos);
-            bos.flush();
-            bos.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public int countUsbDevices(Context context) {
-        File storageDir = new File("/storage/");
-        int usbCount = 0;
-
-        if (storageDir.exists() && storageDir.isDirectory()) {
-            File[] directories = storageDir.listFiles();
-            Log.d(TAG, "检测到  directories" + directories);
-            if (directories != null) {
-                for (File dir : directories) {
-                    Log.d(TAG, "检测到  directories");
-                    // 检查子目录是否是一个挂载点，并且是否是外部可移动存储
-                    if (dir.isDirectory() && dir.canRead() && isUsbDevice(dir)) {
-                        usbCount++;
-                    }
-                }
-            }
-        }
-
-        Log.d(TAG, "检测到 " + usbCount + " 个U盘");
-        return usbCount;
-    }
+//    public int countUsbDevices(Context context) {
+//        File storageDir = new File("/storage/");
+//        int usbCount = 0;
+//
+//        if (storageDir.exists() && storageDir.isDirectory()) {
+//            File[] directories = storageDir.listFiles();
+//            Log.d(TAG, "检测到  directories" + directories);
+//            if (directories != null) {
+//                for (File dir : directories) {
+//                    Log.d(TAG, "检测到  directories");
+//                    // 检查子目录是否是一个挂载点，并且是否是外部可移动存储
+//                    if (dir.isDirectory() && dir.canRead() && isUsbDevice(dir)) {
+//                        usbCount++;
+//                    }
+//                }
+//            }
+//        }
+//
+//        Log.d(TAG, "检测到 " + usbCount + " 个U盘");
+//        return usbCount;
+//    }
 
     // 辅助函数，用于判断给定目录是否为 USB 设备
     private boolean isUsbDevice(File dir) {

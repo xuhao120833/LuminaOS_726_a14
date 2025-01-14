@@ -259,7 +259,7 @@ public class WallPaperAdapter extends RecyclerView.Adapter<WallPaperAdapter.MyVi
         Log.d(TAG, " 图片缩略图 BitmapHunter run()");
         // 获取图片的宽高
         BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inJustDecodeBounds = true;
+        options.inJustDecodeBounds = true;// 仅获取图片的边界信息（宽度和高度），而不实际加载图片的像素数据。
         options.inPreferredConfig = Bitmap.Config.ARGB_8888;
         // 通过资源ID获取图片的宽高
         BitmapFactory.decodeResource(mContext.getResources(), resId, options);
@@ -303,10 +303,8 @@ public class WallPaperAdapter extends RecyclerView.Adapter<WallPaperAdapter.MyVi
 
     @Override
     public int getItemCount() {
-//        if (isLocal)
         Log.d(TAG, "getItemCount ");
         return drawables.size();
-//        else return files.length;
     }
 
     @Override
