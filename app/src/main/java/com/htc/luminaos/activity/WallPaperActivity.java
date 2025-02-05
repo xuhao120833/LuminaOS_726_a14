@@ -109,9 +109,7 @@ public class WallPaperActivity extends BaseActivity {
                         check.setVisibility(View.GONE);
                     }
                     break;
-
             }
-
             return false;
         }
     });
@@ -184,11 +182,9 @@ public class WallPaperActivity extends BaseActivity {
                         loadingDialog.dismiss();
                     }
                 });
-
             } else if (isInitialized) {
                 Log.d(TAG, " 背景资源已经加载完成");
             }
-
         }
     }
 

@@ -57,19 +57,15 @@ public class MyApplication extends Application {
         editor.putBoolean(Contants.TimeOffStatus, false);
         editor.putInt(Contants.TimeOffIndex, 0);
         editor.apply();
-
         if (new File(Contants.WALLPAPER_MAIN).exists())
             mainDrawable = new BitmapDrawable(BitmapFactory.decodeFile(Contants.WALLPAPER_MAIN));
-
         try {
             //json解析1
             parseConfigFile();
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         initDisplaySize();
-
         initWallpaperData();
 
         StatService.init(this, "5dd227fad8", "Baidu Market");
@@ -77,8 +73,6 @@ public class MyApplication extends Application {
         StatService.setAuthorizedState(this, true);
 //        StatService.autoTrace(this);
         StatService.autoTrace(this, true, false);
-
-
         //需要对webview监控的话，换如下方法
         // 自动埋点，建议在Application中调用。否则可能造成部分页面遗漏，无法完整统计。
         // @param autoTrace：如果设置为true，打开自动埋点；反之关闭
@@ -129,7 +123,7 @@ public class MyApplication extends Application {
         DisplayMetrics dm = getResources().getDisplayMetrics();
         int screenWidth = dm.widthPixels;
         int screenHeight = dm.heightPixels;
-        Log.d("hzj", "screenWidth " + screenWidth + " screenHeight " + screenHeight);
+        Log.d(TAG, "screenWidth " + screenWidth + " screenHeight " + screenHeight);
         KeystoneUtils.lcd_h = screenHeight;
         KeystoneUtils.lcd_w = screenWidth;
         KeystoneUtils.minH_size = config.manualKeystoneWidth;
@@ -177,7 +171,6 @@ public class MyApplication extends Application {
 
     @SuppressLint("UseCompatLoadingForDrawables")
     private void initWallpaperData() {
-
         new Thread(() -> {
             Utils.drawables.add(getResources().getDrawable(R.drawable.background_main));
             Utils.drawables.add(R.drawable.background_custom);
@@ -193,12 +186,10 @@ public class MyApplication extends Application {
             Log.d(TAG,"执行完initWallpaperData");
             isDataInitialized.postValue(true);//UI线程用setValue
         }).start();
-
     }
 
     private void copyMyWallpaper() {
         String[] imageExtensions = {".jpg", ".jpeg", ".png", ".bmp", ".webp"};
-
         File directory = new File("/sdcard/.mywallpaper");
         if (directory.exists() && directory.isDirectory()) {
             File[] files = directory.listFiles();
@@ -215,7 +206,6 @@ public class MyApplication extends Application {
                 }
             }
         }
-
     }
 
 }

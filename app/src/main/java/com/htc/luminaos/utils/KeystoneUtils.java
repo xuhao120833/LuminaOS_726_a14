@@ -439,10 +439,6 @@ public class KeystoneUtils {
 			lb_Nx = lb_xy[0];
 			lb_Ny = lb_xy[1];
 			rb_Nx = rb_xy[0];
-
-
-
-
 			rb_Ny = rb_xy[1];
 		}
 
@@ -571,16 +567,12 @@ public class KeystoneUtils {
 			rb_x=rb_Nx;
 			rb_y=rb_Ny;
 		}
-
 		SystemProperties.set(PROP_HTC_KEYSTONE_LT_X, String.valueOf(lt_x));
 		SystemProperties.set(PROP_HTC_KEYSTONE_LT_Y, String.valueOf(lt_y));
-
 		SystemProperties.set(PROP_HTC_KEYSTONE_LB_X, String.valueOf(lb_x));
 		SystemProperties.set(PROP_HTC_KEYSTONE_LB_Y, String.valueOf(lb_y));
-
 		SystemProperties.set(PROP_HTC_KEYSTONE_RT_X, String.valueOf(rt_x));
 		SystemProperties.set(PROP_HTC_KEYSTONE_RT_Y, String.valueOf(rt_y));
-
 		SystemProperties.set(PROP_HTC_KEYSTONE_RB_X, String.valueOf(rb_x));
 		SystemProperties.set(PROP_HTC_KEYSTONE_RB_Y, String.valueOf(rb_y));
 	}

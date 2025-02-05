@@ -140,6 +140,8 @@ public class AboutActivity extends BaseActivity {
         getMemorySize();
         getStorageSize();
         aboutBinding.resolutionTv.setText(getResolution());
+        //王冲日本 D048BQ D063 MAXZEN 要求显示分辨率854 X 480
+//        aboutBinding.resolutionTv.setText("854 X 480");
         aboutBinding.wirelessMacTv.setText(getWlanMacAddress());
         aboutBinding.wiredMacTv.setText(DeviceUtils.getEthMac());
         initQuickKey();
