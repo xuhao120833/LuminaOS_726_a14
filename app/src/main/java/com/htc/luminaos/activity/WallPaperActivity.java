@@ -143,7 +143,7 @@ public class WallPaperActivity extends BaseActivity {
             super.onCreate(savedInstanceState);
             wallPaperBinding = ActivityWallpaperCustomBinding.inflate(LayoutInflater.from(this));
             setContentView(wallPaperBinding.getRoot());
-            observeLiveData();
+//            observeLiveData();
             initView();
             getPath();
             initData();

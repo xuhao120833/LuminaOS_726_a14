@@ -23,6 +23,7 @@ public class Config {
     //色温
     public boolean displayColorTemp = false;
     public boolean displayPictureModeShowCustom = true;
+    public String custombackground = "";
 
     public boolean displayPictureModeWeiMiTitle = false;
 

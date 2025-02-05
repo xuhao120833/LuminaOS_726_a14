@@ -27,6 +27,7 @@ import org.json.JSONObject;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -62,11 +63,11 @@ public class MyApplication extends Application {
         try {
             //json解析1
             parseConfigFile();
+            initDisplaySize();
+            initWallpaperData();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        initDisplaySize();
-        initWallpaperData();
 
         StatService.init(this, "5dd227fad8", "Baidu Market");
         //启动百度自动埋点服务 https://mtj.baidu.com/static/userguide/book/android/adconfig/circle/circle.html
@@ -111,7 +112,7 @@ public class MyApplication extends Application {
         //读取背景的默认图片
         SharedPreferences sharedPreferences = ShareUtil.getInstans(getApplicationContext());
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        int defaultBg = sharedPreferences.getInt("defaultBg", 0);
+        int defaultBg = sharedPreferences.getInt("defaultBg", 0);//确保只读一次默认背景信息
         if (defaultBg == 0) {
             readBackground();
             editor.putInt("defaultBg", 1);
@@ -171,7 +172,13 @@ public class MyApplication extends Application {
 
     @SuppressLint("UseCompatLoadingForDrawables")
     private void initWallpaperData() {
-        new Thread(() -> {
+        if (!config.custombackground.isEmpty() && copyCustomBg()) {
+//            copyCustomBg();
+            Utils.customBackground = true;
+            copyMyWallpaper();
+            Utils.drawables.add(getResources().getDrawable(R.drawable.wallpaper_add));
+//            isDataInitialized.postValue(true);//UI线程用setValue
+        } else {
             Utils.drawables.add(getResources().getDrawable(R.drawable.background_main));
             Utils.drawables.add(R.drawable.background_custom);
             Utils.drawables.add(R.drawable.background1);
@@ -185,7 +192,7 @@ public class MyApplication extends Application {
             // 数据加载完成后更新 LiveData
             Log.d(TAG,"执行完initWallpaperData");
             isDataInitialized.postValue(true);//UI线程用setValue
-        }).start();
+        }
     }
 
     private void copyMyWallpaper() {
@@ -205,6 +212,51 @@ public class MyApplication extends Application {
                     }
                 }
             }
+        }
+    }
+
+    private boolean copyCustomBg() {
+        String[] imageExtensions = {".jpg", ".jpeg", ".png", ".bmp", ".webp"};
+        File directory = new File(config.custombackground);
+        Log.d(TAG,"copyCustomBg 文件目录 "+config.custombackground);
+        if (directory.exists() && directory.isDirectory()) {
+            Log.d(TAG,"copyCustomBg 目录存在 ");
+            File[] files = directory.listFiles();
+            if (files != null) {//排序
+                // 按数字排序
+                Arrays.sort(files, (f1, f2) -> {
+                    // 提取文件名中的数字
+                    int num1 = extractNumber(f1.getName());
+                    int num2 = extractNumber(f2.getName());
+                    return Integer.compare(num1, num2); // 按数值升序排序
+                });
+            }
+            if (files != null) {
+                for (File file : files) {
+                    if (file.isFile()) {
+                        for (String extension : imageExtensions) {
+                            if (file.getName().toLowerCase().endsWith(extension)) {
+                                Utils.drawables.add(file.getAbsolutePath());
+                                break; // 找到一个匹配后就跳出循环
+                            }
+                        }
+                    }
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+
+    // 从文件名中提取数字的方法
+    private static int extractNumber(String fileName) {
+        // 去掉文件后缀
+        String name = fileName.replaceAll("\\.[a-zA-Z]+$", "");
+        try {
+            // 尝试将文件名解析为数字
+            return Integer.parseInt(name);
+        } catch (NumberFormatException e) {
+            return Integer.MAX_VALUE; // 如果无法解析数字，将其放在排序末尾
         }
     }
 

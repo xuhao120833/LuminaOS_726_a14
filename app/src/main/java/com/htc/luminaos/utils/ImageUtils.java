@@ -1,8 +1,14 @@
 package com.htc.luminaos.utils;
 
+import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
+
+import java.io.File;
 
 public class ImageUtils {
 
@@ -35,5 +41,36 @@ public class ImageUtils {
         }
         Log.d(TAG, " 图片缩略图 calculateInSampleSize options.inSampleSize " + options.inSampleSize + " inSampleSize " +inSampleSize);
         return (int)inSampleSize;
+    }
+
+    /**
+     * 从指定路径加载图片并转换为 Drawable 对象
+     *
+     * @param filePath 图片文件的路径
+     * @return Drawable 对象，如果加载失败则返回 null
+     */
+    public static Drawable loadImageFromPath(String filePath, Context context) {
+        if (filePath == null || filePath.isEmpty()) {
+            Log.e(TAG, "文件路径为空");
+            return null;
+        }
+        File file = new File(filePath);
+        if (!file.exists() || !file.isFile()) {
+            Log.e(TAG, "文件不存在或不是有效的文件：" + filePath);
+            return null;
+        }
+        try {
+            // 使用 BitmapFactory 解码文件为 Bitmap
+            Bitmap bitmap = BitmapFactory.decodeFile(filePath);
+            if (bitmap != null) {
+                // 转换为 Drawable 并返回
+                return new BitmapDrawable(context.getResources(), bitmap);
+            } else {
+                Log.e(TAG, "无法解码图片文件：" + filePath);
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "加载图片时发生错误：" + e.getMessage());
+        }
+        return null;
     }
 }
