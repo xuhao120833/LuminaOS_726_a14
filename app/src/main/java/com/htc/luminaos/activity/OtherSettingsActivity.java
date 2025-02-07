@@ -125,7 +125,7 @@ public class OtherSettingsActivity extends BaseActivity implements View.OnKeyLis
         curPowerMode = mAwTvSystemManager.getPowerOnMode()== AwTvSystemTypes.EnumPowerMode.E_AW_POWER_MODE_DIRECT?1:0;
         otherSettingsBinding.powerModeTv.setText(powerModes[curPowerMode]);
 
-        if(Utils.sourceList.length>1){ //兼容多信源的情况
+        if (Utils.sourceList.length > 0 && !Utils.sourceList[0].isEmpty()) { //兼容多信源的情况
             boot_source_name = new String[Utils.sourceListTitle.length + 1];
             boot_source_name[0] = getResources().getString(R.string.boot_source_1);
             System.arraycopy(Utils.sourceListTitle, 0, boot_source_name, 1, Utils.sourceListTitle.length);
@@ -135,7 +135,7 @@ public class OtherSettingsActivity extends BaseActivity implements View.OnKeyLis
             System.arraycopy(Utils.sourceList, 0, boot_source_value, 1, Utils.sourceList.length);
 //            boot_source_name = Utils.sourceListTitle;
 //            boot_source_value = Utils.sourceList;
-        }else {
+        } else {
             boot_source_name = getResources().getStringArray(R.array.boot_source_name);
             boot_source_value = getResources().getStringArray(R.array.boot_source_value);
         }
@@ -152,6 +152,12 @@ public class OtherSettingsActivity extends BaseActivity implements View.OnKeyLis
     private String get_power_signal(){
 
         return SystemProperties.get("persist.sys.default_source","LOCAL");
+    }
+
+    //获取设备默认使用的HDMI接口，如果没设置就是HDMI1，设置了就是HDMI2
+    private String get_hdmisource(){
+
+        return SystemProperties.get("persist.sys.hdmisource","HDMI1");
     }
 
     private void set_power_signal(String source){

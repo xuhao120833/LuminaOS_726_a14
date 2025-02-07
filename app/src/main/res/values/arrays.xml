@@ -71,6 +71,12 @@
         <!--<item>CVBS1</item>-->
     </string-array>
 
+<!--    兼容默认是HDMI2的情况-->
+<!--    <string-array name="boot_source_value2" translatable="false">-->
+<!--        <item>LOCAL</item>-->
+<!--        <item>HDMI2</item>-->
+<!--        &lt;!&ndash;<item>CVBS1</item>&ndash;&gt;-->
+<!--    </string-array>-->
 
     <string-array name="picture_mode_choices">
         <item>@string/picture_mode_standard_name</item>
