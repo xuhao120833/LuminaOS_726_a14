@@ -279,8 +279,8 @@
 	<string name="wallpper_load">背景資源加載中...</string>
 	<string name="choose_source">選擇信號源</string>
 	<string name="follow_me">按如下步驟操作：</string>
-	<string name="init_angle_tip1">1、請將機械水平放置桌面，畫面垂直於牆面或者幕布。</string>
-	<string name="init_angle_tip2">2、調整機械上下角度，保證畫面投出來為標準矩形。</string>
+	<string name="init_angle_tip1">1、請將機器水平放置桌面，畫面垂直於牆面或者幕布。</string>
+	<string name="init_angle_tip2">2、調整機器上下角度，保證畫面投出來為標準矩形。</string>
 	<string name="init_angle_tip3">3、點擊開始。</string>
 	<string name="init_angle_tip4">矯正完成，自動退出</string>
 	<string name="start">開始</string>

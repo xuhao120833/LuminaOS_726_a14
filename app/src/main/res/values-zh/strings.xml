@@ -279,8 +279,8 @@
 	<string name="wallpper_load">背景资源加载中...</string>
 	<string name="choose_source">选择信号源</string>
 	<string name="follow_me">按如下步骤操作：</string>
-	<string name="init_angle_tip1">1、请将机械水平放置桌面，画面垂直于墙面或者幕布。</string>
-	<string name="init_angle_tip2">2、调整机械上下角度，保证画面投出来为标准矩形。</string>
+	<string name="init_angle_tip1">1、请将机器水平放置桌面，画面垂直于墙面或者幕布。</string>
+	<string name="init_angle_tip2">2、调整机器上下角度，保证画面投出来为标准矩形。</string>
 	<string name="init_angle_tip3">3、点击开始。</string>
 	<string name="init_angle_tip4">矫正完成，自动退出</string>
 	<string name="start">开始</string>
