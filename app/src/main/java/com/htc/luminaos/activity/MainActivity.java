@@ -802,7 +802,17 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
                 startNewActivity(AppsActivity.class);
                 break;
             case R.id.rl_settings:
-                startNewActivity(MainSettingActivity.class);
+//                startNewActivity(MainSettingActivity.class);
+                try {
+                    String listaction = DBUtils.getInstance(this).getActionFromListModules("list4");
+                    if (listaction != null && !listaction.equals("")) { //读取配置
+                        goAction(listaction);
+                    } else {// 默认跳转
+                        startNewActivity(MainSettingActivity.class);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 break;
             case R.id.rl_usb:
 //                AppUtils.startNewApp(MainActivity.this, "com.softwinner.TvdFileManager");
@@ -843,10 +853,18 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
                 manualQrDialog.show();
                 break;
             case R.id.rl_wifi:
-                startNewActivity(WifiActivity.class);
+                if(!MyApplication.config.statusbar_wifi.isEmpty()) {
+                    goAction(MyApplication.config.statusbar_wifi.trim());
+                }else {
+                    startNewActivity(WifiActivity.class);
+                }
                 break;
             case R.id.rl_bluetooth:
-                startNewActivity(BluetoothActivity.class);
+                if(!MyApplication.config.statusbar_bt.isEmpty()) {
+                    goAction(MyApplication.config.statusbar_bt.trim());
+                }else {
+                    startNewActivity(BluetoothActivity.class);
+                }
                 break;
             case R.id.home_eshare:
                 try {
@@ -1022,7 +1040,7 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
                 //读取filterApps屏蔽显示的APP
                 readFilterApps(obj);
 
-                //读取右边list第一个、第三个的配置
+                //读取右边list第一个、第三个、第四个的配置
                 readListModules(obj);
                 Log.d(TAG, " 当前的语言环境是： " + LanguageUtil.getCurrentLanguage());
 
@@ -1204,24 +1222,7 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
                     JSONObject jsonobject = jsonarrray.getJSONObject(i);
                     String tag = jsonobject.getString("tag");
                     String iconPath = jsonobject.getString("iconPath");
-//                    JSONObject textObject = jsonobject.getJSONObject("text");
-//                    String zhCN = textObject.getString("zh-CN");
-//                    String zhTW = textObject.getString("zh-TW");
-//                    String zhHK = textObject.getString("zh-HK");
-//                    String ko = textObject.getString("ko-KR");
-//                    String ja = textObject.getString("ja-JP");
-//                    String en = textObject.getString("en-US");
-//                    String ru = textObject.getString("ru-RU");
-//                    String ar = textObject.getString("ar-EG");
                     String action = jsonobject.getString("action");
-//                    hashtable.put("zh-CN", zhCN);
-//                    hashtable.put("zh-TW", zhTW);
-//                    hashtable.put("zh-HK", zhHK);
-//                    hashtable.put("ko-KR", ko);
-//                    hashtable.put("ja-JP", ja);
-//                    hashtable.put("en-US", en);
-//                    hashtable.put("ru-RU", ru);
-//                    hashtable.put("ar-EG", ar);
                     JSONObject textObject = jsonobject.getJSONObject("text");
                     JSONArray keys = textObject.names();
                     Log.d(TAG, " 读取到的listModules keys " + keys);
@@ -1618,8 +1619,14 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
             customBinding.hdmiIcon.setImageDrawable(drawable);
             drawable = null;
         }
+        drawable = DBUtils.getInstance(this).getDrawableFromListModules("list4");
+        if (drawable != null) {
+            customBinding.settingsIcon.setImageDrawable(drawable);
+            drawable = null;
+        }
         Hashtable<String, String> mHashtable1 = DBUtils.getInstance(this).getHashtableFromListModules("list1");
-        Hashtable<String, String> mHashtable2 = DBUtils.getInstance(this).getHashtableFromListModules("list3");
+        Hashtable<String, String> mHashtable3 = DBUtils.getInstance(this).getHashtableFromListModules("list3");
+        Hashtable<String, String> mHashtable4 = DBUtils.getInstance(this).getHashtableFromListModules("list4");
         Log.d(TAG, "xu当前语言" + LanguageUtil.getCurrentLanguage());
         if (mHashtable1 != null) {
             String text = mHashtable1.get(LanguageUtil.getCurrentLanguage());
@@ -1628,11 +1635,18 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
                 customBinding.eshareText.setText(text);
             }
         }
-        if (mHashtable2 != null) {
-            String text = mHashtable2.get(LanguageUtil.getCurrentLanguage());
+        if (mHashtable3 != null) {
+            String text = mHashtable3.get(LanguageUtil.getCurrentLanguage());
             Log.d(TAG, "xu当前语言 text hdmiText" + text);
             if (text != null && !text.isEmpty()) {
                 customBinding.hdmiText.setText(text);
+            }
+        }
+        if (mHashtable4 != null) {
+            String text = mHashtable4.get(LanguageUtil.getCurrentLanguage());
+            Log.d(TAG, "xu当前语言 text settingsText" + text);
+            if (text != null && !text.isEmpty()) {
+                customBinding.settingsText.setText(text);
             }
         }
     }

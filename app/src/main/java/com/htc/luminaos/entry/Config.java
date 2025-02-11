@@ -23,7 +23,11 @@ public class Config {
     //色温
     public boolean displayColorTemp = false;
     public boolean displayPictureModeShowCustom = true;
+    //用户自定义背景目录
     public String custombackground = "";
+    //配置首页状态栏蓝牙、Wifi的跳转
+    public String statusbar_bt = "";
+    public String statusbar_wifi = "";
 
     public boolean displayPictureModeWeiMiTitle = false;
 

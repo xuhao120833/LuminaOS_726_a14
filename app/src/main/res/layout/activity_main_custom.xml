@@ -386,6 +386,7 @@
             android:src="@drawable/home_icon_set" />
 
         <TextView
+            android:id="@+id/settings_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textSize="@dimen/y_27"
