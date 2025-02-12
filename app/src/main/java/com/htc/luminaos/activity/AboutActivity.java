@@ -301,11 +301,11 @@ public class AboutActivity extends BaseActivity {
         if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN || keyCode == KeyEvent.KEYCODE_VOLUME_UP || keyCode == KeyEvent.KEYCODE_VOLUME_MUTE) {
             isRecord = true;
         }
-        LogUtils.d("hzj", "onKeyDown " + keyCode);
+//        LogUtils.d(TAG, "onKeyDown " + keyCode);
         if (isRecord && event.getAction() == KeyEvent.ACTION_UP) {
             record_list.add(keyCode);
             if (record_list.size() >= 6) {
-                LogUtils.d("hzj", "record_list " + record_list.toString());
+                LogUtils.d("xuhao", "record_list " + record_list.toString());
                 if (isEqual(record_list, ENTER_FACTORY_REBOOT)) {
                     Intent intent = new Intent();
                     intent.setComponent(new ComponentName("com.hotack.hotackfeaturestest", "com.hotack.activity.TestActivity"));

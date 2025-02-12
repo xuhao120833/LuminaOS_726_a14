@@ -27,10 +27,11 @@ public class UpgradeCheckFailDialog extends Dialog implements View.OnClickListen
     private Context mContext;
     private UpgradeCheckFailBinding upgradeCheckFailBinding;
     private OnClickCallBack mcallback;
+    private static String TAG = "UpgradeCheckFailDialog";
 
     @Override
     public void onClick(View v) {
-        Log.d("hzj","onclick");
+        Log.d(TAG,"onclick");
         switch (v.getId()){
             case R.id.enter:
 

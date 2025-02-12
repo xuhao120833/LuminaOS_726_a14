@@ -30,10 +30,11 @@ public class WifiConnectNoPasswordDialog extends Dialog implements View.OnClickL
     private WifiConnectNoDialogBinding wifiConnectNoDialogBinding;
     private String wifi_name = "unknow";
     private OnWifiConnectNoPasswordCallBack mcallback;
+    private static String TAG = "WifiConnectNoPasswordDialog";
 
     @Override
     public void onClick(View v) {
-        Log.d("hzj","onclick");
+        Log.d(TAG,"onclick");
         switch (v.getId()){
             case R.id.enter:
 

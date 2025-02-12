@@ -53,6 +53,7 @@ public class BluetoothActivity extends BaseActivity implements BluetoothCallBcak
     private IntentFilter mCanFilter = new IntentFilter();
 
     public static BluetoothA2dp a2dp;
+    private static String TAG = "BluetoothActivity";
 
     /**
      * 配对广播
@@ -150,7 +151,7 @@ public class BluetoothActivity extends BaseActivity implements BluetoothCallBcak
                         .getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                 // 搜索到的不是已经绑定的蓝牙设备
                 if (device.getBondState() != BluetoothDevice.BOND_BONDED && device.getName()!=null) {
-                    Log.i("hzj", "device "+device.getName());
+                    Log.i(TAG, "device "+device.getName());
                     if (!scanList.contains(device) && !device.getName().equals("")) {
 //						if(device!=null&&!isHtcRemote(device)){
                         scanList.add(device);
@@ -380,7 +381,7 @@ public class BluetoothActivity extends BaseActivity implements BluetoothCallBcak
             // 得到蓝牙状态的方法
             Set<BluetoothDevice> devices = bluetoothAdapter.getBondedDevices();
             for (BluetoothDevice device : devices) {
-                //Log.d("hzj","pair device "+device.getName());
+                //Log.d(TAG,"pair device "+device.getName());
                 if(device!=null){
                     list.add(device);
                 }

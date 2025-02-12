@@ -129,7 +129,7 @@ public class PictureModeActivity extends BaseActivity implements View.OnKeyListe
 
     private void initData() {
         String pictureName = pqControl.getPictureModeName();
-        Log.d("hzj", "pictureName " + pictureName);
+        Log.d(TAG, "pictureName " + pictureName);
         for (int i = 0; i < picture_mode_values.length; i++) {
             if (picture_mode_values[i].equals(pictureName)) {
                 curPosition = i;

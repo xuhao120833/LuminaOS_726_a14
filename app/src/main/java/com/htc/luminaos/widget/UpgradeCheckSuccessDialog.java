@@ -28,10 +28,11 @@ public class UpgradeCheckSuccessDialog extends Dialog implements View.OnClickLis
     private Context mContext;
     private UpgradeCheckSuccessBinding upgradeCheckSuccessBinding;
     private OnClickCallBack mcallback;
+    private static String TAG = "UpgradeCheckSuccessDialog";
 
     @Override
     public void onClick(View v) {
-        Log.d("hzj","onclick");
+        Log.d(TAG,"onclick");
         switch (v.getId()){
             case R.id.enter:
 

@@ -778,7 +778,7 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
         py4[3] = Integer.parseInt(df.format((rb_xy[1] * KeystoneUtils.lcd_h) / 1000));
         DecimalFormat df = new DecimalFormat("0.00", DecimalFormatSymbols.getInstance(Locale.CHINA));
         float a = Float.parseFloat(df.format((max_value - zoom * 2) * 0.01).replace(",", "."));
-        Log.d("hzj", "float  a =" + a);
+        Log.d(TAG, "float  a =" + a);
         int old_ratio = KeystoneUtils.readGlobalSettings(this, "zoom_scale_old", 0);
         int ratio = KeystoneUtils.readGlobalSettings(this, "zoom_scale", 0);
         int[] tpData = scUtils.getpxRatioxy(px4, py4, old_ratio, ratio, a, KeystoneUtils.lcd_w, KeystoneUtils.lcd_h);
@@ -1023,7 +1023,7 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
         DecimalFormat df = new DecimalFormat("0.00", DecimalFormatSymbols.getInstance(Locale.CHINA));
         float a = Float.parseFloat(df.format((100- KeystoneUtils.readGlobalSettings(this,"zoom_value",0)*2)*0.01).replace(",","."));
         int oldScale = KeystoneUtils.readGlobalSettings(this,"zoom_scale_old",0);
-        Log.d("hzj","a="+a+" oldScale="+oldScale+" scale="+scale);
+        Log.d(TAG,"a="+a+" oldScale="+oldScale+" scale="+scale);
         int[] tpData = scUtils.getpxRatioxy(px4, py4, oldScale,
                 scale, a, KeystoneUtils.lcd_w, KeystoneUtils.lcd_h);
         if(tpData[8]==1){

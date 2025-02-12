@@ -56,6 +56,7 @@ public class WifiActivity extends BaseActivity implements WifiEnabledReceiver.Wi
     private WifiFoundAdapter wifiFoundAdapter;
     private WifiManager mWifiManager;
     private ExecutorService singer = Executors.newFixedThreadPool(3);
+    private static String TAG = "WifiActivity";
 
     private Handler handler = new Handler(new Handler.Callback() {
         @Override
@@ -366,7 +367,7 @@ public class WifiActivity extends BaseActivity implements WifiEnabledReceiver.Wi
 
     @Override
     public void openWifi() {
-        Log.d("hzj", "openWifi()");
+        Log.d(TAG, "openWifi()");
         updateViewShow(true);
     }
 

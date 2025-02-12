@@ -144,7 +144,7 @@ public class FileUtils {
 				fsb.append(content);
 			}
 			buffReader.close();
-			//Log.d("hzj","readFileContent "+fsb.toString());
+			//Log.d(TAG,"readFileContent "+fsb.toString());
 			return fsb.toString();
 		} catch (Exception e) {
 			e.printStackTrace();

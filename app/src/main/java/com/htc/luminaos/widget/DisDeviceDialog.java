@@ -31,10 +31,11 @@ public class DisDeviceDialog extends Dialog implements View.OnClickListener {
 
     private OnDisDeviceCallBack mcallback;
     private String device_title_name=null;
+    private static String TAG = "DisDeviceDialog";
 
     @Override
     public void onClick(View v) {
-        Log.d("hzj","onclick");
+        Log.d(TAG,"onclick");
         switch (v.getId()){
             case R.id.enter:
                 mcallback.onEnterClick();

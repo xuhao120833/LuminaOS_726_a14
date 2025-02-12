@@ -36,6 +36,7 @@ public class Constants {
 	public static final String KEY_DISPLAYNAME = "name";
 	public static final String FILE_NAME = "htcsettings_data";
 	public final static String key_Seetings = "htcsettings";
+	private static String TAG ="Constants";
 
 
 
@@ -169,9 +170,9 @@ public class Constants {
 		if (crc_hex.length()==1){
 			crc_hex = "0"+crc_hex;
 		}
-		Log.d("hzj","CRC "+crc_hex);
+		Log.d(TAG,"CRC "+crc_hex);
 		boolean status = crc_hex.equals(String.valueOf(dataChar[152])+ dataChar[153]);
-		Log.d("hzj","CRC check="+status);
+		Log.d(TAG,"CRC check="+status);
 		return status?3:2;
 	}
 

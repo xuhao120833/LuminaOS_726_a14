@@ -30,6 +30,7 @@ public class BluetoothFoundAdapter extends RecyclerView.Adapter<BluetoothFoundAd
     private List<BluetoothDevice> deviceList = new ArrayList<>();
     private Context mContext;
     private BluetoothDevice CurrentPair;
+    private static String TAG = "BluetoothFoundAdapter";
 
     public BluetoothFoundAdapter(List<BluetoothDevice> deviceList, Context mContext){
         this.deviceList = deviceList;
@@ -86,9 +87,9 @@ public class BluetoothFoundAdapter extends RecyclerView.Adapter<BluetoothFoundAd
                     boolean result = ClsUtils.createBond(device.getClass(),
                             device);
                     if (result) {
-                        Log.i("hzj", "配对成功!");
+                        Log.i(TAG, "配对成功!");
                     } else {
-                        Log.i("hzj", "配对失败!");
+                        Log.i(TAG, "配对失败!");
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
