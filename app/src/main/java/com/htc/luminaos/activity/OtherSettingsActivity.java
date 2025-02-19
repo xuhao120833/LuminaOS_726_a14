@@ -166,6 +166,7 @@ public class OtherSettingsActivity extends BaseActivity implements View.OnKeyLis
 
     private int getCurScreenSaverIndex(){
         int screen_off_timeout = Settings.System.getInt(getContentResolver(),Settings.System.SCREEN_OFF_TIMEOUT,300000);
+        Log.d(TAG,"getCurScreenSaverIndex screen_off_timeout "+screen_off_timeout);
         for (int i=0;i<screen_saver_value.length;i++){
             if (screen_off_timeout==screen_saver_value[i])
                 return i;
@@ -174,6 +175,7 @@ public class OtherSettingsActivity extends BaseActivity implements View.OnKeyLis
     }
 
     private void updateScreenSaver(int index){
+        Log.d(TAG,"updateScreenSaver screen_saver_value[index] "+screen_saver_value[index]);
         Settings.System.putInt(getContentResolver(),Settings.System.SCREEN_OFF_TIMEOUT,screen_saver_value[index]);
         otherSettingsBinding.screenSaverTv.setText(screen_saver_title[index]);
     }

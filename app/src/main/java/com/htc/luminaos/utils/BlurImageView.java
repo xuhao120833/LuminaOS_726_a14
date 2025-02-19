@@ -61,18 +61,35 @@ public class BlurImageView {
 //        return bitmap;
 //    }
 
+//    public static Bitmap narrowBitmap(Bitmap bitmap) {
+//        int width = bitmap.getWidth();
+//        int height = bitmap.getHeight();
+//        int inSampleSize = 1;
+//        int max = 50 * 1024 * 1024;
+//        while (width * height * 6 / inSampleSize > max){
+//            inSampleSize *= 2;
+//        }
+//        if (inSampleSize > 1){
+//            Matrix m2 = new Matrix();
+//            m2.setScale(1 / (float)inSampleSize , 1 / (float)inSampleSize);
+//            bitmap = Bitmap.createBitmap(bitmap,0,0,width,height,m2,false);
+//        }
+//        return bitmap;
+//    }
+
     public static Bitmap narrowBitmap(Bitmap bitmap) {
+        int maxWidth = 1920;  // 最大宽度限制
+        int maxHeight = 1080; // 最大高度限制
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
-        int inSampleSize = 1;
-        int max = 50 * 1024 * 1024;
-        while (width * height * 6 / inSampleSize > max){
-            inSampleSize *= 2;
-        }
-        if (inSampleSize > 1){
-            Matrix m2 = new Matrix();
-            m2.setScale(1 / (float)inSampleSize , 1 / (float)inSampleSize);
-            bitmap = Bitmap.createBitmap(bitmap,0,0,width,height,m2,false);
+
+        if (width > maxWidth || height > maxHeight) {
+            float scaleWidth = (float) maxWidth / width;
+            float scaleHeight = (float) maxHeight / height;
+            float scale = Math.min(scaleWidth, scaleHeight);
+
+            // 使用硬件加速的 createScaledBitmap
+            return Bitmap.createScaledBitmap(bitmap, (int) (width * scale), (int) (height * scale), true);
         }
         return bitmap;
     }

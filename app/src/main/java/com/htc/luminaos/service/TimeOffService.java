@@ -65,7 +65,7 @@ public class TimeOffService extends Service {
     @Override
     public void onCreate() {
         timer = new Timer();
-        timer.schedule(timerTask,10000,10000);
+        timer.schedule(timerTask,10000,10000);//每10秒检查一次
         sharedPreferences = ShareUtil.getInstans(this);
         Log.d(TAG,"onCreate()");
         super.onCreate();
