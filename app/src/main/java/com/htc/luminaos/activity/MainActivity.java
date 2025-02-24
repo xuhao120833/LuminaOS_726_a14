@@ -1032,7 +1032,7 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
                 readMain(obj);
 
                 //读取specialApps
-                readSpecialApps(obj, residentList);
+//                readSpecialApps(obj, residentList);
 
                 //读取APP快捷图标
                 readShortcuts(obj, residentList, sharedPreferences);
@@ -1128,12 +1128,15 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
     private void readSpecialApps(JSONObject obj, List<String> residentList) {
         try {
             if (obj.has("specialApps")) {
+                DBUtils.getInstance(this).clearSpecialAppsTableAndResetId(); //重写之前清空数据表
                 JSONArray jsonarrray = obj.getJSONArray("specialApps");
-
                 for (int i = 0; i < jsonarrray.length(); i++) {
                     JSONObject jsonobject = jsonarrray.getJSONObject(i);
                     String appName = jsonobject.getString("appName");
                     String packageName = jsonobject.getString("packageName");
+
+                    Utils.specialAppsList +=packageName;
+
                     String iconPath = jsonobject.getString("iconPath");
                     String continent = jsonobject.getString("continent");
                     String countryCode = jsonobject.getString("countryCode");
@@ -1143,7 +1146,10 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
                     Log.d(TAG, " specialApps 添加快捷数据库成功 " + appName + " " + packageName);
 //                    }
                     Log.d(TAG, " specialApps读到的数据 " + appName + " " + packageName + " " + iconPath + " " + continent + " " + " " + countryCode);
+
+//                    Log.d(TAG," Utils.specialAppsList "+Utils.specialAppsList);
                 }
+                Log.d(TAG," Utils.specialAppsList "+Utils.specialAppsList);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -1264,7 +1270,7 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
     private ArrayList<ShortInfoBean> loadHomeAppData() {
         ArrayList<AppSimpleBean> appSimpleBeans = DBUtils.getInstance(this).getFavorites(); //获取配置文件中设置的首页显示App
         ArrayList<ShortInfoBean> shortInfoBeans = new ArrayList<>();
-        ArrayList<AppInfoBean> appList = AppUtils.getApplicationMsg(this);//获取所有的应用(排除了配置文件中拉黑的App)
+//        ArrayList<AppInfoBean> appList = AppUtils.getApplicationMsg(this);//获取所有的应用(排除了配置文件中拉黑的App)
         //xuhao add 默认添加我的应用按钮
         ShortInfoBean mshortInfoBean = new ShortInfoBean();
         mshortInfoBean.setAppicon(ContextCompat.getDrawable(this, R.drawable.home_app_manager));
@@ -1272,6 +1278,7 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
         //xuhao
         //特定IP配置
         setIpShortInfo(shortInfoBeans);
+        ArrayList<AppInfoBean> appList = AppUtils.getApplicationMsg(this);//获取所有的应用(排除了配置文件中拉黑的App)
         Log.d(TAG, " loadHomeAppData快捷图标 appList " + appList.size());
         Log.d(TAG, " loadHomeAppData快捷图标 appSimpleBeans " + appSimpleBeans.size());
         for (int i = 0; i < appSimpleBeans.size(); i++) {
@@ -1304,7 +1311,7 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
                 if (continent_countryCode.length > 1) {
                     continent = continent_countryCode[0];
                     code = continent_countryCode[1];
-                } else if (continent_countryCode.length == 1) {
+                } else if (continent_countryCode.length == 1 && !continent_countryCode[0].isEmpty()) {
                     if (continent_countryCode[0].contains("洲")) {
                         continent = continent_countryCode[0];
                         code = null;
@@ -1323,6 +1330,7 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
                     shortInfoBean.setPackageName(Utils.specialApps.getPackageName());
                     shortInfoBean.setAppicon(DBUtils.getInstance(this).byteArrayToDrawable(Utils.specialApps.getIconData()));
                     shortInfoBeans.add(shortInfoBean);
+                    Utils.specialAppsList = "";
                 }
             }
         } catch (Exception e) {

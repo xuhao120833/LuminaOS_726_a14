@@ -32,6 +32,8 @@ public class Utils {
     //一个全局的特定IP APP信息
     public static SpecialApps specialApps = null;
 
+    public static String specialAppsList ="";
+
     public static int[] drawablesId = {
             R.drawable.background_main,
             R.drawable.background_custom,

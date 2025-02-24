@@ -511,6 +511,22 @@ public class DBUtils extends SQLiteOpenHelper {
         }
     }
 
+    public void clearSpecialAppsTableAndResetId() {
+        synchronized (this) {
+            SQLiteDatabase db = getWritableDatabase();
+            try {
+                Log.d(TAG," clearSpecialAppsTableAndResetId 清空数据");
+                db.execSQL("DELETE FROM " + TABLENAME_SPECIALAPPS);
+                db.execSQL("DELETE FROM sqlite_sequence WHERE name='" + TABLENAME_SPECIALAPPS + "';");
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                db.close();
+            }
+        }
+    }
+
+
     /***
      * Time:2024/8/10
      * Author:xuhao
@@ -946,15 +962,17 @@ public class DBUtils extends SQLiteOpenHelper {
 
 
     public void deleteTable() {
-        SQLiteDatabase db = getWritableDatabase();
-        int rowsAffected = -1;
-        try {
-            rowsAffected = db.delete(TABLENAME_FAVORITES, null, null);
-            rowsAffected = db.delete(TABLENAME_MAINAPP, null, null);
-            rowsAffected = db.delete(TABLENAME_LISTMODULES, null, null);
-            rowsAffected = db.delete(TABLENAME_BRANDLOGO, null, null);
-        } catch (Exception e) {
-            e.printStackTrace();
+        synchronized (this) {
+            SQLiteDatabase db = getWritableDatabase();
+            int rowsAffected = -1;
+            try {
+                rowsAffected = db.delete(TABLENAME_FAVORITES, null, null);
+                rowsAffected = db.delete(TABLENAME_MAINAPP, null, null);
+                rowsAffected = db.delete(TABLENAME_LISTMODULES, null, null);
+                rowsAffected = db.delete(TABLENAME_BRANDLOGO, null, null);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
