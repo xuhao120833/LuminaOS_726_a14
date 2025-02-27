@@ -41,14 +41,12 @@ public class StaticConfigDialog extends BaseDialog implements View.OnClickListen
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()) {
-            case R.id.enter:
-                setIP();
-                dismiss();
-                break;
-            case R.id.cancel:
-                dismiss();
-                break;
+        int id = v.getId();
+        if (id == R.id.enter) {
+            setIP();
+            dismiss();
+        } else if (id == R.id.cancel) {
+            dismiss();
         }
     }
 

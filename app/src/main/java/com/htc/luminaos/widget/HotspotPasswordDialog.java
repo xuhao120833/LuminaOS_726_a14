@@ -33,24 +33,22 @@ public class HotspotPasswordDialog extends BaseDialog implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.enter:
-                if (hotspotPasswordDialogBinding.etPassword.getText().toString().isEmpty()){
-                    hotspotPasswordDialogBinding.errMsg.setVisibility(View.VISIBLE);
-                    hotspotPasswordDialogBinding.errMsg.setText(mContext.getString(R.string.empty_string));
-                    break;
-                }else if (hotspotPasswordDialogBinding.etPassword.getText().toString().length()<8){
-                    hotspotPasswordDialogBinding.errMsg.setVisibility(View.VISIBLE);
-                    hotspotPasswordDialogBinding.errMsg.setText(mContext.getString(R.string.passwordmsglength));
-                    break;
-                }
-                if (mcallback!=null)
-                    mcallback.onClick(hotspotPasswordDialogBinding.etPassword.getText().toString());
-                dismiss();
-                break;
-            case R.id.cancel:
-                dismiss();
-                break;
+        int id = v.getId();
+        if (id == R.id.enter) {
+            if (hotspotPasswordDialogBinding.etPassword.getText().toString().isEmpty()) {
+                hotspotPasswordDialogBinding.errMsg.setVisibility(View.VISIBLE);
+                hotspotPasswordDialogBinding.errMsg.setText(mContext.getString(R.string.empty_string));
+                return;
+            } else if (hotspotPasswordDialogBinding.etPassword.getText().toString().length() < 8) {
+                hotspotPasswordDialogBinding.errMsg.setVisibility(View.VISIBLE);
+                hotspotPasswordDialogBinding.errMsg.setText(mContext.getString(R.string.passwordmsglength));
+                return;
+            }
+            if (mcallback != null)
+                mcallback.onClick(hotspotPasswordDialogBinding.etPassword.getText().toString());
+            dismiss();
+        } else if (id == R.id.cancel) {
+            dismiss();
         }
     }
 

@@ -90,28 +90,26 @@ public class WifiConnectDialog extends BaseDialog implements View.OnClickListene
     @Override
     public void onClick(View v) {
         Log.d("xuhao", "onclick");
-        switch (v.getId()) {
-            case R.id.enter:
-                if (wifiConnectDialogBinding.etPassword.getText().toString().isEmpty() ||
-                        wifiConnectDialogBinding.etPassword.getText().toString().length() < 8) {
-                    wifiConnectDialogBinding.errMsg.setVisibility(View.VISIBLE);
-                    break;
-                }
+        int id = v.getId();
+        if (id == R.id.enter) {
+            if (wifiConnectDialogBinding.etPassword.getText().toString().isEmpty() ||
+                    wifiConnectDialogBinding.etPassword.getText().toString().length() < 8) {
+                wifiConnectDialogBinding.errMsg.setVisibility(View.VISIBLE);
+                return;
+            }
 
-                //dismiss();
-                connectingDialog = ConectingDialog(mContext, mContext.getString(R.string.connecting_ssid, wifi_name));
-                connectingDialog.show();
-                threads.execute(new Runnable() {
-                    @Override
-                    public void run() {
-                        disEnableNetwork();
-                    }
-                });
-                handler.sendEmptyMessageDelayed(2, 1500);
-                break;
-            case R.id.cancel:
-                dismiss();
-                break;
+            //dismiss();
+            connectingDialog = ConectingDialog(mContext, mContext.getString(R.string.connecting_ssid, wifi_name));
+            connectingDialog.show();
+            threads.execute(new Runnable() {
+                @Override
+                public void run() {
+                    disEnableNetwork();
+                }
+            });
+            handler.sendEmptyMessageDelayed(2, 1500);
+        } else if (id == R.id.cancel) {
+            dismiss();
         }
     }
 

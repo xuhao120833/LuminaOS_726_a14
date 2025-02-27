@@ -32,16 +32,13 @@ public class UpgradeCheckFailDialog extends Dialog implements View.OnClickListen
     @Override
     public void onClick(View v) {
         Log.d(TAG,"onclick");
-        switch (v.getId()){
-            case R.id.enter:
-
-                if (mcallback!=null)
-                    mcallback.onRetry();
-                dismiss();
-                break;
-            case R.id.cancel:
-                dismiss();
-                break;
+        int id = v.getId();
+        if (id == R.id.enter) {
+            if (mcallback != null)
+                mcallback.onRetry();
+            dismiss();
+        } else if (id == R.id.cancel) {
+            dismiss();
         }
     }
 

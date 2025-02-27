@@ -33,16 +33,13 @@ public class UpgradeCheckSuccessDialog extends Dialog implements View.OnClickLis
     @Override
     public void onClick(View v) {
         Log.d(TAG,"onclick");
-        switch (v.getId()){
-            case R.id.enter:
-
-                if (mcallback!=null)
-                    mcallback.upgrade();
-                dismiss();
-                break;
-            case R.id.cancel:
-                dismiss();
-                break;
+        int id = v.getId();
+        if (id == R.id.enter) {
+            if (mcallback != null)
+                mcallback.upgrade();
+            dismiss();
+        } else if (id == R.id.cancel) {
+            dismiss();
         }
     }
 

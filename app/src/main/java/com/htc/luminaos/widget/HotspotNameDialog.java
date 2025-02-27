@@ -32,20 +32,18 @@ public class HotspotNameDialog extends BaseDialog implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.enter:
-                if (hotspotNameDialogBinding.etHotspotName.getText().toString().equals("")){
-                    hotspotNameDialogBinding.errMsg.setVisibility(View.VISIBLE);
-                    hotspotNameDialogBinding.errMsg.setText(mContext.getString(R.string.empty_string));
-                    break;
-                }
-                if (mcallback!=null)
-                    mcallback.onClick(hotspotNameDialogBinding.etHotspotName.getText().toString());
-                dismiss();
-                break;
-            case R.id.cancel:
-                dismiss();
-                break;
+        int id = v.getId();
+        if (id == R.id.enter) {
+            if (hotspotNameDialogBinding.etHotspotName.getText().toString().equals("")) {
+                hotspotNameDialogBinding.errMsg.setVisibility(View.VISIBLE);
+                hotspotNameDialogBinding.errMsg.setText(mContext.getString(R.string.empty_string));
+                return;
+            }
+            if (mcallback != null)
+                mcallback.onClick(hotspotNameDialogBinding.etHotspotName.getText().toString());
+            dismiss();
+        } else if (id == R.id.cancel) {
+            dismiss();
         }
     }
 

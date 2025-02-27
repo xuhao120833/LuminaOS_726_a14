@@ -143,10 +143,8 @@ public class InitAngleDialog extends BaseDialog implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.start_init_angle:
-                initCorrectAngle();
-                break;
+        if (v.getId() == R.id.start_init_angle) {
+            initCorrectAngle();
         }
     }
 

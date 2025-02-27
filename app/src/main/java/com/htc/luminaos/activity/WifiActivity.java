@@ -145,26 +145,21 @@ public class WifiActivity extends BaseActivity implements WifiEnabledReceiver.Wi
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.rl_wifi_switch:
-            case R.id.wifi_switch:
-                wifiBinding.wifiSwitch.setChecked(!wifiBinding.wifiSwitch.isChecked());
-                break;
-            case R.id.rl_add_network:
-                AddNetWorkDialog addNetWorkDialog = new AddNetWorkDialog(this, R.style.DialogTheme);
-                addNetWorkDialog.show();
-                break;
-            case R.id.rl_refresh_network:
-                mWifiManager.startScan();
-                startanim(true);
-                break;
-            case R.id.rl_ip_settings:
-                if (isWifiConnected()) {
-                    startNewActivity(WifiIpSetActivity.class);
-                } else {
-                    Toast.makeText(this, getResources().getString(R.string.network_disconnect_tip), Toast.LENGTH_SHORT).show();
-                }
-                break;
+        int id = v.getId();
+        if (id == R.id.rl_wifi_switch || id == R.id.wifi_switch) {
+            wifiBinding.wifiSwitch.setChecked(!wifiBinding.wifiSwitch.isChecked());
+        } else if (id == R.id.rl_add_network) {
+            AddNetWorkDialog addNetWorkDialog = new AddNetWorkDialog(this, R.style.DialogTheme);
+            addNetWorkDialog.show();
+        } else if (id == R.id.rl_refresh_network) {
+            mWifiManager.startScan();
+            startanim(true);
+        } else if (id == R.id.rl_ip_settings) {
+            if (isWifiConnected()) {
+                startNewActivity(WifiIpSetActivity.class);
+            } else {
+                Toast.makeText(this, getResources().getString(R.string.network_disconnect_tip), Toast.LENGTH_SHORT).show();
+            }
         }
     }
 

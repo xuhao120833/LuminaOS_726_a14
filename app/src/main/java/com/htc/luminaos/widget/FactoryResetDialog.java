@@ -28,18 +28,16 @@ public class FactoryResetDialog extends Dialog implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.enter:
-                Intent resetIntent = new Intent("android.intent.action.FACTORY_RESET");
-                resetIntent.setPackage("android");
-                resetIntent.setFlags(Intent.FLAG_RECEIVER_FOREGROUND);
-                resetIntent.putExtra(Intent.EXTRA_REASON, "ResetConfirmFragment");
-                mContext.sendBroadcast(resetIntent);
-                dismiss();
-                break;
-            case R.id.cancel:
-                dismiss();
-                break;
+        int id = v.getId();
+        if (id == R.id.enter) {
+            Intent resetIntent = new Intent("android.intent.action.FACTORY_RESET");
+            resetIntent.setPackage("android");
+            resetIntent.setFlags(Intent.FLAG_RECEIVER_FOREGROUND);
+            resetIntent.putExtra(Intent.EXTRA_REASON, "ResetConfirmFragment");
+            mContext.sendBroadcast(resetIntent);
+            dismiss();
+        } else if (id == R.id.cancel) {
+            dismiss();
         }
     }
 

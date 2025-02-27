@@ -231,31 +231,23 @@ public class MainSettingActivity extends BaseActivity {
 //        }
 
         //原生逻辑
-        switch (v.getId()){
-            case R.id.rl_wifi:
-                startNewActivity(NetworkActivity.class);
-                break;
-            case R.id.rl_bluetooth:
-                startNewActivity(BluetoothActivity.class);
-                break;
-            case R.id.rl_project:
-                startNewActivity(ProjectActivity.class);
-                break;
-            case R.id.rl_apps_manager:
-                startNewActivity(AppsManagerActivity.class);
-                break;
-            case R.id.rl_language:
-                startNewActivity(LanguageAndKeyboardActivity.class);
-                break;
-            case R.id.rl_date_time:
-                startNewActivity(DateTimeActivity.class);
-                break;
-            case R.id.rl_other:
-                startNewActivity(OtherSettingsActivity.class);
-                break;
-            case R.id.rl_about:
-                startNewActivity(AboutActivity.class);
-                break;
+        int id = v.getId();
+        if (id == R.id.rl_wifi) {
+            startNewActivity(NetworkActivity.class);
+        } else if (id == R.id.rl_bluetooth) {
+            startNewActivity(BluetoothActivity.class);
+        } else if (id == R.id.rl_project) {
+            startNewActivity(ProjectActivity.class);
+        } else if (id == R.id.rl_apps_manager) {
+            startNewActivity(AppsManagerActivity.class);
+        } else if (id == R.id.rl_language) {
+            startNewActivity(LanguageAndKeyboardActivity.class);
+        } else if (id == R.id.rl_date_time) {
+            startNewActivity(DateTimeActivity.class);
+        } else if (id == R.id.rl_other) {
+            startNewActivity(OtherSettingsActivity.class);
+        } else if (id == R.id.rl_about) {
+            startNewActivity(AboutActivity.class);
         }
     }
 

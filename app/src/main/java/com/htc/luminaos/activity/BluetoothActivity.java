@@ -10,6 +10,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -91,44 +92,48 @@ public class BluetoothActivity extends BaseActivity implements BluetoothCallBcak
         initData();
     }
 
-    private void initView(){
+    private void initView() {
         bluetoothBinding.rlBluetoothSwitch.setOnClickListener(this);
         bluetoothBinding.rlBluetoothSwitch.setOnHoverListener(this);
         bluetoothBinding.bluetoothSwitch.setOnClickListener(this);
         bluetoothBinding.rlSearchBle.setOnClickListener(this);
         bluetoothBinding.rlSearchBle.setOnHoverListener(this);
         bluetoothBinding.pairRv.setItemAnimator(null);
-        bluetoothBinding.pairRv.addItemDecoration(new SpacesItemDecoration(0,0,SpacesItemDecoration.px2dp(4),0));
+        bluetoothBinding.pairRv.addItemDecoration(new SpacesItemDecoration(0, 0, SpacesItemDecoration.px2dp(4), 0));
         bluetoothBinding.availableRv.setItemAnimator(null);
-        bluetoothBinding.availableRv.addItemDecoration(new SpacesItemDecoration(0,0,SpacesItemDecoration.px2dp(4),0));
+        bluetoothBinding.availableRv.addItemDecoration(new SpacesItemDecoration(0, 0, SpacesItemDecoration.px2dp(4), 0));
         bluetoothBinding.bluetoothSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
+                if (isChecked) {
                     if (!bluetoothAdapter.isEnabled())
-                    bluetoothAdapter.enable();
-                }else {
+                        bluetoothAdapter.enable();
+                } else {
                     if (bluetoothAdapter.isEnabled())
-                    bluetoothAdapter.disable();
+                        bluetoothAdapter.disable();
                 }
             }
         });
     }
 
-    private void initData(){
-        if (bluetoothAdapter.isEnabled()){
+    private void initData() {
+        if (bluetoothAdapter.isEnabled()) {
             bluetoothBinding.bluetoothSwitch.setChecked(true);
             scanList.clear();
-            if (foundAdapter!=null)
+            if (foundAdapter != null)
                 foundAdapter.notifyDataSetChanged();
-
-            bluetoothAdapter.setScanMode(
-                    BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE, 0);
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) { // Android 14 对应的版本号是 34
+//                // Android 14 及以上，使用新的 setScanMode 方法
+            bluetoothAdapter.setScanMode(BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE);
+//            } else {
+//                // Android 14 以下，使用旧的 setScanMode 方法
+//                bluetoothAdapter.setScanMode(BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE, 0);
+//            }
             handler.removeCallbacks(discoveryRunnable);
-            handler.postDelayed(discoveryRunnable,3000);//蓝牙延迟搜索，不然蓝牙音箱的回链不上
+            handler.postDelayed(discoveryRunnable, 3000);//蓝牙延迟搜索，不然蓝牙音箱的回链不上
             updatePairList();
             updateView(true);
-        }else {
+        } else {
             handler.removeCallbacks(discoveryRunnable);
             bluetoothBinding.bluetoothSwitch.setChecked(false);
             updateView(false);
@@ -150,8 +155,8 @@ public class BluetoothActivity extends BaseActivity implements BluetoothCallBcak
                 BluetoothDevice device = intent
                         .getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                 // 搜索到的不是已经绑定的蓝牙设备
-                if (device.getBondState() != BluetoothDevice.BOND_BONDED && device.getName()!=null) {
-                    Log.i(TAG, "device "+device.getName());
+                if (device.getBondState() != BluetoothDevice.BOND_BONDED && device.getName() != null) {
+                    Log.i(TAG, "device " + device.getName());
                     if (!scanList.contains(device) && !device.getName().equals("")) {
 //						if(device!=null&&!isHtcRemote(device)){
                         scanList.add(device);
@@ -176,28 +181,28 @@ public class BluetoothActivity extends BaseActivity implements BluetoothCallBcak
         @Override
         public boolean handleMessage(Message msg) {
             BluetoothDevice device = (BluetoothDevice) msg.obj;
-            switch (msg.what){
+            switch (msg.what) {
                 case Contants.BOND_SUCCESSFUL:
                     if (scanList.contains(device)) {
                         View view = getCurrentFocus();
-                        if (view!=null)
+                        if (view != null)
                             view.clearFocus();
 
                         scanList.remove(device);
                         foundAdapter.notifyDataSetChanged();
                     }
-                    if (device.getBluetoothClass().getMajorDeviceClass() == BluetoothClass.Device.Major.AUDIO_VIDEO){
-                        currentDevice =device;
+                    if (device.getBluetoothClass().getMajorDeviceClass() == BluetoothClass.Device.Major.AUDIO_VIDEO) {
+                        currentDevice = device;
                     }
                     updatePairList();
                     // 音频设备，配对成功后需要进行连接
                     if (device.getBluetoothClass().getMajorDeviceClass() == BluetoothClass.Device.Major.AUDIO_VIDEO) {
                         connectDeviceFromA2DP(device);
-                    }else if(device.getBluetoothClass().getMajorDeviceClass() == BluetoothClass.Device.Major.PERIPHERAL){
-                        if(isKeyboardDevice(device.getUuids())){
+                    } else if (device.getBluetoothClass().getMajorDeviceClass() == BluetoothClass.Device.Major.PERIPHERAL) {
+                        if (isKeyboardDevice(device.getUuids())) {
                             Log.i("zouguanrong", "-----connectKeyboard----");
                             connectKeyboard(device);
-                        }else{
+                        } else {
                             connectDeviceFromA2DP(device);
                         }
                     }
@@ -209,26 +214,25 @@ public class BluetoothActivity extends BaseActivity implements BluetoothCallBcak
                     }
                     break;
                 case Contants.BOND_FAIL:
-                    if (foundAdapter!=null)
-                    {
+                    if (foundAdapter != null) {
                         foundAdapter.setCurrentPair(null);
                         foundAdapter.notifyDataSetChanged();
                     }
                     updatePairList();
                     break;
                 case Contants.REFRESH_FOUND:
-                    if (foundAdapter == null){
-                        foundAdapter = new BluetoothFoundAdapter(scanList,BluetoothActivity.this);
+                    if (foundAdapter == null) {
+                        foundAdapter = new BluetoothFoundAdapter(scanList, BluetoothActivity.this);
                         foundAdapter.setHasStableIds(true);
                         bluetoothBinding.availableRv.setAdapter(foundAdapter);
-                    }else {
+                    } else {
                         foundAdapter.updateList(scanList);
                         foundAdapter.notifyDataSetChanged();
                     }
                     break;
                 case Contants.REFRESH_PAIR:
                     updatePairList();
-                    handler.sendEmptyMessageDelayed(Contants.REFRESH_PAIR,5000);
+                    handler.sendEmptyMessageDelayed(Contants.REFRESH_PAIR, 5000);
                     break;
 
             }
@@ -245,34 +249,34 @@ public class BluetoothActivity extends BaseActivity implements BluetoothCallBcak
         }
     };
 
-    private void updatePairList(){
+    private void updatePairList() {
         bondList = getPairList();
-        if (bondAdapter==null){
-            bondAdapter = new BluetoothBondAdapter(bondList,BluetoothActivity.this);
+        if (bondAdapter == null) {
+            bondAdapter = new BluetoothBondAdapter(bondList, BluetoothActivity.this);
             setConnectedState();
             bondAdapter.setHasStableIds(true);
             bluetoothBinding.pairRv.setAdapter(bondAdapter);
-        }else {
+        } else {
             bondAdapter.updateList(bondList);
             bondAdapter.currentConnectDevice(currentDevice);
             setConnectedState();
             bondAdapter.notifyDataSetChanged();
         }
 
-        if (!handler.hasMessages(Contants.REFRESH_PAIR)){
-            handler.sendEmptyMessageDelayed(Contants.REFRESH_PAIR,5000);
+        if (!handler.hasMessages(Contants.REFRESH_PAIR)) {
+            handler.sendEmptyMessageDelayed(Contants.REFRESH_PAIR, 5000);
         }
     }
 
-    private void updateView(boolean isvisible){
-        if (isvisible){
+    private void updateView(boolean isvisible) {
+        if (isvisible) {
             bluetoothBinding.pairRv.setVisibility(View.VISIBLE);
             bluetoothBinding.availableRv.setVisibility(View.VISIBLE);
 
             bluetoothBinding.rlSearchBle.setVisibility(View.VISIBLE);
             bluetoothBinding.pairTitle.setVisibility(View.VISIBLE);
             bluetoothBinding.availableTitle.setVisibility(View.VISIBLE);
-        }else {
+        } else {
             bluetoothBinding.pairRv.setVisibility(View.GONE);
             bluetoothBinding.availableRv.setVisibility(View.GONE);
 
@@ -282,7 +286,7 @@ public class BluetoothActivity extends BaseActivity implements BluetoothCallBcak
         }
     }
 
-    private void  initReceiver(){
+    private void initReceiver() {
 
         /**
          * 获取搜索列表 使用广播
@@ -317,17 +321,17 @@ public class BluetoothActivity extends BaseActivity implements BluetoothCallBcak
         registerReceiver(blueBoothReceiver, blueBoothFilter);
     }
 
-    private void DestroyReceiver(){
-        if (mCanReceiver!=null){
+    private void DestroyReceiver() {
+        if (mCanReceiver != null) {
             BluetoothActivity.this.unregisterReceiver(mCanReceiver);
         }
-        if (blueReceiver!=null){
+        if (blueReceiver != null) {
             BluetoothActivity.this.unregisterReceiver(blueReceiver);
         }
-        if (blueBoothReceiver !=null ){
+        if (blueBoothReceiver != null) {
             BluetoothActivity.this.unregisterReceiver(blueBoothReceiver);
         }
-        if (bondReceiver!=null){
+        if (bondReceiver != null) {
             BluetoothActivity.this.unregisterReceiver(bondReceiver);
         }
     }
@@ -335,7 +339,7 @@ public class BluetoothActivity extends BaseActivity implements BluetoothCallBcak
     private void searchAnim(boolean isAnim) {
 
 
-        if (!isAnim){
+        if (!isAnim) {
             bluetoothBinding.refreshIv.setVisibility(View.GONE);
             bluetoothBinding.refreshIv.clearAnimation();
             return;
@@ -382,7 +386,7 @@ public class BluetoothActivity extends BaseActivity implements BluetoothCallBcak
             Set<BluetoothDevice> devices = bluetoothAdapter.getBondedDevices();
             for (BluetoothDevice device : devices) {
                 //Log.d(TAG,"pair device "+device.getName());
-                if(device!=null){
+                if (device != null) {
                     list.add(device);
                 }
             }
@@ -403,16 +407,15 @@ public class BluetoothActivity extends BaseActivity implements BluetoothCallBcak
 
         //重置状态
         bondAdapter.clearConnectMap();
-        if (a2dp==null)
+        if (a2dp == null)
             return;
         List<BluetoothDevice> deviceList = getCurrentConnectDevice();
-        BluetoothDevice activeDevice=null;
+        BluetoothDevice activeDevice = null;
         activeDevice = a2dp.getActiveDevice();
         if (deviceList != null && deviceList.size() > 0) {
             for (int i = 0; i < deviceList.size(); i++) {
                 if (deviceList.get(i).getBluetoothClass().getMajorDeviceClass() == BluetoothClass.Device.Major.AUDIO_VIDEO
-                        &&activeDevice!=null)
-                {
+                        && activeDevice != null) {
                     if (!deviceList.get(i).getAddress().equals(activeDevice.getAddress()))
                         continue;
                 }
@@ -454,7 +457,7 @@ public class BluetoothActivity extends BaseActivity implements BluetoothCallBcak
                     if (isConnected) {
 
 //
-                        if(device!=null){
+                        if (device != null) {
                             deviceconnectList.add(device);
                         }
                     }
@@ -477,7 +480,7 @@ public class BluetoothActivity extends BaseActivity implements BluetoothCallBcak
     private BluetoothProfile.ServiceListener mProfileServiceListener = new BluetoothProfile.ServiceListener() {
         @Override
         public void onServiceDisconnected(int profile) {
-            a2dp=null;
+            a2dp = null;
         }
 
         @Override
@@ -497,26 +500,27 @@ public class BluetoothActivity extends BaseActivity implements BluetoothCallBcak
     };
 
 
-    public static BluetoothHidHost mBluetoothProfile=null;
+    public static BluetoothHidHost mBluetoothProfile = null;
 
     private BluetoothProfile.ServiceListener mListener = new BluetoothProfile.ServiceListener() {
         @Override
         public void onServiceConnected(int profile, BluetoothProfile proxy) {
             try {
                 if (profile == 4) {
-                    mBluetoothProfile =(BluetoothHidHost) proxy;
+                    mBluetoothProfile = (BluetoothHidHost) proxy;
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+
         @Override
         public void onServiceDisconnected(int profile) {
 
         }
     };
 
-    public static void connectDeviceFromA2DP(BluetoothDevice device){
+    public static void connectDeviceFromA2DP(BluetoothDevice device) {
         try {
             if (a2dp != null
                     && a2dp.getConnectionState(device) != BluetoothProfile.STATE_CONNECTED) {
@@ -533,23 +537,24 @@ public class BluetoothActivity extends BaseActivity implements BluetoothCallBcak
 
     /**
      * 连接设备 键盘
+     *
      * @param
      */
     public static void connectKeyboard(BluetoothDevice device) {
 
-        if(mBluetoothProfile==null){
+        if (mBluetoothProfile == null) {
             return;
         }
         try {
             Method method = mBluetoothProfile.getClass().getMethod("connect",
-                    new Class[] { BluetoothDevice.class });
+                    new Class[]{BluetoothDevice.class});
             method.invoke(mBluetoothProfile, device);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private static String[] bTtypes=new String[]{
+    private static String[] bTtypes = new String[]{
             "00001108-0000-1000-8000-00805f9b34fb",
             "0000111e-0000-1000-8000-00805f9b34fb",
             "0000110b-0000-1000-8000-00805f9b34fb",
@@ -558,11 +563,11 @@ public class BluetoothActivity extends BaseActivity implements BluetoothCallBcak
             "00001115-0000-1000-8000-00805f9b34fb"
     };
 
-    public static boolean isKeyboardDevice(ParcelUuid[] uuids){
-        if(uuids!=null&&uuids.length>0){
+    public static boolean isKeyboardDevice(ParcelUuid[] uuids) {
+        if (uuids != null && uuids.length > 0) {
             for (int i = 0; i < uuids.length; i++) {
                 for (int j = 0; j < bTtypes.length; j++) {
-                    if(uuids[i].toString().equals(bTtypes[j])){
+                    if (uuids[i].toString().equals(bTtypes[j])) {
                         return false;
                     }
                 }
@@ -573,20 +578,16 @@ public class BluetoothActivity extends BaseActivity implements BluetoothCallBcak
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.rl_bluetooth_switch:
-            case R.id.bluetooth_switch:
-                bluetoothBinding.bluetoothSwitch.setChecked(!bluetoothBinding.bluetoothSwitch.isChecked());
-                break;
-            case R.id.rl_search_ble:
-                if (!bluetoothAdapter.isDiscovering()) {
-                    scanList.clear();
-                    bluetoothAdapter.startDiscovery();
-                    updatePairList();
-                    searchAnim(true);
-                }
-                break;
-
+        int id = v.getId();
+        if (id == R.id.rl_bluetooth_switch || id == R.id.bluetooth_switch) {
+            bluetoothBinding.bluetoothSwitch.setChecked(!bluetoothBinding.bluetoothSwitch.isChecked());
+        } else if (id == R.id.rl_search_ble) {
+            if (!bluetoothAdapter.isDiscovering()) {
+                scanList.clear();
+                bluetoothAdapter.startDiscovery();
+                updatePairList();
+                searchAnim(true);
+            }
         }
     }
 
@@ -613,8 +614,8 @@ public class BluetoothActivity extends BaseActivity implements BluetoothCallBcak
     @Override
     protected void onDestroy() {
         DestroyReceiver();
-        bluetoothAdapter.closeProfileProxy(BluetoothProfile.A2DP,a2dp);
-        bluetoothAdapter.closeProfileProxy(4,mBluetoothProfile);
+        bluetoothAdapter.closeProfileProxy(BluetoothProfile.A2DP, a2dp);
+        bluetoothAdapter.closeProfileProxy(4, mBluetoothProfile);
         handler.removeCallbacksAndMessages(null);
         super.onDestroy();
     }

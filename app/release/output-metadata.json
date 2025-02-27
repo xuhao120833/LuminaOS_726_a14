@@ -1,0 +1,20 @@
+{
+  "version": 3,
+  "artifactType": {
+    "type": "APK",
+    "kind": "Directory"
+  },
+  "applicationId": "com.htc.luminaos",
+  "variantName": "release",
+  "elements": [
+    {
+      "type": "SINGLE",
+      "filters": [],
+      "attributes": [],
+      "versionCode": 25022714,
+      "versionName": "1.0.42",
+      "outputFile": "LuminaOS_QZ-V1.0.42-25022714-release.apk"
+    }
+  ],
+  "elementType": "File"
+}

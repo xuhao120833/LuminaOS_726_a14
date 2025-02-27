@@ -103,28 +103,22 @@ public class PowerActivity extends AppCompatActivity implements View.OnClickList
                 }
 
                 if (keyCode==KeyEvent.KEYCODE_DPAD_UP &&event.getAction()==KeyEvent.ACTION_UP){
-                    switch (v.getId()){
-                        case R.id.rl_timer_off:
-                            if (cur_time_off_index==time_off_title.length-1)
-                                cur_time_off_index =0;
-                            else
-                                cur_time_off_index++;
+                    if (v.getId() == R.id.rl_timer_off) {
+                        if (cur_time_off_index == time_off_title.length - 1)
+                            cur_time_off_index = 0;
+                        else
+                            cur_time_off_index++;
 
-                            setTimeOff(cur_time_off_index);
-                            break;
-
+                        setTimeOff(cur_time_off_index);
                     }
                 }else if (keyCode==KeyEvent.KEYCODE_DPAD_DOWN &&event.getAction()==KeyEvent.ACTION_UP){
-                    switch (v.getId()){
-                        case R.id.rl_timer_off:
-                            if (cur_time_off_index==0)
-                                cur_time_off_index =time_off_title.length-1;
-                            else
-                                cur_time_off_index--;
+                    if (v.getId() == R.id.rl_timer_off) {
+                        if (cur_time_off_index == 0)
+                            cur_time_off_index = time_off_title.length - 1;
+                        else
+                            cur_time_off_index--;
 
-                            setTimeOff(cur_time_off_index);
-                            break;
-
+                        setTimeOff(cur_time_off_index);
                     }
                 }
                 return false;
@@ -168,29 +162,24 @@ public class PowerActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.rl_sleep:
-                goToSleep();
-                break;
-            case R.id.rl_shutdown:
-                pm.shutdown(false,null,false);
-                break;
-            case R.id.rl_reboot:
-                handler.sendEmptyMessageDelayed(201,100);
-                break;
-            case R.id.rl_bluetooth_speaker:
-                Intent intent = new Intent(this,BluetoothSpeakerActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-                break;
-            case R.id.rl_timer_off:
-                if (cur_time_off_index==time_off_title.length-1)
-                    cur_time_off_index =0;
-                else
-                    cur_time_off_index++;
+        int id = view.getId();
+        if (id == R.id.rl_sleep) {
+            goToSleep();
+        } else if (id == R.id.rl_shutdown) {
+            pm.shutdown(false, null, false);
+        } else if (id == R.id.rl_reboot) {
+            handler.sendEmptyMessageDelayed(201, 100);
+        } else if (id == R.id.rl_bluetooth_speaker) {
+            Intent intent = new Intent(this, BluetoothSpeakerActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        } else if (id == R.id.rl_timer_off) {
+            if (cur_time_off_index == time_off_title.length - 1)
+                cur_time_off_index = 0;
+            else
+                cur_time_off_index++;
 
-                setTimeOff(cur_time_off_index);
-                break;
+            setTimeOff(cur_time_off_index);
         }
     }
 

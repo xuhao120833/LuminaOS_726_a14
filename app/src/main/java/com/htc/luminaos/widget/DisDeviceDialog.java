@@ -36,18 +36,15 @@ public class DisDeviceDialog extends Dialog implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         Log.d(TAG,"onclick");
-        switch (v.getId()){
-            case R.id.enter:
-                mcallback.onEnterClick();
-                dismiss();
-                break;
-            case R.id.cancel:
-                dismiss();
-                break;
-            case R.id.clear:
-                mcallback.onUnPairClick();
-                dismiss();
-                break;
+        int id = v.getId();
+        if (id == R.id.enter) {
+            mcallback.onEnterClick();
+            dismiss();
+        } else if (id == R.id.cancel) {
+            dismiss();
+        } else if (id == R.id.clear) {
+            mcallback.onUnPairClick();
+            dismiss();
         }
     }
 

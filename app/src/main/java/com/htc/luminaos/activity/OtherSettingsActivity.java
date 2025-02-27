@@ -200,61 +200,51 @@ public class OtherSettingsActivity extends BaseActivity implements View.OnKeyLis
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.rl_button_sound:
-            case R.id.button_sound_switch:
-                otherSettingsBinding.buttonSoundSwitch.setChecked(!otherSettingsBinding.buttonSoundSwitch.isChecked());
-                setButtonSound(otherSettingsBinding.buttonSoundSwitch.isChecked());
-                break;
-//            case R.id.rl_audio_mode:
+        int id = v.getId();
+        if (id == R.id.rl_button_sound || id == R.id.button_sound_switch) {
+            otherSettingsBinding.buttonSoundSwitch.setChecked(!otherSettingsBinding.buttonSoundSwitch.isChecked());
+            setButtonSound(otherSettingsBinding.buttonSoundSwitch.isChecked());
+            //            case R.id.rl_audio_mode:
 //                startNewActivity(AudioModeActivity.class);
 //                break;
-            case R.id.rl_reset_factory:
-                FactoryResetDialog factoryResetDialog = new FactoryResetDialog(this,R.style.DialogTheme);
-                factoryResetDialog.show();
-                break;
-            case R.id.rl_screen_saver:
-                if (cur_screen_saver_index==screen_saver_title.length-1)
-                    cur_screen_saver_index =0;
-                else
-                    cur_screen_saver_index++;
-                updateScreenSaver(cur_screen_saver_index);
-                break;
-            case R.id.rl_timer_off:
-                if (cur_time_off_index==time_off_title.length-1)
-                    cur_time_off_index =0;
-                else
-                    cur_time_off_index++;
+        } else if (id == R.id.rl_reset_factory) {
+            FactoryResetDialog factoryResetDialog = new FactoryResetDialog(this, R.style.DialogTheme);
+            factoryResetDialog.show();
+        } else if (id == R.id.rl_screen_saver) {
+            if (cur_screen_saver_index == screen_saver_title.length - 1)
+                cur_screen_saver_index = 0;
+            else
+                cur_screen_saver_index++;
+            updateScreenSaver(cur_screen_saver_index);
+        } else if (id == R.id.rl_timer_off) {
+            if (cur_time_off_index == time_off_title.length - 1)
+                cur_time_off_index = 0;
+            else
+                cur_time_off_index++;
 
-                setTimeOff(cur_time_off_index);
-                break;
-            case R.id.rl_boot_input:
-                if (boot_source_index==boot_source_name.length-1)
-                    boot_source_index =0;
-                else
-                    boot_source_index++;
+            setTimeOff(cur_time_off_index);
+        } else if (id == R.id.rl_boot_input) {
+            if (boot_source_index == boot_source_name.length - 1)
+                boot_source_index = 0;
+            else
+                boot_source_index++;
 
-                otherSettingsBinding.bootInputTv.setText(boot_source_name[boot_source_index]);
-                set_power_signal(boot_source_value[boot_source_index]);
-                break;
-            case R.id.rl_power_mode:
-                curPowerMode = curPowerMode==1?0:1;
-                otherSettingsBinding.powerModeTv.setText(powerModes[curPowerMode]);
-                mAwTvSystemManager.setPowerOnMode(curPowerMode==1?
-                        AwTvSystemTypes.EnumPowerMode.E_AW_POWER_MODE_DIRECT: AwTvSystemTypes.EnumPowerMode.E_AW_POWER_MODE_STANDBY);
-                break;
-            case R.id.rl_account:
-//                Intent intent = new Intent(Settings.ACTION_SYNC_SETTINGS);
+            otherSettingsBinding.bootInputTv.setText(boot_source_name[boot_source_index]);
+            set_power_signal(boot_source_value[boot_source_index]);
+        } else if (id == R.id.rl_power_mode) {
+            curPowerMode = curPowerMode == 1 ? 0 : 1;
+            otherSettingsBinding.powerModeTv.setText(powerModes[curPowerMode]);
+            mAwTvSystemManager.setPowerOnMode(curPowerMode == 1 ?
+                    AwTvSystemTypes.EnumPowerMode.E_AW_POWER_MODE_DIRECT : AwTvSystemTypes.EnumPowerMode.E_AW_POWER_MODE_STANDBY);
+        } else if (id == R.id.rl_account) {//                Intent intent = new Intent(Settings.ACTION_SYNC_SETTINGS);
 //                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                Log.d(TAG,"打开Google账号切换界面");
+            Log.d(TAG, "打开Google账号切换界面");
 //                startActivity(intent);
-                Intent intent = new Intent(Settings.ACTION_SYNC_SETTINGS);
-                intent.putExtra(Settings.EXTRA_ACCOUNT_TYPES, new String[]{"com.google"});
-                startActivity(intent);
-                break;
-            case R.id.rl_developer:
-                startNewActivity(DeveloperModeActivity.class);
-                break;
+            Intent intent = new Intent(Settings.ACTION_SYNC_SETTINGS);
+            intent.putExtra(Settings.EXTRA_ACCOUNT_TYPES, new String[]{"com.google"});
+            startActivity(intent);
+        } else if (id == R.id.rl_developer) {
+            startNewActivity(DeveloperModeActivity.class);
         }
     }
 
@@ -280,76 +270,76 @@ public class OtherSettingsActivity extends BaseActivity implements View.OnKeyLis
         }
 
         if (keyCode==KeyEvent.KEYCODE_DPAD_LEFT && event.getAction() ==KeyEvent.ACTION_DOWN){
-            switch (v.getId()){
-                case R.id.rl_screen_saver:
-                    if (cur_screen_saver_index==0)
-                        cur_screen_saver_index =screen_saver_title.length-1;
-                    else
-                        cur_screen_saver_index--;
-                    updateScreenSaver(cur_screen_saver_index);
+            int id = v.getId();
+            if (id == R.id.rl_screen_saver) {
+                if (cur_screen_saver_index == 0)
+                    cur_screen_saver_index = screen_saver_title.length - 1;
+                else
+                    cur_screen_saver_index--;
+                updateScreenSaver(cur_screen_saver_index);
 //                    break;
-                    return true;
-                case R.id.rl_timer_off:
-                    if (cur_time_off_index==0)
-                        cur_time_off_index =time_off_title.length-1;
-                    else
-                        cur_time_off_index--;
+                return true;
+            } else if (id == R.id.rl_timer_off) {
+                if (cur_time_off_index == 0)
+                    cur_time_off_index = time_off_title.length - 1;
+                else
+                    cur_time_off_index--;
 
-                    setTimeOff(cur_time_off_index);
+                setTimeOff(cur_time_off_index);
 //                    break;
-                    return true;
-                case R.id.rl_boot_input:
-                    if (boot_source_index==0)
-                        boot_source_index =boot_source_name.length-1;
-                    else
-                        boot_source_index--;
+                return true;
+            } else if (id == R.id.rl_boot_input) {
+                if (boot_source_index == 0)
+                    boot_source_index = boot_source_name.length - 1;
+                else
+                    boot_source_index--;
 
-                    otherSettingsBinding.bootInputTv.setText(boot_source_name[boot_source_index]);
-                    set_power_signal(boot_source_value[boot_source_index]);
+                otherSettingsBinding.bootInputTv.setText(boot_source_name[boot_source_index]);
+                set_power_signal(boot_source_value[boot_source_index]);
 //                    break;
-                    return true;
-                case R.id.rl_power_mode:
-                    curPowerMode = curPowerMode==1?0:1;
-                    otherSettingsBinding.powerModeTv.setText(powerModes[curPowerMode]);
-                    mAwTvSystemManager.setPowerOnMode(curPowerMode==1?
-                            AwTvSystemTypes.EnumPowerMode.E_AW_POWER_MODE_DIRECT: AwTvSystemTypes.EnumPowerMode.E_AW_POWER_MODE_STANDBY);
-                    return true;
+                return true;
+            } else if (id == R.id.rl_power_mode) {
+                curPowerMode = curPowerMode == 1 ? 0 : 1;
+                otherSettingsBinding.powerModeTv.setText(powerModes[curPowerMode]);
+                mAwTvSystemManager.setPowerOnMode(curPowerMode == 1 ?
+                        AwTvSystemTypes.EnumPowerMode.E_AW_POWER_MODE_DIRECT : AwTvSystemTypes.EnumPowerMode.E_AW_POWER_MODE_STANDBY);
+                return true;
             }
         }else if (keyCode==KeyEvent.KEYCODE_DPAD_RIGHT && event.getAction() ==KeyEvent.ACTION_DOWN){
-            switch (v.getId()){
-                case R.id.rl_screen_saver:
-                    if (cur_screen_saver_index==screen_saver_title.length-1)
-                        cur_screen_saver_index =0;
-                    else
-                        cur_screen_saver_index++;
-                    updateScreenSaver(cur_screen_saver_index);
-                    return true;
+            int id = v.getId();
+            if (id == R.id.rl_screen_saver) {
+                if (cur_screen_saver_index == screen_saver_title.length - 1)
+                    cur_screen_saver_index = 0;
+                else
+                    cur_screen_saver_index++;
+                updateScreenSaver(cur_screen_saver_index);
+                return true;
 //                    break;
-                case R.id.rl_timer_off:
-                    if (cur_time_off_index==time_off_title.length-1)
-                        cur_time_off_index =0;
-                    else
-                        cur_time_off_index++;
+            } else if (id == R.id.rl_timer_off) {
+                if (cur_time_off_index == time_off_title.length - 1)
+                    cur_time_off_index = 0;
+                else
+                    cur_time_off_index++;
 
-                    setTimeOff(cur_time_off_index);
-                    return true;
+                setTimeOff(cur_time_off_index);
+                return true;
 //                    break;
-                case R.id.rl_boot_input:
-                    if (boot_source_index==boot_source_name.length-1)
-                        boot_source_index =0;
-                    else
-                        boot_source_index++;
+            } else if (id == R.id.rl_boot_input) {
+                if (boot_source_index == boot_source_name.length - 1)
+                    boot_source_index = 0;
+                else
+                    boot_source_index++;
 
-                    otherSettingsBinding.bootInputTv.setText(boot_source_name[boot_source_index]);
-                    set_power_signal(boot_source_value[boot_source_index]);
+                otherSettingsBinding.bootInputTv.setText(boot_source_name[boot_source_index]);
+                set_power_signal(boot_source_value[boot_source_index]);
 //                    break;
-                    return true;
-                case R.id.rl_power_mode:
-                    curPowerMode = curPowerMode==1?0:1;
-                    otherSettingsBinding.powerModeTv.setText(powerModes[curPowerMode]);
-                    mAwTvSystemManager.setPowerOnMode(curPowerMode==1?
-                            AwTvSystemTypes.EnumPowerMode.E_AW_POWER_MODE_DIRECT: AwTvSystemTypes.EnumPowerMode.E_AW_POWER_MODE_STANDBY);
-                    return true;
+                return true;
+            } else if (id == R.id.rl_power_mode) {
+                curPowerMode = curPowerMode == 1 ? 0 : 1;
+                otherSettingsBinding.powerModeTv.setText(powerModes[curPowerMode]);
+                mAwTvSystemManager.setPowerOnMode(curPowerMode == 1 ?
+                        AwTvSystemTypes.EnumPowerMode.E_AW_POWER_MODE_DIRECT : AwTvSystemTypes.EnumPowerMode.E_AW_POWER_MODE_STANDBY);
+                return true;
             }
         }
 

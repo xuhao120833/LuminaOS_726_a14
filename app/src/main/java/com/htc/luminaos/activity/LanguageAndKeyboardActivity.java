@@ -144,22 +144,20 @@ public class LanguageAndKeyboardActivity extends BaseActivity {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.rl_language:
-                if (mLocales == null) {
-                    buildLangListItem();
-                }
-                if (mLocales != null) {
-                    setLanguage(mLocales);
-                }
-                break;
-            case R.id.rl_keyboard_setting:
-                mArrayList.clear();
-                getInputMethod();
-                if (mArrayList.size() > 0) {
-                    setInputMethod();
-                }
-                break;
+        int id = v.getId();
+        if (id == R.id.rl_language) {
+            if (mLocales == null) {
+                buildLangListItem();
+            }
+            if (mLocales != null) {
+                setLanguage(mLocales);
+            }
+        } else if (id == R.id.rl_keyboard_setting) {
+            mArrayList.clear();
+            getInputMethod();
+            if (mArrayList.size() > 0) {
+                setInputMethod();
+            }
         }
     }
 

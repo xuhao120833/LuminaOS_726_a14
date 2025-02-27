@@ -49,18 +49,16 @@ public class WifiIpSetActivity extends BaseActivity implements View.OnKeyListene
             EditText editText = (EditText) v;
             String text = editText.getText().toString();
             // 你可以根据 editText 的 ID 或其他特性进行不同处理
-            switch (v.getId()) {
-                case R.id.ip:
+            int id = v.getId();
+            if (id == R.id.ip || id == R.id.gateway || id == R.id.netmask || id == R.id.dns1 || id == R.id.dns2) {//                    break;
+
 //                    break;
-                case R.id.gateway:
+
 //                    break;
-                case R.id.netmask:
+
 //                    break;
-                case R.id.dns1:
-//                    break;
-                case R.id.dns2:
-                    editTextFocusChange();
-                    break;
+
+                editTextFocusChange();
             }
         }
     };
@@ -150,97 +148,89 @@ public class WifiIpSetActivity extends BaseActivity implements View.OnKeyListene
     public void onClick(View v) {
         String mode = "";
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        switch (v.getId()) {
-            case R.id.rl_ip_mode:
-                mode = wifiIpSet2Binding.ipModeTv.getText().toString();
-                if (mode.equals(ipList.get(0))) {
-                    wifiIpSet2Binding.ipModeTv.setText(ipList.get(1));
-                    staticIpConfig.setDhcp(wifiIpSet2Binding.ipModeTv.getText().toString().equals(ipList.get(0)));
+        int id = v.getId();
+        if (id == R.id.rl_ip_mode) {
+            mode = wifiIpSet2Binding.ipModeTv.getText().toString();
+            if (mode.equals(ipList.get(0))) {
+                wifiIpSet2Binding.ipModeTv.setText(ipList.get(1));
+                staticIpConfig.setDhcp(wifiIpSet2Binding.ipModeTv.getText().toString().equals(ipList.get(0)));
 //                    setIpMode(staticIpConfig);
-                    setEnable(true);
+                setEnable(true);
 
-                } else if (mode.equals(ipList.get(1))) {
-                    wifiIpSet2Binding.ipModeTv.setText(ipList.get(0));
-                    staticIpConfig.setDhcp(wifiIpSet2Binding.ipModeTv.getText().toString().equals(ipList.get(0)));
-                    setIpMode(staticIpConfig);
-                    setEnable(false);
-                }
+            } else if (mode.equals(ipList.get(1))) {
+                wifiIpSet2Binding.ipModeTv.setText(ipList.get(0));
+                staticIpConfig.setDhcp(wifiIpSet2Binding.ipModeTv.getText().toString().equals(ipList.get(0)));
+                setIpMode(staticIpConfig);
+                setEnable(false);
+            }
 //                staticIpConfig.setDhcp(wifiIpSet2Binding.ipModeTv.getText().toString().equals(ipList.get(0)));
-                break;
-            case R.id.rl_ip:
-                wifiIpSet2Binding.ip.requestFocus();
-                wifiIpSet2Binding.ip.setSelection(wifiIpSet2Binding.ip.getText().length());
-                // 显示软键盘
-                if (imm != null) {
-                    imm.showSoftInput(wifiIpSet2Binding.ip, InputMethodManager.SHOW_IMPLICIT);
-                }
+        } else if (id == R.id.rl_ip) {
+            wifiIpSet2Binding.ip.requestFocus();
+            wifiIpSet2Binding.ip.setSelection(wifiIpSet2Binding.ip.getText().length());
+            // 显示软键盘
+            if (imm != null) {
+                imm.showSoftInput(wifiIpSet2Binding.ip, InputMethodManager.SHOW_IMPLICIT);
+            }
 //                staticIpConfig.setIp(wifiIpSet2Binding.ip.getText().toString().trim());
-                break;
-            case R.id.rl_gateway:
-                wifiIpSet2Binding.gateway.requestFocus();
-                wifiIpSet2Binding.gateway.setSelection(wifiIpSet2Binding.gateway.getText().length());
-                // 显示软键盘
-                if (imm != null) {
-                    imm.showSoftInput(wifiIpSet2Binding.gateway, InputMethodManager.SHOW_IMPLICIT);
-                }
+        } else if (id == R.id.rl_gateway) {
+            wifiIpSet2Binding.gateway.requestFocus();
+            wifiIpSet2Binding.gateway.setSelection(wifiIpSet2Binding.gateway.getText().length());
+            // 显示软键盘
+            if (imm != null) {
+                imm.showSoftInput(wifiIpSet2Binding.gateway, InputMethodManager.SHOW_IMPLICIT);
+            }
 //                staticIpConfig.setGateWay(wifiIpSet2Binding.gateway.getText().toString().trim());
-                break;
-            case R.id.rl_netmask:
-                wifiIpSet2Binding.netmask.requestFocus();
-                wifiIpSet2Binding.netmask.setSelection(wifiIpSet2Binding.netmask.getText().length());
-                if (imm != null) {
-                    imm.showSoftInput(wifiIpSet2Binding.netmask, InputMethodManager.SHOW_IMPLICIT);
-                }
+        } else if (id == R.id.rl_netmask) {
+            wifiIpSet2Binding.netmask.requestFocus();
+            wifiIpSet2Binding.netmask.setSelection(wifiIpSet2Binding.netmask.getText().length());
+            if (imm != null) {
+                imm.showSoftInput(wifiIpSet2Binding.netmask, InputMethodManager.SHOW_IMPLICIT);
+            }
 //                staticIpConfig.setNetMask(wifiIpSet2Binding.netmask.getText().toString().trim());
-                break;
-            case R.id.rl_dns1:
-                wifiIpSet2Binding.dns1.requestFocus();
-                wifiIpSet2Binding.dns1.setSelection(wifiIpSet2Binding.dns1.getText().length());
-                if (imm != null) {
-                    imm.showSoftInput(wifiIpSet2Binding.dns1, InputMethodManager.SHOW_IMPLICIT);
-                }
+        } else if (id == R.id.rl_dns1) {
+            wifiIpSet2Binding.dns1.requestFocus();
+            wifiIpSet2Binding.dns1.setSelection(wifiIpSet2Binding.dns1.getText().length());
+            if (imm != null) {
+                imm.showSoftInput(wifiIpSet2Binding.dns1, InputMethodManager.SHOW_IMPLICIT);
+            }
 //                staticIpConfig.setDns1(wifiIpSet2Binding.dns1.getText().toString().trim());
-                break;
-            case R.id.rl_dns2:
-                wifiIpSet2Binding.dns2.requestFocus();
-                wifiIpSet2Binding.dns2.setSelection(wifiIpSet2Binding.dns2.getText().length());
-                if (imm != null) {
-                    imm.showSoftInput(wifiIpSet2Binding.dns2, InputMethodManager.SHOW_IMPLICIT);
-                }
+        } else if (id == R.id.rl_dns2) {
+            wifiIpSet2Binding.dns2.requestFocus();
+            wifiIpSet2Binding.dns2.setSelection(wifiIpSet2Binding.dns2.getText().length());
+            if (imm != null) {
+                imm.showSoftInput(wifiIpSet2Binding.dns2, InputMethodManager.SHOW_IMPLICIT);
+            }
 //                staticIpConfig.setDns2(wifiIpSet2Binding.dns2.getText().toString().trim());
-                break;
-            case R.id.ip_mode_left:
-                mode = wifiIpSet2Binding.ipModeTv.getText().toString();
-                if (mode.equals(ipList.get(0))) {
-                    wifiIpSet2Binding.ipModeTv.setText(ipList.get(1));
-                    staticIpConfig.setDhcp(wifiIpSet2Binding.ipModeTv.getText().toString().equals(ipList.get(0)));
+        } else if (id == R.id.ip_mode_left) {
+            mode = wifiIpSet2Binding.ipModeTv.getText().toString();
+            if (mode.equals(ipList.get(0))) {
+                wifiIpSet2Binding.ipModeTv.setText(ipList.get(1));
+                staticIpConfig.setDhcp(wifiIpSet2Binding.ipModeTv.getText().toString().equals(ipList.get(0)));
 //                    setIpMode(staticIpConfig);
-                    setEnable(true);
+                setEnable(true);
 
-                } else if (mode.equals(ipList.get(1))) {
-                    wifiIpSet2Binding.ipModeTv.setText(ipList.get(0));
-                    staticIpConfig.setDhcp(wifiIpSet2Binding.ipModeTv.getText().toString().equals(ipList.get(0)));
-                    setIpMode(staticIpConfig);
-                    setEnable(false);
-                }
+            } else if (mode.equals(ipList.get(1))) {
+                wifiIpSet2Binding.ipModeTv.setText(ipList.get(0));
+                staticIpConfig.setDhcp(wifiIpSet2Binding.ipModeTv.getText().toString().equals(ipList.get(0)));
+                setIpMode(staticIpConfig);
+                setEnable(false);
+            }
 //                staticIpConfig.setDhcp(wifiIpSet2Binding.ipModeTv.getText().toString().equals(ipList.get(0)));
-                break;
-            case R.id.ip_mode_right:
-                mode = wifiIpSet2Binding.ipModeTv.getText().toString();
-                if (mode.equals(ipList.get(0))) {
-                    wifiIpSet2Binding.ipModeTv.setText(ipList.get(1));
-                    staticIpConfig.setDhcp(wifiIpSet2Binding.ipModeTv.getText().toString().equals(ipList.get(0)));
+        } else if (id == R.id.ip_mode_right) {
+            mode = wifiIpSet2Binding.ipModeTv.getText().toString();
+            if (mode.equals(ipList.get(0))) {
+                wifiIpSet2Binding.ipModeTv.setText(ipList.get(1));
+                staticIpConfig.setDhcp(wifiIpSet2Binding.ipModeTv.getText().toString().equals(ipList.get(0)));
 //                    setIpMode(staticIpConfig);
-                    setEnable(true);
+                setEnable(true);
 
-                } else if (mode.equals(ipList.get(1))) {
-                    wifiIpSet2Binding.ipModeTv.setText(ipList.get(0));
-                    staticIpConfig.setDhcp(wifiIpSet2Binding.ipModeTv.getText().toString().equals(ipList.get(0)));
-                    setIpMode(staticIpConfig);
-                    setEnable(false);
-                }
+            } else if (mode.equals(ipList.get(1))) {
+                wifiIpSet2Binding.ipModeTv.setText(ipList.get(0));
+                staticIpConfig.setDhcp(wifiIpSet2Binding.ipModeTv.getText().toString().equals(ipList.get(0)));
+                setIpMode(staticIpConfig);
+                setEnable(false);
+            }
 //                staticIpConfig.setDhcp(wifiIpSet2Binding.ipModeTv.getText().toString().equals(ipList.get(0)));
-                break;
         }
         imm = null;
     }
@@ -252,75 +242,73 @@ public class WifiIpSetActivity extends BaseActivity implements View.OnKeyListene
         }
 
         if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT && event.getAction() == KeyEvent.ACTION_DOWN) {
-            switch (v.getId()) {
-                case R.id.rl_ip_mode:
-                    String mode = wifiIpSet2Binding.ipModeTv.getText().toString();
-                    if (mode.equals(ipList.get(0))) {
-                        wifiIpSet2Binding.ipModeTv.setText(ipList.get(1));
-                        staticIpConfig.setDhcp(wifiIpSet2Binding.ipModeTv.getText().toString().equals(ipList.get(0)));
+            if (v.getId() == R.id.rl_ip_mode) {
+                String mode = wifiIpSet2Binding.ipModeTv.getText().toString();
+                if (mode.equals(ipList.get(0))) {
+                    wifiIpSet2Binding.ipModeTv.setText(ipList.get(1));
+                    staticIpConfig.setDhcp(wifiIpSet2Binding.ipModeTv.getText().toString().equals(ipList.get(0)));
 //                        setIpMode(staticIpConfig);
-                        setEnable(true);
+                    setEnable(true);
 
-                    } else if (mode.equals(ipList.get(1))) {
-                        wifiIpSet2Binding.ipModeTv.setText(ipList.get(0));
-                        staticIpConfig.setDhcp(wifiIpSet2Binding.ipModeTv.getText().toString().equals(ipList.get(0)));
-                        setIpMode(staticIpConfig);
-                        setEnable(false);
-                    }
-                    AudioManager audioManager = (AudioManager) v.getContext().getSystemService(Context.AUDIO_SERVICE);
-                    if (audioManager != null) {
-                        audioManager.playSoundEffect(AudioManager.FX_FOCUS_NAVIGATION_DOWN);
-                    }
-                    audioManager = null;
-                    return true;
+                } else if (mode.equals(ipList.get(1))) {
+                    wifiIpSet2Binding.ipModeTv.setText(ipList.get(0));
+                    staticIpConfig.setDhcp(wifiIpSet2Binding.ipModeTv.getText().toString().equals(ipList.get(0)));
+                    setIpMode(staticIpConfig);
+                    setEnable(false);
+                }
+                AudioManager audioManager = (AudioManager) v.getContext().getSystemService(Context.AUDIO_SERVICE);
+                if (audioManager != null) {
+                    audioManager.playSoundEffect(AudioManager.FX_FOCUS_NAVIGATION_DOWN);
+                }
+                audioManager = null;
+                return true;
             }
         } else if (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT && event.getAction() == KeyEvent.ACTION_DOWN) {
-            switch (v.getId()) {
-                case R.id.rl_ip_mode:
-                    String mode = wifiIpSet2Binding.ipModeTv.getText().toString();
-                    if (mode.equals(ipList.get(0))) {
-                        wifiIpSet2Binding.ipModeTv.setText(ipList.get(1));
-                        staticIpConfig.setDhcp(wifiIpSet2Binding.ipModeTv.getText().toString().equals(ipList.get(0)));
+            if (v.getId() == R.id.rl_ip_mode) {
+                String mode = wifiIpSet2Binding.ipModeTv.getText().toString();
+                if (mode.equals(ipList.get(0))) {
+                    wifiIpSet2Binding.ipModeTv.setText(ipList.get(1));
+                    staticIpConfig.setDhcp(wifiIpSet2Binding.ipModeTv.getText().toString().equals(ipList.get(0)));
 //                        setIpMode(staticIpConfig);
-                        setEnable(true);
+                    setEnable(true);
 
-                    } else if (mode.equals(ipList.get(1))) {
-                        wifiIpSet2Binding.ipModeTv.setText(ipList.get(0));
-                        staticIpConfig.setDhcp(wifiIpSet2Binding.ipModeTv.getText().toString().equals(ipList.get(0)));
-                        setIpMode(staticIpConfig);
-                        setEnable(false);
-                    }
-                    AudioManager audioManager = (AudioManager) v.getContext().getSystemService(Context.AUDIO_SERVICE);
-                    if (audioManager != null) {
-                        audioManager.playSoundEffect(AudioManager.FX_FOCUS_NAVIGATION_DOWN);
-                    }
-                    audioManager = null;
-                    return true;
+                } else if (mode.equals(ipList.get(1))) {
+                    wifiIpSet2Binding.ipModeTv.setText(ipList.get(0));
+                    staticIpConfig.setDhcp(wifiIpSet2Binding.ipModeTv.getText().toString().equals(ipList.get(0)));
+                    setIpMode(staticIpConfig);
+                    setEnable(false);
+                }
+                AudioManager audioManager = (AudioManager) v.getContext().getSystemService(Context.AUDIO_SERVICE);
+                if (audioManager != null) {
+                    audioManager.playSoundEffect(AudioManager.FX_FOCUS_NAVIGATION_DOWN);
+                }
+                audioManager = null;
+                return true;
             }
         }
 
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            switch (v.getId()) {
-                case R.id.ip:
-                    if (wifiIpSet2Binding.ip.hasFocus() && event.getAction() == KeyEvent.ACTION_DOWN)
-                        wifiIpSet2Binding.rlIp.requestFocus();
-                    return true;
-                case R.id.gateway:
-                    if (wifiIpSet2Binding.gateway.hasFocus() && event.getAction() == KeyEvent.ACTION_DOWN)
-                        wifiIpSet2Binding.rlGateway.requestFocus();
-                    return true;
-                case R.id.netmask:
-                    if (wifiIpSet2Binding.netmask.hasFocus() && event.getAction() == KeyEvent.ACTION_DOWN)
-                        wifiIpSet2Binding.rlNetmask.requestFocus();
-                    return true;
-                case R.id.dns1:
-                    if (wifiIpSet2Binding.dns1.hasFocus() && event.getAction() == KeyEvent.ACTION_DOWN)
-                        wifiIpSet2Binding.rlDns1.requestFocus();
-                    return true;
-                case R.id.dns2:
-                    if (wifiIpSet2Binding.dns2.hasFocus() && event.getAction() == KeyEvent.ACTION_DOWN)
-                        wifiIpSet2Binding.rlDns2.requestFocus();
-                    return true;
+            int id = v.getId();
+            if (id == R.id.ip) {
+                if (wifiIpSet2Binding.ip.hasFocus() && event.getAction() == KeyEvent.ACTION_DOWN)
+                    wifiIpSet2Binding.rlIp.requestFocus();
+                return true;
+            } else if (id == R.id.gateway) {
+                if (wifiIpSet2Binding.gateway.hasFocus() && event.getAction() == KeyEvent.ACTION_DOWN)
+                    wifiIpSet2Binding.rlGateway.requestFocus();
+                return true;
+            } else if (id == R.id.netmask) {
+                if (wifiIpSet2Binding.netmask.hasFocus() && event.getAction() == KeyEvent.ACTION_DOWN)
+                    wifiIpSet2Binding.rlNetmask.requestFocus();
+                return true;
+            } else if (id == R.id.dns1) {
+                if (wifiIpSet2Binding.dns1.hasFocus() && event.getAction() == KeyEvent.ACTION_DOWN)
+                    wifiIpSet2Binding.rlDns1.requestFocus();
+                return true;
+            } else if (id == R.id.dns2) {
+                if (wifiIpSet2Binding.dns2.hasFocus() && event.getAction() == KeyEvent.ACTION_DOWN)
+                    wifiIpSet2Binding.rlDns2.requestFocus();
+                return true;
             }
         }
 

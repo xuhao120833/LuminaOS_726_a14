@@ -5,6 +5,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothClass;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothProfile;
+import android.content.Context;
 import android.os.SystemProperties;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -189,7 +190,8 @@ public class BluetoothBondAdapter extends RecyclerView.Adapter<BluetoothBondAdap
                     disDeviceDialog.setOnClickCallBack(new DisDeviceDialog.OnDisDeviceCallBack() {
                         @Override
                         public void onEnterClick() {
-                            BluetoothAdapter.getDefaultAdapter().disconnectAllEnabledProfiles(device);
+//                            BluetoothAdapter.getDefaultAdapter().disconnectAllEnabledProfiles(device);
+
                             updateConnectMap(device.getAddress(),3);
                             notifyDataSetChanged();
                             /*if (mBluetoothProfile!=null)

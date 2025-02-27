@@ -190,37 +190,30 @@ public class DateTimeActivity extends BaseActivity implements View.OnKeyListener
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.rl_auto:
-            case R.id.auto_switch:
-                dateTimeBinding.autoSwitch.setChecked(!dateTimeBinding.autoSwitch.isChecked());
-                setAutoTime(dateTimeBinding.autoSwitch.isChecked());
-                break;
-            case R.id.rl_date:
-                if (dateTimeBinding.autoSwitch.isChecked()) {
-                    ToastUtil.showShortToast(this, getString(R.string.auto_time_hint));
-                    break;
-                }
+        int id = v.getId();
+        if (id == R.id.rl_auto || id == R.id.auto_switch) {
+            dateTimeBinding.autoSwitch.setChecked(!dateTimeBinding.autoSwitch.isChecked());
+            setAutoTime(dateTimeBinding.autoSwitch.isChecked());
+        } else if (id == R.id.rl_date) {
+            if (dateTimeBinding.autoSwitch.isChecked()) {
+                ToastUtil.showShortToast(this, getString(R.string.auto_time_hint));
+                return;
+            }
 
-                showDateDialog();
-                break;
-            case R.id.rl_time:
-                if (dateTimeBinding.autoSwitch.isChecked()) {
-                    ToastUtil.showShortToast(this, getString(R.string.auto_time_hint));
-                    break;
-                }
+            showDateDialog();
+        } else if (id == R.id.rl_time) {
+            if (dateTimeBinding.autoSwitch.isChecked()) {
+                ToastUtil.showShortToast(this, getString(R.string.auto_time_hint));
+                return;
+            }
 
-                showTimeDialog();
-                break;
-            case R.id.rl_timezone:
-
-                TimezoneDialog timezoneDialog = new TimezoneDialog(DateTimeActivity.this, R.style.DialogTheme);
-                timezoneDialog.show();
-                break;
-            case R.id.rl_time_format:
-                UpdateTimeDispaly(is24HourFormat);
-                initData();
-                break;
+            showTimeDialog();
+        } else if (id == R.id.rl_timezone) {
+            TimezoneDialog timezoneDialog = new TimezoneDialog(DateTimeActivity.this, R.style.DialogTheme);
+            timezoneDialog.show();
+        } else if (id == R.id.rl_time_format) {
+            UpdateTimeDispaly(is24HourFormat);
+            initData();
         }
     }
 
@@ -474,28 +467,24 @@ public class DateTimeActivity extends BaseActivity implements View.OnKeyListener
         }
 
         if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT && event.getAction() == KeyEvent.ACTION_UP) {
-            switch (v.getId()) {
-                case R.id.rl_time_format:
-                    UpdateTimeDispaly(is24HourFormat);
-                    initData();
-                    AudioManager audioManager = (AudioManager) v.getContext().getSystemService(Context.AUDIO_SERVICE);
-                    if (audioManager != null) {
-                        audioManager.playSoundEffect(AudioManager.FX_FOCUS_NAVIGATION_DOWN);
-                    }
-                    audioManager = null;
-                    break;
+            if (v.getId() == R.id.rl_time_format) {
+                UpdateTimeDispaly(is24HourFormat);
+                initData();
+                AudioManager audioManager = (AudioManager) v.getContext().getSystemService(Context.AUDIO_SERVICE);
+                if (audioManager != null) {
+                    audioManager.playSoundEffect(AudioManager.FX_FOCUS_NAVIGATION_DOWN);
+                }
+                audioManager = null;
             }
         } else if (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT && event.getAction() == KeyEvent.ACTION_UP) {
-            switch (v.getId()) {
-                case R.id.rl_time_format:
-                    UpdateTimeDispaly(is24HourFormat);
-                    initData();
-                    AudioManager audioManager = (AudioManager) v.getContext().getSystemService(Context.AUDIO_SERVICE);
-                    if (audioManager != null) {
-                        audioManager.playSoundEffect(AudioManager.FX_FOCUS_NAVIGATION_DOWN);
-                    }
-                    audioManager = null;
-                    break;
+            if (v.getId() == R.id.rl_time_format) {
+                UpdateTimeDispaly(is24HourFormat);
+                initData();
+                AudioManager audioManager = (AudioManager) v.getContext().getSystemService(Context.AUDIO_SERVICE);
+                if (audioManager != null) {
+                    audioManager.playSoundEffect(AudioManager.FX_FOCUS_NAVIGATION_DOWN);
+                }
+                audioManager = null;
             }
         }
         return false;

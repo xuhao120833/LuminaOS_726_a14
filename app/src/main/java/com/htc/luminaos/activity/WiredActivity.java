@@ -165,88 +165,82 @@ public class WiredActivity extends BaseActivity implements View.OnKeyListener {
     @Override
     public void onClick(View v) {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        switch (v.getId()){
-            case R.id.rl_ip_setting:
-                if (mIpConfiguration.getIpAssignment() == IpConfiguration.IpAssignment.STATIC) {
-                    mIpConfiguration.setIpAssignment(IpConfiguration.IpAssignment.DHCP);
-                    mIpConfiguration.setStaticIpConfiguration(null);
-                    mEthManager.setConfiguration(mInterfaceName,mIpConfiguration);
-                }else {
-                    mIpConfiguration.setIpAssignment(IpConfiguration.IpAssignment.STATIC);
-                    mEthManager.setConfiguration(mInterfaceName,mIpConfiguration);
-                }
-                updateEthernetStatus();
-                break;
-            case R.id.rl_ip_address:
-                wiredNetworkLayoutBinding.ipAddressTv.requestFocus();
-                wiredNetworkLayoutBinding.ipAddressTv.setSelection(wiredNetworkLayoutBinding.ipAddressTv.getText().length());
-                // 显示软键盘
-                if (imm != null) {
-                    imm.showSoftInput(wiredNetworkLayoutBinding.ipAddressTv, InputMethodManager.SHOW_IMPLICIT);
-                }
-                break;
-            case R.id.rl_gateway:
-                wiredNetworkLayoutBinding.gatewayTv.requestFocus();
-                wiredNetworkLayoutBinding.gatewayTv.setSelection(wiredNetworkLayoutBinding.gatewayTv.getText().length());
-                // 显示软键盘
-                if (imm != null) {
-                    imm.showSoftInput(wiredNetworkLayoutBinding.gatewayTv, InputMethodManager.SHOW_IMPLICIT);
-                }
-                break;
-            case R.id.rl_subnet_mask:
-                wiredNetworkLayoutBinding.subnetMaskTv.requestFocus();
-                wiredNetworkLayoutBinding.subnetMaskTv.setSelection(wiredNetworkLayoutBinding.subnetMaskTv.getText().length());
-                // 显示软键盘
-                if (imm != null) {
-                    imm.showSoftInput(wiredNetworkLayoutBinding.subnetMaskTv, InputMethodManager.SHOW_IMPLICIT);
-                }
+        int id = v.getId();
+        if (id == R.id.rl_ip_setting) {
+            if (mIpConfiguration.getIpAssignment() == IpConfiguration.IpAssignment.STATIC) {
+                mIpConfiguration.setIpAssignment(IpConfiguration.IpAssignment.DHCP);
+                mIpConfiguration.setStaticIpConfiguration(null);
+                mEthManager.setConfiguration(mInterfaceName, mIpConfiguration);
+            } else {
+                mIpConfiguration.setIpAssignment(IpConfiguration.IpAssignment.STATIC);
+                mEthManager.setConfiguration(mInterfaceName, mIpConfiguration);
+            }
+            updateEthernetStatus();
+        } else if (id == R.id.rl_ip_address) {
+            wiredNetworkLayoutBinding.ipAddressTv.requestFocus();
+            wiredNetworkLayoutBinding.ipAddressTv.setSelection(wiredNetworkLayoutBinding.ipAddressTv.getText().length());
+            // 显示软键盘
+            if (imm != null) {
+                imm.showSoftInput(wiredNetworkLayoutBinding.ipAddressTv, InputMethodManager.SHOW_IMPLICIT);
+            }
+        } else if (id == R.id.rl_gateway) {
+            wiredNetworkLayoutBinding.gatewayTv.requestFocus();
+            wiredNetworkLayoutBinding.gatewayTv.setSelection(wiredNetworkLayoutBinding.gatewayTv.getText().length());
+            // 显示软键盘
+            if (imm != null) {
+                imm.showSoftInput(wiredNetworkLayoutBinding.gatewayTv, InputMethodManager.SHOW_IMPLICIT);
+            }
+        } else if (id == R.id.rl_subnet_mask) {
+            wiredNetworkLayoutBinding.subnetMaskTv.requestFocus();
+            wiredNetworkLayoutBinding.subnetMaskTv.setSelection(wiredNetworkLayoutBinding.subnetMaskTv.getText().length());
+            // 显示软键盘
+            if (imm != null) {
+                imm.showSoftInput(wiredNetworkLayoutBinding.subnetMaskTv, InputMethodManager.SHOW_IMPLICIT);
+            }
 //                StaticConfigDialog staticConfigDialog = new StaticConfigDialog(this,R.style.DialogTheme);
 //                staticConfigDialog.setIpConfiguration(mIpConfiguration);
 //                staticConfigDialog.show();
-                break;
-            case R.id.rl_dns:
-                wiredNetworkLayoutBinding.dnsTv.requestFocus();
-                wiredNetworkLayoutBinding.dnsTv.setSelection(wiredNetworkLayoutBinding.dnsTv.getText().length());
-                // 显示软键盘
-                if (imm != null) {
-                    imm.showSoftInput(wiredNetworkLayoutBinding.dnsTv, InputMethodManager.SHOW_IMPLICIT);
-                }
-                break;
-            case R.id.rl_dns2:
-                wiredNetworkLayoutBinding.dns2Tv.requestFocus();
-                wiredNetworkLayoutBinding.dns2Tv.setSelection(wiredNetworkLayoutBinding.dns2Tv.getText().length());
-                // 显示软键盘
-                if (imm != null) {
-                    imm.showSoftInput(wiredNetworkLayoutBinding.dns2Tv, InputMethodManager.SHOW_IMPLICIT);
-                }
-                break;
+        } else if (id == R.id.rl_dns) {
+            wiredNetworkLayoutBinding.dnsTv.requestFocus();
+            wiredNetworkLayoutBinding.dnsTv.setSelection(wiredNetworkLayoutBinding.dnsTv.getText().length());
+            // 显示软键盘
+            if (imm != null) {
+                imm.showSoftInput(wiredNetworkLayoutBinding.dnsTv, InputMethodManager.SHOW_IMPLICIT);
+            }
+        } else if (id == R.id.rl_dns2) {
+            wiredNetworkLayoutBinding.dns2Tv.requestFocus();
+            wiredNetworkLayoutBinding.dns2Tv.setSelection(wiredNetworkLayoutBinding.dns2Tv.getText().length());
+            // 显示软键盘
+            if (imm != null) {
+                imm.showSoftInput(wiredNetworkLayoutBinding.dns2Tv, InputMethodManager.SHOW_IMPLICIT);
+            }
         }
     }
 
     @Override
     public boolean onKey(View v, int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            switch (v.getId()) {
-                case R.id.ip_address_tv:
-                    if (wiredNetworkLayoutBinding.ipAddressTv.hasFocus() && event.getAction() == KeyEvent.ACTION_DOWN)
-                        wiredNetworkLayoutBinding.rlIpAddress.requestFocus();
-                    return true;
-                case R.id.gateway_tv:
-                    if (wiredNetworkLayoutBinding.gatewayTv.hasFocus() && event.getAction() == KeyEvent.ACTION_DOWN)
-                        wiredNetworkLayoutBinding.rlGateway.requestFocus();
-                    return true;
-                case R.id.subnet_mask_tv:
-                    if (wiredNetworkLayoutBinding.subnetMaskTv.hasFocus() && event.getAction() == KeyEvent.ACTION_DOWN)
-                        wiredNetworkLayoutBinding.rlSubnetMask.requestFocus();
-                    return true;
-                case R.id.dns_tv:
-                    if (wiredNetworkLayoutBinding.dnsTv.hasFocus() && event.getAction() == KeyEvent.ACTION_DOWN)
-                        wiredNetworkLayoutBinding.rlDns.requestFocus();
-                    return true;
-                case R.id.dns2_tv:
-                    if (wiredNetworkLayoutBinding.dns2Tv.hasFocus() && event.getAction() == KeyEvent.ACTION_DOWN)
-                        wiredNetworkLayoutBinding.rlDns2.requestFocus();
-                    return true;
+            int id = v.getId();
+            if (id == R.id.ip_address_tv) {
+                if (wiredNetworkLayoutBinding.ipAddressTv.hasFocus() && event.getAction() == KeyEvent.ACTION_DOWN)
+                    wiredNetworkLayoutBinding.rlIpAddress.requestFocus();
+                return true;
+            } else if (id == R.id.gateway_tv) {
+                if (wiredNetworkLayoutBinding.gatewayTv.hasFocus() && event.getAction() == KeyEvent.ACTION_DOWN)
+                    wiredNetworkLayoutBinding.rlGateway.requestFocus();
+                return true;
+            } else if (id == R.id.subnet_mask_tv) {
+                if (wiredNetworkLayoutBinding.subnetMaskTv.hasFocus() && event.getAction() == KeyEvent.ACTION_DOWN)
+                    wiredNetworkLayoutBinding.rlSubnetMask.requestFocus();
+                return true;
+            } else if (id == R.id.dns_tv) {
+                if (wiredNetworkLayoutBinding.dnsTv.hasFocus() && event.getAction() == KeyEvent.ACTION_DOWN)
+                    wiredNetworkLayoutBinding.rlDns.requestFocus();
+                return true;
+            } else if (id == R.id.dns2_tv) {
+                if (wiredNetworkLayoutBinding.dns2Tv.hasFocus() && event.getAction() == KeyEvent.ACTION_DOWN)
+                    wiredNetworkLayoutBinding.rlDns2.requestFocus();
+                return true;
             }
         }
         return false;

@@ -199,109 +199,96 @@ public class HotspotActivity extends BaseActivity implements View.OnKeyListener 
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.rl_hotspot_switch:
-            case R.id.hotspot_switch:
-                hotspotBinding.hotspotSwitch.setChecked(!hotspotBinding.hotspotSwitch.isChecked());
-                break;
-            case R.id.rl_show_password:
-            case R.id.show_password_switch:
-                hotspotBinding.showPasswordSwitch.setChecked(!hotspotBinding.showPasswordSwitch.isChecked());
-                break;
-            case R.id.rl_hotspot_password:
-                HotspotPasswordDialog passwordDialog = new HotspotPasswordDialog(this, R.style.DialogTheme);
-                passwordDialog.HotspotConfig(wifiHotUtil);
-                passwordDialog.setOnClickCallBack(new HotspotPasswordDialog.HotspotPasswordCallBack() {
-                    @Override
-                    public void onClick(String password) {
-                        hotspotBinding.passwordTv.setText(password);
-                        writeConfig();
-                    }
-                });
-                passwordDialog.show();
-                break;
-            case R.id.rl_hotspot_name:
-                HotspotNameDialog hotspotNameDialog = new HotspotNameDialog(this, R.style.DialogTheme);
-                hotspotNameDialog.HotspotConfig(wifiHotUtil);
-                hotspotNameDialog.setOnClickCallBack(new HotspotNameDialog.HotspotNameCallBack() {
-                    @Override
-                    public void onClick(String password) {
-                        hotspotBinding.hotspotNameTv.setText(password);
-                        writeConfig();
-                    }
-                });
-                hotspotNameDialog.show();
-                break;
-            case R.id.rl_hotspot_security:
-                if (mSecurityType == 2) {
-                    mSecurityType = 0;
-                } else {
-                    mSecurityType++;
+        int id = v.getId();
+        if (id == R.id.rl_hotspot_switch || id == R.id.hotspot_switch) {
+            hotspotBinding.hotspotSwitch.setChecked(!hotspotBinding.hotspotSwitch.isChecked());
+        } else if (id == R.id.rl_show_password || id == R.id.show_password_switch) {
+            hotspotBinding.showPasswordSwitch.setChecked(!hotspotBinding.showPasswordSwitch.isChecked());
+        } else if (id == R.id.rl_hotspot_password) {
+            HotspotPasswordDialog passwordDialog = new HotspotPasswordDialog(this, R.style.DialogTheme);
+            passwordDialog.HotspotConfig(wifiHotUtil);
+            passwordDialog.setOnClickCallBack(new HotspotPasswordDialog.HotspotPasswordCallBack() {
+                @Override
+                public void onClick(String password) {
+                    hotspotBinding.passwordTv.setText(password);
+                    writeConfig();
                 }
-                updateSecurity();
-
-                break;
-            case R.id.rl_frequency:
-                apBand = apBand == 1 ? 0 : 1;
-                hotspotBinding.frequencyTv.setText(apBandArray[apBand]);
-                writeConfig();
-                Log.d(TAG, " 确认键调整");
-                break;
-            case R.id.rl_enter:
-                if (!hotspotBinding.rlHotspotSwitch.isEnabled())
-                    return;
-                updateHotspotSwitchStatus(false);
-                mHandler.sendEmptyMessageDelayed(1001, 3000);
-                String msiid = hotspotBinding.hotspotNameTv.getText().toString();
-                if (msiid.isEmpty()) {
+            });
+            passwordDialog.show();
+        } else if (id == R.id.rl_hotspot_name) {
+            HotspotNameDialog hotspotNameDialog = new HotspotNameDialog(this, R.style.DialogTheme);
+            hotspotNameDialog.HotspotConfig(wifiHotUtil);
+            hotspotNameDialog.setOnClickCallBack(new HotspotNameDialog.HotspotNameCallBack() {
+                @Override
+                public void onClick(String password) {
+                    hotspotBinding.hotspotNameTv.setText(password);
+                    writeConfig();
+                }
+            });
+            hotspotNameDialog.show();
+        } else if (id == R.id.rl_hotspot_security) {
+            if (mSecurityType == 2) {
+                mSecurityType = 0;
+            } else {
+                mSecurityType++;
+            }
+            updateSecurity();
+        } else if (id == R.id.rl_frequency) {
+            apBand = apBand == 1 ? 0 : 1;
+            hotspotBinding.frequencyTv.setText(apBandArray[apBand]);
+            writeConfig();
+            Log.d(TAG, " 确认键调整");
+        } else if (id == R.id.rl_enter) {
+            if (!hotspotBinding.rlHotspotSwitch.isEnabled())
+                return;
+            updateHotspotSwitchStatus(false);
+            mHandler.sendEmptyMessageDelayed(1001, 3000);
+            String msiid = hotspotBinding.hotspotNameTv.getText().toString();
+            if (msiid.isEmpty()) {
+                ToastUtil.showShortToast(HotspotActivity.this,
+                        getString(R.string.ssidmsg));
+                return;
+            }
+            String mpassword = "";
+            if (mSecurityType != OPEN_INDEX) {
+                mpassword = hotspotBinding.passwordTv.getText().toString();
+                if (mpassword.isEmpty()) {
                     ToastUtil.showShortToast(HotspotActivity.this,
-                            getString(R.string.ssidmsg));
+                            getString(R.string.passwordmsg));
                     return;
                 }
-                String mpassword = "";
-                if (mSecurityType != OPEN_INDEX) {
-                    mpassword = hotspotBinding.passwordTv.getText().toString();
-                    if (mpassword.isEmpty()) {
-                        ToastUtil.showShortToast(HotspotActivity.this,
-                                getString(R.string.passwordmsg));
-                        return;
-                    }
 
-                    if (mpassword.length() < 8) {
-                        ToastUtil.showShortToast(HotspotActivity.this,
-                                getString(R.string.passwordmsglength));
-                        return;
-                    }
-
+                if (mpassword.length() < 8) {
+                    ToastUtil.showShortToast(HotspotActivity.this,
+                            getString(R.string.passwordmsglength));
+                    return;
                 }
 
-                WifiConfiguration mWifiConfig = getConfig(msiid, mSecurityType,
-                        mpassword, apBand);
+            }
 
-                if (mWifiConfig != null && wifiHotUtil != null) {
+            WifiConfiguration mWifiConfig = getConfig(msiid, mSecurityType,
+                    mpassword, apBand);
 
-                    if (mWifiManager.getWifiApState() == WifiManager.WIFI_AP_STATE_ENABLED) {
-                        Log.d("TetheringSettings",
-                                "Wifi AP config changed while enabled, stop and restart");
-                        mRestartWifiApAfterConfigChange = true;
-                        mConnectivityManager
-                                .stopTethering(ConnectivityManager.TETHERING_WIFI);
-                    }
-                    if (mSecurityType == OPEN_INDEX) {
-                        wifiHotUtil.turnOnWifiAps(msiid, mpassword,
-                                WifiHotUtil.WifiSecurityType.WIFICIPHER_NOPASS, apBand);
-                    } else {
-                        wifiHotUtil.turnOnWifiAps(msiid, mpassword,
-                                WifiHotUtil.WifiSecurityType.WIFICIPHER_WPA2, apBand);
-                    }
+            if (mWifiConfig != null && wifiHotUtil != null) {
 
+                if (mWifiManager.getWifiApState() == WifiManager.WIFI_AP_STATE_ENABLED) {
+                    Log.d("TetheringSettings",
+                            "Wifi AP config changed while enabled, stop and restart");
+                    mRestartWifiApAfterConfigChange = true;
+                    mConnectivityManager
+                            .stopTethering(ConnectivityManager.TETHERING_WIFI);
+                }
+                if (mSecurityType == OPEN_INDEX) {
+                    wifiHotUtil.turnOnWifiAps(msiid, mpassword,
+                            WifiHotUtil.WifiSecurityType.WIFICIPHER_NOPASS, apBand);
+                } else {
+                    wifiHotUtil.turnOnWifiAps(msiid, mpassword,
+                            WifiHotUtil.WifiSecurityType.WIFICIPHER_WPA2, apBand);
                 }
 
-                break;
-
-            case R.id.rl_cancel:
-                finish();
-                break;
+            }
+        } else if (id == R.id.rl_cancel) {
+            finish();
         }
     }
 
@@ -385,41 +372,41 @@ public class HotspotActivity extends BaseActivity implements View.OnKeyListener 
         }
 
         if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT && event.getAction() == KeyEvent.ACTION_DOWN) {
-            switch (v.getId()) {
-                case R.id.rl_hotspot_security:
-                    if (mSecurityType == 0) {
-                        mSecurityType = 2;
-                    } else {
-                        mSecurityType--;
-                    }
-                    updateSecurity();
-                    return true;
+            int id = v.getId();
+            if (id == R.id.rl_hotspot_security) {
+                if (mSecurityType == 0) {
+                    mSecurityType = 2;
+                } else {
+                    mSecurityType--;
+                }
+                updateSecurity();
+                return true;
 //                    break;
-                case R.id.rl_frequency:
-                    apBand = apBand == 1 ? 0 : 1;
-                    hotspotBinding.frequencyTv.setText(apBandArray[apBand]);
-                    Log.d(TAG, " 向左调整");
-                    writeConfig();
-                    return true;
+            } else if (id == R.id.rl_frequency) {
+                apBand = apBand == 1 ? 0 : 1;
+                hotspotBinding.frequencyTv.setText(apBandArray[apBand]);
+                Log.d(TAG, " 向左调整");
+                writeConfig();
+                return true;
 //                    break;
             }
         } else if (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT && event.getAction() == KeyEvent.ACTION_DOWN) {
-            switch (v.getId()) {
-                case R.id.rl_hotspot_security:
-                    if (mSecurityType == 2) {
-                        mSecurityType = 0;
-                    } else {
-                        mSecurityType++;
-                    }
-                    updateSecurity();
-                    return true;
+            int id = v.getId();
+            if (id == R.id.rl_hotspot_security) {
+                if (mSecurityType == 2) {
+                    mSecurityType = 0;
+                } else {
+                    mSecurityType++;
+                }
+                updateSecurity();
+                return true;
 //                    break;
-                case R.id.rl_frequency:
-                    apBand = apBand == 1 ? 0 : 1;
-                    hotspotBinding.frequencyTv.setText(apBandArray[apBand]);
-                    writeConfig();
-                    Log.d(TAG, " 向右调整");
-                    return true;
+            } else if (id == R.id.rl_frequency) {
+                apBand = apBand == 1 ? 0 : 1;
+                hotspotBinding.frequencyTv.setText(apBandArray[apBand]);
+                writeConfig();
+                Log.d(TAG, " 向右调整");
+                return true;
 //                    break;
             }
         }

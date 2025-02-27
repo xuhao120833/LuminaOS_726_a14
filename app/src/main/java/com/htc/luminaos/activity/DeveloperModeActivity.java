@@ -69,15 +69,11 @@ public class DeveloperModeActivity extends BaseActivity {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.rl_usb_debug:
-            case R.id.usb_debug_switch:
-                developerModeBinding.usbDebugSwitch.setChecked(!developerModeBinding.usbDebugSwitch.isChecked());
-                break;
-            case R.id.rl_adb_debug:
-            case R.id.adb_debug_switch:
-                developerModeBinding.adbDebugSwitch.setChecked(!developerModeBinding.adbDebugSwitch.isChecked());
-                break;
+        int id = v.getId();
+        if (id == R.id.rl_usb_debug || id == R.id.usb_debug_switch) {
+            developerModeBinding.usbDebugSwitch.setChecked(!developerModeBinding.usbDebugSwitch.isChecked());
+        } else if (id == R.id.rl_adb_debug || id == R.id.adb_debug_switch) {
+            developerModeBinding.adbDebugSwitch.setChecked(!developerModeBinding.adbDebugSwitch.isChecked());
         }
     }
 }

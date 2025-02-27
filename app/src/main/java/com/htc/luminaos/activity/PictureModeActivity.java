@@ -170,183 +170,159 @@ public class PictureModeActivity extends BaseActivity implements View.OnKeyListe
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.rl_picture_mode:
-                if (curPosition == picture_mode_values.length - 1) {
-                    curPosition = 0;
-                } else {
-                    curPosition += 1;
-                }
-                pqControl.setPictureMode(picture_mode_values[curPosition]);
-                updatePictureMode();
-                activityPictureModeBinding.pictureModeTv.setText(picture_mode_choices[curPosition]);
-                break;
+        int id = v.getId();
+        if (id == R.id.rl_picture_mode) {
+            if (curPosition == picture_mode_values.length - 1) {
+                curPosition = 0;
+            } else {
+                curPosition += 1;
+            }
+            pqControl.setPictureMode(picture_mode_values[curPosition]);
+            updatePictureMode();
+            activityPictureModeBinding.pictureModeTv.setText(picture_mode_choices[curPosition]);
+        } else if (id == R.id.rl_brightness) {
+            if (brightness_system == 100)
+                return;
 
-            case R.id.rl_brightness:
-                if (brightness_system == 100)
-                    break;
+            brightness_system += 1;
+            if (brightness_system > 100)
+                brightness_system = 100;
 
-                brightness_system += 1;
-                if (brightness_system > 100)
-                    brightness_system = 100;
+            updateBrightnessSystem(true);
+        } else if (id == R.id.brightness_left) {
+            if (brightness_system == 1)
+                return;
 
-                updateBrightnessSystem(true);
-                break;
-            case R.id.brightness_left:
-                if (brightness_system == 1)
-                    break;
+            brightness_system -= 1;
+            if (brightness_system <= 1) {
+                brightness_system = 1;
+            }
+            updateBrightnessSystem(true);
+        } else if (id == R.id.brightness_right) {
+            if (brightness_system == 100)
+                return;
 
-                brightness_system -= 1;
-                if (brightness_system <= 1) {
-                    brightness_system = 1;
-                }
-                updateBrightnessSystem(true);
-                break;
-            case R.id.brightness_right:
-                if (brightness_system == 100)
-                    break;
+            brightness_system += 1;
+            if (brightness_system > 100)
+                brightness_system = 100;
 
-                brightness_system += 1;
-                if (brightness_system > 100)
-                    brightness_system = 100;
+            updateBrightnessSystem(true);
+        } else if (id == R.id.rl_contrast) {
+            if (mCurContrast == 100)
+                return;
 
-                updateBrightnessSystem(true);
-                break;
+            mCurContrast += 1;
+            if (mCurContrast > 100)
+                mCurContrast = 100;
 
+            updateContrast(true);
+        } else if (id == R.id.contrast_left) {
+            if (mCurContrast == 1)
+                return;
 
-            case R.id.rl_contrast:
-                if (mCurContrast == 100)
-                    break;
+            mCurContrast -= 1;
+            if (mCurContrast < 1)
+                mCurContrast = 1;
+            updateContrast(true);
+        } else if (id == R.id.contrast_right) {
+            if (mCurContrast == 100)
+                return;
 
-                mCurContrast += 1;
-                if (mCurContrast > 100)
-                    mCurContrast = 100;
+            mCurContrast += 1;
+            if (mCurContrast > 100)
+                mCurContrast = 100;
 
-                updateContrast(true);
-                break;
-            case R.id.contrast_left:
-                if (mCurContrast == 1)
-                    break;
+            updateContrast(true);
+        } else if (id == R.id.rl_hue) {
+            if (mCurHue == 100)
+                return;
 
-                mCurContrast -= 1;
-                if (mCurContrast < 1)
-                    mCurContrast = 1;
-                updateContrast(true);
-                break;
-            case R.id.contrast_right:
-                if (mCurContrast == 100)
-                    break;
+            mCurHue += 1;
+            if (mCurHue > 100)
+                mCurHue = 100;
 
-                mCurContrast += 1;
-                if (mCurContrast > 100)
-                    mCurContrast = 100;
+            updateHue(true);
+        } else if (id == R.id.hue_left) {
+            if (mCurHue == 1)
+                return;
 
-                updateContrast(true);
-                break;
+            mCurHue -= 1;
+            if (mCurHue < 1)
+                mCurHue = 1;
 
+            updateHue(true);
+        } else if (id == R.id.hue_right) {
+            if (mCurHue == 100)
+                return;
 
-            case R.id.rl_hue:
-                if (mCurHue == 100)
-                    break;
+            mCurHue += 1;
+            if (mCurHue > 100)
+                mCurHue = 100;
 
-                mCurHue += 1;
-                if (mCurHue > 100)
-                    mCurHue = 100;
+            updateHue(true);
+        } else if (id == R.id.rl_saturation) {
+            if (mCurSaturation == 100)
+                return;
 
-                updateHue(true);
-                break;
-            case R.id.hue_left:
-                if (mCurHue == 1)
-                    break;
+            mCurSaturation += 1;
+            if (mCurSaturation > 100)
+                mCurSaturation = 100;
 
-                mCurHue -= 1;
-                if (mCurHue < 1)
-                    mCurHue = 1;
+            updateSaturation(true);
+        } else if (id == R.id.saturation_left) {
+            Log.d(TAG, "饱和度 向左");
+            if (mCurSaturation == 1) {
+                Log.d(TAG, "饱和度 向左不执行");
+                return;
+            }
 
-                updateHue(true);
-                break;
-            case R.id.hue_right:
-                if (mCurHue == 100)
-                    break;
+            mCurSaturation -= 1;
+            if (mCurSaturation < 1)
+                mCurSaturation = 1;
 
-                mCurHue += 1;
-                if (mCurHue > 100)
-                    mCurHue = 100;
+            updateSaturation(true);
+        } else if (id == R.id.saturation_right) {
+            if (mCurSaturation == 100)
+                return;
 
-                updateHue(true);
-                break;
+            mCurSaturation += 1;
+            if (mCurSaturation > 100)
+                mCurSaturation = 100;
 
-            case R.id.rl_saturation:
-                if (mCurSaturation == 100)
-                    break;
+            updateSaturation(true);
+        } else if (id == R.id.rl_sharpness) {
+            Log.d(TAG, "锐度 向右");
+            if (mSharpness == 100) {
+                Log.d(TAG, "锐度 向右不执行");
+                return;
+            }
 
-                mCurSaturation += 1;
-                if (mCurSaturation > 100)
-                    mCurSaturation = 100;
+            mSharpness += 1;
+            if (mSharpness > 100)
+                mSharpness = 100;
 
-                updateSaturation(true);
+            updateSharpness(true);
+        } else if (id == R.id.sharpness_left) {
+            if (mSharpness == 1)
+                return;
 
-                break;
-            case R.id.saturation_left:
-                Log.d(TAG, "饱和度 向左");
-                if (mCurSaturation == 1) {
-                    Log.d(TAG, "饱和度 向左不执行");
-                    break;
-                }
+            mSharpness -= 1;
+            if (mSharpness < 1)
+                mSharpness = 1;
 
-                mCurSaturation -= 1;
-                if (mCurSaturation < 1)
-                    mCurSaturation = 1;
+            updateSharpness(true);
+        } else if (id == R.id.sharpness_right) {
+            Log.d(TAG, "锐度 向右");
+            if (mSharpness == 100) {
+                Log.d(TAG, "锐度 向右不执行");
+                return;
+            }
 
-                updateSaturation(true);
-                break;
-            case R.id.saturation_right:
-                if (mCurSaturation == 100)
-                    break;
+            mSharpness += 1;
+            if (mSharpness > 100)
+                mSharpness = 100;
 
-                mCurSaturation += 1;
-                if (mCurSaturation > 100)
-                    mCurSaturation = 100;
-
-                updateSaturation(true);
-                break;
-
-            case R.id.rl_sharpness:
-                Log.d(TAG, "锐度 向右");
-                if (mSharpness == 100) {
-                    Log.d(TAG, "锐度 向右不执行");
-                    break;
-                }
-
-                mSharpness += 1;
-                if (mSharpness > 100)
-                    mSharpness = 100;
-
-                updateSharpness(true);
-                break;
-            case R.id.sharpness_left:
-                if (mSharpness == 1)
-                    break;
-
-                mSharpness -= 1;
-                if (mSharpness < 1)
-                    mSharpness = 1;
-
-                updateSharpness(true);
-                break;
-            case R.id.sharpness_right:
-                Log.d(TAG, "锐度 向右");
-                if (mSharpness == 100) {
-                    Log.d(TAG, "锐度 向右不执行");
-                    break;
-                }
-
-                mSharpness += 1;
-                if (mSharpness > 100)
-                    mSharpness = 100;
-
-                updateSharpness(true);
-                break;
+            updateSharpness(true);
         }
     }
 
@@ -363,183 +339,178 @@ public class PictureModeActivity extends BaseActivity implements View.OnKeyListe
         }
         AudioManager audioManager = (AudioManager) v.getContext().getSystemService(Context.AUDIO_SERVICE);
         if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT && event.getAction() == KeyEvent.ACTION_DOWN) {
-            switch (v.getId()) {
-                case R.id.rl_picture_mode:
-                    if (curPosition == 0) {
-                        curPosition = picture_mode_values.length - 1;
-                    } else {
-                        curPosition -= 1;
-                    }
-                    pqControl.setPictureMode(picture_mode_values[curPosition]);
-                    //awTvDisplayManager.setPictureModeByName(enumPictureModes[curPosition]);
-                    updatePictureMode();
-                    activityPictureModeBinding.pictureModeTv.setText(picture_mode_choices[curPosition]);
-                    if (audioManager != null) {
-                        audioManager.playSoundEffect(AudioManager.FX_FOCUS_NAVIGATION_DOWN);
-                    }
-                    audioManager =null;
+            int id = v.getId();
+            if (id == R.id.rl_picture_mode) {
+                if (curPosition == 0) {
+                    curPosition = picture_mode_values.length - 1;
+                } else {
+                    curPosition -= 1;
+                }
+                pqControl.setPictureMode(picture_mode_values[curPosition]);
+                //awTvDisplayManager.setPictureModeByName(enumPictureModes[curPosition]);
+                updatePictureMode();
+                activityPictureModeBinding.pictureModeTv.setText(picture_mode_choices[curPosition]);
+                if (audioManager != null) {
+                    audioManager.playSoundEffect(AudioManager.FX_FOCUS_NAVIGATION_DOWN);
+                }
+                audioManager = null;
 //                    return true;
-                    break;
-                case R.id.rl_color_temp:
-                    if (mColorTemp == 0) {
-                        mColorTemp = colorTemp_name.length - 1;
-                    } else {
-                        mColorTemp -= 1;
-                    }
-                    updateColorTemp(mColorTemp);
-                    if (audioManager != null) {
-                        audioManager.playSoundEffect(AudioManager.FX_FOCUS_NAVIGATION_DOWN);
-                    }
-                    audioManager =null;
+            } else if (id == R.id.rl_color_temp) {
+                if (mColorTemp == 0) {
+                    mColorTemp = colorTemp_name.length - 1;
+                } else {
+                    mColorTemp -= 1;
+                }
+                updateColorTemp(mColorTemp);
+                if (audioManager != null) {
+                    audioManager.playSoundEffect(AudioManager.FX_FOCUS_NAVIGATION_DOWN);
+                }
+                audioManager = null;
 //                    return true;
-                    break;
-                case R.id.rl_brightness:
-                    if (brightness_system == 1)
-                        break;
+            } else if (id == R.id.rl_brightness) {
+                if (brightness_system == 1)
+                    return false;
 
-                    brightness_system -= 1;
-                    if (brightness_system <= 1) {
-                        brightness_system = 1;
-                    }
-                    updateBrightnessSystem(true);
-                    return true;
+                brightness_system -= 1;
+                if (brightness_system <= 1) {
+                    brightness_system = 1;
+                }
+                updateBrightnessSystem(true);
+                return true;
 //                    break;
-                case R.id.rl_contrast:
-                    if (mCurContrast == 1)
-                        break;
+            } else if (id == R.id.rl_contrast) {
+                if (mCurContrast == 1)
+                    return false;
 
-                    mCurContrast -= 1;
-                    if (mCurContrast < 1)
-                        mCurContrast = 1;
-                    updateContrast(true);
+                mCurContrast -= 1;
+                if (mCurContrast < 1)
+                    mCurContrast = 1;
+                updateContrast(true);
 //                    break;
-                    return true;
-                case R.id.rl_hue:
-                    if (mCurHue == 1)
-                        break;
+                return true;
+            } else if (id == R.id.rl_hue) {
+                if (mCurHue == 1)
+                    return false;
 
-                    mCurHue -= 1;
-                    if (mCurHue < 1)
-                        mCurHue = 1;
+                mCurHue -= 1;
+                if (mCurHue < 1)
+                    mCurHue = 1;
 
-                    updateHue(true);
-                    return true;
+                updateHue(true);
+                return true;
 //                    break;
-                case R.id.rl_saturation:
-                    Log.d(TAG, "饱和度 向左");
-                    if (mCurSaturation == 1) {
-                        Log.d(TAG, "饱和度 向左不执行");
-                        break;
-                    }
+            } else if (id == R.id.rl_saturation) {
+                Log.d(TAG, "饱和度 向左");
+                if (mCurSaturation == 1) {
+                    Log.d(TAG, "饱和度 向左不执行");
+                    return false;
+                }
 
-                    mCurSaturation -= 1;
-                    if (mCurSaturation < 1)
-                        mCurSaturation = 1;
+                mCurSaturation -= 1;
+                if (mCurSaturation < 1)
+                    mCurSaturation = 1;
 
-                    updateSaturation(true);
-                    return true;
+                updateSaturation(true);
+                return true;
 //                    break;
-                case R.id.rl_sharpness:
-                    if (mSharpness == 1)
-                        break;
+            } else if (id == R.id.rl_sharpness) {
+                if (mSharpness == 1)
+                    return false;
 
-                    mSharpness -= 1;
-                    if (mSharpness < 1)
-                        mSharpness = 1;
+                mSharpness -= 1;
+                if (mSharpness < 1)
+                    mSharpness = 1;
 
-                    updateSharpness(true);
-                    return true;
+                updateSharpness(true);
+                return true;
 //                    break;
             }
         } else if (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT && event.getAction() == KeyEvent.ACTION_DOWN) {
-            switch (v.getId()) {
-                case R.id.rl_color_temp:
-                    if (mColorTemp == colorTemp_name.length - 1) {
-                        mColorTemp = 0;
-                    } else {
-                        mColorTemp += 1;
-                    }
-                    updateColorTemp(mColorTemp);
-                    if (audioManager != null) {
-                        audioManager.playSoundEffect(AudioManager.FX_FOCUS_NAVIGATION_DOWN);
-                    }
-                    audioManager =null;
+            int id = v.getId();
+            if (id == R.id.rl_color_temp) {
+                if (mColorTemp == colorTemp_name.length - 1) {
+                    mColorTemp = 0;
+                } else {
+                    mColorTemp += 1;
+                }
+                updateColorTemp(mColorTemp);
+                if (audioManager != null) {
+                    audioManager.playSoundEffect(AudioManager.FX_FOCUS_NAVIGATION_DOWN);
+                }
+                audioManager = null;
 //                    return true;
-                    break;
-                case R.id.rl_brightness:
-                    if (brightness_system == 100)
-                        break;
+            } else if (id == R.id.rl_brightness) {
+                if (brightness_system == 100)
+                    return false;
 
-                    brightness_system += 1;
-                    if (brightness_system > 100)
-                        brightness_system = 100;
+                brightness_system += 1;
+                if (brightness_system > 100)
+                    brightness_system = 100;
 
-                    updateBrightnessSystem(true);
-                    return true;
+                updateBrightnessSystem(true);
+                return true;
 //                    break;
-                case R.id.rl_contrast:
-                    if (mCurContrast == 100)
-                        break;
+            } else if (id == R.id.rl_contrast) {
+                if (mCurContrast == 100)
+                    return false;
 
-                    mCurContrast += 1;
-                    if (mCurContrast > 100)
-                        mCurContrast = 100;
+                mCurContrast += 1;
+                if (mCurContrast > 100)
+                    mCurContrast = 100;
 
-                    updateContrast(true);
-                    return true;
+                updateContrast(true);
+                return true;
 //                    break;
-                case R.id.rl_hue:
-                    if (mCurHue == 100)
-                        break;
+            } else if (id == R.id.rl_hue) {
+                if (mCurHue == 100)
+                    return false;
 
-                    mCurHue += 1;
-                    if (mCurHue > 100)
-                        mCurHue = 100;
+                mCurHue += 1;
+                if (mCurHue > 100)
+                    mCurHue = 100;
 
-                    updateHue(true);
-                    return true;
+                updateHue(true);
+                return true;
 //                    break;
-                case R.id.rl_saturation:
-                    if (mCurSaturation == 100)
-                        break;
+            } else if (id == R.id.rl_saturation) {
+                if (mCurSaturation == 100)
+                    return false;
 
-                    mCurSaturation += 1;
-                    if (mCurSaturation > 100)
-                        mCurSaturation = 100;
+                mCurSaturation += 1;
+                if (mCurSaturation > 100)
+                    mCurSaturation = 100;
 
-                    updateSaturation(true);
-                    return true;
+                updateSaturation(true);
+                return true;
 //                    break;
-                case R.id.rl_sharpness:
-                    Log.d(TAG, "锐度 向右");
-                    if (mSharpness == 100) {
-                        Log.d(TAG, "锐度 向右不执行");
-                        break;
-                    }
+            } else if (id == R.id.rl_sharpness) {
+                Log.d(TAG, "锐度 向右");
+                if (mSharpness == 100) {
+                    Log.d(TAG, "锐度 向右不执行");
+                    return false;
+                }
 
-                    mSharpness += 1;
-                    if (mSharpness > 100)
-                        mSharpness = 100;
+                mSharpness += 1;
+                if (mSharpness > 100)
+                    mSharpness = 100;
 
-                    updateSharpness(true);
-                    return true;
+                updateSharpness(true);
+                return true;
 //                    break;
-
-                case R.id.rl_picture_mode:
-                    if (curPosition == picture_mode_values.length - 1) {
-                        curPosition = 0;
-                    } else {
-                        curPosition += 1;
-                    }
-                    pqControl.setPictureMode(picture_mode_values[curPosition]);
-                    updatePictureMode();
-                    activityPictureModeBinding.pictureModeTv.setText(picture_mode_choices[curPosition]);
-                    if (audioManager != null) {
-                        audioManager.playSoundEffect(AudioManager.FX_FOCUS_NAVIGATION_DOWN);
-                    }
-                    audioManager =null;
+            } else if (id == R.id.rl_picture_mode) {
+                if (curPosition == picture_mode_values.length - 1) {
+                    curPosition = 0;
+                } else {
+                    curPosition += 1;
+                }
+                pqControl.setPictureMode(picture_mode_values[curPosition]);
+                updatePictureMode();
+                activityPictureModeBinding.pictureModeTv.setText(picture_mode_choices[curPosition]);
+                if (audioManager != null) {
+                    audioManager.playSoundEffect(AudioManager.FX_FOCUS_NAVIGATION_DOWN);
+                }
+                audioManager = null;
 //                    return true;
-                    break;
             }
         }
 

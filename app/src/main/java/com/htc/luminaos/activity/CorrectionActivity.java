@@ -206,22 +206,15 @@ public class CorrectionActivity extends BaseActivity {
         @SuppressWarnings("static-access")
         @Override
         public void onClick(View view) {
-            switch (view.getId()) {
-                case R.id.check_lt:
-                    switchDirection(1);
-                    break;
-
-                case R.id.check_lb:
-                    switchDirection(2);
-                    break;
-
-                case R.id.check_rt:
-                    switchDirection(3);
-                    break;
-
-                case R.id.check_rb:
-                    switchDirection(4);
-                    break;
+            int id = view.getId();
+            if (id == R.id.check_lt) {
+                switchDirection(1);
+            } else if (id == R.id.check_lb) {
+                switchDirection(2);
+            } else if (id == R.id.check_rt) {
+                switchDirection(3);
+            } else if (id == R.id.check_rb) {
+                switchDirection(4);
             }
         }
     };
@@ -902,43 +895,27 @@ public class CorrectionActivity extends BaseActivity {
         @SuppressWarnings("static-access")
         @Override
         public void onClick(View view) {
-            switch (view.getId()) {
-                case R.id.lt_top:
-                case R.id.lb_top:
-                case R.id.rt_top:
-                case R.id.rb_top:
-                    mHandler.removeCallbacks(reset_step_runnable);
-                    calculationValue(mkeyEvent.KEYCODE_DPAD_UP, mkeyEvent, touch_move_step);
-                    if (touch_move_step < 8) touch_move_step++;
-                    mHandler.postDelayed(reset_step_runnable, 600);
-                    break;
-                case R.id.lt_left:
-                case R.id.lb_left:
-                case R.id.rt_left:
-                case R.id.rb_left:
-                    mHandler.removeCallbacks(reset_step_runnable);
-                    calculationValue(mkeyEvent.KEYCODE_DPAD_LEFT, mkeyEvent, touch_move_step);
-                    if (touch_move_step < 8) touch_move_step++;
-                    mHandler.postDelayed(reset_step_runnable, 600);
-                    break;
-                case R.id.lt_right:
-                case R.id.lb_right:
-                case R.id.rt_right:
-                case R.id.rb_right:
-                    mHandler.removeCallbacks(reset_step_runnable);
-                    calculationValue(mkeyEvent.KEYCODE_DPAD_RIGHT, mkeyEvent, touch_move_step);
-                    if (touch_move_step < 8) touch_move_step++;
-                    mHandler.postDelayed(reset_step_runnable, 600);
-                    break;
-                case R.id.lt_bottom:
-                case R.id.lb_bottom:
-                case R.id.rt_bottom:
-                case R.id.rb_bottom:
-                    mHandler.removeCallbacks(reset_step_runnable);
-                    calculationValue(mkeyEvent.KEYCODE_DPAD_DOWN, mkeyEvent, touch_move_step);
-                    if (touch_move_step < 8) touch_move_step++;
-                    mHandler.postDelayed(reset_step_runnable, 600);
-                    break;
+            int id = view.getId();
+            if (id == R.id.lt_top || id == R.id.lb_top || id == R.id.rt_top || id == R.id.rb_top) {
+                mHandler.removeCallbacks(reset_step_runnable);
+                calculationValue(mkeyEvent.KEYCODE_DPAD_UP, mkeyEvent, touch_move_step);
+                if (touch_move_step < 8) touch_move_step++;
+                mHandler.postDelayed(reset_step_runnable, 600);
+            } else if (id == R.id.lt_left || id == R.id.lb_left || id == R.id.rt_left || id == R.id.rb_left) {
+                mHandler.removeCallbacks(reset_step_runnable);
+                calculationValue(mkeyEvent.KEYCODE_DPAD_LEFT, mkeyEvent, touch_move_step);
+                if (touch_move_step < 8) touch_move_step++;
+                mHandler.postDelayed(reset_step_runnable, 600);
+            } else if (id == R.id.lt_right || id == R.id.lb_right || id == R.id.rt_right || id == R.id.rb_right) {
+                mHandler.removeCallbacks(reset_step_runnable);
+                calculationValue(mkeyEvent.KEYCODE_DPAD_RIGHT, mkeyEvent, touch_move_step);
+                if (touch_move_step < 8) touch_move_step++;
+                mHandler.postDelayed(reset_step_runnable, 600);
+            } else if (id == R.id.lt_bottom || id == R.id.lb_bottom || id == R.id.rt_bottom || id == R.id.rb_bottom) {
+                mHandler.removeCallbacks(reset_step_runnable);
+                calculationValue(mkeyEvent.KEYCODE_DPAD_DOWN, mkeyEvent, touch_move_step);
+                if (touch_move_step < 8) touch_move_step++;
+                mHandler.postDelayed(reset_step_runnable, 600);
             }
         }
     };

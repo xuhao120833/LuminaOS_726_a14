@@ -35,15 +35,13 @@ public class DelpairDeviceDialog extends Dialog implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         Log.d("xuhao","onclick");
-        switch (v.getId()){
-            case R.id.enter:
-                mcallback.onDelPairedClick();
-                dismiss();
-                break;
-            case R.id.cancel:
-                mcallback.onConnectClick();
-                dismiss();
-                break;
+        int id = v.getId();
+        if (id == R.id.enter) {
+            mcallback.onDelPairedClick();
+            dismiss();
+        } else if (id == R.id.cancel) {
+            mcallback.onConnectClick();
+            dismiss();
         }
     }
 

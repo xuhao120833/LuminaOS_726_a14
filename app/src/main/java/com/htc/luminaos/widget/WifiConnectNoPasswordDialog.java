@@ -35,16 +35,13 @@ public class WifiConnectNoPasswordDialog extends Dialog implements View.OnClickL
     @Override
     public void onClick(View v) {
         Log.d(TAG,"onclick");
-        switch (v.getId()){
-            case R.id.enter:
-
-                if (mcallback!=null)
-                    mcallback.onClick();
-                dismiss();
-                break;
-            case R.id.cancel:
-                dismiss();
-                break;
+        int id = v.getId();
+        if (id == R.id.enter) {
+            if (mcallback != null)
+                mcallback.onClick();
+            dismiss();
+        } else if (id == R.id.cancel) {
+            dismiss();
         }
     }
 

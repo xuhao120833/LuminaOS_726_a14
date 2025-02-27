@@ -777,139 +777,120 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
     public void onClick(View v) {
         String appname = null;
         String action = null;
-        switch (v.getId()) {
-            case R.id.rl_clear_memory:
-                goAction("com.htc.clearmemory/com.htc.clearmemory.MainActivity");
-                break;
-            case R.id.rl_wallpapers:
-                startNewActivity(WallPaperActivity.class);
-                break;
-            case R.id.rl_Google:
-                appname = DBUtils.getInstance(this).getAppNameByTag("icon4");
-                action = DBUtils.getInstance(this).getActionByTag("icon4");
-                Log.d(TAG, " appnameaction" + appname + " " + action);
-                if (appname != null && action != null && !appname.equals("") && !action.equals("")) {
-                    if (!AppUtils.startNewApp(MainActivity.this, action)) {
-                        appName = appname;
-                        requestChannelData();
-                    }
-                } else {
-                    AppUtils.startNewApp(MainActivity.this, "com.htc.storeos");
-                }
-//                AppUtils.startNewApp(MainActivity.this, "com.htc.storeos");
-                break;
-            case R.id.rl_apps:
-                startNewActivity(AppsActivity.class);
-                break;
-            case R.id.rl_settings:
-//                startNewActivity(MainSettingActivity.class);
-                try {
-                    String listaction = DBUtils.getInstance(this).getActionFromListModules("list4");
-                    if (listaction != null && !listaction.equals("")) { //读取配置
-                        goAction(listaction);
-                    } else {// 默认跳转
-                        startNewActivity(MainSettingActivity.class);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                break;
-            case R.id.rl_usb:
-//                AppUtils.startNewApp(MainActivity.this, "com.softwinner.TvdFileManager");
-                AppUtils.startNewApp(MainActivity.this, "com.hisilicon.explorer");
-                break;
-            case R.id.rl_usb_connect:
-                AppUtils.startNewApp(MainActivity.this, "com.hisilicon.explorer");
-                break;
-            case R.id.rl_av:
-                startSource("CVBS1");
-                break;
-            case R.id.rl_hdmi1:
-//                startSource("HDMI1");
-                try {
-                    String listaction = DBUtils.getInstance(this).getActionFromListModules("list3");
-                    if (listaction != null && !listaction.equals("")) { //读取配置
-                        goAction(listaction);
-                    } else {
-                        if (Utils.sourceList.length > 1) { //支持多信源
-                            showSourceDialog();
-                        } else {
-                            // 默认跳转
-                            startSource("HDMI1");
-                        }
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                break;
-            case R.id.rl_hdmi2:
-                startSource("HDMI2");
-                break;
-            case R.id.rl_vga:
-                startSource("VGA");
-                break;
-            case R.id.rl_manual:
-                ManualQrDialog manualQrDialog = new ManualQrDialog(this, R.style.DialogTheme);
-                manualQrDialog.show();
-                break;
-            case R.id.rl_wifi:
-                if(!MyApplication.config.statusbar_wifi.isEmpty()) {
-                    goAction(MyApplication.config.statusbar_wifi.trim());
-                }else {
-                    startNewActivity(WifiActivity.class);
-                }
-                break;
-            case R.id.rl_bluetooth:
-                if(!MyApplication.config.statusbar_bt.isEmpty()) {
-                    goAction(MyApplication.config.statusbar_bt.trim());
-                }else {
-                    startNewActivity(BluetoothActivity.class);
-                }
-                break;
-            case R.id.home_eshare:
-                try {
-                    String listaction = DBUtils.getInstance(this).getActionFromListModules("list1");
-                    if (listaction != null && !listaction.equals("")) { //读取配置
-                        goAction(listaction);
-                    } else {// 默认跳转
-                        AppUtils.startNewApp(MainActivity.this, "com.ecloud.eshare.server");
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                break;
-            case R.id.home_disney:
-                Log.d("xuhao", "打开迪士尼");
-                appname = DBUtils.getInstance(this).getAppNameByTag("icon3");
-                action = DBUtils.getInstance(this).getActionByTag("icon3");
-                if (appname != null && action != null && !appname.equals("") && !action.equals("")) {
-                    if (!AppUtils.startNewApp(MainActivity.this, action)) {
-                        appName = appname;
-                        requestChannelData();
-                    }
-                } else if (!AppUtils.startNewApp(MainActivity.this, "com.disney.disneyplus")) {
-                    appName = "Disney+";
+        int id = v.getId();
+        if (id == R.id.rl_clear_memory) {
+            goAction("com.htc.clearmemory/com.htc.clearmemory.MainActivity");
+        } else if (id == R.id.rl_wallpapers) {
+            startNewActivity(WallPaperActivity.class);
+        } else if (id == R.id.rl_Google) {
+            appname = DBUtils.getInstance(this).getAppNameByTag("icon4");
+            action = DBUtils.getInstance(this).getActionByTag("icon4");
+            Log.d(TAG, " appnameaction" + appname + " " + action);
+            if (appname != null && action != null && !appname.equals("") && !action.equals("")) {
+                if (!AppUtils.startNewApp(MainActivity.this, action)) {
+                    appName = appname;
                     requestChannelData();
                 }
-//                AppUtils.startNewApp(MainActivity.this, "com.disney.disneyplus");
-                break;
-            case R.id.home_netflix:
-                Log.d("xuhao", "打开奈飞");
-                appname = DBUtils.getInstance(this).getAppNameByTag("icon1");
-                action = DBUtils.getInstance(this).getActionByTag("icon1");
-                if (appname != null && action != null && !appname.equals("") && !action.equals("")) {
-                    if (!AppUtils.startNewApp(MainActivity.this, action)) {
-                        Log.d("xuhao", "打开奈飞 第一个坑位不为空 " + appname + "2" + action + "3");
-                        appName = appname;
-                        requestChannelData();
-                    }
-                } else if (!AppUtils.startNewApp(MainActivity.this, "com.netflix.mediaclient")) {
-                    if (!AppUtils.startNewApp(MainActivity.this, "com.netflix.ninja")) {
-                        Log.d("xuhao", "打开奈飞 第一个坑位为空");
-                        appName = "Netflix";
-                        requestChannelData();
+            } else {
+                AppUtils.startNewApp(MainActivity.this, "com.htc.storeos");
+            }
+//                AppUtils.startNewApp(MainActivity.this, "com.htc.storeos");
+        } else if (id == R.id.rl_apps) {
+            startNewActivity(AppsActivity.class);
+        } else if (id == R.id.rl_settings) {//                startNewActivity(MainSettingActivity.class);
+            try {
+                String listaction = DBUtils.getInstance(this).getActionFromListModules("list4");
+                if (listaction != null && !listaction.equals("")) { //读取配置
+                    goAction(listaction);
+                } else {// 默认跳转
+                    startNewActivity(MainSettingActivity.class);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (id == R.id.rl_usb) {//                AppUtils.startNewApp(MainActivity.this, "com.softwinner.TvdFileManager");
+            AppUtils.startNewApp(MainActivity.this, "com.hisilicon.explorer");
+        } else if (id == R.id.rl_usb_connect) {
+            AppUtils.startNewApp(MainActivity.this, "com.hisilicon.explorer");
+        } else if (id == R.id.rl_av) {
+            startSource("CVBS1");
+        } else if (id == R.id.rl_hdmi1) {//                startSource("HDMI1");
+            try {
+                String listaction = DBUtils.getInstance(this).getActionFromListModules("list3");
+                if (listaction != null && !listaction.equals("")) { //读取配置
+                    goAction(listaction);
+                } else {
+                    if (Utils.sourceList.length > 1) { //支持多信源
+                        showSourceDialog();
+                    } else {
+                        // 默认跳转
+                        startSource("HDMI1");
                     }
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (id == R.id.rl_hdmi2) {
+            startSource("HDMI2");
+        } else if (id == R.id.rl_vga) {
+            startSource("VGA");
+        } else if (id == R.id.rl_manual) {
+            ManualQrDialog manualQrDialog = new ManualQrDialog(this, R.style.DialogTheme);
+            manualQrDialog.show();
+        } else if (id == R.id.rl_wifi) {
+            if (!MyApplication.config.statusbar_wifi.isEmpty()) {
+                goAction(MyApplication.config.statusbar_wifi.trim());
+            } else {
+                startNewActivity(WifiActivity.class);
+            }
+        } else if (id == R.id.rl_bluetooth) {
+            if (!MyApplication.config.statusbar_bt.isEmpty()) {
+                goAction(MyApplication.config.statusbar_bt.trim());
+            } else {
+                startNewActivity(BluetoothActivity.class);
+            }
+        } else if (id == R.id.home_eshare) {
+            try {
+                String listaction = DBUtils.getInstance(this).getActionFromListModules("list1");
+                if (listaction != null && !listaction.equals("")) { //读取配置
+                    goAction(listaction);
+                } else {// 默认跳转
+                    AppUtils.startNewApp(MainActivity.this, "com.ecloud.eshare.server");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (id == R.id.home_disney) {
+            Log.d("xuhao", "打开迪士尼");
+            appname = DBUtils.getInstance(this).getAppNameByTag("icon3");
+            action = DBUtils.getInstance(this).getActionByTag("icon3");
+            if (appname != null && action != null && !appname.equals("") && !action.equals("")) {
+                if (!AppUtils.startNewApp(MainActivity.this, action)) {
+                    appName = appname;
+                    requestChannelData();
+                }
+            } else if (!AppUtils.startNewApp(MainActivity.this, "com.disney.disneyplus")) {
+                appName = "Disney+";
+                requestChannelData();
+            }
+//                AppUtils.startNewApp(MainActivity.this, "com.disney.disneyplus");
+        } else if (id == R.id.home_netflix) {
+            Log.d("xuhao", "打开奈飞");
+            appname = DBUtils.getInstance(this).getAppNameByTag("icon1");
+            action = DBUtils.getInstance(this).getActionByTag("icon1");
+            if (appname != null && action != null && !appname.equals("") && !action.equals("")) {
+                if (!AppUtils.startNewApp(MainActivity.this, action)) {
+                    Log.d("xuhao", "打开奈飞 第一个坑位不为空 " + appname + "2" + action + "3");
+                    appName = appname;
+                    requestChannelData();
+                }
+            } else if (!AppUtils.startNewApp(MainActivity.this, "com.netflix.mediaclient")) {
+                if (!AppUtils.startNewApp(MainActivity.this, "com.netflix.ninja")) {
+                    Log.d("xuhao", "打开奈飞 第一个坑位为空");
+                    appName = "Netflix";
+                    requestChannelData();
+                }
+            }
 //                if (!AppUtils.startNewApp(MainActivity.this, "com.netflix.mediaclient")) {
 //                    appName = "Netflix";
 //                    requestChannelData();
@@ -917,26 +898,24 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
 //                AppUtils.startNewApp(MainActivity.this, "com.netflix.mediaclient");
 //                com.netflix.mediaclient 手机版
 //                com.netflix.ninja 电视版
-                break;
-            case R.id.home_youtube:
-                Log.d("xuhao", "打开YOUtube");
-                appname = DBUtils.getInstance(this).getAppNameByTag("icon2");
-                action = DBUtils.getInstance(this).getActionByTag("icon2");
-                if (appname != null && action != null && !appname.equals("") && !action.equals("")) {
-                    if (!AppUtils.startNewApp(MainActivity.this, action)) {
-                        appName = appname;
-                        requestChannelData();
-                    }
-                } else if (!AppUtils.startNewApp(MainActivity.this, "com.google.android.youtube.tv")) {
-                    appName = "Youtube";
+        } else if (id == R.id.home_youtube) {
+            Log.d("xuhao", "打开YOUtube");
+            appname = DBUtils.getInstance(this).getAppNameByTag("icon2");
+            action = DBUtils.getInstance(this).getActionByTag("icon2");
+            if (appname != null && action != null && !appname.equals("") && !action.equals("")) {
+                if (!AppUtils.startNewApp(MainActivity.this, action)) {
+                    appName = appname;
                     requestChannelData();
                 }
+            } else if (!AppUtils.startNewApp(MainActivity.this, "com.google.android.youtube.tv")) {
+                appName = "Youtube";
+                requestChannelData();
+            }
 //                if (!AppUtils.startNewApp(MainActivity.this, "com.google.android.youtube.tv")) {
 //                    appName = "Youtube";
 //                    requestChannelData();
 //                }
 //                AppUtils.startNewApp(MainActivity.this, "com.google.android.youtube.tv");
-                break;
         }
 
     }

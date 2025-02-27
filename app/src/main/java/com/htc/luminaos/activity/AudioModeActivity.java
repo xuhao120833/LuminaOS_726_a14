@@ -125,167 +125,143 @@ public class AudioModeActivity extends BaseActivity implements View.OnKeyListene
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.rl_audio_mode:
-                if (sound_mode==soundMode_name.length-1){
-                    sound_mode = 0;
-                }else {
-                    sound_mode+=1;
-                }
-                tvAudioControl.setAudioMode(sound_mode);
-                activityAudioModeBinding.audioModeTv.setText(soundMode_name[sound_mode]);
-                updateAllEQValue();
-                updateAudioStatus();
-                break;
-            case R.id.rl_120hz:
-                if (value_120hz==100)
-                    break;
-                value_120hz +=1;
-                activityAudioModeBinding.tv120hz.setText(String.valueOf(value_120hz));
-                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_1, value_120hz);
-                break;
-            case R.id.right_120:
-                if (value_120hz==100)
-                    break;
-                value_120hz +=1;
-                activityAudioModeBinding.tv120hz.setText(String.valueOf(value_120hz));
-                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_1, value_120hz);
-                break;
-            case R.id.left_120:
-                if (value_120hz==0)
-                    break;
-                value_120hz -=1;
-                activityAudioModeBinding.tv120hz.setText(String.valueOf(value_120hz));
-                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_1, value_120hz);
-                break;
-            case R.id.rl_200hz:
-                if (value_200hz==100)
-                    break;
-                value_200hz+=1;
-                activityAudioModeBinding.tv200hz.setText(String.valueOf(value_200hz));
-                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_2, value_200hz);
-                break;
-            case R.id.right_200:
-                if (value_200hz==100)
-                    break;
-                value_200hz+=1;
-                activityAudioModeBinding.tv200hz.setText(String.valueOf(value_200hz));
-                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_2, value_200hz);
-                break;
-            case R.id.left_200:
-                if (value_200hz==0)
-                    break;
-                value_200hz-=1;
-                activityAudioModeBinding.tv200hz.setText(String.valueOf(value_200hz));
-                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_2, value_200hz);
-                break;
-            case R.id.rl_500hz:
-                if (value_500hz==100)
-                    break;
-                value_500hz+=1;
-                activityAudioModeBinding.tv500hz.setText(String.valueOf(value_500hz));
-                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_3, value_500hz);
-                break;
-            case R.id.right_500:
-                if (value_500hz==100)
-                    break;
-                value_500hz+=1;
-                activityAudioModeBinding.tv500hz.setText(String.valueOf(value_500hz));
-                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_3, value_500hz);
-                break;
-            case R.id.left_500:
-                if (value_500hz==0)
-                    break;
-                value_500hz-=1;
-                activityAudioModeBinding.tv500hz.setText(String.valueOf(value_500hz));
-                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_3, value_500hz);
-                break;
-            case R.id.rl_1d2khz:
-                if (value_1d2khz==100)
-                    break;
-                value_1d2khz+=1;
-                activityAudioModeBinding.tv1d2khz.setText(String.valueOf(value_1d2khz));
-                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_4, value_1d2khz);
-                break;
-            case R.id.right_1d2k:
-                if (value_1d2khz==100)
-                    break;
-                value_1d2khz+=1;
-                activityAudioModeBinding.tv1d2khz.setText(String.valueOf(value_1d2khz));
-                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_4, value_1d2khz);
-                break;
-            case R.id.left_1d2k:
-                if (value_1d2khz==0)
-                    break;
-                value_1d2khz-=1;
-                activityAudioModeBinding.tv1d2khz.setText(String.valueOf(value_1d2khz));
-                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_4, value_1d2khz);
-                break;
-            case R.id.rl_3khz:
-                if (value_3khz==100)
-                    break;
-                value_3khz+=1;
-                activityAudioModeBinding.tv3khz.setText(String.valueOf(value_3khz));
-                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_5, value_3khz);
-                break;
-            case R.id.right_3k:
-                if (value_3khz==100)
-                    break;
-                value_3khz+=1;
-                activityAudioModeBinding.tv3khz.setText(String.valueOf(value_3khz));
-                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_5, value_3khz);
-                break;
-            case R.id.left_3k:
-                if (value_3khz==0)
-                    break;
-                value_3khz-=1;
-                activityAudioModeBinding.tv3khz.setText(String.valueOf(value_3khz));
-                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_5, value_3khz);
-                break;
-            case R.id.rl_7d5khz:
-                if (value_7d5khz==100)
-                    break;
-                value_7d5khz+=1;
-                activityAudioModeBinding.tv7d5khz.setText(String.valueOf(value_7d5khz));
-                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_6, value_7d5khz);
-                break;
-            case R.id.right_7d5k:
-                if (value_7d5khz==100)
-                    break;
-                value_7d5khz+=1;
-                activityAudioModeBinding.tv7d5khz.setText(String.valueOf(value_7d5khz));
-                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_6, value_7d5khz);
-                break;
-            case R.id.left_7d5k:
-                if (value_7d5khz==0)
-                    break;
-                value_7d5khz-=1;
-                activityAudioModeBinding.tv7d5khz.setText(String.valueOf(value_7d5khz));
-                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_6, value_7d5khz);
-                break;
-            case R.id.rl_12khz:
-                if (value_12khz==100)
-                    break;
-                value_12khz+=1;
-                activityAudioModeBinding.tv12khz.setText(String.valueOf(value_12khz));
-                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_7, value_12khz);
-                break;
-            case R.id.right_12k:
-                if (value_12khz==100)
-                    break;
-                value_12khz+=1;
-                activityAudioModeBinding.tv12khz.setText(String.valueOf(value_12khz));
-                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_7, value_12khz);
-                break;
-            case R.id.left_12k:
-                if (value_12khz==0)
-                    break;
-                value_12khz-=1;
-                activityAudioModeBinding.tv12khz.setText(String.valueOf(value_12khz));
-                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_7, value_12khz);
-                break;
-            default:
-                break;
+        int id = v.getId();
+        if (id == R.id.rl_audio_mode) {
+            if (sound_mode == soundMode_name.length - 1) {
+                sound_mode = 0;
+            } else {
+                sound_mode += 1;
+            }
+            tvAudioControl.setAudioMode(sound_mode);
+            activityAudioModeBinding.audioModeTv.setText(soundMode_name[sound_mode]);
+            updateAllEQValue();
+            updateAudioStatus();
+        } else if (id == R.id.rl_120hz) {
+            if (value_120hz == 100)
+                return;
+            value_120hz += 1;
+            activityAudioModeBinding.tv120hz.setText(String.valueOf(value_120hz));
+            mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_1, value_120hz);
+        } else if (id == R.id.right_120) {
+            if (value_120hz == 100)
+                return;
+            value_120hz += 1;
+            activityAudioModeBinding.tv120hz.setText(String.valueOf(value_120hz));
+            mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_1, value_120hz);
+        } else if (id == R.id.left_120) {
+            if (value_120hz == 0)
+                return;
+            value_120hz -= 1;
+            activityAudioModeBinding.tv120hz.setText(String.valueOf(value_120hz));
+            mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_1, value_120hz);
+        } else if (id == R.id.rl_200hz) {
+            if (value_200hz == 100)
+                return;
+            value_200hz += 1;
+            activityAudioModeBinding.tv200hz.setText(String.valueOf(value_200hz));
+            mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_2, value_200hz);
+        } else if (id == R.id.right_200) {
+            if (value_200hz == 100)
+                return;
+            value_200hz += 1;
+            activityAudioModeBinding.tv200hz.setText(String.valueOf(value_200hz));
+            mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_2, value_200hz);
+        } else if (id == R.id.left_200) {
+            if (value_200hz == 0)
+                return;
+            value_200hz -= 1;
+            activityAudioModeBinding.tv200hz.setText(String.valueOf(value_200hz));
+            mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_2, value_200hz);
+        } else if (id == R.id.rl_500hz) {
+            if (value_500hz == 100)
+                return;
+            value_500hz += 1;
+            activityAudioModeBinding.tv500hz.setText(String.valueOf(value_500hz));
+            mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_3, value_500hz);
+        } else if (id == R.id.right_500) {
+            if (value_500hz == 100)
+                return;
+            value_500hz += 1;
+            activityAudioModeBinding.tv500hz.setText(String.valueOf(value_500hz));
+            mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_3, value_500hz);
+        } else if (id == R.id.left_500) {
+            if (value_500hz == 0)
+                return;
+            value_500hz -= 1;
+            activityAudioModeBinding.tv500hz.setText(String.valueOf(value_500hz));
+            mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_3, value_500hz);
+        } else if (id == R.id.rl_1d2khz) {
+            if (value_1d2khz == 100)
+                return;
+            value_1d2khz += 1;
+            activityAudioModeBinding.tv1d2khz.setText(String.valueOf(value_1d2khz));
+            mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_4, value_1d2khz);
+        } else if (id == R.id.right_1d2k) {
+            if (value_1d2khz == 100)
+                return;
+            value_1d2khz += 1;
+            activityAudioModeBinding.tv1d2khz.setText(String.valueOf(value_1d2khz));
+            mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_4, value_1d2khz);
+        } else if (id == R.id.left_1d2k) {
+            if (value_1d2khz == 0)
+                return;
+            value_1d2khz -= 1;
+            activityAudioModeBinding.tv1d2khz.setText(String.valueOf(value_1d2khz));
+            mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_4, value_1d2khz);
+        } else if (id == R.id.rl_3khz) {
+            if (value_3khz == 100)
+                return;
+            value_3khz += 1;
+            activityAudioModeBinding.tv3khz.setText(String.valueOf(value_3khz));
+            mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_5, value_3khz);
+        } else if (id == R.id.right_3k) {
+            if (value_3khz == 100)
+                return;
+            value_3khz += 1;
+            activityAudioModeBinding.tv3khz.setText(String.valueOf(value_3khz));
+            mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_5, value_3khz);
+        } else if (id == R.id.left_3k) {
+            if (value_3khz == 0)
+                return;
+            value_3khz -= 1;
+            activityAudioModeBinding.tv3khz.setText(String.valueOf(value_3khz));
+            mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_5, value_3khz);
+        } else if (id == R.id.rl_7d5khz) {
+            if (value_7d5khz == 100)
+                return;
+            value_7d5khz += 1;
+            activityAudioModeBinding.tv7d5khz.setText(String.valueOf(value_7d5khz));
+            mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_6, value_7d5khz);
+        } else if (id == R.id.right_7d5k) {
+            if (value_7d5khz == 100)
+                return;
+            value_7d5khz += 1;
+            activityAudioModeBinding.tv7d5khz.setText(String.valueOf(value_7d5khz));
+            mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_6, value_7d5khz);
+        } else if (id == R.id.left_7d5k) {
+            if (value_7d5khz == 0)
+                return;
+            value_7d5khz -= 1;
+            activityAudioModeBinding.tv7d5khz.setText(String.valueOf(value_7d5khz));
+            mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_6, value_7d5khz);
+        } else if (id == R.id.rl_12khz) {
+            if (value_12khz == 100)
+                return;
+            value_12khz += 1;
+            activityAudioModeBinding.tv12khz.setText(String.valueOf(value_12khz));
+            mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_7, value_12khz);
+        } else if (id == R.id.right_12k) {
+            if (value_12khz == 100)
+                return;
+            value_12khz += 1;
+            activityAudioModeBinding.tv12khz.setText(String.valueOf(value_12khz));
+            mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_7, value_12khz);
+        } else if (id == R.id.left_12k) {
+            if (value_12khz == 0)
+                return;
+            value_12khz -= 1;
+            activityAudioModeBinding.tv12khz.setText(String.valueOf(value_12khz));
+            mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_7, value_12khz);
         }
     }
 
@@ -302,154 +278,150 @@ public class AudioModeActivity extends BaseActivity implements View.OnKeyListene
         }
         AudioManager audioManager = (AudioManager) v.getContext().getSystemService(Context.AUDIO_SERVICE);
         if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT && event.getAction() == KeyEvent.ACTION_DOWN) {
-            switch (v.getId()) {
-                case R.id.rl_audio_mode:
-                    if (sound_mode==0){
-                        sound_mode = soundMode_name.length-1;
-                    }else {
-                        sound_mode-=1;
-                    }
-                    tvAudioControl.setAudioMode(sound_mode);
-                    activityAudioModeBinding.audioModeTv.setText(soundMode_name[sound_mode]);
-                    updateAllEQValue();
-                    updateAudioStatus();
-                    if (audioManager != null) {
-                        audioManager.playSoundEffect(AudioManager.FX_FOCUS_NAVIGATION_DOWN);
-                    }
-                    audioManager =null;
-                    break;
-
-                case R.id.rl_120hz:
-                    if (value_120hz==0)
-                        break;
-                    value_120hz -=1;
-                    activityAudioModeBinding.tv120hz.setText(String.valueOf(value_120hz));
-                    mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_1, value_120hz);
+            int id = v.getId();
+            if (id == R.id.rl_audio_mode) {
+                if (sound_mode == 0) {
+                    sound_mode = soundMode_name.length - 1;
+                } else {
+                    sound_mode -= 1;
+                }
+                tvAudioControl.setAudioMode(sound_mode);
+                activityAudioModeBinding.audioModeTv.setText(soundMode_name[sound_mode]);
+                updateAllEQValue();
+                updateAudioStatus();
+                if (audioManager != null) {
+                    audioManager.playSoundEffect(AudioManager.FX_FOCUS_NAVIGATION_DOWN);
+                }
+                audioManager = null;
+            } else if (id == R.id.rl_120hz) {
+                if (value_120hz == 0)
+                    return false;
+                value_120hz -= 1;
+                activityAudioModeBinding.tv120hz.setText(String.valueOf(value_120hz));
+                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_1, value_120hz);
 //                    break;
-                    return true;
-                case R.id.rl_200hz:
-                    if (value_200hz==0)
-                        break;
-                    value_200hz-=1;
-                    activityAudioModeBinding.tv200hz.setText(String.valueOf(value_200hz));
-                    mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_2, value_200hz);
-                    //                    break;
-                    return true;
-                case R.id.rl_500hz:
-                    if (value_500hz==0)
-                        break;
-                    value_500hz-=1;
-                    activityAudioModeBinding.tv500hz.setText(String.valueOf(value_500hz));
-                    mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_3, value_500hz);
-                    //                    break;
-                    return true;
-                case R.id.rl_1d2khz:
-                    if (value_1d2khz==0)
-                        break;
-                    value_1d2khz-=1;
-                    activityAudioModeBinding.tv1d2khz.setText(String.valueOf(value_1d2khz));
-                    mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_4, value_1d2khz);
-                    //                    break;
-                    return true;
-                case R.id.rl_3khz:
-                    if (value_3khz==0)
-                        break;
-                    value_3khz-=1;
-                    activityAudioModeBinding.tv3khz.setText(String.valueOf(value_3khz));
-                    mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_5, value_3khz);
-                    //                    break;
-                    return true;
-                case R.id.rl_7d5khz:
-                    if (value_7d5khz==0)
-                        break;
-                    value_7d5khz-=1;
-                    activityAudioModeBinding.tv7d5khz.setText(String.valueOf(value_7d5khz));
-                    mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_6, value_7d5khz);
-                    //                    break;
-                    return true;
-                case R.id.rl_12khz:
-                    if (value_12khz==0)
-                        break;
-                    value_12khz-=1;
-                    activityAudioModeBinding.tv12khz.setText(String.valueOf(value_12khz));
-                    mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_7, value_12khz);
-                    //                    break;
-                    return true;
-
+                return true;
+            } else if (id == R.id.rl_200hz) {
+                if (value_200hz == 0)
+                    return false;
+                value_200hz -= 1;
+                activityAudioModeBinding.tv200hz.setText(String.valueOf(value_200hz));
+                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_2, value_200hz);
+                //                    break;
+                return true;
+            } else if (id == R.id.rl_500hz) {
+                if (value_500hz == 0)
+                    return false;
+                value_500hz -= 1;
+                activityAudioModeBinding.tv500hz.setText(String.valueOf(value_500hz));
+                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_3, value_500hz);
+                //                    break;
+                return true;
+            } else if (id == R.id.rl_1d2khz) {
+                if (value_1d2khz == 0)
+                    return false;
+                value_1d2khz -= 1;
+                activityAudioModeBinding.tv1d2khz.setText(String.valueOf(value_1d2khz));
+                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_4, value_1d2khz);
+                //                    break;
+                return true;
+            } else if (id == R.id.rl_3khz) {
+                if (value_3khz == 0)
+                    return false;
+                value_3khz -= 1;
+                activityAudioModeBinding.tv3khz.setText(String.valueOf(value_3khz));
+                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_5, value_3khz);
+                //                    break;
+                return true;
+            } else if (id == R.id.rl_7d5khz) {
+                if (value_7d5khz == 0)
+                    return false;
+                value_7d5khz -= 1;
+                activityAudioModeBinding.tv7d5khz.setText(String.valueOf(value_7d5khz));
+                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_6, value_7d5khz);
+                //                    break;
+                return true;
+            } else if (id == R.id.rl_12khz) {
+                if (value_12khz == 0)
+                    return false;
+                value_12khz -= 1;
+                activityAudioModeBinding.tv12khz.setText(String.valueOf(value_12khz));
+                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_7, value_12khz);
+                //                    break;
+                return true;
             }
         } else if (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT && event.getAction() == KeyEvent.ACTION_DOWN) {
-            switch (v.getId()) {
-                case R.id.rl_audio_mode:
-                    if (sound_mode==soundMode_name.length-1){
-                        sound_mode = 0;
-                    }else {
-                        sound_mode+=1;
-                    }
-                    tvAudioControl.setAudioMode(sound_mode);
-                    activityAudioModeBinding.audioModeTv.setText(soundMode_name[sound_mode]);
-                    updateAllEQValue();
-                    updateAudioStatus();
-                    if (audioManager != null) {
-                        audioManager.playSoundEffect(AudioManager.FX_FOCUS_NAVIGATION_DOWN);
-                    }
-                    audioManager =null;
-                    break;
-                case R.id.rl_120hz:
-                    if (value_120hz==100)
-                        break;
-                    value_120hz +=1;
-                    activityAudioModeBinding.tv120hz.setText(String.valueOf(value_120hz));
-                    mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_1, value_120hz);
-                    //                    break;
-                    return true;
-                case R.id.rl_200hz:
-                    if (value_200hz==100)
-                        break;
-                    value_200hz+=1;
-                    activityAudioModeBinding.tv200hz.setText(String.valueOf(value_200hz));
-                    mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_2, value_200hz);
-                    //                    break;
-                    return true;
-                case R.id.rl_500hz:
-                    if (value_500hz==100)
-                        break;
-                    value_500hz+=1;
-                    activityAudioModeBinding.tv500hz.setText(String.valueOf(value_500hz));
-                    mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_3, value_500hz);
-                    //                    break;
-                    return true;
-                case R.id.rl_1d2khz:
-                    if (value_1d2khz==100)
-                        break;
-                    value_1d2khz+=1;
-                    activityAudioModeBinding.tv1d2khz.setText(String.valueOf(value_1d2khz));
-                    mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_4, value_1d2khz);
-                    //                    break;
-                    return true;
-                case R.id.rl_3khz:
-                    if (value_3khz==100)
-                        break;
-                    value_3khz+=1;
-                    activityAudioModeBinding.tv3khz.setText(String.valueOf(value_3khz));
-                    mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_5, value_3khz);
-                    //                    break;
-                    return true;
-                case R.id.rl_7d5khz:
-                    if (value_7d5khz==100)
-                        break;
-                    value_7d5khz+=1;
-                    activityAudioModeBinding.tv7d5khz.setText(String.valueOf(value_7d5khz));
-                    mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_6, value_7d5khz);
-                    //                    break;
-                    return true;
-                case R.id.rl_12khz:
-                    if (value_12khz==100)
-                        break;
-                    value_12khz+=1;
-                    activityAudioModeBinding.tv12khz.setText(String.valueOf(value_12khz));
-                    mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_7, value_12khz);
-                    //                    break;
-                    return true;
+            int id = v.getId();
+            if (id == R.id.rl_audio_mode) {
+                if (sound_mode == soundMode_name.length - 1) {
+                    sound_mode = 0;
+                } else {
+                    sound_mode += 1;
+                }
+                tvAudioControl.setAudioMode(sound_mode);
+                activityAudioModeBinding.audioModeTv.setText(soundMode_name[sound_mode]);
+                updateAllEQValue();
+                updateAudioStatus();
+                if (audioManager != null) {
+                    audioManager.playSoundEffect(AudioManager.FX_FOCUS_NAVIGATION_DOWN);
+                }
+                audioManager = null;
+            } else if (id == R.id.rl_120hz) {
+                if (value_120hz == 100)
+                    return false;
+                value_120hz += 1;
+                activityAudioModeBinding.tv120hz.setText(String.valueOf(value_120hz));
+                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_1, value_120hz);
+                //                    break;
+                return true;
+            } else if (id == R.id.rl_200hz) {
+                if (value_200hz == 100)
+                    return false;
+                value_200hz += 1;
+                activityAudioModeBinding.tv200hz.setText(String.valueOf(value_200hz));
+                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_2, value_200hz);
+                //                    break;
+                return true;
+            } else if (id == R.id.rl_500hz) {
+                if (value_500hz == 100)
+                    return false;
+                value_500hz += 1;
+                activityAudioModeBinding.tv500hz.setText(String.valueOf(value_500hz));
+                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_3, value_500hz);
+                //                    break;
+                return true;
+            } else if (id == R.id.rl_1d2khz) {
+                if (value_1d2khz == 100)
+                    return false;
+                value_1d2khz += 1;
+                activityAudioModeBinding.tv1d2khz.setText(String.valueOf(value_1d2khz));
+                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_4, value_1d2khz);
+                //                    break;
+                return true;
+            } else if (id == R.id.rl_3khz) {
+                if (value_3khz == 100)
+                    return false;
+                value_3khz += 1;
+                activityAudioModeBinding.tv3khz.setText(String.valueOf(value_3khz));
+                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_5, value_3khz);
+                //                    break;
+                return true;
+            } else if (id == R.id.rl_7d5khz) {
+                if (value_7d5khz == 100)
+                    return false;
+                value_7d5khz += 1;
+                activityAudioModeBinding.tv7d5khz.setText(String.valueOf(value_7d5khz));
+                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_6, value_7d5khz);
+                //                    break;
+                return true;
+            } else if (id == R.id.rl_12khz) {
+                if (value_12khz == 100)
+                    return false;
+                value_12khz += 1;
+                activityAudioModeBinding.tv12khz.setText(String.valueOf(value_12khz));
+                mAwTvAudioManager.setAudioEqBand(AwTvAudioTypes.EnumGEQBand.E_AW_GEQ_BAND_7, value_12khz);
+                //                    break;
+                return true;
             }
         }
 

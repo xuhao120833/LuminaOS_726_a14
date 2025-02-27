@@ -32,14 +32,12 @@ public class ShutDownDialog extends Dialog implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.enter:
-                dismiss();
-                DeviceUtils.ShutDown(mContext);
-                break;
-            case R.id.cancel:
-                dismiss();
-                break;
+        int id = v.getId();
+        if (id == R.id.enter) {
+            dismiss();
+            DeviceUtils.ShutDown(mContext);
+        } else if (id == R.id.cancel) {
+            dismiss();
         }
     }
 
