@@ -2,13 +2,14 @@ apply plugin: 'com.android.application'
 
 ext.build_number = "debug";
 android {
-    compileSdkVersion 30
-    buildToolsVersion "30.0.3"
+    namespace 'com.htc.luminaos'
+    compileSdkVersion 34
+    buildToolsVersion "34.0.0"
 
     defaultConfig {
         applicationId "com.htc.luminaos"
         minSdkVersion 26
-        targetSdkVersion 30
+        targetSdkVersion 33
 //        versionCode 6
 //        versionName releaseTime()
         versionCode releaseCode()
@@ -43,8 +44,8 @@ android {
 
     compileOptions {
 
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
 
     }
     ndkVersion '21.0.6113669'
@@ -97,9 +98,9 @@ static def releaseCode() {
 
 dependencies {
     implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation files('libs/softwinner_828.jar')
+    implementation files('libs/softwinner_726_new.jar')
     implementation 'com.google.android.material:material:1.3.0'
-    compileOnly files('libs/classes.jar')
+    compileOnly files('libs/classes_726_13.jar')
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.12'
@@ -108,8 +109,8 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.12'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
-    compile files('libs/Baidu_Mtj_android_4.0.10.9.jar')
+    implementation files('libs/Baidu_Mtj_android_4.0.10.9.jar')
     implementation 'androidx.cardview:cardview:1.0.0'
-    compile group: 'org.apache.directory.studio', name: 'org.apache.commons.codec', version: '1.8'
+    implementation group: 'org.apache.directory.studio', name: 'org.apache.commons.codec', version: '1.8'
     implementation 'com.airbnb.android:lottie:5.2.0'
 }
