@@ -32,6 +32,7 @@ import com.htc.luminaos.databinding.TimeZoneLayoutBinding;
 import com.htc.luminaos.utils.Constants;
 import com.htc.luminaos.utils.Contants;
 import com.htc.luminaos.utils.KeystoneUtils;
+import com.htc.luminaos.utils.KeystoneUtils_726;
 import com.htc.luminaos.utils.LogUtils;
 import com.htc.luminaos.utils.ReflectUtil;
 
@@ -84,8 +85,8 @@ public class InitAngleDialog extends BaseDialog implements View.OnClickListener 
             activeClose = true;
             projectActivity.setAuto();
         }
-        KeystoneUtils.resetKeystone();
-        KeystoneUtils.writeGlobalSettings(getContext(), KeystoneUtils.ZOOM_VALUE, 0);
+        KeystoneUtils_726.resetKeystone();
+        KeystoneUtils_726.writeGlobalSettings(getContext(), KeystoneUtils_726.ZOOM_VALUE, 0);
         projectActivity.All = 0;
         projectActivity.updateZoomView();
     }

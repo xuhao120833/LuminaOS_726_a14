@@ -32,6 +32,7 @@ import com.htc.luminaos.settings.utils.Constants;
 import com.htc.luminaos.utils.AppUtils;
 import com.htc.luminaos.utils.Contants;
 import com.htc.luminaos.utils.KeystoneUtils;
+import com.htc.luminaos.utils.KeystoneUtils_726;
 import com.htc.luminaos.utils.LogUtils;
 import com.htc.luminaos.utils.ReflectUtil;
 import com.htc.luminaos.utils.ShareUtil;
@@ -77,8 +78,8 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
     private double scale = 1D;//缩放比例，根据选中的屏幕缩放模式
     private int step_x = 16;//X轴步进
     private int step_y = 9;//Y轴步进
-    double zoom_step_x = (double) KeystoneUtils.lcd_w / 100;
-    double zoom_step_y = (double) KeystoneUtils.lcd_h / 100;
+    double zoom_step_x = (double) KeystoneUtils_726.lcd_w / 100;
+    double zoom_step_y = (double) KeystoneUtils_726.lcd_h / 100;
     private SharedPreferences sharedPreferences;
 
     private int cur_device_Mode = 0;
@@ -113,7 +114,7 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
     protected void onResume() {
         Log.d(TAG, "执行onResume ProjectActivity");
         super.onResume();
-        All = KeystoneUtils.readGlobalSettings(this, KeystoneUtils.ZOOM_VALUE, 0);
+        All = KeystoneUtils_726.readGlobalSettings(this, KeystoneUtils_726.ZOOM_VALUE, 0);
         updateZoomView();
     }
 
@@ -295,7 +296,7 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
                 break;
         }
 
-        All = KeystoneUtils.readGlobalSettings(this, KeystoneUtils.ZOOM_VALUE, 0);
+        All = KeystoneUtils_726.readGlobalSettings(this, KeystoneUtils_726.ZOOM_VALUE, 0);
         updateZoomView();
         initAuto();
         initBstacle();
@@ -308,7 +309,7 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
     }
 
     private void updateSzoomTv() {
-        zoom_scale = KeystoneUtils.readGlobalSettings(this, KeystoneUtils.ZOOM_SCALE, 0);
+        zoom_scale = KeystoneUtils_726.readGlobalSettings(this, KeystoneUtils_726.ZOOM_SCALE, 0);
         switch (zoom_scale) {
             case 0:
                 projectBinding.screenZoomeTv.setText(screen_zoom[0]);
@@ -349,15 +350,15 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
         String value = SystemProperties.get("persist.sys.zoom.value", "0,0,0,0,0,0,0,0");
         String[] va = value.split(",");
         if (va.length == 8) {
-            KeystoneUtils.lb_X = Integer.parseInt(va[0]);
-            KeystoneUtils.lb_Y = Integer.parseInt(va[1]);
-            KeystoneUtils.lt_X = Integer.parseInt(va[2]);
-            KeystoneUtils.lt_Y = Integer.parseInt(va[3]);
-            KeystoneUtils.rt_X = Integer.parseInt(va[4]);
-            KeystoneUtils.rt_Y = Integer.parseInt(va[5]);
-            KeystoneUtils.rb_X = Integer.parseInt(va[6]);
-            KeystoneUtils.rb_Y = Integer.parseInt(va[7]);
-            KeystoneUtils.UpdateKeystoneZOOM(true);
+            KeystoneUtils_726.lb_X = Integer.parseInt(va[0]);
+            KeystoneUtils_726.lb_Y = Integer.parseInt(va[1]);
+            KeystoneUtils_726.lt_X = Integer.parseInt(va[2]);
+            KeystoneUtils_726.lt_Y = Integer.parseInt(va[3]);
+            KeystoneUtils_726.rt_X = Integer.parseInt(va[4]);
+            KeystoneUtils_726.rt_Y = Integer.parseInt(va[5]);
+            KeystoneUtils_726.rb_X = Integer.parseInt(va[6]);
+            KeystoneUtils_726.rb_Y = Integer.parseInt(va[7]);
+            KeystoneUtils_726.UpdateKeystoneZOOM(true);
         }
     }
 
@@ -462,7 +463,7 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
                 set_screen_zoom(zoom_value, zoom_value, zoom_value, zoom_value, zoom_scale);
             else
                 updateScaleZoom(zoom_scale);
-            KeystoneUtils.writeGlobalSettings(this, KeystoneUtils.ZOOM_SCALE, zoom_scale);
+            KeystoneUtils_726.writeGlobalSettings(this, KeystoneUtils_726.ZOOM_SCALE, zoom_scale);
             updateSzoomTv();
         } else if (id == R.id.screen_zoom_left) {
             zoom_scale--;
@@ -472,7 +473,7 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
                 set_screen_zoom(zoom_value, zoom_value, zoom_value, zoom_value, zoom_scale);
             else
                 updateScaleZoom(zoom_scale);
-            KeystoneUtils.writeGlobalSettings(this, KeystoneUtils.ZOOM_SCALE, zoom_scale);
+            KeystoneUtils_726.writeGlobalSettings(this, KeystoneUtils_726.ZOOM_SCALE, zoom_scale);
             updateSzoomTv();
         } else if (id == R.id.screen_zoom_right) {
             zoom_scale++;
@@ -482,7 +483,7 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
                 set_screen_zoom(zoom_value, zoom_value, zoom_value, zoom_value, zoom_scale);
             else
                 updateScaleZoom(zoom_scale);
-            KeystoneUtils.writeGlobalSettings(this, KeystoneUtils.ZOOM_SCALE, zoom_scale);
+            KeystoneUtils_726.writeGlobalSettings(this, KeystoneUtils_726.ZOOM_SCALE, zoom_scale);
             updateSzoomTv();
         }
     }
@@ -553,7 +554,7 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
                     set_screen_zoom(zoom_value, zoom_value, zoom_value, zoom_value, zoom_scale);
                 else
                     updateScaleZoom(zoom_scale);
-                KeystoneUtils.writeGlobalSettings(this, KeystoneUtils.ZOOM_SCALE, zoom_scale);
+                KeystoneUtils_726.writeGlobalSettings(this, KeystoneUtils_726.ZOOM_SCALE, zoom_scale);
                 updateSzoomTv();
 //                    break;
                 return true;
@@ -610,7 +611,7 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
                     set_screen_zoom(zoom_value, zoom_value, zoom_value, zoom_value, zoom_scale);
                 else
                     updateScaleZoom(zoom_scale);
-                KeystoneUtils.writeGlobalSettings(this, KeystoneUtils.ZOOM_SCALE, zoom_scale);
+                KeystoneUtils_726.writeGlobalSettings(this, KeystoneUtils_726.ZOOM_SCALE, zoom_scale);
                 updateSzoomTv();
 //                    break;
                 return true;
@@ -658,7 +659,7 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
         SystemProperties.set("persist.sys.panelvalue", String.valueOf(cur_project_mode));
         if (SystemProperties.get("persist.sys.camok", "0").equals("1")
                 && SystemProperties.get("persist.sys.focusupdn", "0").equals("0"))
-            KeystoneUtils.setKeystoneNormalXY(old_project_mode, cur_project_mode);
+            KeystoneUtils_726.setKeystoneNormalXY(old_project_mode, cur_project_mode);
         if (SystemProperties.getBoolean("persist.sys.tpryauto", false))
             sendProjectBroadCast();
     }
@@ -700,7 +701,7 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
 
 
     public void set_screen_zoom(int l, int t, int r, int b) {
-        KeystoneUtils.writeGlobalSettings(this, KeystoneUtils.ZOOM_VALUE, l);
+        KeystoneUtils_726.writeGlobalSettings(this, KeystoneUtils_726.ZOOM_VALUE, l);
         l = max_value - l;
         t = max_value - t;
         r = max_value - r;
@@ -713,49 +714,49 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
     }
 
     public void changeform(int l, int t, int right, int bottom) {
-        KeystoneUtils.lt_X = Integer.parseInt(df.format(((100 - 100 * scale) * zoom_step_x + (100 - l) * step_x) * 1000 / KeystoneUtils.lcd_w));
-        KeystoneUtils.lt_Y = 1000 - Integer.parseInt(df.format((KeystoneUtils.lcd_h - (100 - t) * step_y) * 1000 / KeystoneUtils.lcd_h));
+        KeystoneUtils_726.lt_X = Integer.parseInt(df.format(((100 - 100 * scale) * zoom_step_x + (100 - l) * step_x) * 1000 / KeystoneUtils_726.lcd_w));
+        KeystoneUtils_726.lt_Y = 1000 - Integer.parseInt(df.format((KeystoneUtils_726.lcd_h - (100 - t) * step_y) * 1000 / KeystoneUtils_726.lcd_h));
 
-        KeystoneUtils.lb_X = Integer.parseInt(df.format(((100 - 100 * scale) * zoom_step_x + (100 - l) * step_x) * 1000 / KeystoneUtils.lcd_w));
-        KeystoneUtils.lb_Y = Integer.parseInt(df.format(((100 - bottom) * step_y) * 1000 / KeystoneUtils.lcd_h));
+        KeystoneUtils_726.lb_X = Integer.parseInt(df.format(((100 - 100 * scale) * zoom_step_x + (100 - l) * step_x) * 1000 / KeystoneUtils_726.lcd_w));
+        KeystoneUtils_726.lb_Y = Integer.parseInt(df.format(((100 - bottom) * step_y) * 1000 / KeystoneUtils_726.lcd_h));
 
-        KeystoneUtils.rt_X = 1000 - Integer.parseInt(df.format((KeystoneUtils.lcd_w * scale - (100 - right) * step_x) * 1000 / KeystoneUtils.lcd_w));
-        KeystoneUtils.rt_Y = 1000 - Integer.parseInt(df.format((KeystoneUtils.lcd_h - (100 - t) * step_y) * 1000 / KeystoneUtils.lcd_h));
+        KeystoneUtils_726.rt_X = 1000 - Integer.parseInt(df.format((KeystoneUtils_726.lcd_w * scale - (100 - right) * step_x) * 1000 / KeystoneUtils_726.lcd_w));
+        KeystoneUtils_726.rt_Y = 1000 - Integer.parseInt(df.format((KeystoneUtils_726.lcd_h - (100 - t) * step_y) * 1000 / KeystoneUtils_726.lcd_h));
 
-        KeystoneUtils.rb_X = 1000 - Integer.parseInt(df.format((KeystoneUtils.lcd_w * scale - (100 - right) * step_x) * 1000 / KeystoneUtils.lcd_w));
-        KeystoneUtils.rb_Y = Integer.parseInt(df.format(((100 - bottom) * step_y) * 1000 / KeystoneUtils.lcd_h));
+        KeystoneUtils_726.rb_X = 1000 - Integer.parseInt(df.format((KeystoneUtils_726.lcd_w * scale - (100 - right) * step_x) * 1000 / KeystoneUtils_726.lcd_w));
+        KeystoneUtils_726.rb_Y = Integer.parseInt(df.format(((100 - bottom) * step_y) * 1000 / KeystoneUtils_726.lcd_h));
 
         if (getAuto()) {
-            KeystoneUtils.UpdateKeystoneZOOM(false);
+            KeystoneUtils_726.UpdateKeystoneZOOM(false);
             sendKeystoneBroadcast();
         } else {
-            KeystoneUtils.UpdateKeystoneZOOM(true);
+            KeystoneUtils_726.UpdateKeystoneZOOM(true);
         }
     }
 
     public void updateZoom(int zoom) {
-        lt_xy = KeystoneUtils.getKeystoneHtcLeftAndTopXY();
-        rt_xy = KeystoneUtils.getKeystoneHtcRightAndTopXY();
-        lb_xy = KeystoneUtils.getKeystoneHtcLeftAndBottomXY();
-        rb_xy = KeystoneUtils.getKeystoneHtcRightAndBottomXY();
+        lt_xy = KeystoneUtils_726.getKeystoneHtcLeftAndTopXY();
+        rt_xy = KeystoneUtils_726.getKeystoneHtcRightAndTopXY();
+        lb_xy = KeystoneUtils_726.getKeystoneHtcLeftAndBottomXY();
+        rb_xy = KeystoneUtils_726.getKeystoneHtcRightAndBottomXY();
         int[] px4 = new int[4];
         int[] py4 = new int[4];
-        px4[0] = Integer.parseInt(df.format((lt_xy[0] * KeystoneUtils.lcd_w) / 1000));
-        py4[0] = Integer.parseInt(df.format(((1000 - lt_xy[1]) * KeystoneUtils.lcd_h) / 1000));
-        px4[1] = Integer.parseInt(df.format(((1000 - rt_xy[0]) * KeystoneUtils.lcd_w) / 1000));
-        py4[1] = Integer.parseInt(df.format(((1000 - rt_xy[1]) * KeystoneUtils.lcd_h) / 1000));
-        px4[2] = Integer.parseInt(df.format((lb_xy[0] * KeystoneUtils.lcd_w) / 1000));
-        py4[2] = Integer.parseInt(df.format((lb_xy[1] * KeystoneUtils.lcd_h) / 1000));
-        px4[3] = Integer.parseInt(df.format(((1000 - rb_xy[0]) * KeystoneUtils.lcd_w) / 1000));
-        py4[3] = Integer.parseInt(df.format((rb_xy[1] * KeystoneUtils.lcd_h) / 1000));
+        px4[0] = Integer.parseInt(df.format((lt_xy[0] * KeystoneUtils_726.lcd_w) / 1000));
+        py4[0] = Integer.parseInt(df.format(((1000 - lt_xy[1]) * KeystoneUtils_726.lcd_h) / 1000));
+        px4[1] = Integer.parseInt(df.format(((1000 - rt_xy[0]) * KeystoneUtils_726.lcd_w) / 1000));
+        py4[1] = Integer.parseInt(df.format(((1000 - rt_xy[1]) * KeystoneUtils_726.lcd_h) / 1000));
+        px4[2] = Integer.parseInt(df.format((lb_xy[0] * KeystoneUtils_726.lcd_w) / 1000));
+        py4[2] = Integer.parseInt(df.format((lb_xy[1] * KeystoneUtils_726.lcd_h) / 1000));
+        px4[3] = Integer.parseInt(df.format(((1000 - rb_xy[0]) * KeystoneUtils_726.lcd_w) / 1000));
+        py4[3] = Integer.parseInt(df.format((rb_xy[1] * KeystoneUtils_726.lcd_h) / 1000));
         DecimalFormat df = new DecimalFormat("0.00", DecimalFormatSymbols.getInstance(Locale.CHINA));
         float a = Float.parseFloat(df.format((max_value - zoom * 2) * 0.01).replace(",", "."));
         Log.d(TAG, "float  a =" + a);
-        int old_ratio = KeystoneUtils.readGlobalSettings(this, "zoom_scale_old", 0);
-        int ratio = KeystoneUtils.readGlobalSettings(this, "zoom_scale", 0);
-        int[] tpData = scUtils.getpxRatioxy(px4, py4, old_ratio, ratio, a, KeystoneUtils.lcd_w, KeystoneUtils.lcd_h);
+        int old_ratio = KeystoneUtils_726.readGlobalSettings(this, "zoom_scale_old", 0);
+        int ratio = KeystoneUtils_726.readGlobalSettings(this, "zoom_scale", 0);
+        int[] tpData = scUtils.getpxRatioxy(px4, py4, old_ratio, ratio, a, KeystoneUtils_726.lcd_w, KeystoneUtils_726.lcd_h);
         if (tpData != null && tpData[8] == 1) {
-            KeystoneUtils.optKeystoneFun(tpData);
+            KeystoneUtils_726.optKeystoneFun(tpData);
         }
     }
 
@@ -896,8 +897,8 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
         resetKeystoreLayoutBinding.enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                KeystoneUtils.resetKeystone();
-                KeystoneUtils.writeGlobalSettings(getApplicationContext(), KeystoneUtils.ZOOM_VALUE, 0);
+                KeystoneUtils_726.resetKeystone();
+                KeystoneUtils_726.writeGlobalSettings(getApplicationContext(), KeystoneUtils_726.ZOOM_VALUE, 0);
                 All = 0;
                 updateZoomView();
                 dialoge.dismiss();
@@ -977,29 +978,29 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
     }
 
     public void updateScaleZoom(int scale) {
-        lt_xy = KeystoneUtils.getKeystoneHtcLeftAndTopXY();
-        rt_xy = KeystoneUtils.getKeystoneHtcRightAndTopXY();
-        lb_xy = KeystoneUtils.getKeystoneHtcLeftAndBottomXY();
-        rb_xy = KeystoneUtils.getKeystoneHtcRightAndBottomXY();
+        lt_xy = KeystoneUtils_726.getKeystoneHtcLeftAndTopXY();
+        rt_xy = KeystoneUtils_726.getKeystoneHtcRightAndTopXY();
+        lb_xy = KeystoneUtils_726.getKeystoneHtcLeftAndBottomXY();
+        rb_xy = KeystoneUtils_726.getKeystoneHtcRightAndBottomXY();
         int[] px4 = new int[4];
         int[] py4 = new int[4];
-        px4[0] = Integer.parseInt(df.format((lt_xy[0] * KeystoneUtils.lcd_w) / 1000));
-        py4[0] = Integer.parseInt(df.format(((1000 - lt_xy[1]) * KeystoneUtils.lcd_h) / 1000));
-        px4[1] = Integer.parseInt(df.format(((1000 - rt_xy[0]) * KeystoneUtils.lcd_w) / 1000));
-        py4[1] = Integer.parseInt(df.format(((1000 - rt_xy[1]) * KeystoneUtils.lcd_h) / 1000));
-        px4[2] = Integer.parseInt(df.format((lb_xy[0] * KeystoneUtils.lcd_w) / 1000));
-        py4[2] = Integer.parseInt(df.format((lb_xy[1] * KeystoneUtils.lcd_h) / 1000));
-        px4[3] = Integer.parseInt(df.format(((1000 - rb_xy[0]) * KeystoneUtils.lcd_w) / 1000));
-        py4[3] = Integer.parseInt(df.format((rb_xy[1] * KeystoneUtils.lcd_h) / 1000));
+        px4[0] = Integer.parseInt(df.format((lt_xy[0] * KeystoneUtils_726.lcd_w) / 1000));
+        py4[0] = Integer.parseInt(df.format(((1000 - lt_xy[1]) * KeystoneUtils_726.lcd_h) / 1000));
+        px4[1] = Integer.parseInt(df.format(((1000 - rt_xy[0]) * KeystoneUtils_726.lcd_w) / 1000));
+        py4[1] = Integer.parseInt(df.format(((1000 - rt_xy[1]) * KeystoneUtils_726.lcd_h) / 1000));
+        px4[2] = Integer.parseInt(df.format((lb_xy[0] * KeystoneUtils_726.lcd_w) / 1000));
+        py4[2] = Integer.parseInt(df.format((lb_xy[1] * KeystoneUtils_726.lcd_h) / 1000));
+        px4[3] = Integer.parseInt(df.format(((1000 - rb_xy[0]) * KeystoneUtils_726.lcd_w) / 1000));
+        py4[3] = Integer.parseInt(df.format((rb_xy[1] * KeystoneUtils_726.lcd_h) / 1000));
         LogUtils.d("px4 = " + Arrays.toString(px4) + "  py4 = " + Arrays.toString(py4));
         DecimalFormat df = new DecimalFormat("0.00", DecimalFormatSymbols.getInstance(Locale.CHINA));
-        float a = Float.parseFloat(df.format((100 - KeystoneUtils.readGlobalSettings(this, "zoom_value", 0) * 2) * 0.01).replace(",", "."));
-        int oldScale = KeystoneUtils.readGlobalSettings(this, "zoom_scale_old", 0);
+        float a = Float.parseFloat(df.format((100 - KeystoneUtils_726.readGlobalSettings(this, "zoom_value", 0) * 2) * 0.01).replace(",", "."));
+        int oldScale = KeystoneUtils_726.readGlobalSettings(this, "zoom_scale_old", 0);
         Log.d(TAG, "a=" + a + " oldScale=" + oldScale + " scale=" + scale);
         int[] tpData = scUtils.getpxRatioxy(px4, py4, oldScale,
-                scale, a, KeystoneUtils.lcd_w, KeystoneUtils.lcd_h);
+                scale, a, KeystoneUtils_726.lcd_w, KeystoneUtils_726.lcd_h);
         if (tpData[8] == 1) {
-            KeystoneUtils.optKeystoneFun(tpData);
+            KeystoneUtils_726.optKeystoneFun(tpData);
         }
     }
 }

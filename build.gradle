@@ -34,7 +34,7 @@ allprojects {
     gradle.projectsEvaluated {
         tasks.withType(JavaCompile).configureEach {
             // 将 classes.jar 添加到编译类路径的最前面
-            classpath = files('app/libs/classes_726_13.jar') + classpath
+            classpath = files('app/libs/classes_726_a14.jar') + classpath
         }
     }
 }

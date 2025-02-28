@@ -22,6 +22,7 @@ import com.htc.luminaos.entry.Config;
 import com.htc.luminaos.utils.Contants;
 import com.htc.luminaos.utils.FileUtils;
 import com.htc.luminaos.utils.KeystoneUtils;
+import com.htc.luminaos.utils.KeystoneUtils_726;
 import com.htc.luminaos.utils.ShareUtil;
 import com.htc.luminaos.utils.Utils;
 
@@ -139,10 +140,10 @@ public class MyApplication extends Application {
         int screenWidth = dm.widthPixels;
         int screenHeight = dm.heightPixels;
         Log.d(TAG, "screenWidth " + screenWidth + " screenHeight " + screenHeight);
-        KeystoneUtils.lcd_h = screenHeight;
-        KeystoneUtils.lcd_w = screenWidth;
-        KeystoneUtils.minH_size = config.manualKeystoneWidth;
-        KeystoneUtils.minV_size = config.manualKeystoneHeight;
+        KeystoneUtils_726.lcd_h = screenHeight;
+        KeystoneUtils_726.lcd_w = screenWidth;
+        KeystoneUtils_726.minH_size = config.manualKeystoneWidth;
+        KeystoneUtils_726.minV_size = config.manualKeystoneHeight;
     }
 
     private void readBackground() {
