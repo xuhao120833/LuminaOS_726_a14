@@ -65,7 +65,7 @@ android {
             def outputFile = output.outputFile
             if (outputFile != null && outputFile.name.endsWith('.apk')) {
                 // 显示app名称+当前版本号
-                def fileName = "LuminaOS_QZ-V${getVersionNames()}"
+                def fileName = "LuminaOS_726_A14_QZ-V${getVersionNames()}"
                 // 如果有渠道，显示渠道名""
                 if (variant.flavorName!=""){
                     fileName = fileName + "-${variant.flavorName}"

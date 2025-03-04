@@ -460,7 +460,7 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
             if (zoom_scale > 2)
                 zoom_scale = 0;
             if (!SystemProperties.get("persist.sys.camok", "0").equals("1") || SystemProperties.getBoolean("persist.sys.tpryauto", false))
-                set_screen_zoom(zoom_value, zoom_value, zoom_value, zoom_value, zoom_scale);
+                set_screen_zoom(All, All, All, All, zoom_scale);
             else
                 updateScaleZoom(zoom_scale);
             KeystoneUtils_726.writeGlobalSettings(this, KeystoneUtils_726.ZOOM_SCALE, zoom_scale);
@@ -470,7 +470,7 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
             if (zoom_scale < 0)
                 zoom_scale = 2;
             if (!SystemProperties.get("persist.sys.camok", "0").equals("1") || SystemProperties.getBoolean("persist.sys.tpryauto", false))
-                set_screen_zoom(zoom_value, zoom_value, zoom_value, zoom_value, zoom_scale);
+                set_screen_zoom(All, All, All, All, zoom_scale);
             else
                 updateScaleZoom(zoom_scale);
             KeystoneUtils_726.writeGlobalSettings(this, KeystoneUtils_726.ZOOM_SCALE, zoom_scale);
@@ -480,7 +480,7 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
             if (zoom_scale > 2)
                 zoom_scale = 0;
             if (!SystemProperties.get("persist.sys.camok", "0").equals("1") || SystemProperties.getBoolean("persist.sys.tpryauto", false))
-                set_screen_zoom(zoom_value, zoom_value, zoom_value, zoom_value, zoom_scale);
+                set_screen_zoom(All, All, All, All, zoom_scale);
             else
                 updateScaleZoom(zoom_scale);
             KeystoneUtils_726.writeGlobalSettings(this, KeystoneUtils_726.ZOOM_SCALE, zoom_scale);
@@ -551,7 +551,7 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
                 if (zoom_scale < 0)
                     zoom_scale = 2;
                 if (!SystemProperties.get("persist.sys.camok", "0").equals("1") || SystemProperties.getBoolean("persist.sys.tpryauto", false))
-                    set_screen_zoom(zoom_value, zoom_value, zoom_value, zoom_value, zoom_scale);
+                    set_screen_zoom(All, All, All, All, zoom_scale);
                 else
                     updateScaleZoom(zoom_scale);
                 KeystoneUtils_726.writeGlobalSettings(this, KeystoneUtils_726.ZOOM_SCALE, zoom_scale);
@@ -608,7 +608,7 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
                 if (zoom_scale > 2)
                     zoom_scale = 0;
                 if (!SystemProperties.get("persist.sys.camok", "0").equals("1") || SystemProperties.getBoolean("persist.sys.tpryauto", false))
-                    set_screen_zoom(zoom_value, zoom_value, zoom_value, zoom_value, zoom_scale);
+                    set_screen_zoom(All, All, All, All, zoom_scale);
                 else
                     updateScaleZoom(zoom_scale);
                 KeystoneUtils_726.writeGlobalSettings(this, KeystoneUtils_726.ZOOM_SCALE, zoom_scale);
@@ -763,6 +763,7 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
     private void sendKeystoneBroadcast() {
         Intent intent = new Intent("android.intent.hotack_keystone");
         intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
+        intent.putExtra("ratio", 1);
         sendBroadcast(intent);
     }
 
