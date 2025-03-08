@@ -293,8 +293,9 @@ public class KeystoneUtils_726 {
                 KscPoint br = new KscPoint();
                 br.x = 1920 - Math.abs(rbx);
                 br.y = 1080 - Math.abs(rby);
-                Log.d(TAG, "(" + tl + ", " + tr + ", " + bl + ", " + br + ")");
+                Log.d(TAG, "writeParcelToFlinger (" + tl + ", " + tr + ", " + bl + ", " + br + ")");
                 mDisplayConfig.keystoneSetCoordinates(tl, tr, bl, br);
+                Log.d("UpdateKeystoneZOOM after writeParcelToFlinger ",lb_X+","+lb_Y+","+lt_X+","+lt_Y+","+rt_X+","+rt_Y+","+rb_X+","+rb_Y);
             } else {
                 Log.i(TAG, "error get surfaceflinger service");
             }
@@ -320,7 +321,7 @@ public class KeystoneUtils_726 {
     }
 
     public static void UpdateKeystoneZOOM(boolean write) {
-        Log.d("UpdateKeystone", "rb_X " + rb_X + "rb_Y " + rb_Y);
+        Log.d("UpdateKeystoneZOOM before ",lb_X+","+lb_Y+","+lt_X+","+lt_Y+","+rt_X+","+rt_Y+","+rb_X+","+rb_Y);
         if (!write) {
             SystemProperties.set("persist.sys.zoom.value", lb_X + "," + lb_Y + "," + lt_X + "," + lt_Y + "," + rt_X + "," + rt_Y + "," + rb_X + "," + rb_Y);
             return;
