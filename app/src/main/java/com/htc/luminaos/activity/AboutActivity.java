@@ -191,7 +191,8 @@ public class AboutActivity extends BaseActivity {
                 Message message = handler.obtainMessage();
                 message.what = 1;
                 message.obj = path;
-                handler.sendMessage(message);
+//                handler.sendMessage(message);
+                handler.sendMessageDelayed(message, 1000);//Android 14 progressDialog一闪而过，加1s延迟
             }
         }).start();
     }

@@ -182,7 +182,7 @@ public class LanguageAndKeyboardActivity extends BaseActivity {
             Locale l = null;
             if(s.equals("zh-CN") || s.equals("en-XA") || s.equals("en-XC"))//1、中国只处理zh、zh-HK、zh-TW三种情况
                 continue;//2、Android 14增加了en-XA、en-XC（伪本地化语言)，必须过滤掉
-q
+
             // 检查是否包含国家码
             String[] parts = s.split("-");
             if (parts.length == 2) {
