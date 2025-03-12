@@ -48,7 +48,7 @@ public class NetworkActivity extends BaseActivity {
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.rl_wireless_network){
-            startNewActivity(WifiActivity.class);
+            startNewActivityWifi(WifiActivity.class);
         }else if (v.getId() == R.id.rl_wired_network){
             startNewActivity(WiredActivity.class);
         }else if (v.getId() == R.id.rl_hotspot){
