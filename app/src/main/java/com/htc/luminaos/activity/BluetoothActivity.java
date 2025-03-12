@@ -83,9 +83,9 @@ public class BluetoothActivity extends BaseActivity implements BluetoothCallBcak
         bluetoothBinding = ActivityBluetoothBinding.inflate(LayoutInflater.from(this));
         setContentView(bluetoothBinding.getRoot());
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        bluetoothAdapter.getProfileProxy(this, mProfileServiceListener,
+        bluetoothAdapter.getProfileProxy(this, mProfileServiceListener,  //蓝牙音响
                 BluetoothProfile.A2DP);
-        bluetoothAdapter.getProfileProxy(this,
+        bluetoothAdapter.getProfileProxy(this,  //蓝牙耳机
                 mListener, 4);
         initReceiver();
         initView();
@@ -145,7 +145,6 @@ public class BluetoothActivity extends BaseActivity implements BluetoothCallBcak
      * 获取可用蓝牙列表
      */
     private BroadcastReceiver mCanReceiver = new BroadcastReceiver() {
-
         @Override
         public void onReceive(Context context, Intent intent) {
             // TODO Auto-generated method stub
@@ -163,7 +162,6 @@ public class BluetoothActivity extends BaseActivity implements BluetoothCallBcak
                         Message message = handler.obtainMessage();
                         message.what = Contants.REFRESH_FOUND;
                         handler.sendMessage(message);
-
                     }
                 }
                 // 搜索完成
@@ -171,9 +169,7 @@ public class BluetoothActivity extends BaseActivity implements BluetoothCallBcak
                     .equals(action)) {
                 searchAnim(false);
             }
-
         }
-
     };
 
 
@@ -337,8 +333,6 @@ public class BluetoothActivity extends BaseActivity implements BluetoothCallBcak
     }
 
     private void searchAnim(boolean isAnim) {
-
-
         if (!isAnim) {
             bluetoothBinding.refreshIv.setVisibility(View.GONE);
             bluetoothBinding.refreshIv.clearAnimation();
@@ -351,7 +345,6 @@ public class BluetoothActivity extends BaseActivity implements BluetoothCallBcak
         anim.setInterpolator(interpolator);
 
         anim.setAnimationListener(new Animation.AnimationListener() {
-
             @Override
             public void onAnimationStart(Animation arg0) {
                 // TODO Auto-generated method stub
@@ -368,10 +361,7 @@ public class BluetoothActivity extends BaseActivity implements BluetoothCallBcak
                 // TODO Auto-generated method stub
             }
         });
-
         bluetoothBinding.refreshIv.startAnimation(anim);
-
-
     }
 
     /**
@@ -431,7 +421,6 @@ public class BluetoothActivity extends BaseActivity implements BluetoothCallBcak
      * @return
      */
     private List<BluetoothDevice> getCurrentConnectDevice() {
-
         Class<BluetoothAdapter> bluetoothAdapterClass = BluetoothAdapter.class;// 得到BluetoothAdapter的Class对象
         try {// 得到蓝牙状态的方法
             Method method = bluetoothAdapterClass.getDeclaredMethod(
@@ -441,36 +430,27 @@ public class BluetoothActivity extends BaseActivity implements BluetoothCallBcak
             int state = (Integer) method.invoke(bluetoothAdapter,
                     (Object[]) null);
             if (state == BluetoothAdapter.STATE_CONNECTED) {
-
                 List<BluetoothDevice> deviceconnectList = new ArrayList<BluetoothDevice>();
-
                 Set<BluetoothDevice> devices = bluetoothAdapter
                         .getBondedDevices();
-
                 for (BluetoothDevice device : devices) {
-
                     Method isConnectedMethod = BluetoothDevice.class
                             .getDeclaredMethod("isConnected", (Class[]) null);
                     method.setAccessible(true);
                     boolean isConnected = (Boolean) isConnectedMethod.invoke(
                             device, (Object[]) null);
                     if (isConnected) {
-
-//
                         if (device != null) {
                             deviceconnectList.add(device);
                         }
                     }
                 }
-
                 return deviceconnectList;
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
-
     }
 
     /**

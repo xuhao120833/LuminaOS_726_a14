@@ -180,9 +180,10 @@ public class LanguageAndKeyboardActivity extends BaseActivity {
             String language = "";
             String country = "";
             Locale l = null;
+            if(s.equals("zh-CN") || s.equals("en-XA") || s.equals("en-XC"))//1、中国只处理zh、zh-HK、zh-TW三种情况
+                continue;//2、Android 14增加了en-XA、en-XC（伪本地化语言)，必须过滤掉
+q
             // 检查是否包含国家码
-            if(s.equals("zh-CN"))//中国只处理zh、zh-HK、zh-TW三种情况
-                continue;
             String[] parts = s.split("-");
             if (parts.length == 2) {
                 // 包括国家码的情况
@@ -194,7 +195,6 @@ public class LanguageAndKeyboardActivity extends BaseActivity {
                 language = s;
                 l = new Locale(language);
             }
-
             if (finalSize == 0) {
                 preprocess[finalSize++] = new Language(toTitleCase(l.getDisplayLanguage(l)), l);
             } else {
