@@ -293,13 +293,12 @@
         android:layout_centerInParent="true">
 
         <ImageView
+            android:id="@+id/direction_x"
             android:layout_width="@dimen/x_33"
             android:layout_height="@dimen/y_33"
             android:layout_marginStart="@dimen/x_30"
             android:layout_marginTop="@dimen/y_25"
-            android:id="@+id/direction_x"
-            android:background="@drawable/correction_circle_right"
-            />
+            android:background="@drawable/correction_circle_right" />
         <ImageView
             android:layout_width="@dimen/x_33"
             android:layout_height="@dimen/y_33"

@@ -19,6 +19,7 @@ import vendor.display.config.V1_0.KscPoint;
  */
 public class KeystoneUtils_726 {
 
+    //四个角距离四个原点的相对距离
     public static final String PROP_KEYSTONE_LB_X = "persist.display.keystone_lbx";
     public static final String PROP_KEYSTONE_LB_Y = "persist.display.keystone_lby";
     public static final String PROP_KEYSTONE_LT_X = "persist.display.keystone_ltx";
@@ -28,6 +29,7 @@ public class KeystoneUtils_726 {
     public static final String PROP_KEYSTONE_RT_X = "persist.display.keystone_rtx";
     public static final String PROP_KEYSTONE_RT_Y = "persist.display.keystone_rty";
 
+    //HTC自己加的
     public static final String PROP_HTC_KEYSTONE_LB_X = "persist.htc.keystone.lbx";
     public static final String PROP_HTC_KEYSTONE_LB_Y = "persist.htc.keystone.lby";
     public static final String PROP_HTC_KEYSTONE_LT_X = "persist.htc.keystone.ltx";
@@ -37,7 +39,9 @@ public class KeystoneUtils_726 {
     public static final String PROP_HTC_KEYSTONE_RT_X = "persist.htc.keystone.rtx";
     public static final String PROP_HTC_KEYSTONE_RT_Y = "persist.htc.keystone.rty";
 
+    //全局缩放
     public static final String ZOOM_VALUE = "zoom_value";
+    //画面比例
     public static final String ZOOM_SCALE = "zoom_scale";
     public static final String ZOOM_SCALE_OLD = "zoom_scale_old";
 
@@ -52,6 +56,7 @@ public class KeystoneUtils_726 {
     public static int lcd_h = 1080;
 
 
+    //四个角相对于原来四个原点的相对距离
     public static int lb_X = 0;
     public static int lb_Y = 0;
     public static int rb_X = 0;
@@ -295,7 +300,7 @@ public class KeystoneUtils_726 {
                 br.y = 1080 - Math.abs(rby);
                 Log.d(TAG, "writeParcelToFlinger (" + tl + ", " + tr + ", " + bl + ", " + br + ")");
                 mDisplayConfig.keystoneSetCoordinates(tl, tr, bl, br);
-                Log.d("UpdateKeystoneZOOM after writeParcelToFlinger ",lb_X+","+lb_Y+","+lt_X+","+lt_Y+","+rt_X+","+rt_Y+","+rb_X+","+rb_Y);
+                Log.d("UpdateKeystoneZOOM after writeParcelToFlinger ", lb_X + "," + lb_Y + "," + lt_X + "," + lt_Y + "," + rt_X + "," + rt_Y + "," + rb_X + "," + rb_Y);
             } else {
                 Log.i(TAG, "error get surfaceflinger service");
             }
@@ -321,25 +326,34 @@ public class KeystoneUtils_726 {
     }
 
     public static void UpdateKeystoneZOOM(boolean write) {
-        Log.d("UpdateKeystoneZOOM before ",lb_X+","+lb_Y+","+lt_X+","+lt_Y+","+rt_X+","+rt_Y+","+rb_X+","+rb_Y);
+        Log.d("UpdateKeystoneZOOM before ", lb_X + "," + lb_Y + "," + lt_X + "," + lt_Y + "," + rt_X + "," + rt_Y + "," + rb_X + "," + rb_Y);
         if (!write) {
             SystemProperties.set("persist.sys.zoom.value", lb_X + "," + lb_Y + "," + lt_X + "," + lt_Y + "," + rt_X + "," + rt_Y + "," + rb_X + "," + rb_Y);
             return;
         }
-        writeParcelToFlinger(lt_X, lt_Y, rt_X, rt_Y, lb_X, lb_Y, rb_X, rb_Y);
+//        writeParcelToFlinger(lt_X, lt_Y, rt_X, rt_Y, lb_X, lb_Y, rb_X, rb_Y);
+        float ofltx = lt_X / 1000.000f;
+        float oflty = lt_Y / 1000.000f;
+        float ofrtx = rt_X / 1000.000f;
+        float ofrty = rt_Y / 1000.000f;
+        float oflbx = lb_X / 1000.000f;
+        float oflby = lb_Y / 1000.000f;
+        float ofrbx = rb_X / 1000.000f;
+        float ofrby = rb_Y / 1000.000f;
+        writeParcelToFlinger((int) (ofltx * 1920), (int) (oflty * 1080), (int) (ofrtx * 1920), (int) (ofrty * 1080), (int) (oflbx * 1920), (int) (oflby * 1080), (int) (ofrbx * 1920), (int) (ofrby * 1080));
         SystemProperties.set("persist.sys.zoom.value", lb_X + "," + lb_Y + "," + lt_X + "," + lt_Y + "," + rt_X + "," + rt_Y + "," + rb_X + "," + rb_Y);
     }
 
     public static void setKeystoneNormalXY(int cur_mode, int new_mode) {
-        int lt_Nx,lt_Ny,rt_Nx,rt_Ny;
-        int lb_Nx,lb_Ny,rb_Nx,rb_Ny;
-        int lt_x,lt_y,rt_x,rt_y;
-        int lb_x,lb_y,rb_x,rb_y;
+        int lt_Nx, lt_Ny, rt_Nx, rt_Ny;
+        int lb_Nx, lb_Ny, rb_Nx, rb_Ny;
+        int lt_x, lt_y, rt_x, rt_y;
+        int lb_x, lb_y, rb_x, rb_y;
         int[] lt_xy = getKeystoneLeftAndTopXY();
         int[] rt_xy = getKeystoneRightAndTopXY();
         int[] lb_xy = getKeystoneLeftAndBottomXY();
         int[] rb_xy = getKeystoneRightAndBottomXY();
-        if(cur_mode==1){//LR
+        if (cur_mode == 1) {//LR
             rt_Nx = lt_xy[0];
             rt_Ny = lt_xy[1];
             lt_Nx = rt_xy[0];
@@ -348,7 +362,7 @@ public class KeystoneUtils_726 {
             rb_Ny = lb_xy[1];
             lb_Nx = rb_xy[0];
             lb_Ny = rb_xy[1];
-        }else if(cur_mode==2){//LRUD
+        } else if (cur_mode == 2) {//LRUD
             rb_Nx = lt_xy[0];
             rb_Ny = lt_xy[1];
             lb_Nx = rt_xy[0];
@@ -357,7 +371,7 @@ public class KeystoneUtils_726 {
             rt_Ny = lb_xy[1];
             lt_Nx = rb_xy[0];
             lt_Ny = rb_xy[1];
-        }else if(cur_mode==3){//UD
+        } else if (cur_mode == 3) {//UD
             lb_Nx = lt_xy[0];
             lb_Ny = lt_xy[1];
             rb_Nx = rt_xy[0];
@@ -366,7 +380,7 @@ public class KeystoneUtils_726 {
             lt_Ny = lb_xy[1];
             rt_Nx = rb_xy[0];
             rt_Ny = rb_xy[1];
-        }else{//nor
+        } else {//nor
             lt_Nx = lt_xy[0];
             lt_Ny = lt_xy[1];
             rt_Nx = rt_xy[0];
@@ -377,42 +391,42 @@ public class KeystoneUtils_726 {
             rb_Ny = rb_xy[1];
         }
 
-        if(new_mode==1){//LR
-            lt_x=rt_Nx;
-            lt_y=rt_Ny;
-            rt_x=lt_Nx;
-            rt_y=lt_Ny;
-            lb_x=rb_Nx;
-            lb_y=rb_Ny;
-            rb_x=lb_Nx;
-            rb_y=lb_Ny;
-        }else if(new_mode==2){//LRUD
-            lt_x=rb_Nx;
-            lt_y=rb_Ny;
-            rt_x=lb_Nx;
-            rt_y=lb_Ny;
-            lb_x=rt_Nx;
-            lb_y=rt_Ny;
-            rb_x=lt_Nx;
-            rb_y=lt_Ny;
-        }else if(new_mode==3){//UD
-            lt_x=lb_Nx;
-            lt_y=lb_Ny;
-            rt_x=rb_Nx;
-            rt_y=rb_Ny;
-            lb_x=lt_Nx;
-            lb_y=lt_Ny;
-            rb_x=rt_Nx;
-            rb_y=rt_Ny;
-        }else{ //
-            lt_x=lt_Nx;
-            lt_y=lt_Ny;
-            rt_x=rt_Nx;
-            rt_y=rt_Ny;
-            lb_x=lb_Nx;
-            lb_y=lb_Ny;
-            rb_x=rb_Nx;
-            rb_y=rb_Ny;
+        if (new_mode == 1) {//LR
+            lt_x = rt_Nx;
+            lt_y = rt_Ny;
+            rt_x = lt_Nx;
+            rt_y = lt_Ny;
+            lb_x = rb_Nx;
+            lb_y = rb_Ny;
+            rb_x = lb_Nx;
+            rb_y = lb_Ny;
+        } else if (new_mode == 2) {//LRUD
+            lt_x = rb_Nx;
+            lt_y = rb_Ny;
+            rt_x = lb_Nx;
+            rt_y = lb_Ny;
+            lb_x = rt_Nx;
+            lb_y = rt_Ny;
+            rb_x = lt_Nx;
+            rb_y = lt_Ny;
+        } else if (new_mode == 3) {//UD
+            lt_x = lb_Nx;
+            lt_y = lb_Ny;
+            rt_x = rb_Nx;
+            rt_y = rb_Ny;
+            lb_x = lt_Nx;
+            lb_y = lt_Ny;
+            rb_x = rt_Nx;
+            rb_y = rt_Ny;
+        } else { //
+            lt_x = lt_Nx;
+            lt_y = lt_Ny;
+            rt_x = rt_Nx;
+            rt_y = rt_Ny;
+            lb_x = lb_Nx;
+            lb_y = lb_Ny;
+            rb_x = rb_Nx;
+            rb_y = rb_Ny;
         }
         lt_X = lt_x;
         lt_Y = lt_y;
@@ -427,7 +441,7 @@ public class KeystoneUtils_726 {
         rt_xy = getKeystoneHtcRightAndTopXY();
         lb_xy = getKeystoneHtcLeftAndBottomXY();
         rb_xy = getKeystoneHtcRightAndBottomXY();
-        if(cur_mode==1){//LR
+        if (cur_mode == 1) {//LR
             rt_Nx = lt_xy[0];
             rt_Ny = lt_xy[1];
             lt_Nx = rt_xy[0];
@@ -436,7 +450,7 @@ public class KeystoneUtils_726 {
             rb_Ny = lb_xy[1];
             lb_Nx = rb_xy[0];
             lb_Ny = rb_xy[1];
-        }else if(cur_mode==2){//LRUD
+        } else if (cur_mode == 2) {//LRUD
             rb_Nx = lt_xy[0];
             rb_Ny = lt_xy[1];
             lb_Nx = rt_xy[0];
@@ -445,7 +459,7 @@ public class KeystoneUtils_726 {
             rt_Ny = lb_xy[1];
             lt_Nx = rb_xy[0];
             lt_Ny = rb_xy[1];
-        }else if(cur_mode==3){//UD
+        } else if (cur_mode == 3) {//UD
             lb_Nx = lt_xy[0];
             lb_Ny = lt_xy[1];
             rb_Nx = rt_xy[0];
@@ -454,7 +468,7 @@ public class KeystoneUtils_726 {
             lt_Ny = lb_xy[1];
             rt_Nx = rb_xy[0];
             rt_Ny = rb_xy[1];
-        }else{//nor
+        } else {//nor
             lt_Nx = lt_xy[0];
             lt_Ny = lt_xy[1];
             rt_Nx = rt_xy[0];
@@ -465,42 +479,42 @@ public class KeystoneUtils_726 {
             rb_Ny = rb_xy[1];
         }
 
-        if(new_mode==1){//LR
-            lt_x=rt_Nx;
-            lt_y=rt_Ny;
-            rt_x=lt_Nx;
-            rt_y=lt_Ny;
-            lb_x=rb_Nx;
-            lb_y=rb_Ny;
-            rb_x=lb_Nx;
-            rb_y=lb_Ny;
-        }else if(new_mode==2){//LRUD
-            lt_x=rb_Nx;
-            lt_y=rb_Ny;
-            rt_x=lb_Nx;
-            rt_y=lb_Ny;
-            lb_x=rt_Nx;
-            lb_y=rt_Ny;
-            rb_x=lt_Nx;
-            rb_y=lt_Ny;
-        }else if(new_mode==3){//UD
-            lt_x=lb_Nx;
-            lt_y=lb_Ny;
-            rt_x=rb_Nx;
-            rt_y=rb_Ny;
-            lb_x=lt_Nx;
-            lb_y=lt_Ny;
-            rb_x=rt_Nx;
-            rb_y=rt_Ny;
-        }else{ //
-            lt_x=lt_Nx;
-            lt_y=lt_Ny;
-            rt_x=rt_Nx;
-            rt_y=rt_Ny;
-            lb_x=lb_Nx;
-            lb_y=lb_Ny;
-            rb_x=rb_Nx;
-            rb_y=rb_Ny;
+        if (new_mode == 1) {//LR
+            lt_x = rt_Nx;
+            lt_y = rt_Ny;
+            rt_x = lt_Nx;
+            rt_y = lt_Ny;
+            lb_x = rb_Nx;
+            lb_y = rb_Ny;
+            rb_x = lb_Nx;
+            rb_y = lb_Ny;
+        } else if (new_mode == 2) {//LRUD
+            lt_x = rb_Nx;
+            lt_y = rb_Ny;
+            rt_x = lb_Nx;
+            rt_y = lb_Ny;
+            lb_x = rt_Nx;
+            lb_y = rt_Ny;
+            rb_x = lt_Nx;
+            rb_y = lt_Ny;
+        } else if (new_mode == 3) {//UD
+            lt_x = lb_Nx;
+            lt_y = lb_Ny;
+            rt_x = rb_Nx;
+            rt_y = rb_Ny;
+            lb_x = lt_Nx;
+            lb_y = lt_Ny;
+            rb_x = rt_Nx;
+            rb_y = rt_Ny;
+        } else { //
+            lt_x = lt_Nx;
+            lt_y = lt_Ny;
+            rt_x = rt_Nx;
+            rt_y = rt_Ny;
+            lb_x = lb_Nx;
+            lb_y = lb_Ny;
+            rb_x = rb_Nx;
+            rb_y = rb_Ny;
         }
         SystemProperties.set(PROP_HTC_KEYSTONE_LT_X, String.valueOf(lt_x));
         SystemProperties.set(PROP_HTC_KEYSTONE_LT_Y, String.valueOf(lt_y));
@@ -514,58 +528,62 @@ public class KeystoneUtils_726 {
 
     /**
      * 获取四角梯形矫正记录的左上角坐标
+     *
      * @return
      */
     public static int[] getKeystoneHtcLeftAndTopXY() {
-        int[] xy = new int[] { 0, 0 };
-        xy[0] =CoverX(PROP_HTC_KEYSTONE_LT_X) ;
-        xy[1] =CoverY(PROP_HTC_KEYSTONE_LT_Y);
+        int[] xy = new int[]{0, 0};
+        xy[0] = CoverX(PROP_HTC_KEYSTONE_LT_X);
+        xy[1] = CoverY(PROP_HTC_KEYSTONE_LT_Y);
         return xy;
     }
 
     /**
      * 获取四角梯形矫正记录的左下角坐标
+     *
      * @return
      */
     public static int[] getKeystoneHtcLeftAndBottomXY() {
-        int[] xy = new int[] { 0, 0 };
-        xy[0] =CoverX(PROP_HTC_KEYSTONE_LB_X) ;
-        xy[1] =CoverY(PROP_HTC_KEYSTONE_LB_Y);
+        int[] xy = new int[]{0, 0};
+        xy[0] = CoverX(PROP_HTC_KEYSTONE_LB_X);
+        xy[1] = CoverY(PROP_HTC_KEYSTONE_LB_Y);
         return xy;
     }
 
     /**
      * 获取四角梯形矫正记录的右上角坐标
+     *
      * @return
      */
     public static int[] getKeystoneHtcRightAndTopXY() {
-        int[] xy = new int[] { 0, 0 };
-        xy[0] =CoverX(PROP_HTC_KEYSTONE_RT_X);
-        xy[1] =CoverY(PROP_HTC_KEYSTONE_RT_Y);
+        int[] xy = new int[]{0, 0};
+        xy[0] = CoverX(PROP_HTC_KEYSTONE_RT_X);
+        xy[1] = CoverY(PROP_HTC_KEYSTONE_RT_Y);
         return xy;
     }
 
     /**
      * 获取四角梯形矫正记录的右下角坐标
+     *
      * @return
      */
     public static int[] getKeystoneHtcRightAndBottomXY() {
-        int[] xy = new int[] { 0, 0 };
-        xy[0] =CoverX(PROP_HTC_KEYSTONE_RB_X);
-        xy[1] =CoverY(PROP_HTC_KEYSTONE_RB_Y);
+        int[] xy = new int[]{0, 0};
+        xy[0] = CoverX(PROP_HTC_KEYSTONE_RB_X);
+        xy[1] = CoverY(PROP_HTC_KEYSTONE_RB_Y);
         return xy;
     }
 
     public static void optKeystoneFun(int[] tpData) {
         DecimalFormat df = new DecimalFormat("0");//格式化小数
-        lt_X=Integer.parseInt(df.format((tpData[0] * 1000)/lcd_w));
-        lt_Y=Integer.parseInt(df.format((tpData[1] * 1000)/lcd_h));
-        rt_X=Integer.parseInt(df.format((tpData[2] * 1000)/lcd_w));
-        rt_Y=Integer.parseInt(df.format((tpData[3] * 1000)/lcd_h));
-        lb_X=Integer.parseInt(df.format((tpData[4] * 1000)/lcd_w));
-        lb_Y=Integer.parseInt(df.format((tpData[5] * 1000)/lcd_h));
-        rb_X=Integer.parseInt(df.format((tpData[6] * 1000)/lcd_w));
-        rb_Y=Integer.parseInt(df.format((tpData[7] * 1000)/lcd_h));
+        lt_X = Integer.parseInt(df.format((tpData[0] * 1000) / lcd_w));
+        lt_Y = Integer.parseInt(df.format((tpData[1] * 1000) / lcd_h));
+        rt_X = Integer.parseInt(df.format((tpData[2] * 1000) / lcd_w));
+        rt_Y = Integer.parseInt(df.format((tpData[3] * 1000) / lcd_h));
+        lb_X = Integer.parseInt(df.format((tpData[4] * 1000) / lcd_w));
+        lb_Y = Integer.parseInt(df.format((tpData[5] * 1000) / lcd_h));
+        rb_X = Integer.parseInt(df.format((tpData[6] * 1000) / lcd_w));
+        rb_Y = Integer.parseInt(df.format((tpData[7] * 1000) / lcd_h));
         UpdateKeystoneZOOM(true);
     }
 
