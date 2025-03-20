@@ -1642,6 +1642,8 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
         Drawable drawable = DBUtils.getInstance(this).getDrawableFromBrandLogo(1);
         if (drawable != null) {
             customBinding.brand.setImageDrawable(drawable);
+        } else {
+            customBinding.brand.setImageResource(R.drawable.brand);
         }
     }
 

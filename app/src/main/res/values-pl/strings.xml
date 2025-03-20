@@ -105,7 +105,7 @@
     <string name="date_time">Data i czas</string>
     <string name="other_settings">Inne ustawienia</string>
     <string name="system_info">Informacje o systemie</string>
-    <string name="boot_input">Automatyczne włączenie zewnętrznego wejścia</string>
+    <string name="boot_input">Auto. włączenie wejścia</string>
     <string name="boot_apps">Aplikacje uruchamiane przy starcie</string>
     <string name="power_mode">Tryb zasilania</string>
     <string name="button_sound">Dźwięk przycisku</string>

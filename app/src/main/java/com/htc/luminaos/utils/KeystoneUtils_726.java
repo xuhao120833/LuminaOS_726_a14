@@ -282,41 +282,70 @@ public class KeystoneUtils_726 {
     }
 
     private static void writeParcelToFlinger(int ltx, int lty, int rtx, int rty, int lbx, int lby, int rbx, int rby) {
+//        try {
+//            mDisplayConfig = IDisplayConfig.getService();
+//            if (mDisplayConfig != null) {
+//                Log.i(TAG, "writeParcelToFlinger prepare for data!");
+//                KscPoint tl = new KscPoint();
+//                tl.x = Math.abs(ltx);
+//                tl.y = Math.abs(lty);
+//                KscPoint tr = new KscPoint();
+//                tr.x = 1920 - Math.abs(rtx);
+//                tr.y = Math.abs(rty);
+//                KscPoint bl = new KscPoint();
+//                bl.x = Math.abs(lbx);
+//                bl.y = 1080 - Math.abs(lby);
+//                KscPoint br = new KscPoint();
+//                br.x = 1920 - Math.abs(rbx);
+//                br.y = 1080 - Math.abs(rby);
+//                Log.d(TAG, "writeParcelToFlinger (" + tl + ", " + tr + ", " + bl + ", " + br + ")");
+//                mDisplayConfig.keystoneSetCoordinates(tl, tr, bl, br);
+//                Log.d("UpdateKeystoneZOOM after writeParcelToFlinger ", lb_X + "," + lb_Y + "," + lt_X + "," + lt_Y + "," + rt_X + "," + rt_Y + "," + rb_X + "," + rb_Y);
+//            } else {
+//                Log.i(TAG, "error get surfaceflinger service");
+//            }
+//        } catch (Exception ex) {
+//            Log.i(TAG, "error talk with surfaceflinger service");
+//        }
+
+//        SystemProperties.set(PROPERTY_LEFT_BOTTOM_X, Integer.toString(Math.abs(lbx)));
+//        SystemProperties.set(PROPERTY_LEFT_TOP_X, Integer.toString(Math.abs(ltx)));
+//        SystemProperties.set(PROPERTY_RIGHT_BOTTOM_X, Integer.toString(Math.abs(rbx)));
+//        SystemProperties.set(PROPERTY_RIGHT_TOP_X, Integer.toString(Math.abs(rtx)));
+//
+//        SystemProperties.set(PROPERTY_LEFT_BOTTOM_Y, Integer.toString(Math.abs(lby)));
+//        SystemProperties.set(PROPERTY_LEFT_TOP_Y, Integer.toString(Math.abs(lty)));
+//        SystemProperties.set(PROPERTY_RIGHT_BOTTOM_Y, Integer.toString(Math.abs(rby)));
+//        SystemProperties.set(PROPERTY_RIGHT_TOP_Y, Integer.toString(Math.abs(rty)));
+
         try {
             mDisplayConfig = IDisplayConfig.getService();
             if (mDisplayConfig != null) {
+                String[] size = SystemProperties.get("persist.vendor.disp.screensize", "1920x1080").split("x");
+                int mScreenWidth = Integer.parseInt(size[0]) - 1;
+                int mScreenHeight = Integer.parseInt(size[1]) - 1;
                 Log.i(TAG, "writeParcelToFlinger prepare for data!");
                 KscPoint tl = new KscPoint();
                 tl.x = Math.abs(ltx);
                 tl.y = Math.abs(lty);
                 KscPoint tr = new KscPoint();
-                tr.x = 1920 - Math.abs(rtx);
+                tr.x = mScreenWidth - Math.abs(rtx);
                 tr.y = Math.abs(rty);
                 KscPoint bl = new KscPoint();
                 bl.x = Math.abs(lbx);
-                bl.y = 1080 - Math.abs(lby);
+                bl.y = mScreenHeight - Math.abs(lby);
                 KscPoint br = new KscPoint();
-                br.x = 1920 - Math.abs(rbx);
-                br.y = 1080 - Math.abs(rby);
+                br.x = mScreenWidth - Math.abs(rbx);
+                br.y = mScreenHeight - Math.abs(rby);
                 Log.d(TAG, "writeParcelToFlinger (" + tl + ", " + tr + ", " + bl + ", " + br + ")");
                 mDisplayConfig.keystoneSetCoordinates(tl, tr, bl, br);
-                Log.d("UpdateKeystoneZOOM after writeParcelToFlinger ", lb_X + "," + lb_Y + "," + lt_X + "," + lt_Y + "," + rt_X + "," + rt_Y + "," + rb_X + "," + rb_Y);
+                Log.d("UpdateKeystoneZOOM after writeParcelToFlinger ",lb_X+","+lb_Y+","+lt_X+","+lt_Y+","+rt_X+","+rt_Y+","+rb_X+","+rb_Y);
             } else {
                 Log.i(TAG, "error get surfaceflinger service");
             }
         } catch (Exception ex) {
             Log.i(TAG, "error talk with surfaceflinger service");
         }
-
-        SystemProperties.set(PROPERTY_LEFT_BOTTOM_X, Integer.toString(Math.abs(lbx)));
-        SystemProperties.set(PROPERTY_LEFT_TOP_X, Integer.toString(Math.abs(ltx)));
-        SystemProperties.set(PROPERTY_RIGHT_BOTTOM_X, Integer.toString(Math.abs(rbx)));
-        SystemProperties.set(PROPERTY_RIGHT_TOP_X, Integer.toString(Math.abs(rtx)));
-
-        SystemProperties.set(PROPERTY_LEFT_BOTTOM_Y, Integer.toString(Math.abs(lby)));
-        SystemProperties.set(PROPERTY_LEFT_TOP_Y, Integer.toString(Math.abs(lty)));
-        SystemProperties.set(PROPERTY_RIGHT_BOTTOM_Y, Integer.toString(Math.abs(rby)));
-        SystemProperties.set(PROPERTY_RIGHT_TOP_Y, Integer.toString(Math.abs(rty)));
     }
 
 
@@ -436,7 +465,8 @@ public class KeystoneUtils_726 {
         rb_Y = rb_y;
         lb_X = lb_x;
         lb_Y = lb_y;
-        UpdateKeystoneZOOM(true);
+//        UpdateKeystoneZOOM(true);
+        writeParcelToFlinger(lt_X, lt_Y, rt_X, rt_Y, lb_X, lb_Y, rb_X, rb_Y);
         lt_xy = getKeystoneHtcLeftAndTopXY();
         rt_xy = getKeystoneHtcRightAndTopXY();
         lb_xy = getKeystoneHtcLeftAndBottomXY();
