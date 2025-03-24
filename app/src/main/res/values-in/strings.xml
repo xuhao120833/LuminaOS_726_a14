@@ -284,4 +284,7 @@
     <string name="init_angle_tip3">3. Klik mulai.</string>
     <string name="init_angle_tip4">Kalibrasi selesai, keluar otomatis.</string>
     <string name="start">Mulai</string>
+    <string name="bluetooth_receive_request">Apakah Anda ingin menerima file yang masuk?</string>
+    <string name="bluetooth_start_receive">Mulai terima data</string>
+    <string name="accept">Terima</string>
 </resources>

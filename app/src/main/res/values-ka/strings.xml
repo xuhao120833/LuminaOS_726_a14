@@ -284,4 +284,7 @@
     <string name="init_angle_tip3">3. დააჭირეთ დაწყების ღილაკს.</string>
     <string name="init_angle_tip4">კალიბრაცია დასრულდა, ავტომატურად დაიხურება.</string>
     <string name="start">დავიწყო</string>
+    <string name="bluetooth_receive_request">გსურთ მიიღოთ შემოსული ფაილი?</string>
+    <string name="bluetooth_start_receive">დაიწყეთ მონაცემების მიღება</string>
+    <string name="accept">მიღება</string>
 </resources>

@@ -284,6 +284,9 @@
     <string name="init_angle_tip3">3. Nhấn nút bắt đầu.</string>
     <string name="init_angle_tip4">Hiệu chỉnh hoàn tất, tự động thoát.</string>
     <string name="start">Bắt đầu</string>
+    <string name="bluetooth_receive_request">Bạn có muốn nhận tệp tin vào không?</string>
+    <string name="bluetooth_start_receive">Bắt đầu nhận dữ liệu</string>
+    <string name="accept">Chấp nhận</string>
 </resources>
 
 

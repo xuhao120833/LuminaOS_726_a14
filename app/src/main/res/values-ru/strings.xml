@@ -284,5 +284,8 @@
     <string name="init_angle_tip3">3. Нажмите кнопку "Начать".</string>
     <string name="init_angle_tip4">Коррекция завершена, автоматический выход.</string>
     <string name="start">Начать</string>
+    <string name="bluetooth_receive_request">Вы хотите принять входящий файл?</string>
+    <string name="bluetooth_start_receive">Начать получение данных</string>
+    <string name="accept">Принять</string>
 </resources>
 

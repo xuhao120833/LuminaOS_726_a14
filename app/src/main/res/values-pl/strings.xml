@@ -284,6 +284,9 @@
     <string name="init_angle_tip3">3. Kliknij przycisk "Rozpocznij".</string>
     <string name="init_angle_tip4">Korekcja kąta początkowego zakończona</string>
     <string name="start">Rozpocznij</string>
+    <string name="bluetooth_receive_request">Czy chcesz zaakceptować przychodzący plik?</string>
+    <string name="bluetooth_start_receive">Rozpocznij odbieranie danych</string>
+    <string name="accept">Akceptować</string>
 </resources>
 
 

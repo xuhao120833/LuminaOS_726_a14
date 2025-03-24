@@ -284,5 +284,8 @@
     <string name="init_angle_tip3">3. Apăsați „Start”.</string>
     <string name="init_angle_tip4">Corectare finalizată, ieșire automată</string>
     <string name="start">Start</string>
+    <string name="bluetooth_receive_request">Doriți să acceptați fișierul primit?</string>
+    <string name="bluetooth_start_receive">Începeți să primiți datele</string>
+    <string name="accept">Acceptați</string>
 </resources>
 

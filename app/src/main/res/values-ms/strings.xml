@@ -284,4 +284,7 @@
     <string name="init_angle_tip3">3. Klik mula.</string>
     <string name="init_angle_tip4">Pembetulan selesai, keluar secara automatik</string>
     <string name="start">Mula</string>
+    <string name="bluetooth_receive_request">Adakah anda ingin menerima fail yang masuk?</string>
+    <string name="bluetooth_start_receive">Mula menerima data</string>
+    <string name="accept">Terima</string>
 </resources>

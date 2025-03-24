@@ -284,4 +284,7 @@
 	<string name="init_angle_tip3">3、點擊開始。</string>
 	<string name="init_angle_tip4">矯正完成，自動退出</string>
 	<string name="start">開始</string>
+	<string name="bluetooth_receive_request">要接受傳入的檔案嗎?</string>
+	<string name="bluetooth_start_receive">開始接收資料</string>
+	<string name="accept">接受</string>
 </resources>

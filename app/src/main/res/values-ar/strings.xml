@@ -284,6 +284,9 @@
     <string name="init_angle_tip3">3. اضغط على "ابدأ".</string>
     <string name="init_angle_tip4">تم التصحيح، الخروج التلقائي.</string>
     <string name="start">ابدأ</string>
+    <string name="bluetooth_receive_request">هل ترغب في قبول الملف الوارد؟</string>
+    <string name="bluetooth_start_receive">بدء استلام البيانات</string>
+    <string name="accept">قبول</string>
 </resources>
 
 

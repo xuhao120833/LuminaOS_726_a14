@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/x_500"
+    android:layout_height="@dimen/y_360"
+    android:background="@drawable/white_frame"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/title"
+        android:layout_marginTop="@dimen/y_100"
+        android:layout_marginStart="@dimen/x_40"
+        android:layout_centerHorizontal="true"
+        android:text="@string/bluetooth_receive_request"
+        android:textSize="@dimen/x_28"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:maxLines="4"
+        />
+
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/blue_from"-->
+<!--        android:layout_width="@dimen/x_500"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/title"-->
+<!--        android:layout_marginTop="@dimen/y_40"-->
+<!--        android:padding="@dimen/x_5"-->
+<!--        android:orientation="horizontal" >-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/blue_from_txt1"-->
+<!--            android:layout_width="@dimen/x_205"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="@dimen/x_30"-->
+<!--            android:text="来自:"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:singleLine="true"-->
+<!--            android:ellipsize="marquee"-->
+<!--            android:textSize="@dimen/x_23" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/blue_from_txt2"-->
+<!--            android:layout_width="@dimen/x_210"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="@dimen/x_25"-->
+<!--            android:layout_marginEnd="@dimen/x_25"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:singleLine="true"-->
+<!--            android:ellipsize="marquee"-->
+<!--            android:gravity="center"-->
+<!--            android:textSize="@dimen/x_23" />-->
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/blue_file_name"-->
+<!--        android:layout_width="@dimen/x_500"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/blue_from"-->
+<!--        android:padding="@dimen/x_5"-->
+<!--        android:orientation="horizontal" >-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/blue_file_name1"-->
+<!--            android:layout_width="@dimen/x_205"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="名称:"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:layout_marginStart="@dimen/x_30"-->
+<!--            android:singleLine="true"-->
+<!--            android:ellipsize="marquee"-->
+<!--            android:textSize="@dimen/x_23" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/blue_file_name2"-->
+<!--            android:layout_width="@dimen/x_210"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="@dimen/x_25"-->
+<!--            android:layout_marginEnd="@dimen/x_25"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:singleLine="true"-->
+<!--            android:ellipsize="marquee"-->
+<!--            android:gravity="center"-->
+<!--            android:textSize="@dimen/x_23" />-->
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/blue_file_size"-->
+<!--        android:layout_width="@dimen/x_500"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/blue_file_name"-->
+<!--        android:padding="@dimen/x_5"-->
+<!--        android:orientation="horizontal" >-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/blue_file_size1"-->
+<!--            android:layout_width="@dimen/x_205"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="@dimen/x_30"-->
+<!--            android:ellipsize="marquee"-->
+<!--            android:singleLine="true"-->
+<!--            android:text="大小:"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="@dimen/x_23" />-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/blue_file_size2"-->
+<!--            android:layout_width="@dimen/x_210"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="@dimen/x_25"-->
+<!--            android:layout_marginEnd="@dimen/x_25"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:singleLine="true"-->
+<!--            android:ellipsize="marquee"-->
+<!--            android:gravity="center"-->
+<!--            android:textSize="@dimen/x_23" />-->
+<!--    </LinearLayout>-->
+
+
+    <TextView
+        android:textSize="@dimen/x_20"
+        android:textColor="@color/white"
+        android:text="@string/accept"
+        android:id="@+id/accept"
+        android:layout_width="@dimen/x_200"
+        android:layout_height="@dimen/y_70"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/button_bg"
+        android:gravity="center"
+        android:layout_marginStart="@dimen/x_30"
+        android:layout_marginBottom="@dimen/y_15"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        />
+
+
+    <TextView
+        android:textSize="@dimen/x_20"
+        android:text="@string/cancel"
+        android:textColor="@color/white"
+        android:id="@+id/cancel"
+        android:layout_width="@dimen/x_200"
+        android:layout_height="@dimen/y_70"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/button_bg"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/y_15"
+        android:layout_marginEnd="@dimen/x_30"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        />
+</RelativeLayout>

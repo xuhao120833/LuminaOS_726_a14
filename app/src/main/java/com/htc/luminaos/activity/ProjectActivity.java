@@ -339,11 +339,20 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
         SystemProperties.set("persist.sys.tpryauto", String.valueOf(auto ? 0 : 1));
         //自动梯形打开的时候发送一次更新
         if (!auto) {
-            sendKeystoneBroadcast();
+//            sendKeystoneBroadcast();
+            sendKeystoneBroadcastByAuto();
         } else {
             updateZoomValue();
         }
         initAuto();
+    }
+
+    private void sendKeystoneBroadcastByAuto() {
+        Intent intent = new Intent("android.intent.hotack_keystone");
+        intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
+        intent.putExtra("ratio", 1);
+        intent.putExtra("keystone",1);
+        sendBroadcast(intent);
     }
 
     private void updateZoomValue() {

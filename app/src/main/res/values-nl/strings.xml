@@ -284,4 +284,7 @@
     <string name="init_angle_tip3">3. Klik op Start.</string>
     <string name="init_angle_tip4">Correctie voltooid, automatisch afsluiten.</string>
     <string name="start">Starten</string>
+    <string name="bluetooth_receive_request">Wilt u het inkomende bestand accepteren?</string>
+    <string name="bluetooth_start_receive">Begin met het ontvangen van gegevens</string>
+    <string name="accept">Accepteren</string>
 </resources>

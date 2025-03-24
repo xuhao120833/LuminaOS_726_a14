@@ -284,5 +284,8 @@
     <string name="init_angle_tip3">3. Başlat\'a tıklayın.</string>
     <string name="init_angle_tip4">Düzeltme tamamlandı, otomatik olarak çıkılacaktır.</string>
     <string name="start">Başla</string>
+    <string name="bluetooth_receive_request">Gelen dosyayı kabul etmek istiyor musunuz?</string>
+    <string name="bluetooth_start_receive">Veri alımına başla</string>
+    <string name="accept">Kabul et</string>
 </resources>
 

@@ -284,4 +284,7 @@
     <string name="init_angle_tip3">3.開始をクリックしてください。</string>
     <string name="init_angle_tip4">補正が完了し、自動的に終了します。</string>
     <string name="start">開始</string>
+    <string name="bluetooth_receive_request">受信するファイルを受け入れますか？</string>
+    <string name="bluetooth_start_receive">データの受信を開始</string>
+    <string name="accept">受け入れる</string>
 </resources>

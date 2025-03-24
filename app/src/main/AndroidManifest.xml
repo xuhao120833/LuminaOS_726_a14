@@ -88,6 +88,17 @@
             android:value="true" />
 
         <activity
+            android:name=".activity.BluetoothIncomingFileConfirmActivity"
+            android:theme="@style/TransparentActivity"
+            android:configChanges="keyboard|keyboardHidden|navigation"
+            android:excludeFromRecents="true"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.bluetooth.device.action.INCOMINGFILE_CONFIRM_REQUEST" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".activity.DisplaySettingsActivity"
             android:exported="false" />
         <activity

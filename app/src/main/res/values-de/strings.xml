@@ -284,5 +284,8 @@
 	<string name="init_angle_tip3">3. Klicken Sie auf "Start".</string>
 	<string name="init_angle_tip4">Korrektur abgeschlossen, wird automatisch geschlossen.</string>
 	<string name="start">Starten</string>
+	<string name="bluetooth_receive_request">Möchten Sie die eingehende Datei annehmen?</string>
+	<string name="bluetooth_start_receive">Daten empfangen starten</string>
+	<string name="accept">Akzeptieren</string>
 </resources>
 

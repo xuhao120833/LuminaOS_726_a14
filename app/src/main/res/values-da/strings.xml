@@ -284,5 +284,8 @@
     <string name="init_angle_tip3">3. Tryk på Start.</string>
     <string name="init_angle_tip4">Kalibreringen er fuldført, afslutter automatisk.</string>
     <string name="start">Start</string>
+    <string name="bluetooth_receive_request">Vil du acceptere den indkommende fil?</string>
+    <string name="bluetooth_start_receive">Begynd at modtage data</string>
+    <string name="accept">Acceptere</string>
 </resources>
 

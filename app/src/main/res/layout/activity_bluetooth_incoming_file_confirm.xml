@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.BluetoothIncomingFileConfirmActivity">
+
+
+    <ImageView
+        android:id="@+id/icon"
+        style="@style/unfocusStyle"
+        android:layout_width="@dimen/x_200"
+        android:layout_height="@dimen/y_200"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitXY"
+        android:layout_marginTop="@dimen/y_100"
+        android:src="@drawable/warning3"/>
+
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/unfocusStyle"
+        android:layout_width="@dimen/x_1032"
+        android:layout_height="@dimen/y_60"
+        android:layout_below="@id/icon"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="@string/bluetooth_receive_request"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x_28"
+        android:layout_marginTop="@dimen/y_30" />
+
+    <TextView
+        android:id="@+id/accpet"
+        style="@style/focusStyle"
+        android:layout_width="@dimen/x_1032"
+        android:layout_height="@dimen/y_60"
+        android:layout_below="@id/title"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y_30"
+        android:background="@drawable/main_settings_bg"
+        android:gravity="center"
+        android:text="@string/accept"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x_28" />
+
+    <TextView
+        android:id="@+id/cancel"
+        style="@style/focusStyle"
+        android:layout_width="@dimen/x_1032"
+        android:layout_height="@dimen/y_60"
+        android:layout_below="@id/accpet"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y_60"
+        android:background="@drawable/main_settings_bg"
+        android:gravity="center"
+        android:text="@string/cancel"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x_28" />
+
+</RelativeLayout>
