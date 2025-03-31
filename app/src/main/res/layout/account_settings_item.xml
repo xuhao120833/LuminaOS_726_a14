@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/x_1080"
+    android:layout_height="@dimen/y_80"
+    android:minHeight="@dimen/y_80"
+    android:minWidth="@dimen/x_1080"
+    style="@style/focusStyle"
+    android:id="@+id/rl_item"
+    android:background="@drawable/main_settings_bg"
+    >
+
+    <ImageView
+        android:layout_width="@dimen/x_50"
+        android:layout_height="@dimen/y_50"
+        android:id="@+id/app_icon"
+        android:layout_centerVertical="true"
+        android:duplicateParentState="true"
+        android:layout_marginStart="@dimen/x_50"
+        />
+
+    <TextView
+        android:layout_width="@dimen/x_400"
+        android:layout_height="wrap_content"
+        android:id="@+id/app_name"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/app_icon"
+        android:layout_marginStart="@dimen/x_15"
+        android:textSize="@dimen/x_23"
+        android:focusable="true"
+        android:textColor="@color/tv_color"
+        android:duplicateParentState="true"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        />
+
+
+    <View
+        android:layout_width="@dimen/x_53"
+        android:layout_height="@dimen/y_53"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/x_50"
+        android:background="@drawable/arrow_right_bg"
+        android:duplicateParentState="true"
+        />
+
+</RelativeLayout>

@@ -287,4 +287,16 @@
     <string name="bluetooth_receive_request">Adakah anda ingin menerima fail yang masuk?</string>
     <string name="bluetooth_start_receive">Mula menerima data</string>
     <string name="accept">Terima</string>
+    <string name="account_sync">Penyegerakan data aplikasi secara automatik</string>
+    <string name="account_add">Tambah akaun</string>
+    <string name="account_had">Akaun yang ada</string>
+    <string name="accout_delete">Adakah anda ingin mengalih keluar akaun ini?</string>
+    <string name="account_sync_title1">Adakah anda ingin mengaktifkan fungsi penyegerakan data secara automatik?</string>
+    <string name="account_message1">Segala perubahan yang anda lakukan pada akaun anda di internet akan disegerakkan secara automatik ke telefon anda.</string>
+    <string name="account_message2">Beberapa akaun juga membenarkan perubahan yang anda buat pada telefon anda disegerakkan secara automatik ke internet.</string>
+    <string name="account_message3">Akaun Google menyokong penyegerakan dua hala seperti ini.</string>
+    <string name="account_sync_title2">Adakah anda ingin mematikan fungsi penyegerakan data secara automatik?</string>
+    <string name="account_message4">Ini dapat menjimatkan penggunaan data dan bateri,</string>
+    <string name="account_message5">tetapi anda perlu menyegerakkan setiap akaun secara manual untuk mendapatkan maklumat terkini,</string>
+    <string name="account_message6">dan anda tidak akan menerima pemberitahuan apabila terdapat kemas kini.</string>
 </resources>

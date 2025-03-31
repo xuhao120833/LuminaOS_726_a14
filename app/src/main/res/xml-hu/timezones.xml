@@ -316,4 +316,5 @@
     <timezone id="WET">Nyugat-európai idő</timezone>
     <timezone id="Zulu">Zulu idő</timezone>
     <timezone id="America/Costa_Rica">Costa Rica</timezone>
+    <timezone id="America/Chicago">Amerika/Chicago</timezone>
 </timezones>

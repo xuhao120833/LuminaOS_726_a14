@@ -316,4 +316,5 @@
     <timezone id="WET">Timpul din Europa de Vest</timezone>
     <timezone id="Zulu">Timpul Zulu</timezone>
     <timezone id="America/Costa_Rica">Costa Rica</timezone>
+    <timezone id="America/Chicago">SUA/Chicago</timezone>
 </timezones>

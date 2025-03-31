@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemProperties;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Display;
@@ -89,6 +90,7 @@ public class InitAngleDialog extends BaseDialog implements View.OnClickListener 
         KeystoneUtils_726.writeGlobalSettings(getContext(), KeystoneUtils_726.ZOOM_VALUE, 0);
         projectActivity.All = 0;
         projectActivity.updateZoomView();
+        SystemProperties.set("persist.sys.keystone_offset", "0");
     }
 
     @Override

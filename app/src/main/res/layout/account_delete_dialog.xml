@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/x_500"
+    android:layout_height="@dimen/y_300"
+    android:background="@drawable/white_frame"
+    >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/title"
+        android:layout_marginTop="@dimen/y_100"
+        android:layout_marginStart="@dimen/x_40"
+        android:layout_centerHorizontal="true"
+        android:text="@string/accout_delete"
+        android:textSize="@dimen/x_28"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:maxLines="4"
+        />
+
+    <TextView
+        android:textSize="@dimen/x_20"
+        android:textColor="@color/white"
+        android:text="@string/enter"
+        android:id="@+id/enter"
+        android:layout_width="@dimen/x_200"
+        android:layout_height="@dimen/y_70"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/button_bg"
+        android:gravity="center"
+        android:layout_marginStart="@dimen/x_30"
+        android:layout_marginBottom="@dimen/y_15"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        />
+
+
+    <TextView
+        android:textSize="@dimen/x_20"
+        android:text="@string/cancel"
+        android:textColor="@color/white"
+        android:id="@+id/cancel"
+        android:layout_width="@dimen/x_200"
+        android:layout_height="@dimen/y_70"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/button_bg"
+        android:gravity="center"
+        android:layout_marginBottom="@dimen/y_15"
+        android:layout_marginEnd="@dimen/x_30"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        />
+</RelativeLayout>

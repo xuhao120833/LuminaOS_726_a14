@@ -316,4 +316,5 @@
     <timezone id="WET">Thời gian Tây Âu</timezone>
     <timezone id="Zulu">Thời gian Zulu</timezone>
     <timezone id="America/Costa_Rica">Costa Rica</timezone>
+    <timezone id="America/Chicago">Mỹ/Chicago</timezone>
 </timezones>

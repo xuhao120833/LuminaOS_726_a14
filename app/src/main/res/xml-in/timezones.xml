@@ -316,6 +316,7 @@
     <timezone id="WET">Waktu Eropa Barat</timezone>
     <timezone id="Zulu">Waktu Zulu</timezone>
     <timezone id="America/Costa_Rica">Costa Rica</timezone>
+    <timezone id="America/Chicago">Amerika/Chicago</timezone>
 </timezones>
 
 

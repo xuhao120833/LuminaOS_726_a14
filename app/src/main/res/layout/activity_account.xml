@@ -23,7 +23,7 @@
         android:layout_width="@dimen/x_1080"
         android:layout_height="@dimen/y_80"
         android:layout_below="@id/title"
-        android:id="@+id/rl_bluetooth_switch"
+        android:id="@+id/rl_sync_switch"
         android:layout_marginStart="@dimen/x_100"
         android:layout_marginTop="@dimen/y_19"
         android:background="@drawable/main_settings_bg"
@@ -37,13 +37,13 @@
             android:layout_centerVertical="true"
             android:textColor="@color/tv_color"
             android:textSize="@dimen/x_27"
-            android:text="自动同步应用数据"
+            android:text="@string/account_sync"
             android:duplicateParentState="true"
             />
         <androidx.appcompat.widget.SwitchCompat
             android:layout_width="@dimen/x_98"
             android:layout_height="@dimen/y_60"
-            android:id="@+id/bluetooth_switch"
+            android:id="@+id/sync_switch"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="@dimen/x_50"
             android:layout_centerVertical="true"
@@ -57,8 +57,8 @@
     <RelativeLayout
         android:layout_width="@dimen/x_1080"
         android:layout_height="@dimen/y_80"
-        android:layout_below="@id/rl_bluetooth_switch"
-        android:id="@+id/rl_search_ble"
+        android:layout_below="@id/rl_sync_switch"
+        android:id="@+id/rl_account_add"
         android:layout_marginStart="@dimen/x_100"
         android:layout_marginTop="@dimen/y_10"
         android:background="@drawable/main_settings_bg"
@@ -72,7 +72,7 @@
             android:layout_centerVertical="true"
             android:textColor="@color/tv_color"
             android:textSize="@dimen/x_27"
-            android:text="添加账号"
+            android:text="@string/account_add"
             android:duplicateParentState="true"
             />
 
@@ -104,7 +104,7 @@
         android:layout_width="@dimen/x_1080"
         android:layout_height="@dimen/y_6"
         android:id="@+id/line"
-        android:layout_below="@id/rl_search_ble"
+        android:layout_below="@id/rl_account_add"
         android:layout_marginStart="@dimen/x_100"
         android:layout_marginTop="@dimen/y_15"
         android:background="@drawable/corner_line"
@@ -122,10 +122,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/pair_title"
+                android:id="@+id/account_title"
                 android:layout_marginStart="@dimen/x_150"
                 android:textStyle="bold"
-                android:text="已有的账号"
+                android:text="@string/account_had"
                 android:textSize="@dimen/x_27"
                 android:textColor="@color/white"
                 />
@@ -133,8 +133,8 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="@dimen/x_1080"
                 android:layout_height="wrap_content"
-                android:id="@+id/pair_rv"
-                android:layout_below="@id/pair_title"
+                android:id="@+id/account_rv"
+                android:layout_below="@id/account_title"
                 android:layout_marginStart="@dimen/x_100"
                 android:layout_marginTop="@dimen/y_10"
                 tools:listitem="@layout/ble_item"
@@ -143,5 +143,4 @@
 
         </RelativeLayout>
     </com.htc.luminaos.view.CustomScrollView>
-
 </RelativeLayout>

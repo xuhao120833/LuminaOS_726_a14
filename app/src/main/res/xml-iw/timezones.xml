@@ -316,4 +316,5 @@
     <timezone id="WET">זמן מערב אירופה</timezone>
     <timezone id="Zulu">זמן זולו</timezone>
     <timezone id="America/Costa_Rica">קוסטה ריקה</timezone>
+    <timezone id="America/Chicago">אמריקה/שיקגו</timezone>
 </timezones>

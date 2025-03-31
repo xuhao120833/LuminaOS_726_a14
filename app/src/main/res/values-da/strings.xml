@@ -287,5 +287,17 @@
     <string name="bluetooth_receive_request">Vil du acceptere den indkommende fil?</string>
     <string name="bluetooth_start_receive">Begynd at modtage data</string>
     <string name="accept">Acceptere</string>
+    <string name="account_sync">Automatisk synkronisering af app-data</string>
+    <string name="account_add">Tilføj konto</string>
+    <string name="account_had">Eksisterende kontoer</string>
+    <string name="accout_delete">Fjerne denne konto?</string>
+    <string name="account_sync_title1">Vil du åbne automatisk synkronisering af data?</string>
+    <string name="account_message1">Alle ændringer, du foretager på din konto online, vil automatisk blive synkroniseret med din telefon.</string>
+    <string name="account_message2">Nogle konti kan også automatisk synkronisere alle ændringer, du laver på din telefon, til nettet.</string>
+    <string name="account_message3">Google-konti understøtter denne form for tovejssynkronisering.</string>
+    <string name="account_sync_title2">Vil du lukke automatisk synkronisering af data?</string>
+    <string name="account_message4">Dette kan spare data og batterilevetid,</string>
+    <string name="account_message5">men du skal manuelt synkronisere hver konto for at få de nyeste oplysninger,</string>
+    <string name="account_message6">og du vil ikke modtage notifikationer, når der er opdateringer.</string>
 </resources>
 

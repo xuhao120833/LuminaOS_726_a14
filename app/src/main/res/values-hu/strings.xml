@@ -287,6 +287,18 @@
     <string name="bluetooth_receive_request">Elfogadja a bejövő fájlt?</string>
     <string name="bluetooth_start_receive">Adatok fogadása elkezdése</string>
     <string name="accept">Elfogad</string>
+    <string name="account_sync">Automatikus adat szinkronizálás</string>
+    <string name="account_add">Fiók hozzáadása</string>
+    <string name="account_had">Létező fiók</string>
+    <string name="accout_delete">Törölni kívánja ezt a fiókot?</string>
+    <string name="account_sync_title1">Szeretné engedélyezni az automatikus adat szinkronizálást?</string>
+    <string name="account_message1">Az összes fiókhoz végzett módosítás automatikusan szinkronizálódik a telefonján.</string>
+    <string name="account_message2">Néhány fiók lehetővé teszi, hogy az összes telefonon végzett módosítás automatikusan szinkronizálódjon a hálózaton.</string>
+    <string name="account_message3">A Google fiók támogatja az ilyen típusú kétirányú szinkronizálást.</string>
+    <string name="account_sync_title2">Szeretné letiltani az automatikus adat szinkronizálást?</string>
+    <string name="account_message4">Ez segíthet megtakarítani adatforgalmat és akkumulátor energiát,</string>
+    <string name="account_message5">de minden fiókhoz manuálisan kell szinkronizálni, hogy a legfrissebb információkat kapja,</string>
+    <string name="account_message6">és nem fog értesítést kapni, ha frissítés érkezik.</string>
 </resources>
 
 

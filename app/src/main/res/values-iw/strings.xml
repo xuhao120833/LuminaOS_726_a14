@@ -287,4 +287,16 @@
     <string name="bluetooth_receive_request">האם אתה רוצה לקבל את הקובץ הנכנס?</string>
     <string name="bluetooth_start_receive">התחל לקבל נתונים</string>
     <string name="accept">קבל</string>
+    <string name="account_sync">סנכרון אוטומטי של נתוני האפליקציה</string>
+    <string name="account_add">הוסף חשבון</string>
+    <string name="account_had">חשבון קיים</string>
+    <string name="accout_delete">האם ברצונך למחוק חשבון זה?</string>
+    <string name="account_sync_title1">האם אתה רוצה להפעיל את פונקציית סנכרון נתונים אוטומטי?</string>
+    <string name="account_message1">כל השינויים שתבצע בחשבונך ברשת יסונכרנו אוטומטית עם הטלפון שלך.</string>
+    <string name="account_message2">חשבונות מסוימים יכולים גם לסנכרן אוטומטית את כל השינויים שתבצע בטלפון עם הרשת.</string>
+    <string name="account_message3">חשבון Google תומך בסנכרון דו-כיווני מסוג זה.</string>
+    <string name="account_sync_title2">האם אתה רוצה לכבות את פונקציית סנכרון נתונים אוטומטי?</string>
+    <string name="account_message4">זה יכול לחסוך נתוני אינטרנט וסוללה,</string>
+    <string name="account_message5">אבל תצטרך לסנכרן כל חשבון ידנית כדי לקבל את המידע העדכני,</string>
+    <string name="account_message6">ולא תתקבל הודעה כאשר יהיו עדכונים.</string>
 </resources>

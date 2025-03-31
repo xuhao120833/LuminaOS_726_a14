@@ -287,4 +287,16 @@
     <string name="bluetooth_receive_request">Do you want to accept the incoming file?</string>
     <string name="bluetooth_start_receive">Start receiving data</string>
     <string name="accept">Accept</string>
+    <string name="account_sync">Automatic data synchronization</string>
+    <string name="account_add">Add account</string>
+    <string name="account_had">Existing accounts</string>
+    <string name="accout_delete">Remove this account?</string>
+    <string name="account_sync_title1">Do you want to enable automatic data synchronization?</string>
+    <string name="account_message1">All changes you make to your account online will be automatically synchronized to your phone.</string>
+    <string name="account_message2">Some accounts can also automatically sync all changes you make on your phone to the web.</string>
+    <string name="account_message3">Google accounts support this type of bidirectional synchronization.</string>
+    <string name="account_sync_title2">Do you want to disable automatic data synchronization?</string>
+    <string name="account_message4">This can save data usage and battery life,</string>
+    <string name="account_message5">but you will need to manually sync each account to get the latest information,</string>
+    <string name="account_message6">and you will not receive notifications when updates are available.</string>
 </resources>

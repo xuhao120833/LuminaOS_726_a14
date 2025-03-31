@@ -287,4 +287,16 @@
     <string name="bluetooth_receive_request">Wilt u het inkomende bestand accepteren?</string>
     <string name="bluetooth_start_receive">Begin met het ontvangen van gegevens</string>
     <string name="accept">Accepteren</string>
+    <string name="account_sync">Automatische synchronisatie van applicatiegegevens</string>
+    <string name="account_add">Voeg account toe</string>
+    <string name="account_had">Bestaande accounts</string>
+    <string name="accout_delete">Wilt u dit account verwijderen?</string>
+    <string name="account_sync_title1">Wilt u de automatische gegevenssynchronisatie inschakelen?</string>
+    <string name="account_message1">Alle wijzigingen die u online maakt aan uw account worden automatisch gesynchroniseerd met uw telefoon.</string>
+    <string name="account_message2">Sommige accounts kunnen ook alle wijzigingen die u op uw telefoon maakt automatisch synchroniseren met het web.</string>
+    <string name="account_message3">Google-accounts ondersteunen deze bidirectionele synchronisatie.</string>
+    <string name="account_sync_title2">Wilt u de automatische gegevenssynchronisatie uitschakelen?</string>
+    <string name="account_message4">Dit kan data en batterijvermogen besparen,</string>
+    <string name="account_message5">maar u moet elk account handmatig synchroniseren om de nieuwste informatie te verkrijgen,</string>
+    <string name="account_message6">en u ontvangt geen meldingen wanneer er updates zijn.</string>
 </resources>

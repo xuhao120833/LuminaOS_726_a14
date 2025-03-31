@@ -287,4 +287,16 @@
     <string name="bluetooth_receive_request">受信するファイルを受け入れますか？</string>
     <string name="bluetooth_start_receive">データの受信を開始</string>
     <string name="accept">受け入れる</string>
+    <string name="account_sync">アプリデータを自動的に同期</string>
+    <string name="account_add">アカウントを追加</string>
+    <string name="account_had">既存のアカウント</string>
+    <string name="accout_delete">このアカウントを削除しますか？</string>
+    <string name="account_sync_title1">自動データ同期機能を有効にしますか？</string>
+    <string name="account_message1">インターネット上で行ったすべてのアカウント変更は、自動的にスマートフォンに同期されます。</string>
+    <string name="account_message2">一部のアカウントでは、スマートフォンで行ったすべての変更も自動的にインターネット上に同期できます。</string>
+    <string name="account_message3">Googleアカウントは、このような双方向同期をサポートしています。</string>
+    <string name="account_sync_title2">自動データ同期機能を無効にしますか？</string>
+    <string name="account_message4">これにより、データ通信量とバッテリーの消費を節約できます。</string>
+    <string name="account_message5">ただし、最新情報を得るには各アカウントを手動で同期する必要があります。</string>
+    <string name="account_message6">また、更新があった場合、通知を受け取ることができません。</string>
 </resources>

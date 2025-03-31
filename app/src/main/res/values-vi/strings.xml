@@ -287,6 +287,18 @@
     <string name="bluetooth_receive_request">Bạn có muốn nhận tệp tin vào không?</string>
     <string name="bluetooth_start_receive">Bắt đầu nhận dữ liệu</string>
     <string name="accept">Chấp nhận</string>
+    <string name="account_sync">Đồng bộ dữ liệu ứng dụng tự động</string>
+    <string name="account_add">Thêm tài khoản</string>
+    <string name="account_had">Tài khoản hiện có</string>
+    <string name="accout_delete">Bạn có muốn xóa tài khoản này không?</string>
+    <string name="account_sync_title1">Bạn có muốn bật tính năng đồng bộ dữ liệu tự động không?</string>
+    <string name="account_message1">Tất cả các thay đổi bạn thực hiện trên tài khoản của mình trên mạng sẽ tự động đồng bộ với điện thoại của bạn.</string>
+    <string name="account_message2">Một số tài khoản còn có thể tự động đồng bộ tất cả các thay đổi bạn thực hiện trên điện thoại với mạng.</string>
+    <string name="account_message3">Tài khoản Google hỗ trợ đồng bộ hai chiều như vậy.</string>
+    <string name="account_sync_title2">Bạn có muốn tắt tính năng đồng bộ dữ liệu tự động không?</string>
+    <string name="account_message4">Điều này giúp tiết kiệm dữ liệu và năng lượng pin,</string>
+    <string name="account_message5">nhưng bạn sẽ cần phải đồng bộ thủ công từng tài khoản để nhận thông tin mới nhất,</string>
+    <string name="account_message6">và bạn sẽ không nhận được thông báo khi có bản cập nhật.</string>
 </resources>
 
 

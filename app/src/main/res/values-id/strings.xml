@@ -287,4 +287,16 @@
     <string name="bluetooth_receive_request">Apakah Anda ingin menerima file yang masuk?</string>
     <string name="bluetooth_start_receive">Mulai terima data</string>
     <string name="accept">Terima</string>
+    <string name="account_sync">Sinkronisasi data aplikasi otomatis</string>
+    <string name="account_add">Tambah akun</string>
+    <string name="account_had">Akun yang sudah ada</string>
+    <string name="accout_delete">Hapus akun ini?</string>
+    <string name="account_sync_title1">Apakah Anda ingin mengaktifkan fitur sinkronisasi data otomatis?</string>
+    <string name="account_message1">Semua perubahan yang Anda buat pada akun Anda di jaringan akan disinkronkan secara otomatis ke ponsel Anda.</string>
+    <string name="account_message2">Beberapa akun juga dapat menyinkronkan semua perubahan yang Anda buat di ponsel ke jaringan secara otomatis.</string>
+    <string name="account_message3">Akun Google mendukung sinkronisasi dua arah seperti ini.</string>
+    <string name="account_sync_title2">Apakah Anda ingin menonaktifkan fitur sinkronisasi data otomatis?</string>
+    <string name="account_message4">Ini akan menghemat data dan daya baterai,</string>
+    <string name="account_message5">tetapi Anda perlu menyinkronkan setiap akun secara manual untuk mendapatkan informasi terbaru,</string>
+    <string name="account_message6">dan Anda tidak akan menerima pemberitahuan saat ada pembaruan.</string>
 </resources>

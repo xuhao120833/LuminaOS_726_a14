@@ -287,5 +287,17 @@
     <string name="bluetooth_receive_request">Gelen dosyayı kabul etmek istiyor musunuz?</string>
     <string name="bluetooth_start_receive">Veri alımına başla</string>
     <string name="accept">Kabul et</string>
+    <string name="account_sync">Uygulama verilerini otomatik senkronize et</string>
+    <string name="account_add">Hesap ekle</string>
+    <string name="account_had">Mevcut hesaplar</string>
+    <string name="accout_delete">Bu hesabı silmek istiyor musunuz?</string>
+    <string name="account_sync_title1">Veri senkronizasyonunu otomatik açmak istiyor musunuz?</string>
+    <string name="account_message1">Ağda yaptığınız tüm değişiklikler, telefonunuza otomatik olarak senkronize edilecektir.</string>
+    <string name="account_message2">Bazı hesaplar, telefonda yaptığınız tüm değişiklikleri de ağda otomatik olarak senkronize edebilir.</string>
+    <string name="account_message3">Google hesabı, bu tür çift yönlü senkronizasyonu destekler.</string>
+    <string name="account_sync_title2">Veri senkronizasyonunu otomatik olarak kapatmak istiyor musunuz?</string>
+    <string name="account_message4">Bu, veri trafiği ve pil gücünden tasarruf etmenizi sağlar,</string>
+    <string name="account_message5">ancak her hesabı manuel olarak senkronize etmeniz gerekir, böylece en son bilgilere sahip olabilirsiniz,</string>
+    <string name="account_message6">ve güncellemeler olduğunda bildirim almazsınız.</string>
 </resources>
 

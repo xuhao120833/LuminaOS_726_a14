@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/x_550"
+    android:layout_height="wrap_content"
+    android:background="@drawable/white_frame">
+    <TextView
+        android:layout_width="@dimen/x_500"
+        android:layout_height="wrap_content"
+        android:id="@+id/sync_title"
+        android:textColor="@color/black"
+        android:textSize="@dimen/x_26"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/y_30"
+        />
+
+    <TextView
+        android:layout_width="@dimen/x_450"
+        android:layout_height="wrap_content"
+        android:id="@+id/sync_message"
+        android:layout_below="@id/sync_title"
+        android:layout_marginTop="@dimen/y_20"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/x_20"
+        android:textColor="@color/black"
+        />
+    <TextView
+        android:layout_width="@dimen/x_200"
+        android:layout_height="@dimen/y_70"
+        android:id="@+id/enter"
+        android:layout_below="@id/sync_message"
+        android:layout_marginTop="@dimen/y_30"
+        android:layout_marginBottom="@dimen/y_16"
+        android:layout_marginStart="@dimen/x_30"
+        android:gravity="center"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:background="@drawable/button_bg"
+        android:textColor="@color/white"
+        android:nextFocusLeft="@id/cancel"
+        android:nextFocusRight="@id/cancel"
+        android:text="@string/enter"
+        android:textSize="@dimen/x_23"
+        />
+
+    <TextView
+        android:layout_width="@dimen/x_200"
+        android:layout_height="@dimen/y_70"
+        android:id="@+id/cancel"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/y_30"
+        android:layout_marginBottom="@dimen/y_16"
+        android:layout_marginEnd="@dimen/x_30"
+        android:gravity="center"
+        android:focusable="true"
+        android:layout_below="@id/sync_message"
+        android:focusableInTouchMode="true"
+        android:background="@drawable/button_bg"
+        android:textColor="@color/white"
+        android:nextFocusLeft="@id/enter"
+        android:nextFocusRight="@id/enter"
+        android:text="@string/cancel"
+        android:textSize="@dimen/x_23"
+        />
+
+</RelativeLayout>

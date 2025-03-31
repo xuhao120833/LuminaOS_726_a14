@@ -35,6 +35,7 @@
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.WRITE_MEDIA_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_DEVICE_CONFIG" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <application
         android:name=".MyApplication"
@@ -100,7 +101,8 @@
         </activity>
         <activity
             android:name=".activity.DisplaySettingsActivity"
-            android:exported="false" />
+            android:theme="@style/TransparentActivity"
+            android:exported="true" />
         <activity
             android:name=".activity.WiredActivity"
             android:exported="true" />

@@ -316,4 +316,5 @@
     <timezone id="WET">Temps de l'Europe de l'Ouest</timezone>
     <timezone id="Zulu">Temps Zoulou</timezone>
     <timezone id="America/Costa_Rica">Costa Rica</timezone>
+    <timezone id="America/Chicago">États-Unis/Chicago</timezone>
 </timezones>

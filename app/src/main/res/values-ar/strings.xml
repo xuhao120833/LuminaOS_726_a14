@@ -287,6 +287,18 @@
     <string name="bluetooth_receive_request">هل ترغب في قبول الملف الوارد؟</string>
     <string name="bluetooth_start_receive">بدء استلام البيانات</string>
     <string name="accept">قبول</string>
+    <string name="account_sync">مزامنة بيانات التطبيق تلقائيًا</string>
+    <string name="account_add">إضافة حساب</string>
+    <string name="account_had">الحسابات الموجودة</string>
+    <string name="accout_delete">هل تريد إزالة هذا الحساب؟</string>
+    <string name="account_sync_title1">هل ترغب في تفعيل ميزة مزامنة البيانات التلقائية؟</string>
+    <string name="account_message1">جميع التغييرات التي تجريها على حسابك عبر الإنترنت ستتم مزامنتها تلقائيًا مع هاتفك.</string>
+    <string name="account_message2">بعض الحسابات يمكنها أيضًا مزامنة جميع التغييرات التي تجريها على هاتفك مع الإنترنت تلقائيًا.</string>
+    <string name="account_message3">حساب Google يدعم هذه المزامنة الثنائية الاتجاه.</string>
+    <string name="account_sync_title2">هل ترغب في إيقاف ميزة مزامنة البيانات التلقائية؟</string>
+    <string name="account_message4">سيساعد ذلك في توفير بيانات الهاتف والطاقة.</string>
+    <string name="account_message5">ولكنك ستحتاج إلى مزامنة كل حساب يدويًا للحصول على أحدث المعلومات،</string>
+    <string name="account_message6">ولن تتلقى إشعارات عند وجود تحديثات.</string>
 </resources>
 
 

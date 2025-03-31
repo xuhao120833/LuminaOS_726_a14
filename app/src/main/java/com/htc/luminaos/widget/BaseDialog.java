@@ -2,6 +2,8 @@ package com.htc.luminaos.widget;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.htc.luminaos.MyApplication;
@@ -17,7 +19,7 @@ import androidx.annotation.Nullable;
  * Date:
  * Description:
  */
-public class BaseDialog extends Dialog {
+public class BaseDialog extends Dialog implements View.OnHoverListener{
     public BaseDialog(@NonNull Context context) {
         super(context);
     }
@@ -43,4 +45,20 @@ public class BaseDialog extends Dialog {
                 relativeLayout.setBackground(MyApplication.mainDrawable);
         }
     }
+
+    @Override
+    public boolean onHover(View v, MotionEvent event) {
+        int what = event.getAction();
+        switch (what) {
+            case MotionEvent.ACTION_HOVER_ENTER: // 鼠标进入view
+                v.requestFocus();
+                break;
+            case MotionEvent.ACTION_HOVER_MOVE: // 鼠标在view上
+                break;
+            case MotionEvent.ACTION_HOVER_EXIT: // 鼠标离开view
+                break;
+        }
+        return false;
+    }
+
 }

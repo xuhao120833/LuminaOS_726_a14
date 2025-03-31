@@ -11,6 +11,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.SystemProperties;
 import android.util.Log;
 import android.view.Display;
@@ -660,17 +661,23 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
     }
 
     private void updateProjectMode() {
-        tvDisplayManager.factorySetPanelValue(AwTvDisplayTypes.EnumPanelConfigType.E_AW_PANEL_CONFIG_MIRROR, cur_project_mode);
+//        tvDisplayManager.factorySetPanelValue(AwTvDisplayTypes.EnumPanelConfigType.E_AW_PANEL_CONFIG_MIRROR, cur_project_mode);
         projectBinding.projectModeTv.setText(project_name.get(cur_project_mode));
 //        SystemProperties.set("persist.sys.panelvalue", String.valueOf(cur_project_mode));
 //        if (getAuto())
 //            sendProjectBroadCast();
         SystemProperties.set("persist.sys.panelvalue", String.valueOf(cur_project_mode));
-        if (SystemProperties.get("persist.sys.camok", "0").equals("1")
-                && SystemProperties.get("persist.sys.focusupdn", "0").equals("0"))
-            KeystoneUtils_726.setKeystoneNormalXY(old_project_mode, cur_project_mode);
+//        if (SystemProperties.get("persist.sys.camok", "0").equals("1")
+//                && SystemProperties.get("persist.sys.focusupdn", "0").equals("0"))
+        KeystoneUtils_726.setKeystoneNormalXY(old_project_mode, cur_project_mode);
         if (SystemProperties.getBoolean("persist.sys.tpryauto", false))
             sendProjectBroadCast();
+        tvDisplayManager.factorySetPanelValue(AwTvDisplayTypes.EnumPanelConfigType.E_AW_PANEL_CONFIG_MIRROR, cur_project_mode);
+
+//        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+//            Log.d(TAG," 延时5s执行tvDisplayManager.factorySetPanelValue");
+//            tvDisplayManager.factorySetPanelValue(AwTvDisplayTypes.EnumPanelConfigType.E_AW_PANEL_CONFIG_MIRROR, cur_project_mode);
+//        }, 5000); // 延迟 5 秒（5000 毫秒）
     }
 
     private void sendProjectBroadCast() {

@@ -287,4 +287,16 @@
 	<string name="bluetooth_receive_request">要接受傳入的檔案嗎?</string>
 	<string name="bluetooth_start_receive">開始接收資料</string>
 	<string name="accept">接受</string>
+	<string name="account_sync">自動同步應用資料</string>
+	<string name="account_add">添加帳號</string>
+	<string name="account_had">已有的帳號</string>
+	<string name="accout_delete">移除此帳號？</string>
+	<string name="account_sync_title1">要開啟自動同步資料功能嗎？</string>
+	<string name="account_message1">您在網路上對自己的帳號進行的所有更改都會自動同步到您的手機。</string>
+	<string name="account_message2">有些帳號還可以將您在手機上進行的所有更改自動同步到網路上。</string>
+	<string name="account_message3">Google帳號就支持此類雙向同步。</string>
+	<string name="account_sync_title2">要關閉自動同步資料功能嗎？</string>
+	<string name="account_message4">這樣可以節省資料流量和電池電量，</string>
+	<string name="account_message5">但您需要手動同步每個帳號才能獲得最新資訊，</string>
+	<string name="account_message6">並且在有更新時不會收到通知。</string>
 </resources>

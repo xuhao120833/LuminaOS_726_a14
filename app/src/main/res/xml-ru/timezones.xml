@@ -316,4 +316,5 @@
     <timezone id="WET">Западноевропейское время</timezone>
     <timezone id="Zulu">Время по Зулу</timezone>
     <timezone id="America/Costa_Rica">Коста-Рика</timezone>
+    <timezone id="America/Chicago">США/Чикаго</timezone>
 </timezones>

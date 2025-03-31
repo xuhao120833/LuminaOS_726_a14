@@ -316,4 +316,5 @@
     <timezone id="WET">Vesteuropæisk Tid</timezone>
     <timezone id="Zulu">Zulu Tid</timezone>
     <timezone id="America/Costa_Rica">Costa Rica</timezone>
+    <timezone id="America/Chicago">USA/Chicago</timezone>
 </timezones>

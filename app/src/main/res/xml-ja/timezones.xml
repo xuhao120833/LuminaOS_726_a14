@@ -316,4 +316,5 @@
     <timezone id="WET">西欧時間</timezone>
     <timezone id="Zulu">ズールー時間</timezone>
     <timezone id="America/Costa_Rica">コスタリカ</timezone>
+    <timezone id="America/Chicago">アメリカ/シカゴ</timezone>
 </timezones>

@@ -287,5 +287,17 @@
     <string name="bluetooth_receive_request">Ви хочете прийняти вхідний файл?</string>
     <string name="bluetooth_start_receive">Почати отримання даних</string>
     <string name="accept">Прийняти</string>
+    <string name="account_sync">Автоматична синхронізація даних додатку</string>
+    <string name="account_add">Додати обліковий запис</string>
+    <string name="account_had">Існуючі облікові записи</string>
+    <string name="accout_delete">Ви хочете видалити цей обліковий запис?</string>
+    <string name="account_sync_title1">Бажаєте увімкнути автоматичну синхронізацію даних?</string>
+    <string name="account_message1">Всі зміни, які ви вносите у свій обліковий запис в мережі, будуть автоматично синхронізовані з вашим телефоном.</string>
+    <string name="account_message2">Деякі облікові записи також можуть автоматично синхронізувати всі зміни, які ви вносите на телефоні, з мережею.</string>
+    <string name="account_message3">Обліковий запис Google підтримує таку двосторонню синхронізацію.</string>
+    <string name="account_sync_title2">Бажаєте вимкнути автоматичну синхронізацію даних?</string>
+    <string name="account_message4">Це допоможе зекономити трафік і заряд батареї,</string>
+    <string name="account_message5">але вам потрібно буде вручну синхронізувати кожен обліковий запис, щоб отримати останню інформацію,</string>
+    <string name="account_message6">і ви не отримаєте сповіщень про оновлення.</string>
 </resources>
 
