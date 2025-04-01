@@ -39,9 +39,10 @@ public class DisplaySettingsActivity extends BaseActivity implements View.OnKeyL
     ActivityDisplaySettingsBinding displaySettingsBinding;
     private Context mContext;
     private static String TAG = "DisplaySettingsActivity";
+    private AddViewToScreen mavts = new AddViewToScreen();
     public WindowManager.LayoutParams lp;
-    private Dialog dialog;
-    private Window dialogWindow;
+//    private Dialog dialog;
+//    private Window dialogWindow;
 
     private String[] picture_mode_choices;
     private String[] picture_mode_values;
@@ -68,6 +69,8 @@ public class DisplaySettingsActivity extends BaseActivity implements View.OnKeyL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = getApplicationContext();
+        mavts.setContext(getApplicationContext());
+        initLayoutParams();
         initView();
         if (MyApplication.config.displayPictureModeShowCustom) {
             picture_mode_values = getResources().getStringArray(R.array.picture_mode_values);
@@ -80,9 +83,10 @@ public class DisplaySettingsActivity extends BaseActivity implements View.OnKeyL
         }
         awTvDisplayManager = AwTvDisplayManager.getInstance();
         pqControl = new PQControl();
-        initWindow();
-        initLp();
-        dialog.show();
+//        initWindow();
+//        initLp();
+//        dialog.show();
+        mavts.addView(displaySettingsBinding.getRoot(),lp);
     }
 
     @Override
@@ -91,12 +95,29 @@ public class DisplaySettingsActivity extends BaseActivity implements View.OnKeyL
         initData();
     }
 
+    private void initLayoutParams() {
+        lp = new WindowManager.LayoutParams();
+        lp.format = PixelFormat.RGBA_8888;
+
+        lp.flags = WindowManager.LayoutParams.FLAG_LOCAL_FOCUS_MODE
+                | WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
+                | WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            lp.type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY;
+        } else {
+            lp.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
+        }
+        lp.width = (int)getResources().getDimension(R.dimen.x_400);
+        lp.height = (int)getResources().getDimension(R.dimen.y_640);
+        lp.gravity = Gravity.START;
+        lp.x = (int)getResources().getDimension(R.dimen.x_27);
+    }
+
     private void initView() {
         displaySettingsBinding = ActivityDisplaySettingsBinding.inflate(LayoutInflater.from(this));
-        displaySettingsBinding.rlPictureMode.setOnKeyListener(this);
-        dialog = new Dialog(this,R.style.BlurDialogTheme);
-        dialog.setContentView(displaySettingsBinding.getRoot());
-        dialogWindow = dialog.getWindow();
+//        dialog = new Dialog(this,R.style.BlurDialogTheme);
+//        dialog.setContentView(displaySettingsBinding.getRoot());
+//        dialogWindow = dialog.getWindow();
 
         displaySettingsBinding.rlPictureMode.setOnClickListener(this);
 //        displaySettingsBinding.rlColorTemp.setOnClickListener(this);
@@ -150,24 +171,24 @@ public class DisplaySettingsActivity extends BaseActivity implements View.OnKeyL
         displaySettingsBinding.txtSharpness.setSelected(true);
     }
 
-    private void initWindow() {
-        dialogWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialogWindow.addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
-        dialogWindow.setDimAmount(0f);
-        dialogWindow.setWindowAnimations(R.style.left_in_left_out_anim);
-    }
-
-    private void initLp() {
-        WindowManager.LayoutParams wmlp =dialogWindow.getAttributes();
-        wmlp.width = (int) mContext.getResources().getDimension(R.dimen.x_400);
-        wmlp.height = (int) mContext.getResources().getDimension(R.dimen.x_640);
-        wmlp.x = (int) getResources().getDimension(R.dimen.x_27);
-        wmlp.gravity = Gravity.START | Gravity.CENTER_VERTICAL;
-        dialogWindow.setAttributes(wmlp);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            dialogWindow.setBackgroundBlurRadius(50);//adb命令 wm disable-blur 查看系统是否支持
-        }
-    }
+//    private void initWindow() {
+//        dialogWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//        dialogWindow.addFlags(WindowManager.LayoutParams.FLAG_BLUR_BEHIND);
+//        dialogWindow.setDimAmount(0f);
+//        dialogWindow.setWindowAnimations(R.style.left_in_left_out_anim);
+//    }
+//
+//    private void initLp() {
+//        WindowManager.LayoutParams wmlp =dialogWindow.getAttributes();
+//        wmlp.width = (int) mContext.getResources().getDimension(R.dimen.x_400);
+//        wmlp.height = (int) mContext.getResources().getDimension(R.dimen.x_640);
+//        wmlp.x = (int) getResources().getDimension(R.dimen.x_27);
+//        wmlp.gravity = Gravity.START | Gravity.CENTER_VERTICAL;
+//        dialogWindow.setAttributes(wmlp);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+//            dialogWindow.setBackgroundBlurRadius(50);//adb命令 wm disable-blur 查看系统是否支持
+//        }
+//    }
 
     private void initData() {
         String pictureName = pqControl.getPictureModeName();
@@ -212,21 +233,22 @@ public class DisplaySettingsActivity extends BaseActivity implements View.OnKeyL
 
     @Override
     public boolean onKey(View v, int keyCode, KeyEvent event) {
-        if ((System.currentTimeMillis() - cur_time) < 100 && (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT || keyCode == KeyEvent.KEYCODE_DPAD_LEFT)) {
-            return true;
-        }
-        if (event.getAction() == KeyEvent.ACTION_DOWN)
-            cur_time = System.currentTimeMillis();
+//        if ((System.currentTimeMillis() - cur_time) < 100 && (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT || keyCode == KeyEvent.KEYCODE_DPAD_LEFT)) {
+//            return true;
+//        }
+//        if (event.getAction() == KeyEvent.ACTION_DOWN)
+//            cur_time = System.currentTimeMillis();
 
-        if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_DPAD_LEFT || keyCode == KeyEvent.KEYCODE_DPAD_RIGHT )) {
+        if ((event.getAction() == KeyEvent.ACTION_UP) && (keyCode == KeyEvent.KEYCODE_DPAD_LEFT || keyCode == KeyEvent.KEYCODE_DPAD_RIGHT )) {
             return true;
         }
-        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
-            dialog.dismiss();
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
+//            dialog.dismiss();
+            mavts.clearView(displaySettingsBinding.main);
             finish();
         }
         AudioManager audioManager = (AudioManager) v.getContext().getSystemService(Context.AUDIO_SERVICE);
-        if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT && event.getAction() == KeyEvent.ACTION_UP) {
+        if (keyCode == KeyEvent.KEYCODE_DPAD_LEFT && event.getAction() == KeyEvent.ACTION_DOWN) {
             int id = v.getId();
             if (id == R.id.rl_picture_mode) {
                 if (curPosition == 0) {
@@ -313,7 +335,7 @@ public class DisplaySettingsActivity extends BaseActivity implements View.OnKeyL
                 return true;
 //                    break;
             }
-        } else if (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT && event.getAction() == KeyEvent.ACTION_UP) {
+        } else if (keyCode == KeyEvent.KEYCODE_DPAD_RIGHT && event.getAction() == KeyEvent.ACTION_DOWN) {
             int id = v.getId();
             if (id == R.id.rl_color_temp) {
                 //色温

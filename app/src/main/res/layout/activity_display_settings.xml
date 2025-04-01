@@ -53,7 +53,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/x_17"
-            android:background="@drawable/arrow_right_bg"
+            android:background="@drawable/display_right_bg"
             android:duplicateParentState="true" />
 
         <View
@@ -62,7 +62,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/x_167"
-            android:background="@drawable/arrow_left_bg"
+            android:background="@drawable/display_left_bg"
             android:duplicateParentState="true" />
 
         <TextView
@@ -111,7 +111,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/x_17"
-            android:background="@drawable/arrow_right_bg"
+            android:background="@drawable/display_right_bg"
             android:duplicateParentState="true" />
 
         <View
@@ -121,7 +121,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/x_167"
-            android:background="@drawable/arrow_left_bg"
+            android:background="@drawable/display_left_bg"
             android:duplicateParentState="true" />
 
         <TextView
@@ -168,7 +168,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/x_17"
-            android:background="@drawable/arrow_right_bg"
+            android:background="@drawable/display_right_bg"
             android:duplicateParentState="true" />
 
         <View
@@ -178,7 +178,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/x_167"
-            android:background="@drawable/arrow_left_bg"
+            android:background="@drawable/display_left_bg"
             android:duplicateParentState="true" />
 
         <TextView
@@ -225,7 +225,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/x_17"
-            android:background="@drawable/arrow_right_bg"
+            android:background="@drawable/display_right_bg"
             android:duplicateParentState="true" />
 
         <View
@@ -235,7 +235,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/x_167"
-            android:background="@drawable/arrow_left_bg"
+            android:background="@drawable/display_left_bg"
             android:duplicateParentState="true" />
 
         <TextView
@@ -282,7 +282,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/x_17"
-            android:background="@drawable/arrow_right_bg"
+            android:background="@drawable/display_right_bg"
             android:duplicateParentState="true" />
 
         <View
@@ -292,7 +292,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/x_167"
-            android:background="@drawable/arrow_left_bg"
+            android:background="@drawable/display_left_bg"
             android:duplicateParentState="true" />
 
         <TextView
@@ -339,7 +339,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/x_17"
-            android:background="@drawable/arrow_right_bg"
+            android:background="@drawable/display_right_bg"
             android:duplicateParentState="true" />
 
         <View
@@ -349,7 +349,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/x_167"
-            android:background="@drawable/arrow_left_bg"
+            android:background="@drawable/display_left_bg"
             android:duplicateParentState="true" />
 
         <TextView
