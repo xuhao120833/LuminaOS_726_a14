@@ -377,6 +377,7 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
         int id = v.getId();
         if (id == R.id.rl_color_mode) {
             startNewActivity(PictureModeActivity.class);
+//            startNewActivity(DisplaySettingsActivity.class);
         } else if (id == R.id.rl_audio_mode) {
             startNewActivity(AudioModeActivity.class);
         } else if (id == R.id.rl_power_mode) {

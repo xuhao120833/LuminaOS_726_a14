@@ -17,7 +17,7 @@ public class Config {
     public boolean ipSetting = true;
 
     //亮度和色彩模式
-    public boolean brightAndColor = true;
+    public boolean brightAndColor = false;
     //图像模式
     public boolean displayPictureMode = true;
     //色温

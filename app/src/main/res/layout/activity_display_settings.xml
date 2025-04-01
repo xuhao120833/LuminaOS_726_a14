@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/x_400"
     android:layout_height="@dimen/y_640"
     android:id="@+id/main"
+    android:orientation="vertical"
     android:background="@drawable/float_background"
     >
 
     <FrameLayout
+        android:id="@+id/title_frame"
         android:layout_width="match_parent"
         android:layout_height="@dimen/x_88"
         android:background="@drawable/float_title_background">
         <TextView
-            style="@style/focusStyle"
             android:id="@+id/title"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
@@ -24,6 +25,348 @@
             android:textSize="@dimen/x_22" />
     </FrameLayout>
 
+    <RelativeLayout
+        android:id="@+id/rl_picture_mode"
+        style="@style/focusStyle"
+        android:layout_width="@dimen/x_367"
+        android:layout_height="@dimen/y_67"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/y_19"
+        android:background="@drawable/display_bg">
+
+        <TextView
+            android:id="@+id/picture_mode"
+            android:layout_width="@dimen/x_100"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/x_17"
+            android:duplicateParentState="true"
+            android:text="@string/picture_mode"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x_21"
+            android:singleLine="true"
+            android:ellipsize="marquee"/>
+
+        <View
+            android:layout_width="@dimen/x_33"
+            android:layout_height="@dimen/y_33"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/x_17"
+            android:background="@drawable/arrow_right_bg"
+            android:duplicateParentState="true" />
+
+        <View
+            android:layout_width="@dimen/x_33"
+            android:layout_height="@dimen/y_33"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/x_167"
+            android:background="@drawable/arrow_left_bg"
+            android:duplicateParentState="true" />
+
+        <TextView
+            android:id="@+id/picture_mode_tv"
+            android:layout_width="@dimen/x_117"
+            android:layout_height="@dimen/y_33"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/x_50"
+            android:duplicateParentState="true"
+            android:gravity="center"
+            android:text="@string/picture_mode_standard_name"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x_21"
+            android:singleLine="true"
+            android:ellipsize="marquee"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_brightness"
+        style="@style/focusStyle"
+        android:layout_width="@dimen/x_367"
+        android:layout_height="@dimen/y_67"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/y_19"
+        android:background="@drawable/display_bg">
+
+        <TextView
+            android:id="@+id/txt_brightness"
+            android:layout_width="@dimen/x_100"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/x_17"
+            android:duplicateParentState="true"
+            android:text="@string/brightness"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x_21"
+            android:singleLine="true"
+            android:ellipsize="marquee"/>
+
+        <View
+            android:id="@+id/brightness_right"
+            android:layout_width="@dimen/x_33"
+            android:layout_height="@dimen/y_33"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/x_17"
+            android:background="@drawable/arrow_right_bg"
+            android:duplicateParentState="true" />
+
+        <View
+            android:id="@+id/brightness_left"
+            android:layout_width="@dimen/x_33"
+            android:layout_height="@dimen/y_33"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/x_167"
+            android:background="@drawable/arrow_left_bg"
+            android:duplicateParentState="true" />
+
+        <TextView
+            android:id="@+id/txt_brightness_parcent"
+            android:layout_width="@dimen/x_117"
+            android:layout_height="@dimen/y_33"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/x_50"
+            android:duplicateParentState="true"
+            android:gravity="center"
+            android:text="100"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x_21" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_contrast"
+        style="@style/focusStyle"
+        android:layout_width="@dimen/x_367"
+        android:layout_height="@dimen/y_67"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/y_19"
+        android:background="@drawable/display_bg">
+
+        <TextView
+            android:id="@+id/txt_contrast"
+            android:layout_width="@dimen/x_100"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/x_17"
+            android:duplicateParentState="true"
+            android:text="@string/contrast"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x_21"
+            android:singleLine="true"
+            android:ellipsize="marquee"/>
+
+        <View
+            android:id="@+id/contrast_right"
+            android:layout_width="@dimen/x_33"
+            android:layout_height="@dimen/y_33"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/x_17"
+            android:background="@drawable/arrow_right_bg"
+            android:duplicateParentState="true" />
+
+        <View
+            android:id="@+id/contrast_left"
+            android:layout_width="@dimen/x_33"
+            android:layout_height="@dimen/y_33"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/x_167"
+            android:background="@drawable/arrow_left_bg"
+            android:duplicateParentState="true" />
+
+        <TextView
+            android:id="@+id/txt_contrast_percent"
+            android:layout_width="@dimen/x_117"
+            android:layout_height="@dimen/y_33"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/x_50"
+            android:duplicateParentState="true"
+            android:gravity="center"
+            android:text="100"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x_21" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_hue"
+        style="@style/focusStyle"
+        android:layout_width="@dimen/x_367"
+        android:layout_height="@dimen/y_67"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/y_19"
+        android:background="@drawable/display_bg">
+
+        <TextView
+            android:id="@+id/txt_hue"
+            android:layout_width="@dimen/x_100"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/x_17"
+            android:duplicateParentState="true"
+            android:text="@string/hue"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x_21"
+            android:singleLine="true"
+            android:ellipsize="marquee"/>
+
+        <View
+            android:id="@+id/hue_right"
+            android:layout_width="@dimen/x_33"
+            android:layout_height="@dimen/y_33"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/x_17"
+            android:background="@drawable/arrow_right_bg"
+            android:duplicateParentState="true" />
+
+        <View
+            android:id="@+id/hue_left"
+            android:layout_width="@dimen/x_33"
+            android:layout_height="@dimen/y_33"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/x_167"
+            android:background="@drawable/arrow_left_bg"
+            android:duplicateParentState="true" />
+
+        <TextView
+            android:id="@+id/txt_hue_percent"
+            android:layout_width="@dimen/x_117"
+            android:layout_height="@dimen/y_33"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/x_50"
+            android:duplicateParentState="true"
+            android:gravity="center"
+            android:text="100"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x_21" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_saturation"
+        style="@style/focusStyle"
+        android:layout_width="@dimen/x_367"
+        android:layout_height="@dimen/y_67"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/y_19"
+        android:background="@drawable/display_bg">
+
+        <TextView
+            android:id="@+id/txt_saturation"
+            android:layout_width="@dimen/x_100"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/x_17"
+            android:duplicateParentState="true"
+            android:text="@string/saturation"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x_21"
+            android:singleLine="true"
+            android:ellipsize="marquee"/>
+
+        <View
+            android:id="@+id/saturation_right"
+            android:layout_width="@dimen/x_33"
+            android:layout_height="@dimen/y_33"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/x_17"
+            android:background="@drawable/arrow_right_bg"
+            android:duplicateParentState="true" />
+
+        <View
+            android:id="@+id/saturation_left"
+            android:layout_width="@dimen/x_33"
+            android:layout_height="@dimen/y_33"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/x_167"
+            android:background="@drawable/arrow_left_bg"
+            android:duplicateParentState="true" />
+
+        <TextView
+            android:id="@+id/txt_saturation_percent"
+            android:layout_width="@dimen/x_117"
+            android:layout_height="@dimen/y_33"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/x_50"
+            android:duplicateParentState="true"
+            android:gravity="center"
+            android:text="100"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x_21" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_sharpness"
+        style="@style/focusStyle"
+        android:layout_width="@dimen/x_367"
+        android:layout_height="@dimen/y_67"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/y_19"
+        android:background="@drawable/display_bg">
+
+        <TextView
+            android:id="@+id/txt_sharpness"
+            android:layout_width="@dimen/x_100"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/x_17"
+            android:duplicateParentState="true"
+            android:text="@string/sharpness"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x_21"
+            android:singleLine="true"
+            android:ellipsize="marquee"/>
+
+        <View
+            android:id="@+id/sharpness_right"
+            android:layout_width="@dimen/x_33"
+            android:layout_height="@dimen/y_33"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/x_17"
+            android:background="@drawable/arrow_right_bg"
+            android:duplicateParentState="true" />
+
+        <View
+            android:id="@+id/sharpness_left"
+            android:layout_width="@dimen/x_33"
+            android:layout_height="@dimen/y_33"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/x_167"
+            android:background="@drawable/arrow_left_bg"
+            android:duplicateParentState="true" />
+
+        <TextView
+            android:id="@+id/txt_sharpness_percent"
+            android:layout_width="@dimen/x_117"
+            android:layout_height="@dimen/y_33"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/x_50"
+            android:duplicateParentState="true"
+            android:gravity="center"
+            android:text="100"
+            android:textColor="@color/white"
+            android:textSize="@dimen/x_21" />
+
+    </RelativeLayout>
 
 
-</FrameLayout>
+
+</LinearLayout>

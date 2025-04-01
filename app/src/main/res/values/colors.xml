@@ -6,6 +6,7 @@
     <color name="bar_color_default">#80000000</color>
     <color name="home_color_default">#802b2b2b</color>
     <color name="home_color_focus">#b0ffffff</color>
+    <color name="display_color_focus">#80ffffff</color>
     <color name="tv_color_default">#ffffff</color>
     <color name="tv_color_focus">#4684f3</color>
     <color name="switch_color_focus">#4684f3</color>

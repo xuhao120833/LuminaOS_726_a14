@@ -34,6 +34,11 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
+    <!--高斯模糊Dialog-->
+    <style name="BlurDialogTheme" parent="Theme.MaterialComponents.Dialog">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
     <style name="MyDialogStyleBottom" parent="Theme.AppCompat.Dialog">
         <item name="android:windowFrame">@null</item>
         <!-- 边框 -->
@@ -56,6 +61,11 @@
     <style name="right_in_right_out_anim" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/right_in_anim</item>
         <item name="android:windowExitAnimation">@anim/right_out_anim</item>
+    </style>
+
+    <style name="left_in_left_out_anim" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/left_in_anim</item>
+        <item name="android:windowExitAnimation">@anim/left_out_anim</item>
     </style>
 
     <style name="RoundedCornerShape">
