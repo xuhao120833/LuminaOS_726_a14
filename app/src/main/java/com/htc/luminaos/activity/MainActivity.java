@@ -42,6 +42,7 @@ import com.htc.luminaos.entry.SpecialApps;
 import com.htc.luminaos.receiver.AppCallBack;
 import com.htc.luminaos.receiver.AppReceiver;
 import com.htc.luminaos.receiver.BatteryReceiver;
+import com.htc.luminaos.receiver.DisplaySettingsReceiver;
 import com.htc.luminaos.receiver.UsbDeviceCallBack;
 import com.htc.luminaos.utils.BatteryCallBack;
 import com.htc.luminaos.utils.BlurImageView;
@@ -175,6 +176,8 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
 
     //电池
     private BatteryReceiver batteryReceiver = null;
+    //Display Settings 悬浮窗
+    private DisplaySettingsReceiver displaySettingsReceiver = null;
 
     private static String TAG = "MainActivity";
 
@@ -666,6 +669,12 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
         registerReceiver(refreshAppsReceiver, intentFilter);
         short_list = loadHomeAppData();
         handler.sendEmptyMessage(204);
+
+        //Display Settings悬浮窗
+        displaySettingsReceiver = new DisplaySettingsReceiver(getApplicationContext());
+        IntentFilter displayFilter = new IntentFilter();
+        displayFilter.addAction(DisplaySettingsReceiver.DisplayAction);
+        registerReceiver(displaySettingsReceiver,displayFilter);
     }
 
     ShortcutsAdapter.ItemCallBack itemCallBack = new ShortcutsAdapter.ItemCallBack() {
@@ -1357,6 +1366,7 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
         unregisterReceiver(usbDeviceReceiver);
         unregisterReceiver(appReceiver);
         unregisterReceiver(batteryReceiver);
+        unregisterReceiver(displaySettingsReceiver);
         super.onDestroy();
     }
 

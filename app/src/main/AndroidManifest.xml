@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.htc.luminaos"
     android:sharedUserId="android.uid.system">
+
     <!-- android:sharedUserId="android.uid.system" -->
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.REBOOT" />
@@ -47,6 +48,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+
         <activity
             android:name=".activity.AccountActivity"
             android:exported="false" />
@@ -62,6 +64,14 @@
             android:name=".receiver.VaFocusReceiver"
             android:enabled="true"
             android:exported="true" />
+        <receiver
+            android:name=".receiver.DisplaySettingsReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.htc.DISPLAY_SETTINGS"/>
+            </intent-filter>
+        </receiver>
         <receiver
             android:name=".receiver.BatteryReceiver"
             android:enabled="true"
@@ -90,19 +100,20 @@
 
         <activity
             android:name=".activity.BluetoothIncomingFileConfirmActivity"
-            android:theme="@style/TransparentActivity"
             android:configChanges="keyboard|keyboardHidden|navigation"
             android:excludeFromRecents="true"
-            android:exported="true" >
+            android:exported="true"
+            android:theme="@style/TransparentActivity">
             <intent-filter>
                 <action android:name="android.bluetooth.device.action.INCOMINGFILE_CONFIRM_REQUEST" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
             android:name=".activity.DisplaySettingsActivity"
-            android:theme="@style/TransparentActivity"
-            android:exported="true" />
+            android:exported="true"
+            android:theme="@style/TransparentActivity" />
         <activity
             android:name=".activity.WiredActivity"
             android:exported="true" />
