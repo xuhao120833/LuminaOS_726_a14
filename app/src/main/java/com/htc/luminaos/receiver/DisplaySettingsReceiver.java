@@ -183,12 +183,11 @@ public class DisplaySettingsReceiver extends BroadcastReceiver implements View.O
 
     @Override
     public boolean onKey(View v, int keyCode, KeyEvent event) {
-        if ((event.getAction() == KeyEvent.ACTION_UP) && (keyCode == KeyEvent.KEYCODE_DPAD_LEFT || keyCode == KeyEvent.KEYCODE_DPAD_RIGHT )) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+            mavts.clearView(displaySettingsBinding.main);
             return true;
         }
-        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
-//            dialog.dismiss();
-            mavts.clearView(displaySettingsBinding.main);
+        if ((event.getAction() == KeyEvent.ACTION_UP) && (keyCode == KeyEvent.KEYCODE_DPAD_LEFT || keyCode == KeyEvent.KEYCODE_DPAD_RIGHT )) {
             return true;
         }
         AudioManager audioManager = (AudioManager) v.getContext().getSystemService(Context.AUDIO_SERVICE);
