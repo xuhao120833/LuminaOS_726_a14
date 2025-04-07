@@ -1,5 +1,7 @@
 package com.htc.luminaos.widget;
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -33,6 +35,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -355,9 +358,15 @@ public class WifiConnectDialog extends BaseDialog implements View.OnClickListene
         Animation hyperspaceJumpAnimation = AnimationUtils.loadAnimation(
                 context, R.anim.loading_animation);
         // 使用ImageView显示动画
+        hyperspaceJumpAnimation.setInterpolator(new LinearInterpolator());
         spaceshipImage.startAnimation(hyperspaceJumpAnimation);
-        tipTextView.setText(msg);// 设置加载信息
+//        ObjectAnimator rotateAnim = ObjectAnimator.ofFloat(spaceshipImage, "rotation", 0f, 360f);
+//        rotateAnim.setDuration(1500);
+//        rotateAnim.setRepeatCount(ValueAnimator.INFINITE);
+//        rotateAnim.setInterpolator(new LinearInterpolator());
+//        rotateAnim.start();
 
+        tipTextView.setText(msg);// 设置加载信息
         Dialog connectingDialog = new Dialog(context, R.style.DialogTheme);// 创建自定义样式dialog
         connectingDialog.setOnDismissListener(new OnDismissListener() {
             @Override

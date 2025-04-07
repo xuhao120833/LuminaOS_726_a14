@@ -627,6 +627,7 @@ public class KeystoneUtils_726 {
         lb_X = 0;
         lb_Y = 0;
         UpdateKeystone();
+        SystemProperties.set("persist.sys.zoom.value", lb_X + "," + lb_Y + "," + lt_X + "," + lt_Y + "," + rt_X + "," + rt_Y + "," + rb_X + "," + rb_Y);
     }
 
     public static void writeGlobalSettings(Context context, String key, int value) {
