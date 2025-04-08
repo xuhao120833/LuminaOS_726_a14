@@ -24,6 +24,7 @@ import com.htc.luminaos.utils.FileUtils;
 import com.htc.luminaos.utils.KeystoneUtils;
 import com.htc.luminaos.utils.KeystoneUtils_726;
 import com.htc.luminaos.utils.ShareUtil;
+import com.htc.luminaos.utils.StartupTimer;
 import com.htc.luminaos.utils.Utils;
 
 import org.json.JSONObject;
@@ -56,6 +57,7 @@ public class MyApplication extends Application {
 
     @Override
     public void onCreate() {
+//        StartupTimer.mark("MyApplication.onCreate() start");
         super.onCreate();
         SharedPreferences sharedPreferences = ShareUtil.getInstans(getApplicationContext());
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -98,6 +100,9 @@ public class MyApplication extends Application {
         // 如果设置为false，则不自动track webview，如需对特定webview进行统计，需要对特定
         // webview调用trackWebView()即可。
         // StatService.autoTrace(Context context, boolean autoTrace, boolean autoTrackWebview)
+
+//        StartupTimer.mark("MyApplication.onCreate() end");
+//        StartupTimer.print(" MyApplication StartupTime");
     }
 
 

@@ -100,6 +100,7 @@ import com.htc.luminaos.utils.LanguageUtil;
 import com.htc.luminaos.utils.LogUtils;
 import com.htc.luminaos.utils.NetWorkUtils;
 import com.htc.luminaos.utils.ShareUtil;
+import com.htc.luminaos.utils.StartupTimer;
 import com.htc.luminaos.utils.SystemPropertiesUtil;
 import com.htc.luminaos.utils.TimeUtils;
 import com.htc.luminaos.utils.ToastUtil;
@@ -284,23 +285,33 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        StartupTimer.mark("MainActivity.onCreate() start");
         super.onCreate(savedInstanceState);
         //定制逻辑 xuhao add 20240717
         try {
             customBinding = ActivityMainCustomBinding.inflate(LayoutInflater.from(this));
+            StartupTimer.mark("ActivityMainCustomBinding.inflate完成");
             setContentView(customBinding.getRoot());
+            StartupTimer.mark("setContentView(customBinding.getRoot())完成");
             setDefaultBackgroundById();
+            StartupTimer.mark("setDefaultBackgroundById完成");
             initViewCustom();
             initDataCustom();
+            StartupTimer.mark("initDataCustom完成");
             initReceiver();
+            StartupTimer.mark("initReceiver完成");
             wifiManager = (WifiManager) getSystemService(Service.WIFI_SERVICE);
             storageManager = (StorageManager) getSystemService(Context.STORAGE_SERVICE);
+            StartupTimer.mark("storageManager完成");
             localDevicesList = new ArrayList<StorageVolume>();
+            StartupTimer.mark("localDevicesList完成");
             devicesPathAdd();
+            StartupTimer.mark("devicesPathAdd完成");
 //            countUsbDevices(getApplicationContext());
             Log.d(TAG, " onCreate快捷图标 short_list " + short_list.size());
             //以太网检测
             isEthernetConnect(getApplicationContext());
+            StartupTimer.mark("onCreate完成");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -308,6 +319,7 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
 
     @Override
     protected void onResume() {
+        StartupTimer.mark("onResume开始");
         super.onResume();
         try {
             updateTime();
@@ -322,7 +334,9 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
         } catch (Exception e) {
             e.printStackTrace();
         }
+        StartupTimer.mark("onResume完成");
 
+        StartupTimer.print(" MainActivity StartupTime");
     }
 
     private void initView() {
@@ -595,6 +609,7 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
                 short_list = loadHomeAppData();
                 Log.d(TAG, " initDataCustom快捷图标 short_list " + short_list.size());
                 handler.sendEmptyMessage(204);
+//                initReceiver();
             }
         }).start();
     }
@@ -1684,14 +1699,18 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
     @SuppressLint("UseCompatLoadingForDrawables")
     private void setDefaultBackgroundById() {
         //如果用户自主修改了背景，那么重启之后不再设置默认背景start
+        StartupTimer.mark("setDefaultBackgroundById开始");
         SharedPreferences sharedPreferences = ShareUtil.getInstans(getApplicationContext());
+        StartupTimer.mark("ShareUtil.getInstans完成");
         int selectBg = sharedPreferences.getInt(Contants.SelectWallpaperLocal, -1);
+        StartupTimer.mark("getInt(Contants.SelectWallpaperLocal完成");
         if (selectBg != -1) {
             Log.d(TAG, " setDefaultBackground 用户已经自主修改了背景");
             return;
         }
         //背景控制end
         String defaultbg = sharedPreferences.getString(Contants.DefaultBg, "1");
+        StartupTimer.mark("getString(Contants.DefaultBg完成");
 //        String defaultbg = MyApplication.config.defaultbackground;
         if (defaultbg.isEmpty()) {
             defaultbg = "1";
@@ -1699,6 +1718,7 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
         int number = Integer.parseInt(defaultbg);
         Log.d(TAG, " setDefaultBackground number " + number);
         Log.d(TAG, " setDefaultBackground defaultbg " + defaultbg);
+        StartupTimer.mark("Integer.parseInt(defaultbg)完成");
         if(Utils.customBackground) {
             String path = (String) Utils.drawables.get(number-1);
             Log.d(TAG, " loadImageFromPath path " + path);
@@ -1721,6 +1741,7 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
                 setDefaultBg(drawable);
             }
         }
+        StartupTimer.mark("setDefaultBackgroundById完成");
     }
 
 //    private void setDefaultBackground() {

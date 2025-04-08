@@ -13,12 +13,13 @@ public class ShareUtil {
     private static SharedPreferences preferences;
 
     private static String TAG = "ShareUtil";
-    public static SharedPreferences getInstans(Context context){
-        if (preferences==null){
-            synchronized (ShareUtil.class){
-                if (preferences==null)
-                    preferences = context.getSharedPreferences(Contants.FILE_NAME,
-                            Context.MODE_PRIVATE);
+
+    public static SharedPreferences getInstans(Context context) {
+        if (preferences == null) {
+            synchronized (ShareUtil.class) {
+                if (preferences == null) {
+                    preferences = context.getSharedPreferences(Contants.FILE_NAME, Context.MODE_PRIVATE);
+                }
             }
         }
         return preferences;
@@ -82,7 +83,7 @@ public class ShareUtil {
 
 
     public static void clear(Context context) {
-        Log.d(TAG," clear清空SharedPreferences");
+        Log.d(TAG, " clear清空SharedPreferences");
         SharedPreferences sp = getInstans(context);
         SharedPreferences.Editor editor = sp.edit();
         editor.clear();
