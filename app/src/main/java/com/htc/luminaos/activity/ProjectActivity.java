@@ -254,10 +254,20 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
             projectBinding.rlCalibration.setVisibility(View.VISIBLE);
         }
 
-        projectBinding.rlColorMode.requestFocus();
-        projectBinding.rlColorMode.requestFocusFromTouch();
-//        projectBinding.rlProjectMode.requestFocus();
-//        projectBinding.rlProjectMode.requestFocusFromTouch();
+        requestFirstItemFocus();
+    }
+
+    private void requestFirstItemFocus() {
+        if (MyApplication.config.brightAndColor) {
+            projectBinding.rlColorMode.requestFocus();
+            projectBinding.rlColorMode.requestFocusFromTouch();
+        } else if (MyApplication.config.AudioMode) {
+            projectBinding.rlAudioMode.requestFocus();
+            projectBinding.rlAudioMode.requestFocusFromTouch();
+        } else {
+            projectBinding.rlProjectMode.requestFocus();
+            projectBinding.rlProjectMode.requestFocusFromTouch();
+        }
     }
 
     private void initData() {

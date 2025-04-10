@@ -36,10 +36,13 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -115,7 +118,7 @@ public class WifiConnectDialog extends BaseDialog implements View.OnClickListene
         } else if (id == R.id.cancel) {
             dismiss();
         } else if (id == R.id.password_visibility) {
-            Log.d(TAG," wifiConnectDialogBinding.etPassword.getInputType() "+wifiConnectDialogBinding.etPassword.getInputType());
+            Log.d(TAG, " wifiConnectDialogBinding.etPassword.getInputType() " + wifiConnectDialogBinding.etPassword.getInputType());
             if (wifiConnectDialogBinding.etPassword.getInputType() == (InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD)) {
                 // 显示密码
                 wifiConnectDialogBinding.etPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
@@ -233,7 +236,7 @@ public class WifiConnectDialog extends BaseDialog implements View.OnClickListene
     BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if(isInitialStickyBroadcast()){//把注册完就发送的粘性(初始状态)广播过滤掉。
+            if (isInitialStickyBroadcast()) {//把注册完就发送的粘性(初始状态)广播过滤掉。
                 return;
             }
             String action = intent.getAction();
@@ -242,7 +245,7 @@ public class WifiConnectDialog extends BaseDialog implements View.OnClickListene
                 //请求连接的状态发生改变，（已经加入到一个接入点）
                 int supl_error = intent.getIntExtra(WifiManager.EXTRA_SUPPLICANT_ERROR, -1);
                 if (supl_error == WifiManager.ERROR_AUTHENTICATING) {
-                    Utils.logIntentExtras(intent,TAG);
+                    Utils.logIntentExtras(intent, TAG);
                     Log.d(TAG, " 收到SUPPLICANT_STATE_CHANGED_ACTION,执行passwordErrorDialog " + supl_error);
                     if (passwordErrorDialog == null) {
                         passwordErrorDialog = new PasswordErrorDialog(mContext, R.style.DialogTheme);
@@ -344,6 +347,28 @@ public class WifiConnectDialog extends BaseDialog implements View.OnClickListene
 
             }
         });
+
+        wifiConnectDialogBinding.etPassword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                Log.d(TAG, "actionId " + actionId);
+                if (actionId == EditorInfo.IME_ACTION_NEXT || actionId == EditorInfo.IME_ACTION_DONE
+                        || actionId == EditorInfo.IME_ACTION_SEND || actionId == EditorInfo.IME_ACTION_GO) {
+                    //隐藏软键盘
+                    InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    if (imm != null) {
+                        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                    }
+                    v.clearFocus();
+                    wifiConnectDialogBinding.enter.requestFocus();
+                    wifiConnectDialogBinding.enter.performClick();
+//                    Toast.makeText(mContext, " 生效了Baby ", Toast.LENGTH_LONG).show();
+                    return true;
+                }
+                return false;
+            }
+        });
+
     }
 
 
