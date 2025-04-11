@@ -299,5 +299,6 @@
     <string name="account_message4">Bu, veri trafiği ve pil gücünden tasarruf etmenizi sağlar,</string>
     <string name="account_message5">ancak her hesabı manuel olarak senkronize etmeniz gerekir, böylece en son bilgilere sahip olabilirsiniz,</string>
     <string name="account_message6">ve güncellemeler olduğunda bildirim almazsınız.</string>
+    <string name="reseting_factory">Fabrika ayarları geri yükleniyor, lütfen bekleyin...</string>
 </resources>
 

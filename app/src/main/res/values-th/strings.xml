@@ -299,5 +299,6 @@
     <string name="account_message4">วิธีนี้จะช่วยประหยัดการใช้ข้อมูลและพลังงานแบตเตอรี่</string>
     <string name="account_message5">แต่คุณจะต้องซิงค์บัญชีแต่ละบัญชีด้วยตัวเองเพื่อให้ได้ข้อมูลล่าสุด</string>
     <string name="account_message6">และจะไม่ได้รับการแจ้งเตือนเมื่อมีการอัปเดต</string>
+    <string name="reseting_factory">กำลังคืนค่าโรงงาน กรุณารอสักครู่...</string>
 </resources>
 

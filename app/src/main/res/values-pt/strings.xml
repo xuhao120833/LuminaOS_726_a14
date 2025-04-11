@@ -299,6 +299,7 @@
     <string name="account_message4">Isso pode economizar dados e bateria,</string>
     <string name="account_message5">mas você precisará sincronizar manualmente cada conta para obter as informações mais recentes,</string>
     <string name="account_message6">e não receberá notificações quando houver atualizações.</string>
+    <string name="reseting_factory">Restaurando as configurações de fábrica, aguarde...</string>
 </resources>
 
 

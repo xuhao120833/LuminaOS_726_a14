@@ -299,5 +299,6 @@
     <string name="account_message4">Dette kan spare data og batterilevetid,</string>
     <string name="account_message5">men du skal manuelt synkronisere hver konto for at få de nyeste oplysninger,</string>
     <string name="account_message6">og du vil ikke modtage notifikationer, når der er opdateringer.</string>
+    <string name="reseting_factory">Gendanner fabriksindstillinger, vent venligst...</string>
 </resources>
 

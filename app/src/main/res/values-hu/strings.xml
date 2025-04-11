@@ -299,6 +299,7 @@
     <string name="account_message4">Ez segíthet megtakarítani adatforgalmat és akkumulátor energiát,</string>
     <string name="account_message5">de minden fiókhoz manuálisan kell szinkronizálni, hogy a legfrissebb információkat kapja,</string>
     <string name="account_message6">és nem fog értesítést kapni, ha frissítés érkezik.</string>
+    <string name="reseting_factory">Gyári beállítások visszaállítása folyamatban, kérem várjon...</string>
 </resources>
 
 

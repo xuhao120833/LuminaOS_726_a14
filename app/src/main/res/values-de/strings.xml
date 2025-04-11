@@ -299,5 +299,6 @@
 	<string name="account_message4">Dies spart Datenvolumen und Akkulaufzeit.</string>
 	<string name="account_message5">Jedoch müssen Sie jedes Konto manuell synchronisieren, um die neuesten Informationen zu erhalten.</string>
 	<string name="account_message6">Und Sie erhalten keine Benachrichtigungen, wenn es Updates gibt.</string>
+	<string name="reseting_factory">Werkseinstellungen werden wiederhergestellt, bitte warten...</string>
 </resources>
 

@@ -299,5 +299,6 @@
     <string name="account_message4">Це допоможе зекономити трафік і заряд батареї,</string>
     <string name="account_message5">але вам потрібно буде вручну синхронізувати кожен обліковий запис, щоб отримати останню інформацію,</string>
     <string name="account_message6">і ви не отримаєте сповіщень про оновлення.</string>
+    <string name="reseting_factory">Відновлення заводських налаштувань, будь ласка, зачекайте...</string>
 </resources>
 

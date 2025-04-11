@@ -299,4 +299,5 @@
     <string name="account_message4">Dit kan data en batterijvermogen besparen,</string>
     <string name="account_message5">maar u moet elk account handmatig synchroniseren om de nieuwste informatie te verkrijgen,</string>
     <string name="account_message6">en u ontvangt geen meldingen wanneer er updates zijn.</string>
+    <string name="reseting_factory">Bezig met fabrieksinstellingen herstellen, even geduld...</string>
 </resources>

@@ -299,4 +299,5 @@
     <string name="account_message4">This can save data usage and battery life,</string>
     <string name="account_message5">but you will need to manually sync each account to get the latest information,</string>
     <string name="account_message6">and you will not receive notifications when updates are available.</string>
+    <string name="reseting_factory">Restoring factory settings, please wait...</string>
 </resources>

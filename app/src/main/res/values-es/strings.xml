@@ -299,4 +299,5 @@
 	<string name="account_message4">Esto puede ahorrar datos móviles y batería,</string>
 	<string name="account_message5">pero necesitarás sincronizar manualmente cada cuenta para obtener la información más reciente,</string>
 	<string name="account_message6">y no recibirás notificaciones cuando haya actualizaciones.</string>
+	<string name="reseting_factory">Restableciendo configuración de fábrica, espere por favor...</string>
 </resources>

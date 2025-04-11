@@ -299,4 +299,5 @@
     <string name="account_message4">Ini dapat menjimatkan penggunaan data dan bateri,</string>
     <string name="account_message5">tetapi anda perlu menyegerakkan setiap akaun secara manual untuk mendapatkan maklumat terkini,</string>
     <string name="account_message6">dan anda tidak akan menerima pemberitahuan apabila terdapat kemas kini.</string>
+    <string name="reseting_factory">Sedang memulihkan ke tetapan kilang, sila tunggu...</string>
 </resources>

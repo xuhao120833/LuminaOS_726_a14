@@ -299,4 +299,5 @@
     <string name="account_message4">이렇게 하면 데이터 사용량과 배터리 수명이 절약됩니다,</string>
     <string name="account_message5">하지만 각 계정을 수동으로 동기화해야 최신 정보를 받을 수 있습니다,</string>
     <string name="account_message6">그리고 업데이트가 있을 때 알림을 받지 못합니다.</string>
+    <string name="reseting_factory">공장 초기화 중입니다. 잠시만 기다려주세요...</string>
 </resources>

@@ -299,4 +299,5 @@
 	<string name="account_message4">Cela permet d\'économiser les données et la batterie,</string>
 	<string name="account_message5">mais vous devrez synchroniser manuellement chaque compte pour obtenir les informations les plus récentes,</string>
 	<string name="account_message6">et vous ne recevrez pas de notifications lorsque des mises à jour seront disponibles.</string>
+	<string name="reseting_factory">Restauration des paramètres d\'usine, veuillez patienter...</string>
 </resources>

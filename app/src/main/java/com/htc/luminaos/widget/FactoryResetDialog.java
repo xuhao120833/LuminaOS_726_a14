@@ -42,7 +42,7 @@ public class FactoryResetDialog extends Dialog implements View.OnClickListener {
             dismiss();
 
             ProgressDialog progressDialog = new ProgressDialog(mContext);
-            progressDialog.setMessage("正在恢复出厂设置，请稍候…");
+            progressDialog.setMessage(mContext.getString(R.string.reseting_factory));
             progressDialog.setCancelable(false);
             progressDialog.show();
 

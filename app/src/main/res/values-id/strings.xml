@@ -299,4 +299,5 @@
     <string name="account_message4">Ini akan menghemat data dan daya baterai,</string>
     <string name="account_message5">tetapi Anda perlu menyinkronkan setiap akun secara manual untuk mendapatkan informasi terbaru,</string>
     <string name="account_message6">dan Anda tidak akan menerima pemberitahuan saat ada pembaruan.</string>
+    <string name="reseting_factory">Mengembalikan ke setelan pabrik, harap tunggu...</string>
 </resources>
