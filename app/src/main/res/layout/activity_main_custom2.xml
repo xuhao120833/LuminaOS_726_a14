@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_main"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    tools:context=".activity.MainActivity">
+
+<!--    第一排-->
+    <FrameLayout
+        android:layout_width="@dimen/x_350"
+        android:layout_height="@dimen/y_133"
+        android:layout_marginStart="@dimen/x_57">
+
+        <ImageView
+            android:id="@+id/brand"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:layout_gravity="start|center_vertical" />
+
+    </FrameLayout>
+
+<!--    <ImageView-->
+<!--        android:id="@+id/brand"-->
+<!--        android:layout_width="@dimen/x_271"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="@dimen/x_57"-->
+<!--        android:layout_marginTop="@dimen/y_49"-->
+<!--        android:scaleType="fitStart"-->
+<!--        android:src="@drawable/ceshibrand2" />-->
+
+    <FrameLayout
+        android:id="@+id/time_frame"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y_20"
+        >
+        <TextView
+            android:id="@+id/time_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="11:01"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/y_64"
+            android:textStyle="bold" />
+
+    </FrameLayout>
+
+<!--    <TextView-->
+<!--        android:id="@+id/time_tv"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="836px"-->
+<!--        android:layout_marginTop="30px"-->
+<!--        android:text="11:01"-->
+<!--        android:textColor="#ffffff"-->
+<!--        android:textSize="96px"-->
+<!--        android:textStyle="bold" />-->
+
+    <RelativeLayout
+        android:id="@+id/rl_battery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y_40"
+        android:layout_marginEnd="@dimen/x_20"
+        style="@style/focusStyle"
+        android:clickable="true"
+        android:visibility="gone"
+        android:background="@drawable/circle_bar_bg_custom"
+        android:layout_toStartOf="@+id/rl_usb_connect">
+
+        <ImageView
+            android:id="@+id/battery"
+            android:layout_width="@dimen/x_53"
+            android:layout_height="@dimen/y_53"
+            android:padding="@dimen/y_3"
+            android:src="@drawable/battery_4" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_usb_connect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y_40"
+        android:layout_marginEnd="@dimen/x_20"
+        style="@style/focusStyle"
+        android:clickable="true"
+        android:visibility="gone"
+        android:background="@drawable/circle_bar_bg_custom"
+        android:layout_toStartOf="@+id/rl_clear_memory">
+
+        <ImageView
+            android:id="@+id/usb_connect"
+            android:layout_width="@dimen/x_53"
+            android:layout_height="@dimen/y_53"
+            android:padding="@dimen/y_3"
+            android:src="@drawable/usb_green" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_clear_memory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y_40"
+        android:layout_marginEnd="@dimen/x_20"
+        style="@style/focusStyle"
+        android:clickable="true"
+        android:background="@drawable/circle_bar_bg_custom"
+        android:layout_toStartOf="@+id/rl_wallpapers">
+
+        <ImageView
+            android:id="@+id/clear_memory"
+            android:layout_width="@dimen/x_53"
+            android:layout_height="@dimen/y_53"
+            android:padding="@dimen/y_3"
+            android:src="@drawable/bar_clean" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_wallpapers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y_40"
+        android:layout_marginEnd="@dimen/x_20"
+        style="@style/focusStyle"
+        android:clickable="true"
+        android:background="@drawable/circle_bar_bg_custom"
+        android:layout_toStartOf="@+id/rl_bluetooth">
+
+        <ImageView
+            android:id="@+id/wallpaper"
+            android:layout_width="@dimen/x_53"
+            android:layout_height="@dimen/y_53"
+            android:padding="@dimen/y_3"
+            android:src="@drawable/wapper_custom" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_bluetooth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y_40"
+        android:layout_marginEnd="@dimen/x_20"
+        style="@style/focusStyle"
+        android:clickable="true"
+        android:background="@drawable/circle_bar_bg_custom"
+        android:layout_toStartOf="@+id/rl_ethernet">
+
+        <ImageView
+            android:id="@+id/home_bluetooth"
+            android:layout_width="@dimen/x_53"
+            android:layout_height="@dimen/y_53"
+            android:padding="@dimen/y_2"
+            android:layout_centerInParent="true"
+            android:src="@drawable/bt_custom2" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_ethernet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y_40"
+        android:layout_marginEnd="@dimen/x_20"
+        style="@style/focusStyle"
+        android:clickable="true"
+        android:visibility="gone"
+        android:background="@drawable/circle_bar_bg_custom"
+        android:layout_toStartOf="@+id/rl_wifi">
+
+        <ImageView
+            android:id="@+id/home_ethernet"
+            android:layout_width="@dimen/x_53"
+            android:layout_height="@dimen/y_53"
+            android:padding="@dimen/y_2"
+            android:src="@drawable/bar_ethernet_green" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_wifi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y_40"
+        android:layout_marginEnd="@dimen/x_50"
+        style="@style/focusStyle"
+        android:clickable="true"
+        android:background="@drawable/circle_bar_bg_custom"
+        android:layout_alignParentEnd="true">
+
+        <ImageView
+            android:id="@+id/home_wifi"
+            android:layout_width="@dimen/x_53"
+            android:layout_height="@dimen/y_53"
+            android:padding="@dimen/y_3"
+            android:src="@drawable/wifi_custom_4" />
+    </RelativeLayout>
+
+
+
+
+<!--   第二排 -->
+    <RelativeLayout
+        android:id="@+id/home_netflix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/focusStyle"
+        android:layout_marginStart="@dimen/x_45"
+        android:layout_marginTop="@dimen/y_178">
+
+        <ImageView
+            android:id="@+id/icon1"
+            android:layout_width="@dimen/x_277"
+            android:layout_height="@dimen/y_167"
+            android:scaleType="fitXY"
+            android:src="@drawable/home_app_netflix" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/home_youtube"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/x_27"
+        android:layout_marginTop="@dimen/y_178"
+        style="@style/focusStyle"
+        android:layout_toEndOf="@+id/home_netflix">
+
+        <ImageView
+            android:id="@+id/icon2"
+            android:layout_width="@dimen/x_277"
+            android:layout_height="@dimen/y_167"
+            android:scaleType="fitXY"
+            android:src="@drawable/home_app_youtube" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/home_disney"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y_178"
+        android:layout_marginStart="@dimen/x_27"
+        style="@style/focusStyle"
+        android:layout_toEndOf="@+id/home_youtube">
+
+        <ImageView
+            android:id="@+id/icon3"
+            android:layout_width="@dimen/x_277"
+            android:layout_height="@dimen/y_167"
+            android:scaleType="fitXY"
+            android:src="@drawable/home_app_disney" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_Google"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/focusStyle"
+        android:layout_marginTop="@dimen/y_178"
+        android:layout_marginStart="@dimen/x_27"
+        android:layout_toEndOf="@+id/home_disney">
+
+        <ImageView
+            android:id="@+id/icon4"
+            android:layout_width="@dimen/x_277"
+            android:layout_height="@dimen/y_167"
+            android:scaleType="fitXY"
+            android:src="@drawable/appstore2" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/home_eshare"
+        android:layout_width="@dimen/x_277"
+        android:layout_height="@dimen/y_67"
+        android:layout_marginStart="@dimen/x_45"
+        android:layout_marginTop="@dimen/y_51"
+        android:paddingStart="@dimen/y_24"
+        style="@style/focusStyle"
+        android:background="@drawable/home_bg_custom3"
+        android:layout_below="@+id/home_netflix">
+
+        <ImageView
+            android:id="@+id/eshare_icon"
+            android:layout_width="@dimen/x_60"
+            android:layout_height="match_parent"
+            android:src="@drawable/home_icon_eshare"
+            />
+
+        <TextView
+            android:id="@+id/eshare_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/y_26"
+            android:textColor="#ffffff"
+            android:text="@string/Eshare"
+            android:gravity="center"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:letterSpacing="0.05"
+            android:layout_toEndOf="@+id/eshare_icon">
+
+        </TextView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_usb"
+        android:layout_width="@dimen/x_277"
+        android:layout_height="@dimen/y_67"
+        android:layout_toEndOf="@id/home_eshare"
+        android:layout_marginStart="@dimen/x_27"
+        android:layout_marginTop="@dimen/y_51"
+        android:paddingStart="@dimen/y_24"
+        style="@style/focusStyle"
+        android:background="@drawable/home_bg_custom3"
+        android:layout_below="@+id/home_youtube">
+
+        <ImageView
+            android:id="@+id/file_icon"
+            android:layout_width="@dimen/x_60"
+            android:layout_height="match_parent"
+            android:src="@drawable/home_icon_file" />
+
+        <TextView
+            android:id="@+id/file_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/y_26"
+            android:textColor="#ffffff"
+            android:text="@string/Filemanager"
+            android:gravity="center"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:letterSpacing="0.05"
+            android:layout_toEndOf="@+id/file_icon">
+
+        </TextView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_hdmi1"
+        android:layout_width="@dimen/x_277"
+        android:layout_height="@dimen/y_67"
+        android:layout_toEndOf="@id/rl_usb"
+        android:layout_marginStart="@dimen/x_27"
+        android:layout_marginTop="@dimen/y_51"
+        android:paddingStart="@dimen/x_24"
+        style="@style/focusStyle"
+        android:background="@drawable/home_bg_custom3"
+        android:layout_below="@+id/home_disney">
+
+        <ImageView
+            android:id="@+id/hdmi_icon"
+            android:layout_width="@dimen/x_60"
+            android:layout_height="match_parent"
+            android:src="@drawable/home_icon_hdmi" />
+
+        <TextView
+            android:id="@+id/hdmi_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/y_26"
+            android:textColor="#ffffff"
+            android:text="HDMI"
+            android:gravity="center"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:letterSpacing="0.05"
+            android:layout_toEndOf="@+id/hdmi_icon">
+
+        </TextView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_settings"
+        android:layout_width="@dimen/x_277"
+        android:layout_height="@dimen/y_67"
+        android:layout_toEndOf="@id/rl_hdmi1"
+        android:layout_marginStart="@dimen/x_27"
+        android:layout_marginTop="@dimen/y_51"
+        android:paddingStart="@dimen/x_24"
+        style="@style/focusStyle"
+        android:background="@drawable/home_bg_custom3"
+        android:layout_below="@+id/rl_Google">
+
+        <ImageView
+            android:id="@+id/settings_icon"
+            android:layout_width="@dimen/x_60"
+            android:layout_height="match_parent"
+            android:src="@drawable/home_icon_set" />
+
+        <TextView
+            android:id="@+id/settings_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="@dimen/y_26"
+            android:textColor="#ffffff"
+            android:text="@string/settings"
+            android:gravity="center"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:letterSpacing="0.05"
+            android:layout_toEndOf="@+id/settings_icon">
+
+        </TextView>
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/shortcuts_rv"
+        android:layout_width="@dimen/x_1187"
+        android:layout_height="@dimen/y_141"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/x_47"
+        android:layout_marginEnd="@dimen/x_47"
+        android:layout_marginBottom="@dimen/y_28"
+        android:padding="@dimen/y_17"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:background="@drawable/home_recyclerview_bg2"
+        tools:listitem="@layout/shortcuts_item_custom" />
+
+
+</RelativeLayout>

@@ -289,6 +289,7 @@
 
         <TextView
             android:id="@+id/eshare_text"
+            style="@style/unfocusStyle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textSize="@dimen/y_27"
@@ -296,6 +297,8 @@
             android:text="@string/Eshare"
             android:gravity="center"
             android:textStyle="bold"
+            android:singleLine="true"
+            android:ellipsize="marquee"
             android:layout_toEndOf="@+id/eshare_icon">
 
         </TextView>
@@ -321,14 +324,19 @@
             android:src="@drawable/home_icon_file" />
 
         <TextView
+            android:id="@+id/file_text"
+            style="@style/unfocusStyle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="@dimen/y_27"
-            android:textColor="#ffffff"
-            android:text="@string/Filemanager"
+            android:layout_marginStart="2dp"
+            android:layout_toEndOf="@+id/file_icon"
+            android:ellipsize="marquee"
             android:gravity="center"
-            android:textStyle="bold"
-            android:layout_toEndOf="@+id/file_icon">
+            android:singleLine="true"
+            android:text="@string/Filemanager"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/y_27"
+            android:textStyle="bold">
 
         </TextView>
     </RelativeLayout>
@@ -353,6 +361,7 @@
 
         <TextView
             android:id="@+id/hdmi_text"
+            style="@style/unfocusStyle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textSize="@dimen/y_27"
@@ -360,6 +369,8 @@
             android:text="HDMI"
             android:gravity="center"
             android:textStyle="bold"
+            android:singleLine="true"
+            android:ellipsize="marquee"
             android:layout_toEndOf="@+id/hdmi_icon">
 
         </TextView>
@@ -386,6 +397,7 @@
 
         <TextView
             android:id="@+id/settings_text"
+            style="@style/unfocusStyle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textSize="@dimen/y_27"
@@ -393,6 +405,8 @@
             android:text="@string/settings"
             android:gravity="center"
             android:textStyle="bold"
+            android:singleLine="true"
+            android:ellipsize="marquee"
             android:layout_toEndOf="@+id/settings_icon">
 
         </TextView>

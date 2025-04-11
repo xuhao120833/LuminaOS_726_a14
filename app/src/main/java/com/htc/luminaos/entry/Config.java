@@ -29,6 +29,8 @@ public class Config {
     public String statusbar_bt = "";
     public String statusbar_wifi = "";
 
+    public int layout_select = 1;
+
     public boolean displayPictureModeWeiMiTitle = false;
 
     public boolean brightness = true;

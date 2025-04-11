@@ -75,6 +75,8 @@ import com.htc.luminaos.adapter.ShortcutsAdapter;
 import com.htc.luminaos.adapter.ShortcutsAdapterCustom;
 import com.htc.luminaos.databinding.ActivityMainBinding;
 import com.htc.luminaos.databinding.ActivityMainCustomBinding;
+import com.htc.luminaos.databinding.ActivityMainCustom2Binding;
+import com.htc.luminaos.databinding.ActivityMainCustom3Binding;
 import com.htc.luminaos.entry.AppInfoBean;
 import com.htc.luminaos.entry.AppSimpleBean;
 import com.htc.luminaos.entry.AppsData;
@@ -107,6 +109,7 @@ import com.htc.luminaos.utils.ToastUtil;
 import com.htc.luminaos.utils.Uri;
 import com.htc.luminaos.utils.Utils;
 import com.htc.luminaos.utils.VerifyUtil;
+import com.htc.luminaos.utils.MainCustomBindingWrapper;
 import com.htc.luminaos.widget.ManualQrDialog;
 import com.htc.luminaos.widget.SpacesItemDecoration;
 
@@ -149,7 +152,7 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
 
     private ActivityMainBinding mainBinding;
 
-    public ActivityMainCustomBinding customBinding;
+    public MainCustomBindingWrapper customBinding;
     private ArrayList<ShortInfoBean> short_list = new ArrayList<>();
 
     boolean get_default_url = false;
@@ -289,9 +292,10 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
         super.onCreate(savedInstanceState);
         //定制逻辑 xuhao add 20240717
         try {
-            customBinding = ActivityMainCustomBinding.inflate(LayoutInflater.from(this));
+            chooseLayout();
+//            customBinding = ActivityMainCustomBinding.inflate(LayoutInflater.from(this));
             StartupTimer.mark("ActivityMainCustomBinding.inflate完成");
-            setContentView(customBinding.getRoot());
+            setContentView(customBinding.root);
             StartupTimer.mark("setContentView(customBinding.getRoot())完成");
             setDefaultBackgroundById();
             StartupTimer.mark("setDefaultBackgroundById完成");
@@ -337,6 +341,20 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
         StartupTimer.mark("onResume完成");
 
         StartupTimer.print(" MainActivity StartupTime");
+    }
+
+    private void chooseLayout() {
+        Log.d(TAG, " chooseLayout MyApplication.config.layout_select " + MyApplication.config.layout_select);
+        if (MyApplication.config.layout_select == 2) {
+            ActivityMainCustom2Binding binding2 = ActivityMainCustom2Binding.inflate(LayoutInflater.from(this));
+            customBinding = new MainCustomBindingWrapper(binding2);
+        } else if (MyApplication.config.layout_select == 3) {
+            ActivityMainCustom3Binding binding3 = ActivityMainCustom3Binding.inflate(LayoutInflater.from(this));
+            customBinding = new MainCustomBindingWrapper(binding3);
+        } else {
+            ActivityMainCustomBinding binding1 = ActivityMainCustomBinding.inflate(LayoutInflater.from(this));
+            customBinding = new MainCustomBindingWrapper(binding1);
+        }
     }
 
     private void initView() {
@@ -2157,6 +2175,33 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
         }
         // 显示 Dialog
         dialog.show();
+    }
+
+    @Override
+    public void onFocusChange(View v, boolean hasFocus) {
+        super.onFocusChange(v,hasFocus);
+        int id = v.getId();
+        if(hasFocus) {
+            if(id == R.id.home_eshare) {
+                customBinding.eshareText.setSelected(true);
+            } else if(id == R.id.rl_usb) {
+                customBinding.fileText.setSelected(true);
+            } else if(id == R.id.rl_hdmi1){
+                customBinding.hdmiText.setSelected(true);
+            } else if(id == R.id.rl_settings) {
+                customBinding.settingsText.setSelected(true);
+            }
+        }else {
+            if(id == R.id.home_eshare) {
+                customBinding.eshareText.setSelected(false);
+            } else if(id == R.id.rl_usb) {
+                customBinding.fileText.setSelected(false);
+            } else if(id == R.id.rl_hdmi1){
+                customBinding.hdmiText.setSelected(false);
+            } else if(id == R.id.rl_settings) {
+                customBinding.settingsText.setSelected(false);
+            }
+        }
     }
 
 }

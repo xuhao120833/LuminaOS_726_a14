@@ -1,0 +1,156 @@
+package com.htc.luminaos.utils;
+
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.htc.luminaos.databinding.ActivityMainCustom2Binding;
+import com.htc.luminaos.databinding.ActivityMainCustom3Binding;
+import com.htc.luminaos.databinding.ActivityMainCustomBinding;
+
+public class MainCustomBindingWrapper {
+    public final View root;
+    public RecyclerView shortcutsRv;
+    public RelativeLayout rlEthernet;
+    public RelativeLayout rlGoogle;
+    public RelativeLayout rlSettings;
+    public RelativeLayout rlUsb;
+    public RelativeLayout rlHdmi1;
+    public RelativeLayout rlWifi;
+    public RelativeLayout rlBluetooth;
+    public RelativeLayout rlClearMemory;
+    public RelativeLayout rlWallpapers;
+    public RelativeLayout homeEshare;
+    public RelativeLayout homeNetflix;
+    public RelativeLayout homeYoutube;
+    public RelativeLayout homeDisney;
+    public RelativeLayout rlUsbConnect;
+    public RelativeLayout rlBattery;
+    public ImageView battery;
+    public ImageView homeBluetooth;
+    public TextView timeTv;
+    public ImageView homeWifi;
+    public ImageView icon1;
+    public ImageView icon2;
+    public ImageView icon3;
+    public ImageView icon4;
+    public ImageView eshareIcon;
+    public ImageView hdmiIcon;
+    public ImageView settingsIcon;
+    public TextView eshareText;
+    public TextView fileText;
+    public TextView hdmiText;
+    public TextView settingsText;
+    public ImageView brand;
+
+    public MainCustomBindingWrapper(ActivityMainCustomBinding b) {
+        root = b.getRoot();
+        shortcutsRv = b.shortcutsRv;
+        rlEthernet = b.rlEthernet;
+        rlGoogle = b.rlGoogle;
+        rlSettings = b.rlSettings;
+        rlUsb = b.rlUsb;
+        rlHdmi1 = b.rlHdmi1;
+        rlWifi = b.rlWifi;
+        rlBluetooth = b.rlBluetooth;
+        rlClearMemory = b.rlClearMemory;
+        rlWallpapers = b.rlWallpapers;
+        homeEshare = b.homeEshare;
+        homeNetflix = b.homeNetflix;
+        homeYoutube = b.homeYoutube;
+        homeDisney = b.homeDisney;
+        rlUsbConnect = b.rlUsbConnect;
+        rlBattery = b.rlBattery;
+        battery = b.battery;
+        homeBluetooth = b.homeBluetooth;
+        timeTv = b.timeTv;
+        homeWifi = b.homeWifi;
+        icon1 = b.icon1;
+        icon2 = b.icon2;
+        icon3 = b.icon3;
+        icon4 = b.icon4;
+        eshareIcon = b.eshareIcon;
+        hdmiIcon = b.hdmiIcon;
+        settingsIcon = b.settingsIcon;
+        eshareText = b.eshareText;
+        fileText = b.fileText;
+        hdmiText = b.hdmiText;
+        settingsText = b.settingsText;
+        brand = b.brand;
+    }
+
+    public MainCustomBindingWrapper(ActivityMainCustom2Binding b) {
+        root = b.getRoot();
+        shortcutsRv = b.shortcutsRv;
+        rlEthernet = b.rlEthernet;
+        rlGoogle = b.rlGoogle;
+        rlSettings = b.rlSettings;
+        rlUsb = b.rlUsb;
+        rlHdmi1 = b.rlHdmi1;
+        rlWifi = b.rlWifi;
+        rlBluetooth = b.rlBluetooth;
+        rlClearMemory = b.rlClearMemory;
+        rlWallpapers = b.rlWallpapers;
+        homeEshare = b.homeEshare;
+        homeNetflix = b.homeNetflix;
+        homeYoutube = b.homeYoutube;
+        homeDisney = b.homeDisney;
+        rlUsbConnect = b.rlUsbConnect;
+        rlBattery = b.rlBattery;
+        battery = b.battery;
+        homeBluetooth = b.homeBluetooth;
+        timeTv = b.timeTv;
+        homeWifi = b.homeWifi;
+        icon1 = b.icon1;
+        icon2 = b.icon2;
+        icon3 = b.icon3;
+        icon4 = b.icon4;
+        eshareIcon = b.eshareIcon;
+        hdmiIcon = b.hdmiIcon;
+        settingsIcon = b.settingsIcon;
+        eshareText = b.eshareText;
+        fileText = b.fileText;
+        hdmiText = b.hdmiText;
+        settingsText = b.settingsText;
+        brand = b.brand;
+    }
+
+    public MainCustomBindingWrapper(ActivityMainCustom3Binding b) {
+        root = b.getRoot();
+        shortcutsRv = b.shortcutsRv;
+        rlEthernet = b.rlEthernet;
+        rlGoogle = b.rlGoogle;
+        rlSettings = b.rlSettings;
+        rlUsb = b.rlUsb;
+        rlHdmi1 = b.rlHdmi1;
+        rlWifi = b.rlWifi;
+        rlBluetooth = b.rlBluetooth;
+        rlClearMemory = b.rlClearMemory;
+        rlWallpapers = b.rlWallpapers;
+        homeEshare = b.homeEshare;
+        homeNetflix = b.homeNetflix;
+        homeYoutube = b.homeYoutube;
+        homeDisney = b.homeDisney;
+        rlUsbConnect = b.rlUsbConnect;
+        rlBattery = b.rlBattery;
+        battery = b.battery;
+        homeBluetooth = b.homeBluetooth;
+        timeTv = b.timeTv;
+        homeWifi = b.homeWifi;
+        icon1 = b.icon1;
+        icon2 = b.icon2;
+        icon3 = b.icon3;
+        icon4 = b.icon4;
+        eshareIcon = b.eshareIcon;
+        hdmiIcon = b.hdmiIcon;
+        settingsIcon = b.settingsIcon;
+        eshareText = b.eshareText;
+        fileText = b.fileText;
+        hdmiText = b.hdmiText;
+        settingsText = b.settingsText;
+        brand = b.brand;
+    }
+}
