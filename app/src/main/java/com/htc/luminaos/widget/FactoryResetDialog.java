@@ -2,12 +2,15 @@ package com.htc.luminaos.widget;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -30,12 +33,27 @@ public class FactoryResetDialog extends Dialog implements View.OnClickListener {
     public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.enter) {
+
             Intent resetIntent = new Intent("android.intent.action.FACTORY_RESET");
             resetIntent.setPackage("android");
             resetIntent.setFlags(Intent.FLAG_RECEIVER_FOREGROUND);
             resetIntent.putExtra(Intent.EXTRA_REASON, "ResetConfirmFragment");
             mContext.sendBroadcast(resetIntent);
             dismiss();
+
+            ProgressDialog progressDialog = new ProgressDialog(mContext);
+            progressDialog.setMessage("正在恢复出厂设置，请稍候…");
+            progressDialog.setCancelable(false);
+            progressDialog.show();
+
+            // 模拟等待 5 秒后系统开始重启，此时 Activity 会被杀掉
+            new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                // 如果设备还没重启，可手动隐藏对话框（通常不需要）
+                if (progressDialog.isShowing()) {
+                    progressDialog.dismiss();
+                }
+            }, 6000);
+
         } else if (id == R.id.cancel) {
             dismiss();
         }
