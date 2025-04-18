@@ -1,6 +1,7 @@
 package com.htc.luminaos.activity;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -41,6 +42,13 @@ public class AppsManagerActivity extends BaseActivity {
               List<AppInfoBean> infoBeans =(List<AppInfoBean>)  msg.obj;
                 AppsManagerAdapter adapter = new AppsManagerAdapter(AppsManagerActivity.this,infoBeans,appsManagerBinding.appManagerRv);
                 appsManagerBinding.appManagerRv.setAdapter(adapter);
+
+                appsManagerBinding.appManagerRv.post(() -> {
+                    RecyclerView.ViewHolder viewHolder = appsManagerBinding.appManagerRv.findViewHolderForAdapterPosition(0);
+                    if (viewHolder != null && viewHolder.itemView != null) {
+                        viewHolder.itemView.requestFocus();
+                    }
+                });
             }
             return false;
         }

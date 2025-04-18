@@ -170,21 +170,25 @@ public class ProjectActivity extends BaseActivity implements View.OnKeyListener,
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if (hasFocus) {
-                    // 当获取焦点时，延迟2秒弹出Toast
-                    int calibratedTips = R.string.no_caalibrated;
-                    int i = 0;
-                    i = Constants.CheckCalibrated(AwTvSystemManager.getInstance(getApplicationContext()).getSecureStorageKey("vafocusCam").trim());
-                    if (i != 1 && i != 3) {
-                        i = checkNewBDDATA();
-                    }
-                    calibratedTips = getStringId(i);
-                    int finalCalibratedTips = calibratedTips;
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            Toast.makeText(v.getContext(), getString(R.string.auto_four_corner_hint) + ";" + getString(finalCalibratedTips), Toast.LENGTH_LONG).show();
+                    try {
+                        // 当获取焦点时，延迟2秒弹出Toast
+                        int calibratedTips = R.string.no_caalibrated;
+                        int i = 0;
+                        i = Constants.CheckCalibrated(AwTvSystemManager.getInstance(getApplicationContext()).getSecureStorageKey("vafocusCam").trim());
+                        if (i != 1 && i != 3) {
+                            i = checkNewBDDATA();
                         }
-                    }, 2000); // 2000毫秒 = 2秒
+                        calibratedTips = getStringId(i);
+                        int finalCalibratedTips = calibratedTips;
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(v.getContext(), getString(R.string.auto_four_corner_hint) + ";" + getString(finalCalibratedTips), Toast.LENGTH_LONG).show();
+                            }
+                        }, 2000); // 2000毫秒 = 2秒
+                    }catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 } else {
                     // 失去焦点时，取消延迟任务
                     handler.removeCallbacksAndMessages(null);

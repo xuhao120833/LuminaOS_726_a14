@@ -281,7 +281,8 @@ public class KeystoneUtils_726 {
 
     private static void writeParcelToFlinger(int ltx, int lty, int rtx, int rty, int lbx, int lby, int rbx, int rby) {
         try {
-            AwTvDisplayManager.getInstance().setKeystoreValue(100.0f,100.0f,ltx, lty, rtx, rty, lbx, lby, rbx, rby);
+//            AwTvDisplayManager.getInstance().setKeystoreValue(100.0f,100.0f,ltx, lty, rtx, rty, lbx, lby, rbx, rby);
+            AwTvDisplayManager.getInstance().setKeystoreValue(100.0f,100.0f,lbx, lby, rbx, rby,ltx, lty, rtx, rty);
         } catch (Exception ex) {
             Log.i(TAG, "error talk with surfaceflinger service");
         }
