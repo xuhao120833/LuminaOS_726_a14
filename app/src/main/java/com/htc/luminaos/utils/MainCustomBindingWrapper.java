@@ -45,6 +45,13 @@ public class MainCustomBindingWrapper {
     public TextView hdmiText;
     public TextView settingsText;
     public ImageView brand;
+    public ActivityMainCustomBinding b1;
+    public ActivityMainCustom2Binding b2;
+    public ActivityMainCustom3Binding b3;
+    public View icon1border;
+    public View icon2border;
+    public View icon3border;
+    public View icon4border;
 
     public MainCustomBindingWrapper(ActivityMainCustomBinding b) {
         root = b.getRoot();
@@ -80,6 +87,7 @@ public class MainCustomBindingWrapper {
         hdmiText = b.hdmiText;
         settingsText = b.settingsText;
         brand = b.brand;
+        b1=b;
     }
 
     public MainCustomBindingWrapper(ActivityMainCustom2Binding b) {
@@ -116,6 +124,11 @@ public class MainCustomBindingWrapper {
         hdmiText = b.hdmiText;
         settingsText = b.settingsText;
         brand = b.brand;
+        b2 = b;
+        icon1border = b.icon1Border;
+        icon2border = b.icon2Border;
+        icon3border = b.icon3Border;
+        icon4border = b.icon4Border;
     }
 
     public MainCustomBindingWrapper(ActivityMainCustom3Binding b) {
@@ -152,5 +165,10 @@ public class MainCustomBindingWrapper {
         hdmiText = b.hdmiText;
         settingsText = b.settingsText;
         brand = b.brand;
+        b3 = b;
+        icon1border = b.icon1Border;
+        icon2border = b.icon2Border;
+        icon3border = b.icon3Border;
+        icon4border = b.icon4Border;
     }
 }

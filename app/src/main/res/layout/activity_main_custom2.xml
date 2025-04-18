@@ -207,8 +207,8 @@
 <!--   第二排 -->
     <RelativeLayout
         android:id="@+id/home_netflix"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/x_278"
+        android:layout_height="@dimen/y_169"
         style="@style/focusStyle"
         android:layout_marginStart="@dimen/x_45"
         android:layout_marginTop="@dimen/y_178">
@@ -218,13 +218,23 @@
             android:layout_width="@dimen/x_277"
             android:layout_height="@dimen/y_167"
             android:scaleType="fitXY"
+            android:layout_centerInParent="true"
             android:src="@drawable/home_app_netflix" />
+
+        <View
+            android:id="@+id/icon1_border"
+            android:layout_width="@dimen/x_278"
+            android:layout_height="@dimen/y_169"
+            android:background="@drawable/home_app_bg2"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            />
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/home_youtube"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/x_278"
+        android:layout_height="@dimen/y_169"
         android:layout_marginStart="@dimen/x_27"
         android:layout_marginTop="@dimen/y_178"
         style="@style/focusStyle"
@@ -235,13 +245,23 @@
             android:layout_width="@dimen/x_277"
             android:layout_height="@dimen/y_167"
             android:scaleType="fitXY"
+            android:layout_centerInParent="true"
             android:src="@drawable/home_app_youtube" />
+
+        <View
+            android:id="@+id/icon2_border"
+            android:layout_width="@dimen/x_278"
+            android:layout_height="@dimen/y_169"
+            android:layout_centerInParent="true"
+            android:background="@drawable/home_app_bg2"
+            android:visibility="gone"
+            />
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/home_disney"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/x_278"
+        android:layout_height="@dimen/y_169"
         android:layout_marginTop="@dimen/y_178"
         android:layout_marginStart="@dimen/x_27"
         style="@style/focusStyle"
@@ -252,13 +272,23 @@
             android:layout_width="@dimen/x_277"
             android:layout_height="@dimen/y_167"
             android:scaleType="fitXY"
+            android:layout_centerInParent="true"
             android:src="@drawable/home_app_disney" />
+
+        <View
+            android:id="@+id/icon3_border"
+            android:layout_width="@dimen/x_278"
+            android:layout_height="@dimen/y_169"
+            android:background="@drawable/home_app_bg2"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            />
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/rl_Google"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/x_278"
+        android:layout_height="@dimen/y_169"
         style="@style/focusStyle"
         android:layout_marginTop="@dimen/y_178"
         android:layout_marginStart="@dimen/x_27"
@@ -269,7 +299,17 @@
             android:layout_width="@dimen/x_277"
             android:layout_height="@dimen/y_167"
             android:scaleType="fitXY"
+            android:layout_centerInParent="true"
             android:src="@drawable/appstore2" />
+
+        <View
+            android:id="@+id/icon4_border"
+            android:layout_width="@dimen/x_278"
+            android:layout_height="@dimen/y_169"
+            android:background="@drawable/home_app_bg2"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            />
     </RelativeLayout>
 
     <RelativeLayout
@@ -418,11 +458,11 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="@dimen/x_47"
         android:layout_marginEnd="@dimen/x_47"
-        android:layout_marginBottom="@dimen/y_28"
-        android:padding="@dimen/y_17"
+        android:layout_marginBottom="39dp"
+        android:background="@drawable/home_recyclerview_bg2"
         android:clipChildren="false"
         android:clipToPadding="false"
-        android:background="@drawable/home_recyclerview_bg2"
+        android:padding="@dimen/y_17"
         tools:listitem="@layout/shortcuts_item_custom" />
 
 

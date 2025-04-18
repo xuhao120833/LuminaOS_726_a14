@@ -46,6 +46,12 @@ public class Config {
     //其它设置 谷歌账号切换，默认打开
     public boolean account = true;
 
+    public boolean email = false;
+
+    public String email_number = "";
+
+    public boolean set_password = false;
+
     public int brightnessDefault = 50;
     public int contrastDefault = 50;
     public int hueDefault = 50;

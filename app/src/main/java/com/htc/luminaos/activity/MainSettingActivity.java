@@ -2,10 +2,16 @@ package com.htc.luminaos.activity;
 
 import android.content.ComponentName;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import androidx.core.content.res.ResourcesCompat;
+
+import com.htc.luminaos.MyApplication;
 import com.htc.luminaos.R;
 import com.htc.luminaos.databinding.ActivityMainSettingBinding;
 import com.htc.luminaos.databinding.ActivitySettingsCustomBinding;
@@ -56,6 +62,66 @@ public class MainSettingActivity extends BaseActivity {
             mainSettingsCustomBinding.timeTxt.setSelected(true);
             mainSettingsCustomBinding.otherTxt.setSelected(true);
             mainSettingsCustomBinding.aboutTxt.setSelected(true);
+        }
+        setLayout();
+    }
+
+    private void setLayout() {
+        if (MyApplication.config.layout_select == 2 || MyApplication.config.layout_select == 3) {
+            Typeface typeface = ResourcesCompat.getFont(this, R.font.arial);
+
+            mainSettingsCustomBinding.settingsTitle.setTextColor(Color.WHITE);
+            mainSettingsCustomBinding.settingsTitle.setTypeface(typeface);
+            mainSettingsCustomBinding.settingsTitle.setLetterSpacing(0.05f);
+            mainSettingsCustomBinding.settingsTitle.setShadowLayer(0f, 0f, 0f, Color.TRANSPARENT);
+
+            mainSettingsCustomBinding.wifiTxt.setTextColor(Color.WHITE);
+            mainSettingsCustomBinding.wifiTxt.setTypeface(typeface);
+            mainSettingsCustomBinding.wifiTxt.setLetterSpacing(0.08f);
+            mainSettingsCustomBinding.wifiTxt.setTextSize(TypedValue.COMPLEX_UNIT_PX,getResources().getDimensionPixelSize(R.dimen.y_30));
+            mainSettingsCustomBinding.wifiTxt.setShadowLayer(0f, 0f, 0f, Color.TRANSPARENT);
+
+            mainSettingsCustomBinding.btTxt.setTextColor(Color.WHITE);
+            mainSettingsCustomBinding.btTxt.setTypeface(typeface);
+            mainSettingsCustomBinding.btTxt.setLetterSpacing(0.08f);
+            mainSettingsCustomBinding.btTxt.setTextSize(TypedValue.COMPLEX_UNIT_PX,getResources().getDimensionPixelSize(R.dimen.y_30));
+            mainSettingsCustomBinding.btTxt.setShadowLayer(0f, 0f, 0f, Color.TRANSPARENT);
+
+            mainSettingsCustomBinding.projectTxt.setTextColor(Color.WHITE);
+            mainSettingsCustomBinding.projectTxt.setTypeface(typeface);
+            mainSettingsCustomBinding.projectTxt.setLetterSpacing(0.08f);
+            mainSettingsCustomBinding.projectTxt.setTextSize(TypedValue.COMPLEX_UNIT_PX,getResources().getDimensionPixelSize(R.dimen.y_30));
+            mainSettingsCustomBinding.projectTxt.setShadowLayer(0f, 0f, 0f, Color.TRANSPARENT);
+
+            mainSettingsCustomBinding.languageTxt.setTextColor(Color.WHITE);
+            mainSettingsCustomBinding.languageTxt.setTypeface(typeface);
+            mainSettingsCustomBinding.languageTxt.setLetterSpacing(0.08f);
+            mainSettingsCustomBinding.languageTxt.setTextSize(TypedValue.COMPLEX_UNIT_PX,getResources().getDimensionPixelSize(R.dimen.y_30));
+            mainSettingsCustomBinding.languageTxt.setShadowLayer(0f, 0f, 0f, Color.TRANSPARENT);
+
+            mainSettingsCustomBinding.appsTxt.setTextColor(Color.WHITE);
+            mainSettingsCustomBinding.appsTxt.setTypeface(typeface);
+            mainSettingsCustomBinding.appsTxt.setLetterSpacing(0.08f);
+            mainSettingsCustomBinding.appsTxt.setTextSize(TypedValue.COMPLEX_UNIT_PX,getResources().getDimensionPixelSize(R.dimen.y_30));
+            mainSettingsCustomBinding.appsTxt.setShadowLayer(0f, 0f, 0f, Color.TRANSPARENT);
+
+            mainSettingsCustomBinding.timeTxt.setTextColor(Color.WHITE);
+            mainSettingsCustomBinding.timeTxt.setTypeface(typeface);
+            mainSettingsCustomBinding.timeTxt.setLetterSpacing(0.08f);
+            mainSettingsCustomBinding.timeTxt.setTextSize(TypedValue.COMPLEX_UNIT_PX,getResources().getDimensionPixelSize(R.dimen.y_30));
+            mainSettingsCustomBinding.timeTxt.setShadowLayer(0f, 0f, 0f, Color.TRANSPARENT);
+
+            mainSettingsCustomBinding.otherTxt.setTextColor(Color.WHITE);
+            mainSettingsCustomBinding.otherTxt.setTypeface(typeface);
+            mainSettingsCustomBinding.otherTxt.setLetterSpacing(0.08f);
+            mainSettingsCustomBinding.otherTxt.setTextSize(TypedValue.COMPLEX_UNIT_PX,getResources().getDimensionPixelSize(R.dimen.y_30));
+            mainSettingsCustomBinding.otherTxt.setShadowLayer(0f, 0f, 0f, Color.TRANSPARENT);
+
+            mainSettingsCustomBinding.aboutTxt.setTextColor(Color.WHITE);
+            mainSettingsCustomBinding.aboutTxt.setTypeface(typeface);
+            mainSettingsCustomBinding.aboutTxt.setLetterSpacing(0.08f);
+            mainSettingsCustomBinding.aboutTxt.setTextSize(TypedValue.COMPLEX_UNIT_PX,getResources().getDimensionPixelSize(R.dimen.y_30));
+            mainSettingsCustomBinding.aboutTxt.setShadowLayer(0f, 0f, 0f, Color.TRANSPARENT);
         }
     }
 

@@ -206,8 +206,8 @@
     <RelativeLayout
         android:id="@+id/home_netflix"
         style="@style/focusStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/x_278"
+        android:layout_height="@dimen/y_169"
         android:layout_marginStart="@dimen/x_45"
         android:layout_marginTop="@dimen/y_133">
 
@@ -216,14 +216,24 @@
             android:layout_width="@dimen/x_277"
             android:layout_height="@dimen/y_167"
             android:scaleType="fitXY"
+            android:layout_centerInParent="true"
             android:src="@drawable/home_app_netflix" />
+
+        <View
+            android:id="@+id/icon1_border"
+            android:layout_width="@dimen/x_278"
+            android:layout_height="@dimen/y_169"
+            android:background="@drawable/home_app_bg2"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            />
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/home_youtube"
         style="@style/focusStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/x_278"
+        android:layout_height="@dimen/y_169"
         android:layout_marginStart="@dimen/x_27"
         android:layout_marginTop="@dimen/y_133"
         android:layout_toEndOf="@+id/home_netflix">
@@ -233,14 +243,24 @@
             android:layout_width="@dimen/x_277"
             android:layout_height="@dimen/y_167"
             android:scaleType="fitXY"
+            android:layout_centerInParent="true"
             android:src="@drawable/home_app_youtube" />
+
+        <View
+            android:id="@+id/icon2_border"
+            android:layout_width="@dimen/x_278"
+            android:layout_height="@dimen/y_169"
+            android:background="@drawable/home_app_bg2"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            />
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/home_disney"
         style="@style/focusStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/x_278"
+        android:layout_height="@dimen/y_169"
         android:layout_marginStart="@dimen/x_27"
         android:layout_marginTop="@dimen/y_133"
         android:layout_toEndOf="@+id/home_youtube">
@@ -250,14 +270,24 @@
             android:layout_width="@dimen/x_277"
             android:layout_height="@dimen/y_167"
             android:scaleType="fitXY"
+            android:layout_centerInParent="true"
             android:src="@drawable/home_app_disney" />
+
+        <View
+            android:id="@+id/icon3_border"
+            android:layout_width="@dimen/x_278"
+            android:layout_height="@dimen/y_169"
+            android:background="@drawable/home_app_bg2"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            />
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/rl_Google"
         style="@style/focusStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/x_278"
+        android:layout_height="@dimen/y_169"
         android:layout_marginStart="@dimen/x_27"
         android:layout_marginTop="@dimen/y_133"
         android:layout_toEndOf="@+id/home_disney">
@@ -267,7 +297,17 @@
             android:layout_width="@dimen/x_277"
             android:layout_height="@dimen/y_167"
             android:scaleType="fitXY"
+            android:layout_centerInParent="true"
             android:src="@drawable/appstore2" />
+
+        <View
+            android:id="@+id/icon4_border"
+            android:layout_width="@dimen/x_278"
+            android:layout_height="@dimen/y_169"
+            android:background="@drawable/home_app_bg2"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            />
     </RelativeLayout>
 
     <RelativeLayout
@@ -278,7 +318,7 @@
         android:layout_below="@id/home_netflix"
         android:layout_marginStart="@dimen/x_45"
         android:layout_marginTop="@dimen/y_31"
-        android:background="@drawable/home_bg_custom2">
+        android:background="@drawable/home_bg_custom5">
 
         <ImageView
             android:id="@+id/eshare_icon"
@@ -317,7 +357,7 @@
         android:layout_marginStart="@dimen/x_27"
         android:layout_marginTop="@dimen/y_33"
         android:layout_toEndOf="@id/home_eshare"
-        android:background="@drawable/home_bg_custom2">
+        android:background="@drawable/home_bg_custom5">
 
         <ImageView
             android:id="@+id/file_icon"
@@ -354,7 +394,7 @@
         android:layout_marginStart="@dimen/x_27"
         android:layout_marginTop="@dimen/y_31"
         android:layout_toEndOf="@id/rl_usb"
-        android:background="@drawable/home_bg_custom2">
+        android:background="@drawable/home_bg_custom5">
 
         <ImageView
             android:id="@+id/hdmi_icon"
@@ -392,7 +432,7 @@
         android:layout_marginStart="@dimen/x_27"
         android:layout_marginTop="@dimen/y_31"
         android:layout_toEndOf="@id/rl_hdmi1"
-        android:background="@drawable/home_bg_custom2">
+        android:background="@drawable/home_bg_custom5">
 
         <ImageView
             android:id="@+id/settings_icon"

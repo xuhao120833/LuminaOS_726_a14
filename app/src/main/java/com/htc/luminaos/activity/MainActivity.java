@@ -2179,7 +2179,6 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
 
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
-        super.onFocusChange(v,hasFocus);
         int id = v.getId();
         if(hasFocus) {
             if(id == R.id.home_eshare) {
@@ -2202,6 +2201,31 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
                 customBinding.settingsText.setSelected(false);
             }
         }
+
+        if(hasFocus && (MyApplication.config.layout_select==2 || MyApplication.config.layout_select==3)) {
+            if (id == R.id.home_netflix) {
+                customBinding.icon1border.setVisibility(View.VISIBLE);
+            } else if (id == R.id.home_youtube) {
+                customBinding.icon2border.setVisibility(View.VISIBLE);
+            } else if (id == R.id.home_disney) {
+                customBinding.icon3border.setVisibility(View.VISIBLE);
+            } else if (id == R.id.rl_Google) {
+                customBinding.icon4border.setVisibility(View.VISIBLE);
+            }
+
+        } else if(!hasFocus && (MyApplication.config.layout_select==2 || MyApplication.config.layout_select==3)) {
+            if (id == R.id.home_netflix) {
+                customBinding.icon1border.setVisibility(View.GONE);
+            } else if (id == R.id.home_youtube) {
+                customBinding.icon2border.setVisibility(View.GONE);
+            } else if (id == R.id.home_disney) {
+                customBinding.icon3border.setVisibility(View.GONE);
+            } else if (id == R.id.rl_Google) {
+                customBinding.icon4border.setVisibility(View.GONE);
+            }
+        }
+
+        super.onFocusChange(v,hasFocus);
     }
 
 }

@@ -1,18 +1,23 @@
 package com.htc.luminaos.activity;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.htc.luminaos.MyApplication;
 import com.htc.luminaos.R;
 import com.htc.luminaos.adapter.AppsAdapter;
 import com.htc.luminaos.databinding.ActivityAppsBinding;
@@ -53,6 +58,25 @@ public class AppsActivity extends BaseActivity{
         setContentView(appsBinding.getRoot());
         initView();
         initData();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setLayout();
+    }
+
+    private void setLayout() {
+        if (MyApplication.config.layout_select == 2 || MyApplication.config.layout_select == 3) {
+
+            Typeface typeface = ResourcesCompat.getFont(this, R.font.arial);
+
+            appsBinding.title.setTextColor(Color.BLACK);
+            appsBinding.title.setTypeface(typeface,Typeface.BOLD);
+            appsBinding.title.setTextSize(TypedValue.COMPLEX_UNIT_PX,getResources().getDimensionPixelSize(R.dimen.y_40));
+            appsBinding.title.setLetterSpacing(0.05f);
+
+        }
     }
 
     private void initView(){
