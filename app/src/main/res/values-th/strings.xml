@@ -300,5 +300,25 @@
     <string name="account_message5">แต่คุณจะต้องซิงค์บัญชีแต่ละบัญชีด้วยตัวเองเพื่อให้ได้ข้อมูลล่าสุด</string>
     <string name="account_message6">และจะไม่ได้รับการแจ้งเตือนเมื่อมีการอัปเดต</string>
     <string name="reseting_factory">กำลังคืนค่าโรงงาน กรุณารอสักครู่...</string>
+    <string name="set_boot_password">ตั้งรหัสผ่านเริ่มต้น</string>
+    <string name="password_length_limit">รหัสผ่านต้องมีความยาวอย่างน้อย 4 หลัก</string>
+    <string name="password_attention">คำเตือน: หากลืมรหัสผ่านจะต้องคืนค่าจากโรงงาน กรุณารักษารหัสผ่านให้ดี!</string>
+    <string name="new_password">กรอกรหัสผ่านใหม่</string>
+    <string name="new_password_repeate">กรอกรหัสผ่านใหม่อีกครั้ง</string>
+    <string name="password_error">รหัสผ่านทั้งสองไม่ตรงกัน กรุณากรอกใหม่</string>
+    <string name="boot_password">รหัสผ่านเริ่มต้น</string>
+    <string name="input_boot_password">กรุณากรอกรหัสผ่านเริ่มต้นของคุณ โดยต้องมีอย่างน้อย 4 หลัก</string>
+    <string name="password_error2">รหัสผ่านไม่ถูกต้อง กรุณากรอกใหม่</string>
+    <string name="password_set">การตั้งรหัสผ่าน</string>
+    <string name="password_switch">สวิทช์รหัสผ่าน</string>
+    <string name="change_password">เปลี่ยนรหัสผ่าน</string>
+    <string name="input_now_password">กรอกรหัสผ่านปัจจุบัน</string>
+    <string name="input_new_password">กรอกรหัสผ่านใหม่</string>
+    <string name="input_new_password_repeat">กรอกรหัสผ่านใหม่อีกครั้ง</string>
+    <string name="reboot_useful">ต้องรีสตาร์ทถึงจะมีผล</string>
+    <string name="password_error3">การตรวจสอบรหัสผ่านปัจจุบันผิด กรุณากรอกใหม่</string>
+    <string name="password_error4">รหัสผ่านใหม่ทั้งสองไม่ตรงกัน กรุณากรอกใหม่</string>
+    <string name="password_reboot_useful">ตั้งรหัสผ่านใหม่เรียบร้อยแล้ว ต้องรีสตาร์ทถึงจะมีผล</string>
+    <string name="email_title">อีเมลบริการหลังการขาย</string>
 </resources>
 

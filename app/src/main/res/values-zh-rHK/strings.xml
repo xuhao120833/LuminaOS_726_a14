@@ -300,4 +300,24 @@
 	<string name="account_message5">但您需要手動同步每個帳號才能獲得最新資訊，</string>
 	<string name="account_message6">並且在有更新時不會收到通知。</string>
 	<string name="reseting_factory">正在恢復原廠設定，請稍候...</string>
+	<string name="set_boot_password">設置開機密碼</string>
+	<string name="password_length_limit">密碼長度至少四位</string>
+	<string name="password_attention">注意：忘記密碼需恢復出廠設置，請妥善保管密碼！</string>
+	<string name="new_password">輸入新密碼</string>
+	<string name="new_password_repeate">再次輸入新密碼</string>
+	<string name="password_error">兩個密碼不一致，請重新輸入</string>
+	<string name="boot_password">開機密碼</string>
+	<string name="input_boot_password">請輸入您的開機密碼，最少4位</string>
+	<string name="password_error2">密碼錯誤，請重新輸入</string>
+	<string name="password_set">密碼設置</string>
+	<string name="password_switch">密碼開關</string>
+	<string name="change_password">修改密碼</string>
+	<string name="input_now_password">輸入當前密碼</string>
+	<string name="input_new_password">輸入新密碼</string>
+	<string name="input_new_password_repeat">再次輸入新密碼</string>
+	<string name="reboot_useful">重啟生效</string>
+	<string name="password_error3">當前密碼校驗錯誤，請重新輸入</string>
+	<string name="password_error4">兩次輸入的新密碼不一致，請重新輸入</string>
+	<string name="password_reboot_useful">新密碼設置成功，重啟生效</string>
+	<string name="email_title">售後服務郵箱</string>
 </resources>

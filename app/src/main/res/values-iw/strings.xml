@@ -300,4 +300,24 @@
     <string name="account_message5">אבל תצטרך לסנכרן כל חשבון ידנית כדי לקבל את המידע העדכני,</string>
     <string name="account_message6">ולא תתקבל הודעה כאשר יהיו עדכונים.</string>
     <string name="reseting_factory">מאפס להגדרות יצרן, אנא המתן...</string>
+    <string name="set_boot_password">הגדרת סיסמת אתחול</string>
+    <string name="password_length_limit">אורך הסיסמה חייב להיות לפחות 4 ספרות</string>
+    <string name="password_attention">שימו לב: אם תשכח את הסיסמה, יהיה עליך לשחזר את הגדרות היצרן. שמור את הסיסמה במקום בטוח!</string>
+    <string name="new_password">הזן סיסמה חדשה</string>
+    <string name="new_password_repeate">הזן שוב את הסיסמה החדשה</string>
+    <string name="password_error">הסיסמאות אינן תואמות, נסה שוב</string>
+    <string name="boot_password">סיסמת אתחול</string>
+    <string name="input_boot_password">אנא הזן את סיסמת האתחול שלך (לפחות 4 ספרות)</string>
+    <string name="password_error2">סיסמה שגויה, נסה שוב</string>
+    <string name="password_set">הגדרת סיסמה</string>
+    <string name="password_switch">מתג סיסמה</string>
+    <string name="change_password">שינוי סיסמה</string>
+    <string name="input_now_password">הזן את הסיסמה הנוכחית</string>
+    <string name="input_new_password">הזן סיסמה חדשה</string>
+    <string name="input_new_password_repeat">הזן שוב את הסיסמה החדשה</string>
+    <string name="reboot_useful">ההשפעה תיכנס לתוקף לאחר אתחול</string>
+    <string name="password_error3">אימות הסיסמה הנוכחית נכשל, נסה שוב</string>
+    <string name="password_error4">הסיסמאות החדשות אינן תואמות, נסה שוב</string>
+    <string name="password_reboot_useful">הסיסמה החדשה הוגדרה בהצלחה, תיכנס לתוקף לאחר אתחול</string>
+    <string name="email_title">אימייל לשירות לאחר רכישה</string>
 </resources>

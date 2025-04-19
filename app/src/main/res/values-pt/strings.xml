@@ -300,6 +300,26 @@
     <string name="account_message5">mas você precisará sincronizar manualmente cada conta para obter as informações mais recentes,</string>
     <string name="account_message6">e não receberá notificações quando houver atualizações.</string>
     <string name="reseting_factory">Restaurando as configurações de fábrica, aguarde...</string>
+    <string name="set_boot_password">Definir senha de inicialização</string>
+    <string name="password_length_limit">A senha deve ter pelo menos 4 caracteres</string>
+    <string name="password_attention">Atenção: Se esquecer a senha, será necessário restaurar as configurações de fábrica. Guarde a senha com segurança!</string>
+    <string name="new_password">Digite a nova senha</string>
+    <string name="new_password_repeate">Digite a nova senha novamente</string>
+    <string name="password_error">As duas senhas não coincidem. Por favor, digite novamente</string>
+    <string name="boot_password">Senha de inicialização</string>
+    <string name="input_boot_password">Por favor, insira sua senha de inicialização, com no mínimo 4 caracteres</string>
+    <string name="password_error2">Senha incorreta. Por favor, digite novamente</string>
+    <string name="password_set">Configuração de senha</string>
+    <string name="password_switch">Interruptor de senha</string>
+    <string name="change_password">Alterar senha</string>
+    <string name="input_now_password">Digite a senha atual</string>
+    <string name="input_new_password">Digite a nova senha</string>
+    <string name="input_new_password_repeat">Digite a nova senha novamente</string>
+    <string name="reboot_useful">Reiniciar para aplicar</string>
+    <string name="password_error3">A verificação da senha atual falhou. Por favor, digite novamente</string>
+    <string name="password_error4">As duas novas senhas não coincidem. Por favor, digite novamente</string>
+    <string name="password_reboot_useful">Nova senha configurada com sucesso. Reiniciar para aplicar</string>
+    <string name="email_title">Email de serviço pós-venda</string>
 </resources>
 
 

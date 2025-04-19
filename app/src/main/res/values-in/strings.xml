@@ -300,4 +300,24 @@
     <string name="account_message5">tetapi Anda perlu menyinkronkan setiap akun secara manual untuk mendapatkan informasi terbaru,</string>
     <string name="account_message6">dan Anda tidak akan menerima pemberitahuan saat ada pembaruan.</string>
     <string name="reseting_factory">Mengembalikan ke setelan pabrik, harap tunggu...</string>
+    <string name="set_boot_password">Atur Kata Sandi Boot</string>
+    <string name="password_length_limit">Panjang kata sandi minimal 4 karakter</string>
+    <string name="password_attention">Perhatian: Jika lupa kata sandi, Anda harus mengatur ulang ke setelan pabrik. Harap simpan kata sandi Anda dengan aman!</string>
+    <string name="new_password">Masukkan Kata Sandi Baru</string>
+    <string name="new_password_repeate">Masukkan Ulang Kata Sandi Baru</string>
+    <string name="password_error">Dua kata sandi tidak cocok, silakan masukkan lagi</string>
+    <string name="boot_password">Kata Sandi Boot</string>
+    <string name="input_boot_password">Silakan masukkan kata sandi boot Anda, minimal 4 karakter</string>
+    <string name="password_error2">Kata sandi salah, silakan coba lagi</string>
+    <string name="password_set">Pengaturan Kata Sandi</string>
+    <string name="password_switch">Sakelar Kata Sandi</string>
+    <string name="change_password">Ubah Kata Sandi</string>
+    <string name="input_now_password">Masukkan Kata Sandi Saat Ini</string>
+    <string name="input_new_password">Masukkan Kata Sandi Baru</string>
+    <string name="input_new_password_repeat">Masukkan Ulang Kata Sandi Baru</string>
+    <string name="reboot_useful">Akan berlaku setelah restart</string>
+    <string name="password_error3">Verifikasi kata sandi saat ini gagal, silakan coba lagi</string>
+    <string name="password_error4">Dua entri kata sandi baru tidak cocok, silakan coba lagi</string>
+    <string name="password_reboot_useful">Kata sandi baru berhasil disetel, akan berlaku setelah restart</string>
+    <string name="email_title">Email layanan purna jual</string>
 </resources>

@@ -300,4 +300,24 @@
     <string name="account_message5">tetapi anda perlu menyegerakkan setiap akaun secara manual untuk mendapatkan maklumat terkini,</string>
     <string name="account_message6">dan anda tidak akan menerima pemberitahuan apabila terdapat kemas kini.</string>
     <string name="reseting_factory">Sedang memulihkan ke tetapan kilang, sila tunggu...</string>
+    <string name="set_boot_password">Tetapkan kata laluan but</string>
+    <string name="password_length_limit">Kata laluan mesti sekurang-kurangnya empat aksara</string>
+    <string name="password_attention">Perhatian: Jika anda lupa kata laluan, perlu mengembalikan tetapan kilang. Sila simpan kata laluan dengan baik!</string>
+    <string name="new_password">Masukkan kata laluan baharu</string>
+    <string name="new_password_repeate">Masukkan semula kata laluan baharu</string>
+    <string name="password_error">Kedua-dua kata laluan tidak sepadan, sila cuba semula</string>
+    <string name="boot_password">Kata laluan but</string>
+    <string name="input_boot_password">Sila masukkan kata laluan but anda, sekurang-kurangnya 4 aksara</string>
+    <string name="password_error2">Kata laluan salah, sila cuba semula</string>
+    <string name="password_set">Tetapan kata laluan</string>
+    <string name="password_switch">Suis kata laluan</string>
+    <string name="change_password">Tukar kata laluan</string>
+    <string name="input_now_password">Masukkan kata laluan semasa</string>
+    <string name="input_new_password">Masukkan kata laluan baharu</string>
+    <string name="input_new_password_repeat">Masukkan semula kata laluan baharu</string>
+    <string name="reboot_useful">Mula semula untuk berkuat kuasa</string>
+    <string name="password_error3">Kata laluan semasa tidak sah, sila cuba semula</string>
+    <string name="password_error4">Kedua-dua kata laluan baharu tidak sepadan, sila cuba semula</string>
+    <string name="password_reboot_useful">Kata laluan baharu telah ditetapkan, mula semula untuk berkuat kuasa</string>
+    <string name="email_title">E-mel perkhidmatan selepas jualan</string>
 </resources>

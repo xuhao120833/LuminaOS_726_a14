@@ -300,5 +300,25 @@
     <string name="account_message5">dar va trebui să sincronizați manual fiecare cont pentru a obține cele mai recente informații,</string>
     <string name="account_message6">și nu veți primi notificări atunci când există actualizări.</string>
     <string name="reseting_factory">Se restaurează setările din fabrică, vă rugăm să așteptați...</string>
+    <string name="set_boot_password">Setează parola de boot</string>
+    <string name="password_length_limit">Parola trebuie să aibă cel puțin patru caractere</string>
+    <string name="password_attention">Atenție: Dacă uitați parola, va trebui să efectuați o resetare din fabrică. Vă rugăm să păstrați parola în siguranță!</string>
+    <string name="new_password">Introduceți noua parolă</string>
+    <string name="new_password_repeate">Introduceți din nou noua parolă</string>
+    <string name="password_error">Cele două parole nu se potrivesc, vă rugăm să le introduceți din nou</string>
+    <string name="boot_password">Parola de boot</string>
+    <string name="input_boot_password">Vă rugăm să introduceți parola de boot, cel puțin 4 caractere</string>
+    <string name="password_error2">Parolă incorectă, vă rugăm să o introduceți din nou</string>
+    <string name="password_set">Setarea parolei</string>
+    <string name="password_switch">Comutator parolă</string>
+    <string name="change_password">Schimbă parola</string>
+    <string name="input_now_password">Introduceți parola curentă</string>
+    <string name="input_new_password">Introduceți noua parolă</string>
+    <string name="input_new_password_repeat">Introduceți din nou noua parolă</string>
+    <string name="reboot_useful">Reboot pentru aplicare</string>
+    <string name="password_error3">Verificarea parolei curente a eșuat, vă rugăm să o introduceți din nou</string>
+    <string name="password_error4">Cele două parole noi nu se potrivesc, vă rugăm să le introduceți din nou</string>
+    <string name="password_reboot_useful">Parola a fost setată cu succes, reboot necesar pentru aplicare</string>
+    <string name="email_title">E-mail pentru serviciul post-vânzare</string>
 </resources>
 

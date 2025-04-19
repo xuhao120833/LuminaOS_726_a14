@@ -300,6 +300,26 @@
     <string name="account_message5">de minden fiókhoz manuálisan kell szinkronizálni, hogy a legfrissebb információkat kapja,</string>
     <string name="account_message6">és nem fog értesítést kapni, ha frissítés érkezik.</string>
     <string name="reseting_factory">Gyári beállítások visszaállítása folyamatban, kérem várjon...</string>
+    <string name="set_boot_password">Indítási jelszó beállítása</string>
+    <string name="password_length_limit">A jelszónak legalább 4 karakter hosszúnak kell lennie</string>
+    <string name="password_attention">Figyelem: ha elfelejti a jelszót, vissza kell állítani a gyári beállításokat. Kérjük, őrizze meg biztonságosan a jelszót!</string>
+    <string name="new_password">Új jelszó megadása</string>
+    <string name="new_password_repeate">Új jelszó ismételt megadása</string>
+    <string name="password_error">A két jelszó nem egyezik, kérjük, adja meg újra</string>
+    <string name="boot_password">Indítási jelszó</string>
+    <string name="input_boot_password">Kérjük, adja meg az indítási jelszót (legalább 4 karakter)</string>
+    <string name="password_error2">Hibás jelszó, próbálja meg újra</string>
+    <string name="password_set">Jelszó beállítása</string>
+    <string name="password_switch">Jelszókapcsoló</string>
+    <string name="change_password">Jelszó módosítása</string>
+    <string name="input_now_password">Adja meg a jelenlegi jelszót</string>
+    <string name="input_new_password">Adja meg az új jelszót</string>
+    <string name="input_new_password_repeat">Ismételje meg az új jelszót</string>
+    <string name="reboot_useful">Újraindítás után lép érvénybe</string>
+    <string name="password_error3">A jelenlegi jelszó érvénytelen, próbálja újra</string>
+    <string name="password_error4">A két új jelszó nem egyezik, kérjük, adja meg újra</string>
+    <string name="password_reboot_useful">Az új jelszó sikeresen beállítva, újraindítás után lép érvénybe</string>
+    <string name="email_title">Ügyfélszolgálati e-mail</string>
 </resources>
 
 

@@ -17,6 +17,7 @@ import android.widget.RelativeLayout;
 import com.htc.luminaos.MyApplication;
 import com.htc.luminaos.R;
 import com.htc.luminaos.utils.Contants;
+import com.htc.luminaos.utils.PasswordUtils;
 import com.htc.luminaos.utils.ShareUtil;
 import com.htc.luminaos.utils.Utils;
 
@@ -33,7 +34,14 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        if (PasswordUtils.isPasswordSwitchEnabled() && !PasswordUtils.isSessionVerified()) {
+            if(!PasswordUtils.hasPasswordBeenSet(getApplicationContext())) {
+                startNewActivity(PasswordVerifyActivity.class);
+            } else {
+                startNewActivity(PasswordVerifyActivity2.class);
+            }
+            finish();
+        }
     }
 
     @Override

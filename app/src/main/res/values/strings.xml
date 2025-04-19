@@ -300,4 +300,24 @@
     <string name="account_message5">but you will need to manually sync each account to get the latest information,</string>
     <string name="account_message6">and you will not receive notifications when updates are available.</string>
     <string name="reseting_factory">Restoring factory settings, please wait...</string>
+    <string name="set_boot_password">Set Boot Password</string>
+    <string name="password_length_limit">Password must be at least 4 characters</string>
+    <string name="password_attention">Note: Forgotten password requires a factory reset. Please keep it safe!</string>
+    <string name="new_password">Enter New Password</string>
+    <string name="new_password_repeate">Re-enter New Password</string>
+    <string name="password_error">Passwords do not match, please try again</string>
+    <string name="boot_password">Boot Password</string>
+    <string name="input_boot_password">Please enter your boot password (minimum 4 characters)</string>
+    <string name="password_error2">Incorrect password, please try again</string>
+    <string name="password_set">Password Settings</string>
+    <string name="password_switch">Password Switch</string>
+    <string name="change_password">Change Password</string>
+    <string name="input_now_password">Enter Current Password</string>
+    <string name="input_new_password">Enter New Password</string>
+    <string name="input_new_password_repeat">Re-enter New Password</string>
+    <string name="reboot_useful">Takes effect after reboot</string>
+    <string name="password_error3">Current password is incorrect, please try again</string>
+    <string name="password_error4">New passwords do not match, please try again</string>
+    <string name="password_reboot_useful">Password set successfully, takes effect after reboot</string>
+    <string name="email_title">After-sales service email</string>
 </resources>

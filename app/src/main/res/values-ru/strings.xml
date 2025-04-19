@@ -300,5 +300,25 @@
     <string name="account_message5">но вам нужно будет вручную синхронизировать каждый аккаунт, чтобы получить актуальную информацию,</string>
     <string name="account_message6">и вы не будете получать уведомления о обновлениях.</string>
     <string name="reseting_factory">Восстановление заводских настроек, пожалуйста, подождите...</string>
+    <string name="set_boot_password">Установить пароль для загрузки</string>
+    <string name="password_length_limit">Длина пароля должна быть не менее четырех символов</string>
+    <string name="password_attention">Внимание: для восстановления пароля необходимо выполнить сброс к заводским настройкам. Пожалуйста, храните пароль в безопасности!</string>
+    <string name="new_password">Введите новый пароль</string>
+    <string name="new_password_repeate">Повторите новый пароль</string>
+    <string name="password_error">Пароли не совпадают, пожалуйста, введите их снова</string>
+    <string name="boot_password">Пароль загрузки</string>
+    <string name="input_boot_password">Введите ваш пароль для загрузки, минимум 4 символа</string>
+    <string name="password_error2">Неверный пароль, пожалуйста, введите его снова</string>
+    <string name="password_set">Настройка пароля</string>
+    <string name="password_switch">Переключатель пароля</string>
+    <string name="change_password">Изменить пароль</string>
+    <string name="input_now_password">Введите текущий пароль</string>
+    <string name="input_new_password">Введите новый пароль</string>
+    <string name="input_new_password_repeat">Повторите новый пароль</string>
+    <string name="reboot_useful">Перезагрузка потребуется для применения изменений</string>
+    <string name="password_error3">Ошибка проверки текущего пароля, пожалуйста, введите его снова</string>
+    <string name="password_error4">Новый пароль не совпадает, пожалуйста, введите его снова</string>
+    <string name="password_reboot_useful">Новый пароль успешно установлен, требуется перезагрузка для применения</string>
+    <string name="email_title">Электронная почта послепродажного обслуживания</string>
 </resources>
 

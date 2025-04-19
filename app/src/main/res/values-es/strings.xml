@@ -300,4 +300,24 @@
 	<string name="account_message5">pero necesitarás sincronizar manualmente cada cuenta para obtener la información más reciente,</string>
 	<string name="account_message6">y no recibirás notificaciones cuando haya actualizaciones.</string>
 	<string name="reseting_factory">Restableciendo configuración de fábrica, espere por favor...</string>
+	<string name="set_boot_password">Establecer contraseña de arranque</string>
+	<string name="password_length_limit">La contraseña debe tener al menos cuatro caracteres</string>
+	<string name="password_attention">Atención: Si olvida la contraseña, deberá restablecer el dispositivo de fábrica. ¡Guarde la contraseña con cuidado!</string>
+	<string name="new_password">Introducir nueva contraseña</string>
+	<string name="new_password_repeate">Reintroducir nueva contraseña</string>
+	<string name="password_error">Las contraseñas no coinciden, por favor intente de nuevo</string>
+	<string name="boot_password">Contraseña de arranque</string>
+	<string name="input_boot_password">Por favor ingrese su contraseña de arranque, mínimo 4 caracteres</string>
+	<string name="password_error2">Contraseña incorrecta, por favor intente de nuevo</string>
+	<string name="password_set">Configuración de contraseña</string>
+	<string name="password_switch">Interruptor de contraseña</string>
+	<string name="change_password">Cambiar contraseña</string>
+	<string name="input_now_password">Introducir contraseña actual</string>
+	<string name="input_new_password">Introducir nueva contraseña</string>
+	<string name="input_new_password_repeat">Reintroducir nueva contraseña</string>
+	<string name="reboot_useful">Se aplicará después del reinicio</string>
+	<string name="password_error3">Error en la verificación de la contraseña actual, por favor intente de nuevo</string>
+	<string name="password_error4">Las dos contraseñas no coinciden, por favor intente de nuevo</string>
+	<string name="password_reboot_useful">Nueva contraseña establecida correctamente, se aplicará después del reinicio</string>
+	<string name="email_title">Correo electrónico de servicio posventa</string>
 </resources>

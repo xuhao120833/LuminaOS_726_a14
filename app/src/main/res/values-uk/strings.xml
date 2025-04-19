@@ -300,5 +300,25 @@
     <string name="account_message5">але вам потрібно буде вручну синхронізувати кожен обліковий запис, щоб отримати останню інформацію,</string>
     <string name="account_message6">і ви не отримаєте сповіщень про оновлення.</string>
     <string name="reseting_factory">Відновлення заводських налаштувань, будь ласка, зачекайте...</string>
+    <string name="set_boot_password">Встановіть пароль для завантаження</string>
+    <string name="password_length_limit">Пароль повинен містити щонайменше чотири символи</string>
+    <string name="password_attention">Увага: якщо ви забули пароль, потрібно скинути налаштування до заводських. Будь ласка, зберігайте пароль в безпеці!</string>
+    <string name="new_password">Введіть новий пароль</string>
+    <string name="new_password_repeate">Введіть новий пароль ще раз</string>
+    <string name="password_error">Паролі не збігаються, будь ласка, спробуйте ще раз</string>
+    <string name="boot_password">Пароль для завантаження</string>
+    <string name="input_boot_password">Будь ласка, введіть ваш пароль для завантаження, мінімум 4 символи</string>
+    <string name="password_error2">Невірний пароль, будь ласка, спробуйте ще раз</string>
+    <string name="password_set">Налаштування пароля</string>
+    <string name="password_switch">Перемикач пароля</string>
+    <string name="change_password">Змінити пароль</string>
+    <string name="input_now_password">Введіть поточний пароль</string>
+    <string name="input_new_password">Введіть новий пароль</string>
+    <string name="input_new_password_repeat">Введіть новий пароль ще раз</string>
+    <string name="reboot_useful">Потрібен перезапуск для застосування змін</string>
+    <string name="password_error3">Помилка перевірки поточного пароля, будь ласка, спробуйте ще раз</string>
+    <string name="password_error4">Паролі не збігаються, будь ласка, спробуйте ще раз</string>
+    <string name="password_reboot_useful">Налаштування нового пароля успішне, зміни наберуть чинності після перезавантаження</string>
+    <string name="email_title">Електронна пошта післяпродажного обслуговування</string>
 </resources>
 

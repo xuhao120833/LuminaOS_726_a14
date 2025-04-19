@@ -300,4 +300,24 @@
     <string name="account_message5">მაგრამ თქვენ უნდა სინქრონიზირდეთ თითოეულ ანგარიშთან საკუთარი ხელით, რომ მიიღოთ უახლესი ინფორმაცია,</string>
     <string name="account_message6">და არ მიიღებთ შეტყობინებებს განახლებების დროს.</string>
     <string name="reseting_factory">მიმდინარეობს ქარხნული პარამეტრების აღდგენა, გთხოვთ დაიცადოთ...</string>
+    <string name="set_boot_password">დააყენეთ ჩატვირთვის პაროლი</string>
+    <string name="password_length_limit">პაროლი უნდა შეიცავდეს მინიმუმ ოთხ სიმბოლოს</string>
+    <string name="password_attention">ყურადღება: პაროლის დავიწყების შემთხვევაში საჭიროა ქარხნული პარამეტრების აღდგენა. გთხოვთ, შეინახეთ იგი უსაფრთხოდ!</string>
+    <string name="new_password">შეიყვანეთ ახალი პაროლი</string>
+    <string name="new_password_repeate">შეიყვანეთ ახალი პაროლი კვლავ</string>
+    <string name="password_error">ორი პაროლი არ ემთხვევა, გთხოვთ სცადეთ თავიდან</string>
+    <string name="boot_password">გაშვების პაროლი</string>
+    <string name="input_boot_password">გთხოვთ, შეიყვანეთ თქვენი გაშვების პაროლი, მინიმუმ 4 სიმბოლო</string>
+    <string name="password_error2">პაროლი არასწორია, გთხოვთ სცადეთ თავიდან</string>
+    <string name="password_set">პაროლის დაყენება</string>
+    <string name="password_switch">პაროლის ჩართვა/გამორთვა</string>
+    <string name="change_password">პაროლის შეცვლა</string>
+    <string name="input_now_password">შეიყვანეთ მიმდინარე პაროლი</string>
+    <string name="input_new_password">შეიყვანეთ ახალი პაროლი</string>
+    <string name="input_new_password_repeat">შეიყვანეთ ახალი პაროლი კვლავ</string>
+    <string name="reboot_useful">გადატვირთვის შემდეგ ამოქმედდება</string>
+    <string name="password_error3">მიმდინარე პაროლი არასწორია, გთხოვთ სცადეთ თავიდან</string>
+    <string name="password_error4">ორი ახალი პაროლი არ ემთხვევა, გთხოვთ სცადეთ თავიდან</string>
+    <string name="password_reboot_useful">პაროლი წარმატებით დაყენდა, გადატვირთვის შემდეგ ამოქმედდება</string>
+    <string name="email_title">გარემომცველი მომსახურების ელფოსტა</string>
 </resources>

@@ -302,8 +302,8 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
             initViewCustom();
             initDataCustom();
             StartupTimer.mark("initDataCustom完成");
-            initReceiver();
-            StartupTimer.mark("initReceiver完成");
+//            initReceiver();
+//            StartupTimer.mark("initReceiver完成");
             wifiManager = (WifiManager) getSystemService(Service.WIFI_SERVICE);
             storageManager = (StorageManager) getSystemService(Context.STORAGE_SERVICE);
             StartupTimer.mark("storageManager完成");
@@ -627,7 +627,7 @@ public class MainActivity extends BaseMainActivity implements BluetoothCallBcak,
                 short_list = loadHomeAppData();
                 Log.d(TAG, " initDataCustom快捷图标 short_list " + short_list.size());
                 handler.sendEmptyMessage(204);
-//                initReceiver();
+                initReceiver();
             }
         }).start();
     }

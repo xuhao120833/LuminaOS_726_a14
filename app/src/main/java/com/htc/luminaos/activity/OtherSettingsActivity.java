@@ -18,6 +18,7 @@ import com.htc.luminaos.utils.Contants;
 import com.htc.luminaos.utils.ShareUtil;
 import com.htc.luminaos.utils.Utils;
 import com.htc.luminaos.widget.FactoryResetDialog;
+import com.htc.luminaos.widget.SetPasswordDialog;
 import com.softwinner.tv.AwTvSystemManager;
 import com.softwinner.tv.common.AwTvSystemTypes;
 
@@ -70,6 +71,7 @@ public class OtherSettingsActivity extends BaseActivity implements View.OnKeyLis
                 }
             }
         });
+        otherSettingsBinding.rlSetPassword.setOnClickListener(this);
         otherSettingsBinding.rlAccount.setOnClickListener(this);
         otherSettingsBinding.rlDeveloper.setOnClickListener(this);
 
@@ -81,6 +83,7 @@ public class OtherSettingsActivity extends BaseActivity implements View.OnKeyLis
         otherSettingsBinding.rlTimerOff.setOnHoverListener(this);
         otherSettingsBinding.rlBootInput.setOnHoverListener(this);
         otherSettingsBinding.rlPowerMode.setOnHoverListener(this);
+        otherSettingsBinding.rlSetPassword.setOnHoverListener(this);
         otherSettingsBinding.rlAccount.setOnHoverListener(this);
         otherSettingsBinding.rlDeveloper.setOnHoverListener(this);
 
@@ -96,6 +99,7 @@ public class OtherSettingsActivity extends BaseActivity implements View.OnKeyLis
         otherSettingsBinding.rlPowerMode.setVisibility(MyApplication.config.powerMode?View.VISIBLE:View.GONE);
         otherSettingsBinding.rlAccount.setVisibility(MyApplication.config.account?View.VISIBLE:View.GONE);
         otherSettingsBinding.rlBootInput.setVisibility(MyApplication.config.bootSource?View.VISIBLE:View.GONE);
+        otherSettingsBinding.rlSetPassword.setVisibility(MyApplication.config.set_password?View.VISIBLE:View.GONE);
 
         if ((boolean)ShareUtil.get(this,Contants.KEY_DEVELOPER_MODE,false)){
             otherSettingsBinding.rlDeveloper.setVisibility(View.VISIBLE);
@@ -244,6 +248,9 @@ public class OtherSettingsActivity extends BaseActivity implements View.OnKeyLis
             startNewActivity(AccountActivity.class);
         } else if (id == R.id.rl_developer) {
             startNewActivity(DeveloperModeActivity.class);
+        } else if(id == R.id.rl_set_password) {
+            SetPasswordDialog passwordDialog = new SetPasswordDialog(this);
+            passwordDialog.show();
         }
     }
 

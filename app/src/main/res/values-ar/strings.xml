@@ -300,6 +300,26 @@
     <string name="account_message5">ولكنك ستحتاج إلى مزامنة كل حساب يدويًا للحصول على أحدث المعلومات،</string>
     <string name="account_message6">ولن تتلقى إشعارات عند وجود تحديثات.</string>
     <string name="reseting_factory">جارٍ استعادة إعدادات المصنع، الرجاء الانتظار...</string>
+    <string name="set_boot_password">تعيين كلمة مرور بدء التشغيل</string>
+    <string name="password_length_limit">يجب ألا تقل كلمة المرور عن أربعة أحرف</string>
+    <string name="password_attention">ملاحظة: إذا نسيت كلمة المرور، فستحتاج إلى استعادة ضبط المصنع. يرجى الاحتفاظ بكلمة المرور بأمان!</string>
+    <string name="new_password">أدخل كلمة المرور الجديدة</string>
+    <string name="new_password_repeate">أعد إدخال كلمة المرور الجديدة</string>
+    <string name="password_error">كلمتا المرور غير متطابقتين، يرجى إعادة الإدخال</string>
+    <string name="boot_password">كلمة مرور بدء التشغيل</string>
+    <string name="input_boot_password">يرجى إدخال كلمة مرور بدء التشغيل الخاصة بك، على الأقل 4 أحرف</string>
+    <string name="password_error2">كلمة المرور غير صحيحة، يرجى إعادة الإدخال</string>
+    <string name="password_set">تعيين كلمة المرور</string>
+    <string name="password_switch">مفتاح كلمة المرور</string>
+    <string name="change_password">تغيير كلمة المرور</string>
+    <string name="input_now_password">أدخل كلمة المرور الحالية</string>
+    <string name="input_new_password">أدخل كلمة المرور الجديدة</string>
+    <string name="input_new_password_repeat">أعد إدخال كلمة المرور الجديدة</string>
+    <string name="reboot_useful">سيتم تطبيقها بعد إعادة التشغيل</string>
+    <string name="password_error3">كلمة المرور الحالية غير صحيحة، يرجى إعادة الإدخال</string>
+    <string name="password_error4">كلمتا المرور الجديدتان غير متطابقتين، يرجى إعادة الإدخال</string>
+    <string name="password_reboot_useful">تم تعيين كلمة المرور الجديدة بنجاح، سيتم تطبيقها بعد إعادة التشغيل</string>
+    <string name="email_title">البريد الإلكتروني لخدمة ما بعد البيع</string>
 </resources>
 
 

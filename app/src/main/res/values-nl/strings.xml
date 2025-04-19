@@ -300,4 +300,24 @@
     <string name="account_message5">maar u moet elk account handmatig synchroniseren om de nieuwste informatie te verkrijgen,</string>
     <string name="account_message6">en u ontvangt geen meldingen wanneer er updates zijn.</string>
     <string name="reseting_factory">Bezig met fabrieksinstellingen herstellen, even geduld...</string>
+    <string name="set_boot_password">Stel opstartwachtwoord in</string>
+    <string name="password_length_limit">Wachtwoord moet minimaal vier tekens lang zijn</string>
+    <string name="password_attention">Let op: Als u het wachtwoord vergeet, moet u de fabrieksinstellingen herstellen. Bewaar uw wachtwoord goed!</string>
+    <string name="new_password">Voer nieuw wachtwoord in</string>
+    <string name="new_password_repeate">Voer het nieuwe wachtwoord opnieuw in</string>
+    <string name="password_error">De twee wachtwoorden komen niet overeen. Probeer het opnieuw</string>
+    <string name="boot_password">Opstartwachtwoord</string>
+    <string name="input_boot_password">Voer uw opstartwachtwoord in, minimaal 4 tekens</string>
+    <string name="password_error2">Wachtwoord is onjuist. Probeer het opnieuw</string>
+    <string name="password_set">Wachtwoord instellen</string>
+    <string name="password_switch">Wachtwoordschakelaar</string>
+    <string name="change_password">Wachtwoord wijzigen</string>
+    <string name="input_now_password">Voer het huidige wachtwoord in</string>
+    <string name="input_new_password">Voer nieuw wachtwoord in</string>
+    <string name="input_new_password_repeat">Voer het nieuwe wachtwoord opnieuw in</string>
+    <string name="reboot_useful">Herstart vereist</string>
+    <string name="password_error3">Huidig wachtwoord is onjuist, probeer het opnieuw</string>
+    <string name="password_error4">De twee ingevoerde nieuwe wachtwoorden komen niet overeen. Probeer het opnieuw</string>
+    <string name="password_reboot_useful">Nieuw wachtwoord ingesteld, herstart vereist</string>
+    <string name="email_title">E-mail voor aftersales service</string>
 </resources>

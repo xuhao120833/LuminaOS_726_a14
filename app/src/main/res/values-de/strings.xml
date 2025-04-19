@@ -300,5 +300,25 @@
 	<string name="account_message5">Jedoch müssen Sie jedes Konto manuell synchronisieren, um die neuesten Informationen zu erhalten.</string>
 	<string name="account_message6">Und Sie erhalten keine Benachrichtigungen, wenn es Updates gibt.</string>
 	<string name="reseting_factory">Werkseinstellungen werden wiederhergestellt, bitte warten...</string>
+	<string name="set_boot_password">Startpasswort festlegen</string>
+	<string name="password_length_limit">Passwort muss mindestens 4 Zeichen lang sein</string>
+	<string name="password_attention">Achtung: Bei Passwortverlust ist ein Zurücksetzen auf Werkseinstellungen erforderlich. Bitte bewahren Sie Ihr Passwort sicher auf!</string>
+	<string name="new_password">Neues Passwort eingeben</string>
+	<string name="new_password_repeate">Neues Passwort erneut eingeben</string>
+	<string name="password_error">Die beiden Passwörter stimmen nicht überein. Bitte erneut eingeben.</string>
+	<string name="boot_password">Startpasswort</string>
+	<string name="input_boot_password">Bitte geben Sie Ihr Startpasswort ein (mindestens 4 Zeichen)</string>
+	<string name="password_error2">Falsches Passwort. Bitte erneut eingeben.</string>
+	<string name="password_set">Passworteinstellung</string>
+	<string name="password_switch">Passwortschalter</string>
+	<string name="change_password">Passwort ändern</string>
+	<string name="input_now_password">Aktuelles Passwort eingeben</string>
+	<string name="input_new_password">Neues Passwort eingeben</string>
+	<string name="input_new_password_repeat">Neues Passwort erneut eingeben</string>
+	<string name="reboot_useful">Wird nach dem Neustart wirksam</string>
+	<string name="password_error3">Aktuelle Passwortprüfung fehlgeschlagen. Bitte erneut eingeben.</string>
+	<string name="password_error4">Die beiden neuen Passwörter stimmen nicht überein. Bitte erneut eingeben.</string>
+	<string name="password_reboot_useful">Neues Passwort erfolgreich festgelegt. Wird nach dem Neustart wirksam.</string>
+	<string name="email_title">E-Mail für Kundendienst</string>
 </resources>
 

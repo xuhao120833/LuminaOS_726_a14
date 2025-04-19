@@ -300,6 +300,26 @@
     <string name="account_message5">nhưng bạn sẽ cần phải đồng bộ thủ công từng tài khoản để nhận thông tin mới nhất,</string>
     <string name="account_message6">và bạn sẽ không nhận được thông báo khi có bản cập nhật.</string>
     <string name="reseting_factory">Đang khôi phục cài đặt gốc, vui lòng chờ...</string>
+    <string name="set_boot_password">Cài đặt mật khẩu khởi động</string>
+    <string name="password_length_limit">Mật khẩu phải có ít nhất bốn ký tự</string>
+    <string name="password_attention">Lưu ý: Nếu quên mật khẩu, cần phải khôi phục cài đặt gốc. Hãy bảo quản mật khẩu cẩn thận!</string>
+    <string name="new_password">Nhập mật khẩu mới</string>
+    <string name="new_password_repeate">Nhập lại mật khẩu mới</string>
+    <string name="password_error">Hai mật khẩu không khớp, vui lòng nhập lại</string>
+    <string name="boot_password">Mật khẩu khởi động</string>
+    <string name="input_boot_password">Vui lòng nhập mật khẩu khởi động của bạn, tối thiểu 4 ký tự</string>
+    <string name="password_error2">Mật khẩu sai, vui lòng nhập lại</string>
+    <string name="password_set">Cài đặt mật khẩu</string>
+    <string name="password_switch">Công tắc mật khẩu</string>
+    <string name="change_password">Thay đổi mật khẩu</string>
+    <string name="input_now_password">Nhập mật khẩu hiện tại</string>
+    <string name="input_new_password">Nhập mật khẩu mới</string>
+    <string name="input_new_password_repeat">Nhập lại mật khẩu mới</string>
+    <string name="reboot_useful">Khởi động lại để có hiệu lực</string>
+    <string name="password_error3">Kiểm tra mật khẩu hiện tại không đúng, vui lòng nhập lại</string>
+    <string name="password_error4">Hai mật khẩu mới nhập không khớp, vui lòng nhập lại</string>
+    <string name="password_reboot_useful">Mật khẩu mới đã được thiết lập thành công, khởi động lại để có hiệu lực</string>
+    <string name="email_title">Email dịch vụ hậu mãi</string>
 </resources>
 
 

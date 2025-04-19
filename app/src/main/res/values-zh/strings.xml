@@ -300,4 +300,24 @@
 	<string name="account_message5">但您需要手动同步每个帐号才能获得最新信息，</string>
 	<string name="account_message6">并且在有更新时不会收到通知。</string>
 	<string name="reseting_factory">正在恢复出厂设置，请稍候...</string>
+	<string name="set_boot_password">设置开机密码</string>
+	<string name="password_length_limit">密码长度至少四位</string>
+	<string name="password_attention">注意：忘记密码需恢复出厂设置，请妥善保管密码！</string>
+	<string name="new_password">输入新密码</string>
+	<string name="new_password_repeate">再次输入新密码</string>
+	<string name="password_error">两个密码不一致，请重新输入</string>
+	<string name="boot_password">开机密码</string>
+	<string name="input_boot_password">请输入您的开机密码，最少4位</string>
+	<string name="password_error2">密码错误，请重新输入</string>
+	<string name="password_set">密码设置</string>
+	<string name="password_switch">密码开关</string>
+	<string name="change_password">修改密码</string>
+	<string name="input_now_password">输入当前密码</string>
+	<string name="input_new_password">输入新密码</string>
+	<string name="input_new_password_repeat">再次输入新密码</string>
+	<string name="reboot_useful">重启生效</string>
+	<string name="password_error3">当前密码校验错误，请重新输入</string>
+	<string name="password_error4">两次输入的新密码不一致，请重新输入</string>
+	<string name="password_reboot_useful">新密码设置成功，重启生效</string>
+	<string name="email_title">售后服务邮箱</string>
 </resources>

@@ -300,4 +300,24 @@
 	<string name="account_message5">mais vous devrez synchroniser manuellement chaque compte pour obtenir les informations les plus récentes,</string>
 	<string name="account_message6">et vous ne recevrez pas de notifications lorsque des mises à jour seront disponibles.</string>
 	<string name="reseting_factory">Restauration des paramètres d\'usine, veuillez patienter...</string>
+	<string name="set_boot_password">Définir le mot de passe de démarrage</string>
+	<string name="password_length_limit">Le mot de passe doit contenir au moins quatre caractères</string>
+	<string name="password_attention">Attention : En cas d’oubli du mot de passe, une réinitialisation d\'usine sera nécessaire. Veuillez le conserver en lieu sûr !</string>
+	<string name="new_password">Saisir le nouveau mot de passe</string>
+	<string name="new_password_repeate">Saisir à nouveau le nouveau mot de passe</string>
+	<string name="password_error">Les deux mots de passe ne correspondent pas, veuillez réessayer</string>
+	<string name="boot_password">Mot de passe de démarrage</string>
+	<string name="input_boot_password">Veuillez saisir votre mot de passe de démarrage, au moins 4 caractères</string>
+	<string name="password_error2">Mot de passe incorrect, veuillez réessayer</string>
+	<string name="password_set">Configuration du mot de passe</string>
+	<string name="password_switch">Interrupteur de mot de passe</string>
+	<string name="change_password">Modifier le mot de passe</string>
+	<string name="input_now_password">Saisir le mot de passe actuel</string>
+	<string name="input_new_password">Saisir un nouveau mot de passe</string>
+	<string name="input_new_password_repeat">Saisir à nouveau le nouveau mot de passe</string>
+	<string name="reboot_useful">Effectif après redémarrage</string>
+	<string name="password_error3">Échec de la vérification du mot de passe actuel, veuillez réessayer</string>
+	<string name="password_error4">Les deux mots de passe saisis ne correspondent pas, veuillez réessayer</string>
+	<string name="password_reboot_useful">Nouveau mot de passe défini avec succès, effectif après redémarrage</string>
+	<string name="email_title">E-mail du service après-vente</string>
 </resources>

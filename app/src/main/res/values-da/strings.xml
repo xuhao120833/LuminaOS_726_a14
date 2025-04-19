@@ -300,5 +300,25 @@
     <string name="account_message5">men du skal manuelt synkronisere hver konto for at få de nyeste oplysninger,</string>
     <string name="account_message6">og du vil ikke modtage notifikationer, når der er opdateringer.</string>
     <string name="reseting_factory">Gendanner fabriksindstillinger, vent venligst...</string>
+    <string name="set_boot_password">Indstil opstartskode</string>
+    <string name="password_length_limit">Adgangskoden skal være mindst 4 tegn</string>
+    <string name="password_attention">Bemærk: Gendannelse til fabriksindstillinger er nødvendig, hvis du glemmer adgangskoden. Opbevar den sikkert!</string>
+    <string name="new_password">Indtast ny adgangskode</string>
+    <string name="new_password_repeate">Indtast den nye adgangskode igen</string>
+    <string name="password_error">Adgangskoderne stemmer ikke overens. Prøv igen</string>
+    <string name="boot_password">Opstartskode</string>
+    <string name="input_boot_password">Indtast din opstartskode (mindst 4 tegn)</string>
+    <string name="password_error2">Forkert adgangskode. Prøv igen</string>
+    <string name="password_set">Adgangskodeindstillinger</string>
+    <string name="password_switch">Adgangskodekontakt</string>
+    <string name="change_password">Skift adgangskode</string>
+    <string name="input_now_password">Indtast nuværende adgangskode</string>
+    <string name="input_new_password">Indtast ny adgangskode</string>
+    <string name="input_new_password_repeat">Indtast ny adgangskode igen</string>
+    <string name="reboot_useful">Træder i kraft efter genstart</string>
+    <string name="password_error3">Bekræftelse af nuværende adgangskode mislykkedes. Prøv igen</string>
+    <string name="password_error4">De to nye adgangskoder stemmer ikke overens. Prøv igen</string>
+    <string name="password_reboot_useful">Ny adgangskode indstillet. Træder i kraft efter genstart</string>
+    <string name="email_title">Eftersalgsservice e-mail</string>
 </resources>
 

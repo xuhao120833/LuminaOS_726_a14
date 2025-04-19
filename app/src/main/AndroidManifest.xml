@@ -111,6 +111,12 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".activity.PasswordVerifyActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".activity.PasswordVerifyActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.DisplaySettingsActivity"
             android:exported="true"
             android:theme="@style/TransparentActivity" />

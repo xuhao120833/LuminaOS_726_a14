@@ -300,4 +300,24 @@
     <string name="account_message5">하지만 각 계정을 수동으로 동기화해야 최신 정보를 받을 수 있습니다,</string>
     <string name="account_message6">그리고 업데이트가 있을 때 알림을 받지 못합니다.</string>
     <string name="reseting_factory">공장 초기화 중입니다. 잠시만 기다려주세요...</string>
+    <string name="set_boot_password">부팅 비밀번호 설정</string>
+    <string name="password_length_limit">비밀번호는 최소 4자리여야 합니다</string>
+    <string name="password_attention">주의: 비밀번호를 잊으면 공장 초기화가 필요합니다. 비밀번호를 안전하게 보관하십시오!</string>
+    <string name="new_password">새 비밀번호 입력</string>
+    <string name="new_password_repeate">새 비밀번호를 다시 입력하세요</string>
+    <string name="password_error">두 비밀번호가 일치하지 않습니다. 다시 입력하십시오</string>
+    <string name="boot_password">부팅 비밀번호</string>
+    <string name="input_boot_password">부팅 비밀번호를 입력하십시오. 최소 4자리</string>
+    <string name="password_error2">비밀번호가 잘못되었습니다. 다시 입력하십시오</string>
+    <string name="password_set">비밀번호 설정</string>
+    <string name="password_switch">비밀번호 스위치</string>
+    <string name="change_password">비밀번호 변경</string>
+    <string name="input_now_password">현재 비밀번호 입력</string>
+    <string name="input_new_password">새 비밀번호 입력</string>
+    <string name="input_new_password_repeat">새 비밀번호를 다시 입력하세요</string>
+    <string name="reboot_useful">재부팅 후 적용됩니다</string>
+    <string name="password_error3">현재 비밀번호 확인 오류. 다시 입력하십시오</string>
+    <string name="password_error4">새 비밀번호가 일치하지 않습니다. 다시 입력하십시오</string>
+    <string name="password_reboot_useful">새 비밀번호가 설정되었습니다. 재부팅 후 적용됩니다</string>
+    <string name="email_title">A/S 서비스 이메일</string>
 </resources>

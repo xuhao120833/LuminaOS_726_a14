@@ -300,6 +300,26 @@
     <string name="account_message5">ale będziesz musiał ręcznie synchronizować każde konto, aby uzyskać najnowsze informacje,</string>
     <string name="account_message6">a także nie będziesz otrzymywać powiadomień o dostępnych aktualizacjach.</string>
     <string name="reseting_factory">Przywracanie ustawień fabrycznych, proszę czekać...</string>
+    <string name="set_boot_password">Ustaw hasło rozruchowe</string>
+    <string name="password_length_limit">Hasło musi mieć co najmniej cztery znaki</string>
+    <string name="password_attention">Uwaga: zapomnienie hasła wymaga przywrócenia ustawień fabrycznych. Proszę bezpiecznie przechowywać hasło!</string>
+    <string name="new_password">Wprowadź nowe hasło</string>
+    <string name="new_password_repeate">Wprowadź ponownie nowe hasło</string>
+    <string name="password_error">Hasła się nie zgadzają, proszę wprowadzić ponownie</string>
+    <string name="boot_password">Hasło rozruchowe</string>
+    <string name="input_boot_password">Wprowadź swoje hasło rozruchowe, co najmniej 4 znaki</string>
+    <string name="password_error2">Błędne hasło, proszę wprowadzić ponownie</string>
+    <string name="password_set">Ustawienie hasła</string>
+    <string name="password_switch">Przełącznik hasła</string>
+    <string name="change_password">Zmień hasło</string>
+    <string name="input_now_password">Wprowadź bieżące hasło</string>
+    <string name="input_new_password">Wprowadź nowe hasło</string>
+    <string name="input_new_password_repeat">Wprowadź ponownie nowe hasło</string>
+    <string name="reboot_useful">Zrestartuj, aby zastosować</string>
+    <string name="password_error3">Błędne bieżące hasło, proszę wprowadzić ponownie</string>
+    <string name="password_error4">Hasła się nie zgadzają, proszę wprowadzić ponownie</string>
+    <string name="password_reboot_useful">Nowe hasło zostało ustawione, restart wymagany</string>
+    <string name="email_title">E-mail obsługi posprzedażowej</string>
 </resources>
 
 

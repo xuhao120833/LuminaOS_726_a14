@@ -300,4 +300,24 @@
 	<string name="account_message5">ma dovrai sincronizzare manualmente ogni account per ottenere le informazioni più recenti,</string>
 	<string name="account_message6">e non riceverai notifiche quando ci sono aggiornamenti.</string>
 	<string name="reseting_factory">Ripristino delle impostazioni di fabbrica in corso, attendere...</string>
+	<string name="set_boot_password">Imposta password di avvio</string>
+	<string name="password_length_limit">La lunghezza della password deve essere almeno di quattro cifre</string>
+	<string name="password_attention">Attenzione: se dimentichi la password, sarà necessario un ripristino alle impostazioni di fabbrica. Conserva la password con cura!</string>
+	<string name="new_password">Inserisci la nuova password</string>
+	<string name="new_password_repeate">Inserisci nuovamente la nuova password</string>
+	<string name="password_error">Le due password non coincidono, riprova</string>
+	<string name="boot_password">Password di avvio</string>
+	<string name="input_boot_password">Inserisci la password di avvio, almeno 4 cifre</string>
+	<string name="password_error2">Password errata, riprova</string>
+	<string name="password_set">Impostazione password</string>
+	<string name="password_switch">Interruttore password</string>
+	<string name="change_password">Modifica password</string>
+	<string name="input_now_password">Inserisci la password attuale</string>
+	<string name="input_new_password">Inserisci una nuova password</string>
+	<string name="input_new_password_repeat">Inserisci nuovamente la nuova password</string>
+	<string name="reboot_useful">Riavvio necessario per rendere effettive le modifiche</string>
+	<string name="password_error3">Verifica della password attuale non riuscita, riprova</string>
+	<string name="password_error4">Le due nuove password non coincidono, riprova</string>
+	<string name="password_reboot_useful">Nuova password impostata con successo, riavvio necessario</string>
+	<string name="email_title">Email del servizio post-vendita</string>
 </resources>

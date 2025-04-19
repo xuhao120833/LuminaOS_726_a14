@@ -300,4 +300,24 @@
     <string name="account_message5">ただし、最新情報を得るには各アカウントを手動で同期する必要があります。</string>
     <string name="account_message6">また、更新があった場合、通知を受け取ることができません。</string>
     <string name="reseting_factory">出荷時の設定にリセットしています。しばらくお待ちください...</string>
+    <string name="set_boot_password">起動パスワードを設定</string>
+    <string name="password_length_limit">パスワードは最低4桁必要です</string>
+    <string name="password_attention">注意：パスワードを忘れた場合は初期化が必要です。大切に保管してください！</string>
+    <string name="new_password">新しいパスワードを入力</string>
+    <string name="new_password_repeate">新しいパスワードをもう一度入力</string>
+    <string name="password_error">2つのパスワードが一致しません。もう一度入力してください</string>
+    <string name="boot_password">起動パスワード</string>
+    <string name="input_boot_password">起動パスワードを入力してください（4桁以上）</string>
+    <string name="password_error2">パスワードが間違っています。もう一度入力してください</string>
+    <string name="password_set">パスワード設定</string>
+    <string name="password_switch">パスワードスイッチ</string>
+    <string name="change_password">パスワードを変更</string>
+    <string name="input_now_password">現在のパスワードを入力</string>
+    <string name="input_new_password">新しいパスワードを入力</string>
+    <string name="input_new_password_repeat">新しいパスワードをもう一度入力</string>
+    <string name="reboot_useful">再起動後に有効</string>
+    <string name="password_error3">現在のパスワードが正しくありません。もう一度入力してください</string>
+    <string name="password_error4">2回入力された新しいパスワードが一致しません。もう一度入力してください</string>
+    <string name="password_reboot_useful">新しいパスワードが設定されました。再起動後に有効になります</string>
+    <string name="email_title">アフターサービス用メール</string>
 </resources>
