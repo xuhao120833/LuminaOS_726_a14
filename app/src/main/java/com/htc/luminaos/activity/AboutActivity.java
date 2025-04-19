@@ -124,6 +124,7 @@ public class AboutActivity extends BaseActivity {
         aboutBinding.rlSerialNumber.setVisibility(MyApplication.config.serialNumber ? View.VISIBLE : View.GONE);
         aboutBinding.rlUpdateFirmware.setVisibility(MyApplication.config.updateFirmware ? View.VISIBLE : View.GONE);
         aboutBinding.rlOnlineUpdate.setVisibility(MyApplication.config.onlineUpdate ? View.VISIBLE : View.GONE);
+        aboutBinding.rlEmail.setVisibility(MyApplication.config.email ? View.VISIBLE : View.GONE);
 
         aboutBinding.rlDeviceModel.setOnHoverListener(this);
         aboutBinding.rlUpdateFirmware.setOnHoverListener(this);
@@ -145,6 +146,7 @@ public class AboutActivity extends BaseActivity {
 //        aboutBinding.resolutionTv.setText("854 X 480");
         aboutBinding.wirelessMacTv.setText(getWlanMacAddress());
         aboutBinding.wiredMacTv.setText(DeviceUtils.getEthMac());
+        aboutBinding.emailNumber.setText(MyApplication.config.email_number);
         initQuickKey();
     }
 

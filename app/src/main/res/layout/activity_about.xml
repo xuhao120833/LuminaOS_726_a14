@@ -406,6 +406,42 @@
                     />
             </RelativeLayout>
 
+            <RelativeLayout
+                android:layout_width="@dimen/x_1080"
+                android:layout_height="@dimen/y_80"
+                android:id="@+id/rl_email"
+                android:layout_marginStart="@dimen/x_100"
+                android:layout_marginTop="@dimen/y_19"
+                android:layout_below="@id/rl_online_update"
+                android:background="@drawable/main_settings_bg"
+                style="@style/focusStyle"
+                >
+                <TextView
+                    android:id="@+id/email_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/x_50"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/tv_color"
+                    android:textSize="@dimen/x_27"
+                    android:text="@string/email_title"
+                    android:duplicateParentState="true"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/email_number"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/x_103"
+                    android:textColor="@color/tv_color"
+                    android:textSize="@dimen/x_23"
+                    android:gravity="center"
+                    android:text="000000"
+                    android:duplicateParentState="true"
+                    />
+            </RelativeLayout>
+
         </RelativeLayout>
     </com.htc.luminaos.view.CustomScrollView>
 
